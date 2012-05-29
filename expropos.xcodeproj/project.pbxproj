@@ -15,6 +15,7 @@
 		914BB2A415746A6B009FFBAE /* exproposAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 914BB2A315746A6B009FFBAE /* exproposAppDelegate.m */; };
 		914BB2A715746A6C009FFBAE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914BB2A515746A6B009FFBAE /* MainStoryboard.storyboard */; };
 		914BB2AA15746A6C009FFBAE /* exproposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914BB2A915746A6C009FFBAE /* exproposViewController.m */; };
+		914BB2B51574766D009FFBAE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 914BB2B41574766D009FFBAE /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		914BB2A615746A6C009FFBAE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		914BB2A815746A6C009FFBAE /* exproposViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exproposViewController.h; sourceTree = "<group>"; };
 		914BB2A915746A6C009FFBAE /* exproposViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exproposViewController.m; sourceTree = "<group>"; };
+		914BB2B41574766D009FFBAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		914BB29A15746A6B009FFBAE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				914BB2B41574766D009FFBAE /* README.md */,
 				914BB29B15746A6B009FFBAE /* expropos-Info.plist */,
 				914BB29C15746A6B009FFBAE /* InfoPlist.strings */,
 				914BB29F15746A6B009FFBAE /* main.m */,
@@ -151,6 +154,7 @@
 			files = (
 				914BB29E15746A6B009FFBAE /* InfoPlist.strings in Resources */,
 				914BB2A715746A6C009FFBAE /* MainStoryboard.storyboard in Resources */,
+				914BB2B51574766D009FFBAE /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +281,7 @@
 				914BB2AF15746A6C009FFBAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
