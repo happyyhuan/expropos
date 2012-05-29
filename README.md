@@ -1,7 +1,7 @@
 ## Expropos
 ========
 
-expro future pos client for iPad
+expro future pos client for iPad.
 
 ## Starup Project:
 
@@ -12,3 +12,5 @@ expro future pos client for iPad
 3.**Close XCode completely**.(It's for xcode bug).
 
 4.Reopen project to do.
+
+
