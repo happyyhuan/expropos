@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9120E1941574C25700400D05 /* exproposMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9120E1931574C25700400D05 /* exproposMainViewController.m */; };
 		914BB29415746A6B009FFBAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29315746A6B009FFBAE /* UIKit.framework */; };
 		914BB29615746A6B009FFBAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29515746A6B009FFBAE /* Foundation.framework */; };
 		914BB29815746A6B009FFBAE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29715746A6B009FFBAE /* CoreGraphics.framework */; };
@@ -72,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9120E1921574C25700400D05 /* exproposMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMainViewController.h; sourceTree = "<group>"; };
+		9120E1931574C25700400D05 /* exproposMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMainViewController.m; sourceTree = "<group>"; };
 		914BB28F15746A6B009FFBAE /* expropos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expropos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		914BB29315746A6B009FFBAE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		914BB29515746A6B009FFBAE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -162,6 +165,8 @@
 				914BB2A815746A6C009FFBAE /* exproposViewController.h */,
 				914BB2A915746A6C009FFBAE /* exproposViewController.m */,
 				914BB29A15746A6B009FFBAE /* Supporting Files */,
+				9120E1921574C25700400D05 /* exproposMainViewController.h */,
+				9120E1931574C25700400D05 /* exproposMainViewController.m */,
 			);
 			path = expropos;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				914BB2A015746A6B009FFBAE /* main.m in Sources */,
 				914BB2A415746A6B009FFBAE /* exproposAppDelegate.m in Sources */,
 				914BB2AA15746A6C009FFBAE /* exproposViewController.m in Sources */,
+				9120E1941574C25700400D05 /* exproposMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
