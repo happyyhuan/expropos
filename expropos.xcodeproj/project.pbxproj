@@ -25,6 +25,7 @@
 		917EFBA61574B269006D9B03 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA51574B269006D9B03 /* SystemConfiguration.framework */; };
 		917EFBA81574B285006D9B03 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA71574B285006D9B03 /* QuartzCore.framework */; };
 		917EFBAA1574B295006D9B03 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA91574B295006D9B03 /* libxml2.dylib */; };
+		91E1C8EA1581F1A80003B22D /* expropos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C8E81581F1A80003B22D /* expropos.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		917EFBA51574B269006D9B03 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		917EFBA71574B285006D9B03 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		917EFBA91574B295006D9B03 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		91E1C8E91581F1A80003B22D /* expropos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = expropos.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				914BB29A15746A6B009FFBAE /* Supporting Files */,
 				9120E1921574C25700400D05 /* exproposMainViewController.h */,
 				9120E1931574C25700400D05 /* exproposMainViewController.m */,
+				91E1C8E81581F1A80003B22D /* expropos.xcdatamodeld */,
 			);
 			path = expropos;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				914BB2A415746A6B009FFBAE /* exproposAppDelegate.m in Sources */,
 				914BB2AA15746A6C009FFBAE /* exproposViewController.m in Sources */,
 				9120E1941574C25700400D05 /* exproposMainViewController.m in Sources */,
+				91E1C8EA1581F1A80003B22D /* expropos.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +446,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		91E1C8E81581F1A80003B22D /* expropos.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				91E1C8E91581F1A80003B22D /* expropos.xcdatamodel */,
+			);
+			currentVersion = 91E1C8E91581F1A80003B22D /* expropos.xcdatamodel */;
+			path = expropos.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 914BB28615746A6B009FFBAE /* Project object */;
 }
