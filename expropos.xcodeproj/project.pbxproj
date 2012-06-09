@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		9120E1941574C25700400D05 /* exproposMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9120E1931574C25700400D05 /* exproposMainViewController.m */; };
+		9149D59A158324A1006A9FBF /* ExproMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9149D599158324A1006A9FBF /* ExproMerchant.m */; };
+		9149D59D158324A1006A9FBF /* ExproRole.m in Sources */ = {isa = PBXBuildFile; fileRef = 9149D59C158324A1006A9FBF /* ExproRole.m */; };
+		9149D5A0158324A1006A9FBF /* ExproUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9149D59F158324A1006A9FBF /* ExproUser.m */; };
+		9149D5A3158324A1006A9FBF /* ExproRouteTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 9149D5A2158324A1006A9FBF /* ExproRouteTable.m */; };
+		9149D5A6158324A1006A9FBF /* ExproGoodsType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9149D5A5158324A1006A9FBF /* ExproGoodsType.m */; };
+		9149D5A9158324A1006A9FBF /* ExproMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 9149D5A8158324A1006A9FBF /* ExproMember.m */; };
+		9149D5AF158324E7006A9FBF /* ExproGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 9149D5AE158324E7006A9FBF /* ExproGoods.m */; };
 		914BB29415746A6B009FFBAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29315746A6B009FFBAE /* UIKit.framework */; };
 		914BB29615746A6B009FFBAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29515746A6B009FFBAE /* Foundation.framework */; };
 		914BB29815746A6B009FFBAE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29715746A6B009FFBAE /* CoreGraphics.framework */; };
@@ -76,6 +83,20 @@
 /* Begin PBXFileReference section */
 		9120E1921574C25700400D05 /* exproposMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMainViewController.h; sourceTree = "<group>"; };
 		9120E1931574C25700400D05 /* exproposMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMainViewController.m; sourceTree = "<group>"; };
+		9149D598158324A1006A9FBF /* ExproMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproMerchant.h; path = expropos/ExproMerchant.h; sourceTree = "<group>"; };
+		9149D599158324A1006A9FBF /* ExproMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproMerchant.m; path = expropos/ExproMerchant.m; sourceTree = "<group>"; };
+		9149D59B158324A1006A9FBF /* ExproRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproRole.h; path = expropos/ExproRole.h; sourceTree = "<group>"; };
+		9149D59C158324A1006A9FBF /* ExproRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproRole.m; path = expropos/ExproRole.m; sourceTree = "<group>"; };
+		9149D59E158324A1006A9FBF /* ExproUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproUser.h; path = expropos/ExproUser.h; sourceTree = "<group>"; };
+		9149D59F158324A1006A9FBF /* ExproUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproUser.m; path = expropos/ExproUser.m; sourceTree = "<group>"; };
+		9149D5A1158324A1006A9FBF /* ExproRouteTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproRouteTable.h; path = expropos/ExproRouteTable.h; sourceTree = "<group>"; };
+		9149D5A2158324A1006A9FBF /* ExproRouteTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproRouteTable.m; path = expropos/ExproRouteTable.m; sourceTree = "<group>"; };
+		9149D5A4158324A1006A9FBF /* ExproGoodsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproGoodsType.h; path = expropos/ExproGoodsType.h; sourceTree = "<group>"; };
+		9149D5A5158324A1006A9FBF /* ExproGoodsType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproGoodsType.m; path = expropos/ExproGoodsType.m; sourceTree = "<group>"; };
+		9149D5A7158324A1006A9FBF /* ExproMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproMember.h; path = expropos/ExproMember.h; sourceTree = "<group>"; };
+		9149D5A8158324A1006A9FBF /* ExproMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproMember.m; path = expropos/ExproMember.m; sourceTree = "<group>"; };
+		9149D5AD158324E7006A9FBF /* ExproGoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproGoods.h; path = expropos/ExproGoods.h; sourceTree = "<group>"; };
+		9149D5AE158324E7006A9FBF /* ExproGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproGoods.m; path = expropos/ExproGoods.m; sourceTree = "<group>"; };
 		914BB28F15746A6B009FFBAE /* expropos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expropos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		914BB29315746A6B009FFBAE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		914BB29515746A6B009FFBAE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +144,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9149D5B0158324F5006A9FBF /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				91E1C8E81581F1A80003B22D /* expropos.xcdatamodeld */,
+				9149D5AD158324E7006A9FBF /* ExproGoods.h */,
+				9149D5AE158324E7006A9FBF /* ExproGoods.m */,
+				9149D5A7158324A1006A9FBF /* ExproMember.h */,
+				9149D5A8158324A1006A9FBF /* ExproMember.m */,
+				9149D5A4158324A1006A9FBF /* ExproGoodsType.h */,
+				9149D5A5158324A1006A9FBF /* ExproGoodsType.m */,
+				9149D5A1158324A1006A9FBF /* ExproRouteTable.h */,
+				9149D5A2158324A1006A9FBF /* ExproRouteTable.m */,
+				9149D59E158324A1006A9FBF /* ExproUser.h */,
+				9149D59F158324A1006A9FBF /* ExproUser.m */,
+				9149D59B158324A1006A9FBF /* ExproRole.h */,
+				9149D59C158324A1006A9FBF /* ExproRole.m */,
+				9149D598158324A1006A9FBF /* ExproMerchant.h */,
+				9149D599158324A1006A9FBF /* ExproMerchant.m */,
+			);
+			name = DataModel;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		914BB28415746A6B009FFBAE = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +205,7 @@
 		914BB29915746A6B009FFBAE /* expropos */ = {
 			isa = PBXGroup;
 			children = (
+				9149D5B0158324F5006A9FBF /* DataModel */,
 				914BB2A215746A6B009FFBAE /* exproposAppDelegate.h */,
 				914BB2A315746A6B009FFBAE /* exproposAppDelegate.m */,
 				914BB2A515746A6B009FFBAE /* MainStoryboard.storyboard */,
@@ -169,7 +214,6 @@
 				914BB29A15746A6B009FFBAE /* Supporting Files */,
 				9120E1921574C25700400D05 /* exproposMainViewController.h */,
 				9120E1931574C25700400D05 /* exproposMainViewController.m */,
-				91E1C8E81581F1A80003B22D /* expropos.xcdatamodeld */,
 			);
 			path = expropos;
 			sourceTree = "<group>";
@@ -312,6 +356,13 @@
 				914BB2AA15746A6C009FFBAE /* exproposViewController.m in Sources */,
 				9120E1941574C25700400D05 /* exproposMainViewController.m in Sources */,
 				91E1C8EA1581F1A80003B22D /* expropos.xcdatamodeld in Sources */,
+				9149D59A158324A1006A9FBF /* ExproMerchant.m in Sources */,
+				9149D59D158324A1006A9FBF /* ExproRole.m in Sources */,
+				9149D5A0158324A1006A9FBF /* ExproUser.m in Sources */,
+				9149D5A3158324A1006A9FBF /* ExproRouteTable.m in Sources */,
+				9149D5A6158324A1006A9FBF /* ExproGoodsType.m in Sources */,
+				9149D5A9158324A1006A9FBF /* ExproMember.m in Sources */,
+				9149D5AF158324E7006A9FBF /* ExproGoods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +505,8 @@
 				91E1C8E91581F1A80003B22D /* expropos.xcdatamodel */,
 			);
 			currentVersion = 91E1C8E91581F1A80003B22D /* expropos.xcdatamodel */;
-			path = expropos.xcdatamodeld;
+			name = expropos.xcdatamodeld;
+			path = expropos/expropos.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
