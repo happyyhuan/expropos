@@ -19,7 +19,7 @@
         <attribute name="pid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="goods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Goods" inverseName="type" inverseEntity="Goods" syncable="YES"/>
         <relationship name="leaves" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GoodsType" inverseName="parent" inverseEntity="GoodsType" syncable="YES"/>
-        <relationship name="merchant" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Merchant" inverseName="goodsType" inverseEntity="Merchant" syncable="YES"/>
+        <relationship name="merchant" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Merchant" inverseName="goodsType" inverseEntity="Merchant" syncable="YES"/>
         <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GoodsType" inverseName="leaves" inverseEntity="GoodsType" syncable="YES"/>
     </entity>
     <entity name="Member" syncable="YES">
@@ -32,8 +32,9 @@
         <attribute name="privacy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="savings" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="org" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Merchant" inverseName="member" inverseEntity="Merchant" syncable="YES"/>
-        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="member" inverseEntity="User" syncable="YES"/>
+        <relationship name="org" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Merchant" inverseName="member" inverseEntity="Merchant" syncable="YES"/>
+        <relationship name="role" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="member" inverseEntity="Role" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="member" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Merchant" syncable="YES">
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -44,29 +45,47 @@
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="goodsType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GoodsType" inverseName="merchant" inverseEntity="GoodsType" syncable="YES"/>
-        <relationship name="member" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Member" inverseName="org" inverseEntity="Member" syncable="YES"/>
+        <relationship name="goodsType" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GoodsType" inverseName="merchant" inverseEntity="GoodsType" syncable="YES"/>
+        <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" inverseName="org" inverseEntity="Member" syncable="YES"/>
+    </entity>
+    <entity name="Role" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" inverseName="role" inverseEntity="Member" syncable="YES"/>
+        <relationship name="routeTable" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RouteTable" inverseName="role" inverseEntity="RouteTable" syncable="YES"/>
+    </entity>
+    <entity name="RouteTable" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="method" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="module" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="route" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="role" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="routeTable" inverseEntity="Role" syncable="YES"/>
     </entity>
     <entity name="User" syncable="YES">
         <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="cellphone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cellphone" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createTime" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="gid" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="idcard" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" attributeType="String" syncable="YES"/>
         <attribute name="petName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" inverseName="user" inverseEntity="Member" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Merchant" positionX="160" positionY="192" width="128" height="195"/>
-        <element name="User" positionX="160" positionY="192" width="128" height="240"/>
-        <element name="Member" positionX="160" positionY="192" width="128" height="210"/>
-        <element name="GoodsType" positionX="160" positionY="192" width="128" height="210"/>
-        <element name="Goods" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="Goods" positionX="340" positionY="-63" width="128" height="150"/>
+        <element name="GoodsType" positionX="243" positionY="153" width="128" height="210"/>
+        <element name="Member" positionX="-218" positionY="357" width="128" height="210"/>
+        <element name="Merchant" positionX="-423" positionY="513" width="128" height="195"/>
+        <element name="User" positionX="72" positionY="-117" width="128" height="240"/>
+        <element name="Role" positionX="-180" positionY="27" width="128" height="135"/>
+        <element name="RouteTable" positionX="-486" positionY="192" width="128" height="135"/>
     </elements>
 </model>
