@@ -2,13 +2,14 @@
 //  ExproUser.h
 //  expropos
 //
-//  Created by gbo on 12-6-9.
+//  Created by gbo on 12-6-12.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class ExproMember;
 
 @interface ExproUser : NSManagedObject
 
@@ -24,14 +25,14 @@
 @property (nonatomic, retain) NSString * petName;
 @property (nonatomic, retain) NSNumber * sex;
 @property (nonatomic, retain) NSNumber * state;
-@property (nonatomic, retain) NSSet *member;
+@property (nonatomic, retain) NSSet *members;
 @end
 
 @interface ExproUser (CoreDataGeneratedAccessors)
 
-- (void)addMemberObject:(NSManagedObject *)value;
-- (void)removeMemberObject:(NSManagedObject *)value;
-- (void)addMember:(NSSet *)values;
-- (void)removeMember:(NSSet *)values;
+- (void)addMembersObject:(ExproMember *)value;
+- (void)removeMembersObject:(ExproMember *)value;
+- (void)addMembers:(NSSet *)values;
+- (void)removeMembers:(NSSet *)values;
 
 @end

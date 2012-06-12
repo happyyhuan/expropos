@@ -2,13 +2,14 @@
 //  ExproMerchant.h
 //  expropos
 //
-//  Created by gbo on 12-6-9.
+//  Created by gbo on 12-6-12.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class ExproGoods, ExproMember, ExproStore;
 
 @interface ExproMerchant : NSManagedObject
 
@@ -20,20 +21,26 @@
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSNumber * type;
 @property (nonatomic, retain) NSString * version;
-@property (nonatomic, retain) NSSet *goodsType;
-@property (nonatomic, retain) NSSet *member;
+@property (nonatomic, retain) NSSet *goods;
+@property (nonatomic, retain) NSSet *members;
+@property (nonatomic, retain) NSSet *stores;
 @end
 
 @interface ExproMerchant (CoreDataGeneratedAccessors)
 
-- (void)addGoodsTypeObject:(NSManagedObject *)value;
-- (void)removeGoodsTypeObject:(NSManagedObject *)value;
-- (void)addGoodsType:(NSSet *)values;
-- (void)removeGoodsType:(NSSet *)values;
+- (void)addGoodsObject:(ExproGoods *)value;
+- (void)removeGoodsObject:(ExproGoods *)value;
+- (void)addGoods:(NSSet *)values;
+- (void)removeGoods:(NSSet *)values;
 
-- (void)addMemberObject:(NSManagedObject *)value;
-- (void)removeMemberObject:(NSManagedObject *)value;
-- (void)addMember:(NSSet *)values;
-- (void)removeMember:(NSSet *)values;
+- (void)addMembersObject:(ExproMember *)value;
+- (void)removeMembersObject:(ExproMember *)value;
+- (void)addMembers:(NSSet *)values;
+- (void)removeMembers:(NSSet *)values;
+
+- (void)addStoresObject:(ExproStore *)value;
+- (void)removeStoresObject:(ExproStore *)value;
+- (void)addStores:(NSSet *)values;
+- (void)removeStores:(NSSet *)values;
 
 @end

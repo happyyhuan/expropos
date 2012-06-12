@@ -2,11 +2,14 @@
 //  ExproMerchant.m
 //  expropos
 //
-//  Created by gbo on 12-6-9.
+//  Created by gbo on 12-6-12.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import "ExproMerchant.h"
+#import "ExproGoods.h"
+#import "ExproMember.h"
+#import "ExproStore.h"
 
 
 @implementation ExproMerchant
@@ -19,7 +22,8 @@
 @dynamic state;
 @dynamic type;
 @dynamic version;
-@dynamic goodsType;
-@dynamic member;
+@dynamic goods;
+@dynamic members;
+@dynamic stores;
 
 @end

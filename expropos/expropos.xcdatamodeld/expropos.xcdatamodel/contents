@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ExproDeal" representedClassName="ExproDeal" syncable="YES">
+        <attribute name="cash" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="payment" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="payType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="point" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="customer" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="purchases" inverseEntity="ExproMember" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproDealItem" inverseName="deal" inverseEntity="ExproDealItem" syncable="YES"/>
+        <relationship name="operator" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="sales" inverseEntity="ExproMember" syncable="YES"/>
+    </entity>
+    <entity name="ExproDealItem" representedClassName="ExproDealItem" syncable="YES">
+        <attribute name="closingCost" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="num" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="totalCost" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="deal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproDeal" inverseName="items" inverseEntity="ExproDeal" syncable="YES"/>
+        <relationship name="goods" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproGoods" inverseName="dealItems" inverseEntity="ExproGoods" syncable="YES"/>
+    </entity>
     <entity name="ExproGoods" representedClassName="ExproGoods" syncable="YES">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,7 +28,10 @@
         <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="dealItems" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproDealItem" inverseName="goods" inverseEntity="ExproDealItem" syncable="YES"/>
+        <relationship name="merchants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproMerchant" inverseName="goods" inverseEntity="ExproMerchant" syncable="YES"/>
         <relationship name="type" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproGoodsType" inverseName="goods" inverseEntity="ExproGoodsType" syncable="YES"/>
+        <relationship name="warrantItems" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproWarehouseWarrantItem" inverseName="goods" inverseEntity="ExproWarehouseWarrantItem" syncable="YES"/>
     </entity>
     <entity name="ExproGoodsType" representedClassName="ExproGoodsType" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -19,7 +43,6 @@
         <attribute name="pid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="goods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproGoods" inverseName="type" inverseEntity="ExproGoods" syncable="YES"/>
         <relationship name="leaves" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproGoodsType" inverseName="parent" inverseEntity="ExproGoodsType" syncable="YES"/>
-        <relationship name="merchant" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproMerchant" inverseName="goodsType" inverseEntity="ExproMerchant" syncable="YES"/>
         <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproGoodsType" inverseName="leaves" inverseEntity="ExproGoodsType" syncable="YES"/>
     </entity>
     <entity name="ExproMember" representedClassName="ExproMember" syncable="YES">
@@ -32,9 +55,12 @@
         <attribute name="privacy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="savings" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="org" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExproMerchant" inverseName="member" inverseEntity="ExproMerchant" syncable="YES"/>
-        <relationship name="role" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExproRole" inverseName="member" inverseEntity="ExproRole" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExproUser" inverseName="member" inverseEntity="ExproUser" syncable="YES"/>
+        <relationship name="org" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExproMerchant" inverseName="members" inverseEntity="ExproMerchant" syncable="YES"/>
+        <relationship name="purchases" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproDeal" inverseName="customer" inverseEntity="ExproDeal" syncable="YES"/>
+        <relationship name="role" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExproRole" inverseName="members" inverseEntity="ExproRole" syncable="YES"/>
+        <relationship name="sales" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproDeal" inverseName="customer" inverseEntity="ExproDeal" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExproUser" inverseName="members" inverseEntity="ExproUser" syncable="YES"/>
+        <relationship name="warehouseWarrants" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproWarehouseWarrant" inverseName="operator" inverseEntity="ExproWarehouseWarrant" syncable="YES"/>
     </entity>
     <entity name="ExproMerchant" representedClassName="ExproMerchant" syncable="YES">
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -45,16 +71,17 @@
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="goodsType" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproGoodsType" inverseName="merchant" inverseEntity="ExproGoodsType" syncable="YES"/>
-        <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="org" inverseEntity="ExproMember" syncable="YES"/>
+        <relationship name="goods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproGoods" inverseName="merchants" inverseEntity="ExproGoods" syncable="YES"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="org" inverseEntity="ExproMember" syncable="YES"/>
+        <relationship name="stores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproStore" inverseName="merchant" inverseEntity="ExproStore" syncable="YES"/>
     </entity>
     <entity name="ExproRole" representedClassName="ExproRole" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="role" inverseEntity="ExproMember" syncable="YES"/>
-        <relationship name="routeTable" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproRouteTable" inverseName="role" inverseEntity="ExproRouteTable" syncable="YES"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="role" inverseEntity="ExproMember" syncable="YES"/>
+        <relationship name="routeTables" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproRouteTable" inverseName="role" inverseEntity="ExproRouteTable" syncable="YES"/>
     </entity>
     <entity name="ExproRouteTable" representedClassName="ExproRouteTable" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
@@ -62,7 +89,22 @@
         <attribute name="method" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="module" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="route" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="role" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproRole" inverseName="routeTable" inverseEntity="ExproRole" syncable="YES"/>
+        <relationship name="role" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproRole" inverseName="routeTables" inverseEntity="ExproRole" syncable="YES"/>
+    </entity>
+    <entity name="ExproStore" representedClassName="ExproStore" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="district_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="inventar_num" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="map_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="transit_info" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="merchant" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproMerchant" inverseName="stores" inverseEntity="ExproMerchant" syncable="YES"/>
+        <relationship name="warehose" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproWarehouse" inverseName="store" inverseEntity="ExproWarehouse" syncable="YES"/>
     </entity>
     <entity name="ExproUser" representedClassName="ExproUser" syncable="YES">
         <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
@@ -77,7 +119,31 @@
         <attribute name="petName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="user" inverseEntity="ExproMember" syncable="YES"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="user" inverseEntity="ExproMember" syncable="YES"/>
+    </entity>
+    <entity name="ExproWarehouse" representedClassName="ExproWarehouse" syncable="YES">
+        <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="stockIn" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproWarehouseWarrant" inverseName="recipient" inverseEntity="ExproWarehouseWarrant" syncable="YES"/>
+        <relationship name="stockOut" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproWarehouseWarrant" inverseName="source" inverseEntity="ExproWarehouseWarrant" syncable="YES"/>
+        <relationship name="store" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproStore" inverseName="warehose" inverseEntity="ExproStore" syncable="YES"/>
+    </entity>
+    <entity name="ExproWarehouseWarrant" representedClassName="ExproWarehouseWarrant" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproWarehouseWarrantItem" inverseName="warrant" inverseEntity="ExproWarehouseWarrantItem" syncable="YES"/>
+        <relationship name="operator" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="warehouseWarrants" inverseEntity="ExproMember" syncable="YES"/>
+        <relationship name="recipient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproWarehouse" inverseName="stockIn" inverseEntity="ExproWarehouse" syncable="YES"/>
+        <relationship name="source" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproWarehouse" inverseName="stockOut" inverseEntity="ExproWarehouse" syncable="YES"/>
+    </entity>
+    <entity name="ExproWarehouseWarrantItem" representedClassName="ExproWarehouseWarrantItem" syncable="YES">
+        <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="num" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="totalCost" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="unitCost" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="goods" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproGoods" inverseName="warrantItems" inverseEntity="ExproGoods" syncable="YES"/>
+        <relationship name="warrant" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproWarehouseWarrant" inverseName="items" inverseEntity="ExproWarehouseWarrant" syncable="YES"/>
     </entity>
     <elements>
         <element name="ExproGoods" positionX="340" positionY="-63" width="128" height="150"/>
@@ -87,5 +153,11 @@
         <element name="ExproRole" positionX="-180" positionY="27" width="128" height="135"/>
         <element name="ExproRouteTable" positionX="-486" positionY="192" width="128" height="135"/>
         <element name="ExproUser" positionX="72" positionY="-117" width="128" height="240"/>
+        <element name="ExproDeal" positionX="160" positionY="192" width="128" height="210"/>
+        <element name="ExproDealItem" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="ExproWarehouseWarrantItem" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="ExproWarehouseWarrant" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="ExproWarehouse" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="ExproStore" positionX="160" positionY="192" width="128" height="240"/>
     </elements>
 </model>

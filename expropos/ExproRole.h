@@ -2,13 +2,14 @@
 //  ExproRole.h
 //  expropos
 //
-//  Created by gbo on 12-6-9.
+//  Created by gbo on 12-6-12.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class ExproMember, ExproRouteTable;
 
 @interface ExproRole : NSManagedObject
 
@@ -16,20 +17,20 @@
 @property (nonatomic, retain) NSDate * createTime;
 @property (nonatomic, retain) NSNumber * gid;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSSet *member;
-@property (nonatomic, retain) NSSet *routeTable;
+@property (nonatomic, retain) NSSet *members;
+@property (nonatomic, retain) NSSet *routeTables;
 @end
 
 @interface ExproRole (CoreDataGeneratedAccessors)
 
-- (void)addMemberObject:(NSManagedObject *)value;
-- (void)removeMemberObject:(NSManagedObject *)value;
-- (void)addMember:(NSSet *)values;
-- (void)removeMember:(NSSet *)values;
+- (void)addMembersObject:(ExproMember *)value;
+- (void)removeMembersObject:(ExproMember *)value;
+- (void)addMembers:(NSSet *)values;
+- (void)removeMembers:(NSSet *)values;
 
-- (void)addRouteTableObject:(NSManagedObject *)value;
-- (void)removeRouteTableObject:(NSManagedObject *)value;
-- (void)addRouteTable:(NSSet *)values;
-- (void)removeRouteTable:(NSSet *)values;
+- (void)addRouteTablesObject:(ExproRouteTable *)value;
+- (void)removeRouteTablesObject:(ExproRouteTable *)value;
+- (void)addRouteTables:(NSSet *)values;
+- (void)removeRouteTables:(NSSet *)values;
 
 @end

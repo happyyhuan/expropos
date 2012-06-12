@@ -2,11 +2,13 @@
 //  ExproRole.m
 //  expropos
 //
-//  Created by gbo on 12-6-9.
+//  Created by gbo on 12-6-12.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import "ExproRole.h"
+#import "ExproMember.h"
+#import "ExproRouteTable.h"
 
 
 @implementation ExproRole
@@ -15,7 +17,7 @@
 @dynamic createTime;
 @dynamic gid;
 @dynamic name;
-@dynamic member;
-@dynamic routeTable;
+@dynamic members;
+@dynamic routeTables;
 
 @end
