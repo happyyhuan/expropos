@@ -13,18 +13,19 @@
 
 @implementation ExproStore
 
-@dynamic gid;
-@dynamic name;
-@dynamic state;
-@dynamic inventar_num;
-@dynamic district_code;
 @dynamic address;
-@dynamic transit_info;
-@dynamic map_info;
-@dynamic notice;
-@dynamic createTime;
 @dynamic comment;
-@dynamic warehose;
+@dynamic createTime;
+@dynamic district_code;
+@dynamic gid;
+@dynamic inventar_num;
+@dynamic map_info;
+@dynamic name;
+@dynamic notice;
+@dynamic state;
+@dynamic transit_info;
+@dynamic lastModified;
 @dynamic merchant;
+@dynamic warehose;
 
 @end

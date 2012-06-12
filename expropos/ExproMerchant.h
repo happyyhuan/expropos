@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSString * shortName;
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSNumber * type;
-@property (nonatomic, retain) NSString * version;
+@property (nonatomic, retain) NSDate * lastModified;
 @property (nonatomic, retain) NSSet *goods;
 @property (nonatomic, retain) NSSet *members;
 @property (nonatomic, retain) NSSet *stores;

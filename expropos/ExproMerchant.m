@@ -21,7 +21,7 @@
 @dynamic shortName;
 @dynamic state;
 @dynamic type;
-@dynamic version;
+@dynamic lastModified;
 @dynamic goods;
 @dynamic members;
 @dynamic stores;
