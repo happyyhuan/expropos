@@ -30,6 +30,7 @@
 		914BB2A715746A6C009FFBAE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914BB2A515746A6B009FFBAE /* MainStoryboard.storyboard */; };
 		914BB2AA15746A6C009FFBAE /* exproposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914BB2A915746A6C009FFBAE /* exproposViewController.m */; };
 		914BB2B51574766D009FFBAE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 914BB2B41574766D009FFBAE /* README.md */; };
+		9166741A1588651100D8A584 /* RKSeedDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 916674191588651100D8A584 /* RKSeedDatabase.sqlite */; };
 		917EFB9C1574B1EB006D9B03 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFB901574B0B2006D9B03 /* libRestKit.a */; };
 		917EFB9E1574B22F006D9B03 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFB9D1574B22F006D9B03 /* CFNetwork.framework */; };
 		917EFBA01574B23F006D9B03 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFB9F1574B23F006D9B03 /* CoreData.framework */; };
@@ -130,6 +131,7 @@
 		914BB2A815746A6C009FFBAE /* exproposViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exproposViewController.h; sourceTree = "<group>"; };
 		914BB2A915746A6C009FFBAE /* exproposViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exproposViewController.m; sourceTree = "<group>"; };
 		914BB2B41574766D009FFBAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		916674191588651100D8A584 /* RKSeedDatabase.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RKSeedDatabase.sqlite; sourceTree = "<group>"; };
 		917EFB841574B0B1006D9B03 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		917EFB9D1574B22F006D9B03 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		917EFB9F1574B23F006D9B03 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -261,6 +263,7 @@
 				914BB29C15746A6B009FFBAE /* InfoPlist.strings */,
 				914BB29F15746A6B009FFBAE /* main.m */,
 				914BB2A115746A6B009FFBAE /* expropos-Prefix.pch */,
+				916674191588651100D8A584 /* RKSeedDatabase.sqlite */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				914BB29E15746A6B009FFBAE /* InfoPlist.strings in Resources */,
 				914BB2A715746A6C009FFBAE /* MainStoryboard.storyboard in Resources */,
 				914BB2B51574766D009FFBAE /* README.md in Resources */,
+				9166741A1588651100D8A584 /* RKSeedDatabase.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
