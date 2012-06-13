@@ -8,6 +8,7 @@
 
 #import <RestKit/RestKit.h>
 #import "exproposAppDelegate.h"
+#import "exproposRestkit.h"
 
 @implementation exproposAppDelegate
 
@@ -16,6 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [exproposRestkit InitRestKit];
     return YES;
 }
 							

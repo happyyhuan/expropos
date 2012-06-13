@@ -38,6 +38,7 @@
 		917EFBA61574B269006D9B03 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA51574B269006D9B03 /* SystemConfiguration.framework */; };
 		917EFBA81574B285006D9B03 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA71574B285006D9B03 /* QuartzCore.framework */; };
 		917EFBAA1574B295006D9B03 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA91574B295006D9B03 /* libxml2.dylib */; };
+		918848601588448C0028B1AE /* exproposRestkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188485F1588448C0028B1AE /* exproposRestkit.m */; };
 		91E1C8EA1581F1A80003B22D /* expropos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C8E81581F1A80003B22D /* expropos.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +138,8 @@
 		917EFBA51574B269006D9B03 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		917EFBA71574B285006D9B03 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		917EFBA91574B295006D9B03 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		9188485E1588448C0028B1AE /* exproposRestkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposRestkit.h; sourceTree = "<group>"; };
+		9188485F1588448C0028B1AE /* exproposRestkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposRestkit.m; sourceTree = "<group>"; };
 		91E1C8E91581F1A80003B22D /* expropos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = expropos.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,7 +203,6 @@
 		914BB28415746A6B009FFBAE = {
 			isa = PBXGroup;
 			children = (
-				917EFB841574B0B1006D9B03 /* RestKit.xcodeproj */,
 				914BB29915746A6B009FFBAE /* expropos */,
 				914BB29215746A6B009FFBAE /* Frameworks */,
 				914BB29015746A6B009FFBAE /* Products */,
@@ -218,6 +220,7 @@
 		914BB29215746A6B009FFBAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				917EFB841574B0B1006D9B03 /* RestKit.xcodeproj */,
 				917EFBA91574B295006D9B03 /* libxml2.dylib */,
 				917EFBA71574B285006D9B03 /* QuartzCore.framework */,
 				917EFBA51574B269006D9B03 /* SystemConfiguration.framework */,
@@ -244,6 +247,8 @@
 				914BB29A15746A6B009FFBAE /* Supporting Files */,
 				9120E1921574C25700400D05 /* exproposMainViewController.h */,
 				9120E1931574C25700400D05 /* exproposMainViewController.m */,
+				9188485E1588448C0028B1AE /* exproposRestkit.h */,
+				9188485F1588448C0028B1AE /* exproposRestkit.m */,
 			);
 			path = expropos;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				914BA6C115870A9F00D6028D /* ExproWarehouseWarrant.m in Sources */,
 				911561CC15872E4D007CE064 /* ExproMerchant.m in Sources */,
 				911561CF15872E4D007CE064 /* ExproStore.m in Sources */,
+				918848601588448C0028B1AE /* exproposRestkit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
