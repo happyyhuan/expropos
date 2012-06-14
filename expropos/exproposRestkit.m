@@ -19,6 +19,12 @@
 #import "ExproRouteTable.h"
 
 @implementation exproposRestkit
+
++ (void) router:(RKObjectRouter *)router 
+{
+    [router routeClass:[ExproMerchant class] toResourcePath:@"/sync/merchant/:gid" forMethod:RKRequestMethodGET];
+}
+
 + (void) objectMapWithManager:(RKObjectManager *)objectManager 
 {
     // Update date format so that we can parse Twitter dates properly
@@ -79,7 +85,10 @@
     [merchantMapping mapKeyPath:@"goods" toRelationship:@"goods" withMapping:goodsMapping];
     [objectManager.mappingProvider setMapping:merchantMapping forKeyPath:@"merchant"];
     
+    
+    [[self class] router:objectManager.router];
     objectManager.serializationMIMEType = RKMIMETypeJSON;
+    objectManager.acceptMIMEType = RKMIMETypeJSON;
     // Uncomment this to use XML, comment it to use JSON
     //  objectManager.acceptMIMEType = RKMIMETypeXML;
     //  [objectManager.mappingProvider setMapping:statusMapping forKeyPath:@"statuses.status"];

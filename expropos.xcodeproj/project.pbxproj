@@ -40,6 +40,8 @@
 		917EFBA61574B269006D9B03 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA51574B269006D9B03 /* SystemConfiguration.framework */; };
 		917EFBA81574B285006D9B03 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA71574B285006D9B03 /* QuartzCore.framework */; };
 		917EFBAA1574B295006D9B03 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA91574B295006D9B03 /* libxml2.dylib */; };
+		9187C50F1589B9B700AF5776 /* exproposSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 9187C50E1589B9B700AF5776 /* exproposSign.m */; };
+		9187C5121589E1AF00AF5776 /* ExproRestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */; };
 		918848601588448C0028B1AE /* exproposRestkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188485F1588448C0028B1AE /* exproposRestkit.m */; };
 		91E1C8EA1581F1A80003B22D /* expropos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C8E81581F1A80003B22D /* expropos.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -142,6 +144,10 @@
 		917EFBA51574B269006D9B03 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		917EFBA71574B285006D9B03 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		917EFBA91574B295006D9B03 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		9187C50D1589B9B700AF5776 /* exproposSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposSign.h; sourceTree = "<group>"; };
+		9187C50E1589B9B700AF5776 /* exproposSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposSign.m; sourceTree = "<group>"; };
+		9187C5101589E1AF00AF5776 /* ExproRestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproRestDelegate.h; sourceTree = "<group>"; };
+		9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproRestDelegate.m; sourceTree = "<group>"; };
 		9188485E1588448C0028B1AE /* exproposRestkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposRestkit.h; sourceTree = "<group>"; };
 		9188485F1588448C0028B1AE /* exproposRestkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposRestkit.m; sourceTree = "<group>"; };
 		91E1C8E91581F1A80003B22D /* expropos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = expropos.xcdatamodel; sourceTree = "<group>"; };
@@ -252,8 +258,7 @@
 				914BB29A15746A6B009FFBAE /* Supporting Files */,
 				9120E1921574C25700400D05 /* exproposMainViewController.h */,
 				9120E1931574C25700400D05 /* exproposMainViewController.m */,
-				9188485E1588448C0028B1AE /* exproposRestkit.h */,
-				9188485F1588448C0028B1AE /* exproposRestkit.m */,
+				9187C5131589E1D200AF5776 /* Restkit */,
 			);
 			path = expropos;
 			sourceTree = "<group>";
@@ -281,6 +286,19 @@
 				917EFB981574B0B2006D9B03 /* RestKitResources.bundle */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9187C5131589E1D200AF5776 /* Restkit */ = {
+			isa = PBXGroup;
+			children = (
+				9188485E1588448C0028B1AE /* exproposRestkit.h */,
+				9188485F1588448C0028B1AE /* exproposRestkit.m */,
+				9187C5101589E1AF00AF5776 /* ExproRestDelegate.h */,
+				9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */,
+				9187C50D1589B9B700AF5776 /* exproposSign.h */,
+				9187C50E1589B9B700AF5776 /* exproposSign.m */,
+			);
+			name = Restkit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +431,8 @@
 				911561CC15872E4D007CE064 /* ExproMerchant.m in Sources */,
 				911561CF15872E4D007CE064 /* ExproStore.m in Sources */,
 				918848601588448C0028B1AE /* exproposRestkit.m in Sources */,
+				9187C50F1589B9B700AF5776 /* exproposSign.m in Sources */,
+				9187C5121589E1AF00AF5776 /* ExproRestDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
