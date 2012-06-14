@@ -40,7 +40,6 @@
         <attribute name="isleaf" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="goods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproGoods" inverseName="type" inverseEntity="ExproGoods" syncable="YES"/>
         <relationship name="leaves" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproGoodsType" inverseName="parent" inverseEntity="ExproGoodsType" syncable="YES"/>
         <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproGoodsType" inverseName="leaves" inverseEntity="ExproGoodsType" syncable="YES"/>
@@ -150,7 +149,7 @@
         <element name="ExproDeal" positionX="160" positionY="192" width="128" height="210"/>
         <element name="ExproDealItem" positionX="160" positionY="192" width="128" height="135"/>
         <element name="ExproGoods" positionX="340" positionY="-63" width="128" height="150"/>
-        <element name="ExproGoodsType" positionX="243" positionY="153" width="128" height="210"/>
+        <element name="ExproGoodsType" positionX="243" positionY="153" width="128" height="180"/>
         <element name="ExproMember" positionX="-218" positionY="357" width="128" height="225"/>
         <element name="ExproMerchant" positionX="-423" positionY="513" width="128" height="210"/>
         <element name="ExproRole" positionX="-180" positionY="27" width="128" height="135"/>
