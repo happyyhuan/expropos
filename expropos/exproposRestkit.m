@@ -29,34 +29,34 @@
     [RKObjectMapping addDefaultDateFormatterForString:@"yyyy-MM-dd'T'hh:mm:ss.SSS'Z'" inTimeZone:nil];
     
     // Setup our object mappings     
-    RKManagedObjectMapping* routeTableMapping = [RKManagedObjectMapping mappingForClass:[ExproRouteTable class]];
+    RKManagedObjectMapping* routeTableMapping = [RKManagedObjectMapping mappingForClass:[ExproRouteTable class] inManagedObjectStore:objectManager.objectStore];
     routeTableMapping.primaryKeyAttribute = @"gid";
     [routeTableMapping mapKeyPathsToAttributes:@"_id", @"gid", @"description", @"desc", nil];
     [routeTableMapping mapAttributes:@"name", @"module", @"method", nil];
     [objectManager.mappingProvider setMapping:routeTableMapping forKeyPath:@"route_table"];
 
-    RKManagedObjectMapping* roleMapping = [RKManagedObjectMapping mappingForClass:[ExproRole class]];
+    RKManagedObjectMapping* roleMapping = [RKManagedObjectMapping mappingForClass:[ExproRole class] inManagedObjectStore:objectManager.objectStore];
     roleMapping.primaryKeyAttribute = @"gid";
     [roleMapping mapKeyPathsToAttributes:@"_id", @"gid", @"create_time", @"createTime", nil];
     [roleMapping mapAttributes:@"name", @"comment", nil];
     [roleMapping mapKeyPath:@"route_table" toRelationship:@"routeTables" withMapping:routeTableMapping];
     [objectManager.mappingProvider setMapping:roleMapping forKeyPath:@"role"];
 
-    RKManagedObjectMapping* goodsMapping = [RKManagedObjectMapping mappingForClass:[ExproGoods class]];
+    RKManagedObjectMapping* goodsMapping = [RKManagedObjectMapping mappingForClass:[ExproGoods class] inManagedObjectStore:objectManager.objectStore];
     goodsMapping.primaryKeyAttribute = @"gid";
     [goodsMapping mapKeyPathsToAttributes:@"_id", @"gid", @"create_time", @"createTime", nil];
     [goodsMapping mapAttributes:@"name", @"state", @"code", @"price", @"comment", nil];
     [goodsMapping connectRelationship:@"type" withObjectForPrimaryKeyAttribute:@"type_id"];
     [objectManager.mappingProvider setMapping:goodsMapping forKeyPath:@"goods"];
 
-    RKManagedObjectMapping* goodsTypeMapping = [RKManagedObjectMapping mappingForClass:[ExproGoodsType class]];
+    RKManagedObjectMapping* goodsTypeMapping = [RKManagedObjectMapping mappingForClass:[ExproGoodsType class] inManagedObjectStore:objectManager.objectStore];
     goodsTypeMapping.primaryKeyAttribute = @"gid";
     [goodsTypeMapping mapKeyPathsToAttributes:@"_id", @"gid", @"create_time", @"createTime", nil];
     [goodsTypeMapping mapAttributes:@"name", @"isleaf", @"level", @"comment", nil];
     [goodsTypeMapping connectRelationship:@"parent" withObjectForPrimaryKeyAttribute:@"parent_id"];
     [objectManager.mappingProvider setMapping:goodsTypeMapping forKeyPath:@"goods_type"];
 
-    RKManagedObjectMapping* memberMapping = [RKManagedObjectMapping mappingForClass:[ExproMember class]];
+    RKManagedObjectMapping* memberMapping = [RKManagedObjectMapping mappingForClass:[ExproMember class] inManagedObjectStore:objectManager.objectStore];
     memberMapping.primaryKeyAttribute = @"gid";
     [memberMapping mapKeyPathsToAttributes:@"_id", @"gid", @"pet_name", @"petName", @"create_time", @"createTime", @"due_time", @"dueTime", nil];
     [memberMapping mapAttributes:@"state", @"privacy", @"point", @"savings", @"comment", nil];
@@ -65,13 +65,13 @@
     [memberMapping connectRelationship:@"role" withObjectForPrimaryKeyAttribute:@"role_id"];
     [objectManager.mappingProvider setMapping:memberMapping forKeyPath:@"member"];
 
-    RKManagedObjectMapping* userMapping = [RKManagedObjectMapping mappingForClass:[ExproUser class]];
+    RKManagedObjectMapping* userMapping = [RKManagedObjectMapping mappingForClass:[ExproUser class] inManagedObjectStore:objectManager.objectStore];
     userMapping.primaryKeyAttribute = @"gid";
     [userMapping mapKeyPathsToAttributes:@"_id", @"gid", @"pet_name", @"petName", @"create_time", @"createTime", nil];
     [userMapping mapAttributes:@"cellphone", @"state", @"password", @"name", @"sex", @"birthday", @"idcard", @"email", @"comment", nil];
     [objectManager.mappingProvider setMapping:userMapping forKeyPath:@"user"];
 
-    RKManagedObjectMapping* merchantMapping = [RKManagedObjectMapping mappingForClass:[ExproMerchant class]];
+    RKManagedObjectMapping* merchantMapping = [RKManagedObjectMapping mappingForClass:[ExproMerchant class] inManagedObjectStore:objectManager.objectStore];
     merchantMapping.primaryKeyAttribute = @"gid";
     [merchantMapping mapKeyPathsToAttributes:@"_id", @"gid", @"create_time", @"createTime", @"due_time", @"dueTime", nil];
     [merchantMapping mapAttributes:@"short_name", @"state", @"type", @"phone", nil];
