@@ -10,6 +10,7 @@
 		911561CC15872E4D007CE064 /* ExproMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = 911561CB15872E4D007CE064 /* ExproMerchant.m */; };
 		911561CF15872E4D007CE064 /* ExproStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 911561CE15872E4D007CE064 /* ExproStore.m */; };
 		9120E1941574C25700400D05 /* exproposMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9120E1931574C25700400D05 /* exproposMainViewController.m */; };
+		914BA69D15870A9E00D6028D /* ExproStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 914BA69C15870A9E00D6028D /* ExproStore.m */; };
 		914BA6A015870A9E00D6028D /* ExproUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 914BA69F15870A9E00D6028D /* ExproUser.m */; };
 		914BA6A315870A9E00D6028D /* ExproDealItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 914BA6A215870A9E00D6028D /* ExproDealItem.m */; };
 		914BA6A915870A9E00D6028D /* ExproGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 914BA6A815870A9E00D6028D /* ExproGoods.m */; };
@@ -95,6 +96,7 @@
 		911561CE15872E4D007CE064 /* ExproStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproStore.m; path = expropos/ExproStore.m; sourceTree = "<group>"; };
 		9120E1921574C25700400D05 /* exproposMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMainViewController.h; sourceTree = "<group>"; };
 		9120E1931574C25700400D05 /* exproposMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMainViewController.m; sourceTree = "<group>"; };
+		914BA69C15870A9E00D6028D /* ExproStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproStore.m; path = expropos/ExproStore.m; sourceTree = "<group>"; };
 		914BA69E15870A9E00D6028D /* ExproUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproUser.h; path = expropos/ExproUser.h; sourceTree = "<group>"; };
 		914BA69F15870A9E00D6028D /* ExproUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproUser.m; path = expropos/ExproUser.m; sourceTree = "<group>"; };
 		914BA6A115870A9E00D6028D /* ExproDealItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproDealItem.h; path = expropos/ExproDealItem.h; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				914BA6A215870A9E00D6028D /* ExproDealItem.m */,
 				914BA69E15870A9E00D6028D /* ExproUser.h */,
 				914BA69F15870A9E00D6028D /* ExproUser.m */,
+				914BA69C15870A9E00D6028D /* ExproStore.m */,
 			);
 			name = DataModel;
 			path = ..;
@@ -395,6 +398,7 @@
 				914BB2AA15746A6C009FFBAE /* exproposViewController.m in Sources */,
 				9120E1941574C25700400D05 /* exproposMainViewController.m in Sources */,
 				91E1C8EA1581F1A80003B22D /* expropos.xcdatamodeld in Sources */,
+				914BA69D15870A9E00D6028D /* ExproStore.m in Sources */,
 				914BA6A015870A9E00D6028D /* ExproUser.m in Sources */,
 				914BA6A315870A9E00D6028D /* ExproDealItem.m in Sources */,
 				914BA6A915870A9E00D6028D /* ExproGoods.m in Sources */,
