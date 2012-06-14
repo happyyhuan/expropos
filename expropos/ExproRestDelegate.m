@@ -7,7 +7,7 @@
 //
 
 #import "ExproRestDelegate.h"
-#import "AppDelegate.h"
+//#import "AppDelegate.h"
 
 @implementation ExproHttpCodeOption
 
@@ -17,7 +17,6 @@
 @synthesize succeed = _succeed;
 - (void)dealloc {
     self.info = nil;
-    [super dealloc];
 }
 @end
 

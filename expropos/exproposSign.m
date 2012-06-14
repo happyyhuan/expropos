@@ -11,16 +11,19 @@
 
 @implementation exproposSign
 
-- (void) signIn:(NSString *)cellphone password:(NSString *)password 
+- (void) signin:(NSString *)cellphone password:(NSString *)password 
 {
     ExproUser *user = [ExproUser object];
     user.cellphone = cellphone;
     user.password = password;
     
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/signin" usingBlock:^(RKObjectLoader *loader) {
+    RKObjectMapping *signinSerializationMapping = [RKObjectMapping mappingForClass:[ExproUser class]];
+    [signinSerializationMapping mapAttributes:@"cellphone", @"password", nil];
+
+    [[RKObjectManager sharedManager] sendObject:user toResourcePath:@"/signin" usingBlock:^(RKObjectLoader *loader) {                    
         loader.method = RKRequestMethodPOST;
         loader.delegate = self;
-        loader.params = nil;
+        loader.serializationMapping = signinSerializationMapping;
     }]; 
 }
 @end

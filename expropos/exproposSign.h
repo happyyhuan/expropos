@@ -10,5 +10,5 @@
 #import "ExproRestDelegate.h"
 
 @interface exproposSign : ExproRestDelegate
-- (void) signIn:(NSString *)cellphone password:(NSString *)password;
+- (void) signin:(NSString *)cellphone password:(NSString *)password;
 @end
