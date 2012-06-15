@@ -20,13 +20,17 @@
 }
 @end
 
-@interface ExproRestDelegate (Internal) 
+@interface ExproRestDelegate ()
+
+@property (weak) RKObjectLoader * request;
+
 - (ExproHttpCodeOption *)code4:(int)aCode;
 - (void)alert:(NSString *)aTitle warning:(NSString *)aWarning;
-
 @end
 
 @implementation ExproRestDelegate 
+@synthesize request = _request;
+
 @synthesize reserver = _reserver;
 @synthesize succeedCallBack = _succeedCallBack;
 @synthesize failedCallBack = _failedCallBack;
@@ -36,6 +40,7 @@
 @synthesize succeedTitle = _succeedTitle;
 @synthesize ok = _ok;
 @synthesize acceptParallelResults = _acceptParallelResults;
+@synthesize cookie = _cookie;
 
 - (id)init {
     self = [super init];
@@ -57,9 +62,7 @@
 - (void)dealloc {
     self.errorTitle = nil;
     self.succeedTitle = nil;
-    [_codeOptions release];
     [self canceled];
-    [super dealloc];
 }
 - (ExproHttpCodeOption *)code4:(int)aCode {
     for (ExproHttpCodeOption *it in _codeOptions) {
@@ -71,7 +74,7 @@
 }
 - (void)addCode:(int)aCode info:(NSString *)aInfo alert:(BOOL)alert succeed:(BOOL)succeed {
     [self removeCode:aCode];
-    ExproHttpCodeOption *_codeOption = [[[ExproHttpCodeOption alloc] init] autorelease];
+    ExproHttpCodeOption *_codeOption = [[ExproHttpCodeOption alloc] init];
     _codeOption.statusCode = aCode;
     _codeOption.info = aInfo;
     _codeOption.alert = alert;
@@ -91,7 +94,6 @@
                                                cancelButtonTitle:_ok
                                                otherButtonTitles:nil];
     [_alertView show];
-    [_alertView release];
 }
 - (void)requestDidTimeout:(RKRequest *)request {
     NSLog(@"%@:%@",_errorTitle,_timeOutWarning);
@@ -110,7 +112,7 @@
             NSDictionary *headers = [response allHeaderFields];
             NSString *cookie = [headers objectForKey:@"Set-Cookie"];
             if (cookie) {
-                [ExproRestDelegate setCookie:cookie];
+                self.cookie = cookie;
             }
         }
         _shouldAlert = [_option shouldAlert];
@@ -126,13 +128,13 @@
     
 }
 - (void)succeed:(id)object {
-    _request = nil;
+    self.request = nil;
 }
 - (void)succeed4Parallel:(NSArray *)array {
-    _request = nil;
+    self.request = nil;
 }
 - (void)failed:(NSError *)error {
-    _request = nil;
+    self.request = nil;
     NSString *_error = [error localizedDescription];
     NSLog(@"%@:%@",_errorTitle,_error);
     if ([self shouldAlert]) {
@@ -145,72 +147,71 @@
     }
 }
 - (void)canceled {
-    if (_request) {
-        if ([_request isLoading]) {
-            [_request cancel];
+    if (self.request) {
+        if ([self.request isLoading]) {
+            [self.request cancel];
         }
-        [_request release];
-        _request = nil;
+        self.request = nil;
+    }
+}
+
+- (void)safePerformSelector:(SEL)aSelector withObject:(id)object {
+    if ([_reserver respondsToSelector:aSelector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [_reserver performSelector:aSelector withObject:object];
+#pragma clang diagnostic pop
     }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSLog(@"%@",[error localizedDescription]);
     [self failed:error];
-    if ([_reserver respondsToSelector:_failedCallBack]) {
-        [_reserver performSelector:_failedCallBack];
-    }
+    [self safePerformSelector:_failedCallBack withObject:nil];
 }
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object {
     if (_acceptParallelResults) {
         return;
     }
     [self succeed:object];
-    if ([_reserver respondsToSelector:_succeedCallBack]) {
-        [_reserver performSelector:_succeedCallBack withObject:object];
-    }
+    [self safePerformSelector:_succeedCallBack withObject:object];
 }
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
     if (_acceptParallelResults) {
         [self succeed4Parallel:objects];
         //add by gbo for 204 status code
         if ([objectLoader isEqual:[objects objectAtIndex:0]]) {
-            if ([_reserver respondsToSelector:_cancelCallBack]) {
-                [_reserver performSelector:_cancelCallBack];
-            }
+            [self safePerformSelector:_cancelCallBack withObject:nil];
         }
         else {
-            if ([_reserver respondsToSelector:_succeedCallBack]) {
-                [_reserver performSelector:_succeedCallBack withObject:objects];
-            }
+            [self safePerformSelector:_succeedCallBack withObject:objects];
         }
     }
 }
 - (void)cancel {
     [self canceled];
-    if ([_reserver respondsToSelector:_cancelCallBack]) {
-        [_reserver performSelector:_cancelCallBack];
-    }
-
+    [self safePerformSelector:_cancelCallBack withObject:nil];
 }
 
 - (void)requestURL:(NSString *)aURL method:(RKRequestMethod)aMethod params:(NSDictionary *)params mapping:(RKObjectMapping *)aMapping {
     [self canceled];
-    _request = [[[RKObjectManager sharedManager] loadObjectsAtResourcePath:aURL delegate:self block:^(RKObjectLoader *loader) {
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:aURL usingBlock:^(RKObjectLoader *loader) {
         loader.method = aMethod;
         loader.params = params;
+        loader.delegate = self;
         if (aMapping) {
             loader.objectMapping = aMapping;
         }
-        if ([ExproRestDelegate cookie]) {
-            [loader.URLRequest addValue:[ExproRestDelegate cookie] forHTTPHeaderField:@"Set-Cookie"];
+        if (self.cookie) {
+            [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Set-Cookie"];
         }
-    }] retain];
+        self.request = loader;
+    }];
 }
 
 - (void)requestURL:(NSString *)aURL method:(RKRequestMethod)aMethod object:(id)aObject mapping:(RKObjectMapping *)aMapping serialMapping:(RKObjectMapping *)aSerialMapping {
     [self canceled];
-    _request = [[[RKObjectManager sharedManager] loadObjectsAtResourcePath:aURL delegate:self block:^(RKObjectLoader *loader) {
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:aURL usingBlock:^(RKObjectLoader *loader) {
         loader.method = aMethod;
         if (aSerialMapping) {
             loader.serializationMapping = aSerialMapping;
@@ -220,17 +221,20 @@
         if (aMapping) {
             loader.objectMapping = aMapping;
         }
-        if ([ExproRestDelegate cookie]) {
-            [loader.URLRequest addValue:[ExproRestDelegate cookie] forHTTPHeaderField:@"Set-Cookie"];
+        if (self.cookie) {
+            [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Set-Cookie"];
         }
-    }] retain];
+        self.request = loader;
+    }];
 }
-+ (NSString *)cookie {
-    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    return app.cookie;
+
+- (NSString *) cookie {
+    return _cookie;
 }
-+ (void)setCookie:(NSString *)cookie {
-    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    app.cookie = cookie;
+
+- (void) setCookie:(NSString *)cookie {
+    if (![_cookie isEqualToString:cookie]) {
+        _cookie = cookie;
+    }
 }
 @end

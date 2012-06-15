@@ -28,20 +28,15 @@
 @interface ExproRestDelegate : NSObject<RKObjectLoaderDelegate> {
     NSMutableArray *_codeOptions;
     BOOL _alert;
-    RKObjectLoader *_request;
     NSString *_timeOutWarning;
     NSString *_unknownErrorWarning;
     NSString *_noServerWarning;
-    NSString *_errorTitle;
-    NSString *_succeedTitle;
-    NSString *_ok;
-    id _reserver;
-    SEL _succeedCallBack;
-    SEL _failedCallBack;
-    SEL _cancelCallBack;
+//    NSString *_errorTitle;
+//    NSString *_succeedTitle;
+//    NSString *_ok;
     BOOL _acceptParallelResults;
 }
-@property (assign) id reserver;
+@property (weak) id reserver;
 @property SEL succeedCallBack;
 @property SEL failedCallBack;
 @property SEL cancelCallBack;
@@ -50,6 +45,8 @@
 @property (nonatomic, copy) NSString *errorTitle;
 @property (nonatomic, copy) NSString *succeedTitle;
 @property (nonatomic, copy) NSString *ok;
+@property (nonatomic, weak) NSString *cookie;
+
 - (void)addCode:(int)aCode info:(NSString *)aInfo alert:(BOOL)alert succeed:(BOOL)succeed;
 - (void)removeCode:(int)aCode;
 - (void)requestURL:(NSString *)aURL
@@ -67,6 +64,4 @@
 - (void)succeedWithoutData;
 - (void)failed:(NSError *)error;
 - (void)canceled;
-+ (NSString *)cookie;
-+ (void)setCookie:(NSString *)cookie;
 @end
