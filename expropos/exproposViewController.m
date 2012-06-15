@@ -7,12 +7,20 @@
 //
 
 #import "exproposViewController.h"
+#import "exproposSign.h"
 
 @interface exproposViewController ()
-
+@property (strong) exproposSign *sign;
 @end
 
 @implementation exproposViewController
+
+@synthesize sign = _sign;
+
+- (IBAction)login:(id)sender {
+    self.sign = [[exproposSign alloc]init];
+    [self.sign signin:@"18912345678" password:@"123456"];
+}
 
 - (void)viewDidLoad
 {
