@@ -198,8 +198,8 @@
     [self canceled];
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:aURL usingBlock:^(RKObjectLoader *loader) {
         loader.method = aMethod;
-        loader.params = params;
         loader.delegate = self;
+        [loader setBody:params forMIMEType:@"application/json"];
         if (aMapping) {
             loader.objectMapping = aMapping;
         }

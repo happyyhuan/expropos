@@ -26,7 +26,6 @@
 }
 
 - (void) signinSucceed:(id)object {
-    [super succeed:object];
     NSDictionary *user = (NSDictionary *)object;
     NSLog(@"signin user:%@, sex:%@", [user objectForKey:@"name"], [user objectForKey:@"sex"]);    
 }
