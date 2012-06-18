@@ -2,8 +2,8 @@
 //  ExproGoods.m
 //  expropos
 //
-//  Created by gbo on 12-6-12.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by ep3 on 12-6-18.
+//  Copyright (c) 2012年 expro. All rights reserved.
 //
 
 #import "ExproGoods.h"
@@ -21,9 +21,10 @@
 @dynamic gid;
 @dynamic price;
 @dynamic state;
-@dynamic type;
+@dynamic name;
 @dynamic dealItems;
-@dynamic warrantItems;
 @dynamic merchants;
+@dynamic type;
+@dynamic warrantItems;
 
 @end

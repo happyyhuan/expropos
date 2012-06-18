@@ -26,6 +26,7 @@
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="dealItems" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproDealItem" inverseName="goods" inverseEntity="ExproDealItem" syncable="YES"/>
@@ -148,7 +149,7 @@
     <elements>
         <element name="ExproDeal" positionX="160" positionY="192" width="128" height="210"/>
         <element name="ExproDealItem" positionX="160" positionY="192" width="128" height="135"/>
-        <element name="ExproGoods" positionX="340" positionY="-63" width="128" height="150"/>
+        <element name="ExproGoods" positionX="340" positionY="-63" width="128" height="210"/>
         <element name="ExproGoodsType" positionX="243" positionY="153" width="128" height="180"/>
         <element name="ExproMember" positionX="-218" positionY="357" width="128" height="225"/>
         <element name="ExproMerchant" positionX="-423" positionY="513" width="128" height="210"/>

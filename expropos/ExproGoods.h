@@ -2,8 +2,8 @@
 //  ExproGoods.h
 //  expropos
 //
-//  Created by gbo on 12-6-12.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by ep3 on 12-6-18.
+//  Copyright (c) 2012年 expro. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -19,10 +19,11 @@
 @property (nonatomic, retain) NSNumber * gid;
 @property (nonatomic, retain) NSNumber * price;
 @property (nonatomic, retain) NSNumber * state;
-@property (nonatomic, retain) ExproGoodsType *type;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) ExproDealItem *dealItems;
-@property (nonatomic, retain) ExproWarehouseWarrantItem *warrantItems;
 @property (nonatomic, retain) NSSet *merchants;
+@property (nonatomic, retain) ExproGoodsType *type;
+@property (nonatomic, retain) ExproWarehouseWarrantItem *warrantItems;
 @end
 
 @interface ExproGoods (CoreDataGeneratedAccessors)
