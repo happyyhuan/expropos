@@ -2,7 +2,7 @@
 //  ExproWarehouse.m
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,8 +15,8 @@
 
 @dynamic gid;
 @dynamic name;
-@dynamic store;
 @dynamic stockIn;
 @dynamic stockOut;
+@dynamic store;
 
 @end

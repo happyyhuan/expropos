@@ -2,7 +2,7 @@
 //  ExproDeal.h
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,17 +13,17 @@
 
 @interface ExproDeal : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * gid;
-@property (nonatomic, retain) NSNumber * type;
-@property (nonatomic, retain) NSNumber * state;
-@property (nonatomic, retain) NSNumber * payment;
 @property (nonatomic, retain) NSNumber * cash;
-@property (nonatomic, retain) NSNumber * point;
-@property (nonatomic, retain) NSNumber * payType;
 @property (nonatomic, retain) NSDate * createTime;
-@property (nonatomic, retain) ExproMember *operator;
+@property (nonatomic, retain) NSNumber * gid;
+@property (nonatomic, retain) NSNumber * payment;
+@property (nonatomic, retain) NSNumber * payType;
+@property (nonatomic, retain) NSNumber * point;
+@property (nonatomic, retain) NSNumber * state;
+@property (nonatomic, retain) NSNumber * type;
 @property (nonatomic, retain) ExproMember *customer;
 @property (nonatomic, retain) NSSet *items;
+@property (nonatomic, retain) ExproMember *operator;
 @end
 
 @interface ExproDeal (CoreDataGeneratedAccessors)

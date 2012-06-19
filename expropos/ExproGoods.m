@@ -2,8 +2,8 @@
 //  ExproGoods.m
 //  expropos
 //
-//  Created by ep3 on 12-6-18.
-//  Copyright (c) 2012年 expro. All rights reserved.
+//  Created by 昊 曹 on 12-6-19.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import "ExproGoods.h"
@@ -19,9 +19,9 @@
 @dynamic comment;
 @dynamic createTime;
 @dynamic gid;
+@dynamic name;
 @dynamic price;
 @dynamic state;
-@dynamic name;
 @dynamic dealItems;
 @dynamic merchants;
 @dynamic type;

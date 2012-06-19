@@ -2,7 +2,7 @@
 //  ExproWarehouseWarrantItem.m
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,9 +15,9 @@
 
 @dynamic gid;
 @dynamic num;
-@dynamic unitCost;
 @dynamic totalCost;
-@dynamic warrant;
+@dynamic unitCost;
 @dynamic goods;
+@dynamic warrant;
 
 @end

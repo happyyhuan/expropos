@@ -2,7 +2,7 @@
 //  ExproWarehouseWarrant.h
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,13 +13,13 @@
 
 @interface ExproWarehouseWarrant : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * gid;
 @property (nonatomic, retain) NSString * comment;
 @property (nonatomic, retain) NSDate * createTime;
-@property (nonatomic, retain) ExproWarehouse *recipient;
-@property (nonatomic, retain) ExproMember *operator;
-@property (nonatomic, retain) ExproWarehouse *source;
+@property (nonatomic, retain) NSNumber * gid;
 @property (nonatomic, retain) NSSet *items;
+@property (nonatomic, retain) ExproMember *operator;
+@property (nonatomic, retain) ExproWarehouse *recipient;
+@property (nonatomic, retain) ExproWarehouse *source;
 @end
 
 @interface ExproWarehouseWarrant (CoreDataGeneratedAccessors)

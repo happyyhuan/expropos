@@ -2,7 +2,7 @@
 //  ExproMember.m
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -26,10 +26,10 @@
 @dynamic savings;
 @dynamic state;
 @dynamic org;
-@dynamic role;
-@dynamic user;
-@dynamic sales;
 @dynamic purchases;
+@dynamic role;
+@dynamic sales;
+@dynamic user;
 @dynamic warehouseWarrants;
 
 @end

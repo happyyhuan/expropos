@@ -2,7 +2,7 @@
 //  ExproStore.h
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -19,12 +19,12 @@
 @property (nonatomic, retain) NSString * district_code;
 @property (nonatomic, retain) NSNumber * gid;
 @property (nonatomic, retain) NSString * inventar_num;
+@property (nonatomic, retain) NSDate * lastModified;
 @property (nonatomic, retain) NSString * map_info;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * notice;
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSString * transit_info;
-@property (nonatomic, retain) NSDate * lastModified;
 @property (nonatomic, retain) ExproMerchant *merchant;
 @property (nonatomic, retain) ExproWarehouse *warehose;
 

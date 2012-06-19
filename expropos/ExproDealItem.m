@@ -2,7 +2,7 @@
 //  ExproDealItem.m
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,9 +13,9 @@
 
 @implementation ExproDealItem
 
+@dynamic closingCost;
 @dynamic gid;
 @dynamic num;
-@dynamic closingCost;
 @dynamic totalCost;
 @dynamic deal;
 @dynamic goods;

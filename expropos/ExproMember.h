@@ -2,7 +2,7 @@
 //  ExproMember.h
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -23,18 +23,28 @@
 @property (nonatomic, retain) NSNumber * savings;
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) ExproMerchant *org;
+@property (nonatomic, retain) NSSet *purchases;
 @property (nonatomic, retain) ExproRole *role;
-@property (nonatomic, retain) ExproUser *user;
 @property (nonatomic, retain) NSSet *sales;
-@property (nonatomic, retain) ExproDeal *purchases;
-@property (nonatomic, retain) ExproWarehouseWarrant *warehouseWarrants;
+@property (nonatomic, retain) ExproUser *user;
+@property (nonatomic, retain) NSSet *warehouseWarrants;
 @end
 
 @interface ExproMember (CoreDataGeneratedAccessors)
+
+- (void)addPurchasesObject:(ExproDeal *)value;
+- (void)removePurchasesObject:(ExproDeal *)value;
+- (void)addPurchases:(NSSet *)values;
+- (void)removePurchases:(NSSet *)values;
 
 - (void)addSalesObject:(ExproDeal *)value;
 - (void)removeSalesObject:(ExproDeal *)value;
 - (void)addSales:(NSSet *)values;
 - (void)removeSales:(NSSet *)values;
+
+- (void)addWarehouseWarrantsObject:(ExproWarehouseWarrant *)value;
+- (void)removeWarehouseWarrantsObject:(ExproWarehouseWarrant *)value;
+- (void)addWarehouseWarrants:(NSSet *)values;
+- (void)removeWarehouseWarrants:(NSSet *)values;
 
 @end

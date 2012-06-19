@@ -2,7 +2,7 @@
 //  ExproWarehouseWarrant.m
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,12 +14,12 @@
 
 @implementation ExproWarehouseWarrant
 
-@dynamic gid;
 @dynamic comment;
 @dynamic createTime;
-@dynamic recipient;
-@dynamic operator;
-@dynamic source;
+@dynamic gid;
 @dynamic items;
+@dynamic operator;
+@dynamic recipient;
+@dynamic source;
 
 @end

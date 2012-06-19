@@ -2,7 +2,7 @@
 //  ExproDeal.m
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,16 +13,16 @@
 
 @implementation ExproDeal
 
-@dynamic gid;
-@dynamic type;
-@dynamic state;
-@dynamic payment;
 @dynamic cash;
-@dynamic point;
-@dynamic payType;
 @dynamic createTime;
-@dynamic operator;
+@dynamic gid;
+@dynamic payment;
+@dynamic payType;
+@dynamic point;
+@dynamic state;
+@dynamic type;
 @dynamic customer;
 @dynamic items;
+@dynamic operator;
 
 @end

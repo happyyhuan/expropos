@@ -2,7 +2,7 @@
 //  ExproWarehouseWarrantItem.h
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,9 +15,9 @@
 
 @property (nonatomic, retain) NSNumber * gid;
 @property (nonatomic, retain) NSNumber * num;
-@property (nonatomic, retain) NSNumber * unitCost;
 @property (nonatomic, retain) NSNumber * totalCost;
-@property (nonatomic, retain) ExproWarehouseWarrant *warrant;
+@property (nonatomic, retain) NSNumber * unitCost;
 @property (nonatomic, retain) ExproGoods *goods;
+@property (nonatomic, retain) ExproWarehouseWarrant *warrant;
 
 @end

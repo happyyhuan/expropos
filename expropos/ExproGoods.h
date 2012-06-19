@@ -2,8 +2,8 @@
 //  ExproGoods.h
 //  expropos
 //
-//  Created by ep3 on 12-6-18.
-//  Copyright (c) 2012年 expro. All rights reserved.
+//  Created by 昊 曹 on 12-6-19.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,16 +17,21 @@
 @property (nonatomic, retain) NSString * comment;
 @property (nonatomic, retain) NSDate * createTime;
 @property (nonatomic, retain) NSNumber * gid;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * price;
 @property (nonatomic, retain) NSNumber * state;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) ExproDealItem *dealItems;
+@property (nonatomic, retain) NSSet *dealItems;
 @property (nonatomic, retain) NSSet *merchants;
 @property (nonatomic, retain) ExproGoodsType *type;
 @property (nonatomic, retain) ExproWarehouseWarrantItem *warrantItems;
 @end
 
 @interface ExproGoods (CoreDataGeneratedAccessors)
+
+- (void)addDealItemsObject:(ExproDealItem *)value;
+- (void)removeDealItemsObject:(ExproDealItem *)value;
+- (void)addDealItems:(NSSet *)values;
+- (void)removeDealItems:(NSSet *)values;
 
 - (void)addMerchantsObject:(ExproMerchant *)value;
 - (void)removeMerchantsObject:(ExproMerchant *)value;

@@ -2,7 +2,7 @@
 //  ExproMerchant.m
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -17,11 +17,11 @@
 @dynamic createTime;
 @dynamic dueTime;
 @dynamic gid;
+@dynamic lastModified;
 @dynamic phone;
 @dynamic shortName;
 @dynamic state;
 @dynamic type;
-@dynamic lastModified;
 @dynamic goods;
 @dynamic members;
 @dynamic stores;

@@ -2,7 +2,7 @@
 //  ExproGoodsType.m
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -19,7 +19,6 @@
 @dynamic isleaf;
 @dynamic level;
 @dynamic name;
-@dynamic pid;
 @dynamic goods;
 @dynamic leaves;
 @dynamic parent;

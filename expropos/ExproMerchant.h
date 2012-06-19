@@ -2,7 +2,7 @@
 //  ExproMerchant.h
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -16,11 +16,11 @@
 @property (nonatomic, retain) NSDate * createTime;
 @property (nonatomic, retain) NSDate * dueTime;
 @property (nonatomic, retain) NSNumber * gid;
+@property (nonatomic, retain) NSDate * lastModified;
 @property (nonatomic, retain) NSString * phone;
 @property (nonatomic, retain) NSString * shortName;
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSNumber * type;
-@property (nonatomic, retain) NSDate * lastModified;
 @property (nonatomic, retain) NSSet *goods;
 @property (nonatomic, retain) NSSet *members;
 @property (nonatomic, retain) NSSet *stores;

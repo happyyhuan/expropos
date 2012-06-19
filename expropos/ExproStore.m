@@ -2,7 +2,7 @@
 //  ExproStore.m
 //  expropos
 //
-//  Created by gbo on 12-6-12.
+//  Created by 昊 曹 on 12-6-19.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -19,12 +19,12 @@
 @dynamic district_code;
 @dynamic gid;
 @dynamic inventar_num;
+@dynamic lastModified;
 @dynamic map_info;
 @dynamic name;
 @dynamic notice;
 @dynamic state;
 @dynamic transit_info;
-@dynamic lastModified;
 @dynamic merchant;
 @dynamic warehose;
 
