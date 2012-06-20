@@ -8,6 +8,12 @@
 
 #import "ExproRestDelegate.h"
 
+#ifndef ExproDealUploadSucceed
+#define ExproDealUploadSucceed @"ExproDealUploadSucceed"
+#define ExproDealUploadFailed @"ExproDealUploadFailed"
+#define ExproDealUploadCanceled @"ExproDealUploadCanceled"
+#endif
+
 @class ExproDeal;
 @interface ExproDealUploader : ExproRestDelegate
 - (void)upload:(ExproDeal *)aDeal;

@@ -13,6 +13,14 @@
 #define kRestDefaultMapping nil
 #endif
 
+#ifndef ExproRestSucceedWithObject 
+#define ExproRestSucceedWithObject @"ExproRestSucceedWithObject"
+#define ExproRestSucceedWithoutData @"ExproRestSucceedWithoutData"
+#define ExproRestSucceedWithObjects @"ExproRestSucceedWithObjects"
+#define ExproRestFailed @"ExproRestFailed"
+#define ExproRestCanceled @"ExproRestCanceled"
+#endif
+
 @interface ExproHttpCodeOption : NSObject {
     int _statusCode;
     NSString *_info;
@@ -31,17 +39,11 @@
     NSString *_timeOutWarning;
     NSString *_unknownErrorWarning;
     NSString *_noServerWarning;
-//    NSString *_errorTitle;
-//    NSString *_succeedTitle;
-//    NSString *_ok;
     BOOL _acceptParallelResults;
 }
-@property (weak) id reserver;
-@property SEL succeedCallBack;
-@property SEL failedCallBack;
-@property SEL cancelCallBack;
+
 @property (nonatomic, getter = shouldAlert) BOOL alert;
-@property (nonatomic) BOOL acceptParallelResults;
+@property (nonatomic,readonly) BOOL acceptParallelResults;
 @property (nonatomic, copy) NSString *errorTitle;
 @property (nonatomic, copy) NSString *succeedTitle;
 @property (nonatomic, copy) NSString *ok;

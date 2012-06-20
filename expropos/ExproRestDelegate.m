@@ -31,22 +31,22 @@
 @implementation ExproRestDelegate 
 @synthesize request = _request;
 
-@synthesize reserver = _reserver;
-@synthesize succeedCallBack = _succeedCallBack;
-@synthesize failedCallBack = _failedCallBack;
-@synthesize cancelCallBack = _cancelCallBack;
+//@synthesize reserver = _reserver;
+//@synthesize succeedCallBack = _succeedCallBack;
+//@synthesize failedCallBack = _failedCallBack;
+//@synthesize cancelCallBack = _cancelCallBack;
 @synthesize alert = _alert;
 @synthesize errorTitle = _errorTitle;
 @synthesize succeedTitle = _succeedTitle;
 @synthesize ok = _ok;
 @synthesize acceptParallelResults = _acceptParallelResults;
-@synthesize cookie = _cookie;
+//@synthesize cookie = _cookie;
 
 - (id)init {
     self = [super init];
     if (self) {
         self.alert = YES;
-        self.acceptParallelResults = NO;
+        _acceptParallelResults = NO;
         _codeOptions = [NSMutableArray new];
         _timeOutWarning = NSLocalizedString(@"TimeOut", nil);
         _unknownErrorWarning = NSLocalizedString(@"UnknownError", nil);
@@ -56,7 +56,6 @@
         _ok = NSLocalizedString(@"OK", nil);
         [self addCode:400 info:NSLocalizedString(@"ClientError", nil) alert:YES succeed:NO];
         [self addCode:500 info:NSLocalizedString(@"ServerError", nil) alert:YES succeed:NO];
-        self.reserver = self;
     }
     return self;
 }
@@ -126,13 +125,15 @@
     [self succeedWithoutData];
 }
 - (void)succeedWithoutData {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ExproRestSucceedWithoutData object:nil];
 }
 - (void)succeed:(id)object {
     self.request = nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:ExproRestSucceedWithObject object:object];
 }
 - (void)succeed4Parallel:(NSArray *)array {
     self.request = nil;
+    [[NSNotificationCenter defaultCenter]postNotificationName:ExproRestSucceedWithObjects object:array];
 }
 - (void)failed:(NSError *)error {
     self.request = nil;
@@ -146,6 +147,7 @@
             [self alert:_errorTitle warning:NSLocalizedString(@"TimeOut", nil)];
         }
     }
+    [[NSNotificationCenter defaultCenter]postNotificationName:ExproRestFailed object:error];
 }
 - (void)canceled {
     if (self.request) {
@@ -154,16 +156,9 @@
         }
         self.request = nil;
     }
+    [[NSNotificationCenter defaultCenter]postNotificationName:ExproRestCanceled object:nil];
 }
 
-- (void)safePerformSelector:(SEL)aSelector withObject:(id)object {
-    if ([_reserver respondsToSelector:aSelector]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [_reserver performSelector:aSelector withObject:object];
-#pragma clang diagnostic pop
-    }
-}
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSLog(@"%@",[error localizedDescription]);
@@ -180,18 +175,10 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
     if (_acceptParallelResults) {
         [self succeed4Parallel:objects];
-        //add by gbo for 204 status code
-        if ([objectLoader isEqual:[objects objectAtIndex:0]]) {
-            [self safePerformSelector:_cancelCallBack withObject:nil];
-        }
-        else {
-            [self safePerformSelector:_succeedCallBack withObject:objects];
-        }
     }
 }
 - (void)cancel {
     [self canceled];
-    [self safePerformSelector:_cancelCallBack withObject:nil];
 }
 
 - (void)requestURL:(NSString *)aURL method:(RKRequestMethod)aMethod params:(NSDictionary *)params mapping:(RKObjectMapping *)aMapping {
@@ -228,14 +215,15 @@
         self.request = loader;
     }];
 }
-/*
-- (NSString *) cookie {
-    return _cookie;
+
+- (NSString *) cookie {}
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"Set-Cookie"];
 }
 
 - (void) setCookie:(NSString *)cookie {
+    NSString *_cookie = self.cookie;
     if (![_cookie isEqualToString:cookie]) {
-        _cookie = cookie;
+        [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:@"Set-Cookie"];
     }
-}*/
+}
 @end

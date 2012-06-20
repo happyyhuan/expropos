@@ -29,4 +29,19 @@
     }
 }
 
+- (void)succeed:(id)object {
+    [super succeed:object];
+    [[NSNotificationCenter defaultCenter]postNotificationName:ExproDealUploadSucceed object:object];
+}
+
+- (void)failed:(NSError *)error {
+    [super failed:error];
+    [[NSNotificationCenter defaultCenter]postNotificationName:ExproDealUploadFailed object:error];
+}
+
+- (void)canceled {
+    [super canceled];
+    [[NSNotificationCenter defaultCenter]postNotificationName:ExproDealUploadCanceled object:nil];
+}
+
 @end
