@@ -30,6 +30,7 @@
 		9187C5121589E1AF00AF5776 /* ExproRestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */; };
 		918848601588448C0028B1AE /* exproposRestkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188485F1588448C0028B1AE /* exproposRestkit.m */; };
 		91E1C8EA1581F1A80003B22D /* expropos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C8E81581F1A80003B22D /* expropos.xcdatamodeld */; };
+		A507BCEA1591A2FA00521FAF /* ExproDealUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = A507BCE91591A2FA00521FAF /* ExproDealUploader.m */; };
 		A513E64F15909DF20001B383 /* ExproDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E64E15909DF20001B383 /* ExproDeal.m */; };
 		A513E65215909DF20001B383 /* ExproGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E65115909DF20001B383 /* ExproGoods.m */; };
 		A513E65515909DF20001B383 /* ExproDealItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E65415909DF20001B383 /* ExproDealItem.m */; };
@@ -123,6 +124,12 @@
 		9188485E1588448C0028B1AE /* exproposRestkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposRestkit.h; sourceTree = "<group>"; };
 		9188485F1588448C0028B1AE /* exproposRestkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposRestkit.m; sourceTree = "<group>"; };
 		91E1C8E91581F1A80003B22D /* expropos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = expropos.xcdatamodel; sourceTree = "<group>"; };
+		A507BCE31591A2D200521FAF /* ExproMultipleTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExproMultipleTableView.h; sourceTree = "<group>"; };
+		A507BCE41591A2D200521FAF /* ExproMultipleTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExproMultipleTableView.m; sourceTree = "<group>"; };
+		A507BCE61591A2E300521FAF /* ExproDealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExproDealViewController.h; sourceTree = "<group>"; };
+		A507BCE71591A2E300521FAF /* ExproDealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExproDealViewController.m; sourceTree = "<group>"; };
+		A507BCE81591A2FA00521FAF /* ExproDealUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproDealUploader.h; sourceTree = "<group>"; };
+		A507BCE91591A2FA00521FAF /* ExproDealUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproDealUploader.m; sourceTree = "<group>"; };
 		A513E64D15909DF20001B383 /* ExproDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproDeal.h; path = expropos/ExproDeal.h; sourceTree = "<group>"; };
 		A513E64E15909DF20001B383 /* ExproDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproDeal.m; path = expropos/ExproDeal.m; sourceTree = "<group>"; };
 		A513E65015909DF20001B383 /* ExproGoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproGoods.h; path = expropos/ExproGoods.h; sourceTree = "<group>"; };
@@ -246,6 +253,8 @@
 		914BB29915746A6B009FFBAE /* expropos */ = {
 			isa = PBXGroup;
 			children = (
+				A507BCE51591A2D600521FAF /* Deal */,
+				A507BCE21591A2BD00521FAF /* MultipleTable */,
 				9149D5B0158324F5006A9FBF /* DataModel */,
 				914BB2A215746A6B009FFBAE /* exproposAppDelegate.h */,
 				914BB2A315746A6B009FFBAE /* exproposAppDelegate.m */,
@@ -296,6 +305,26 @@
 				9187C50E1589B9B700AF5776 /* exproposSign.m */,
 			);
 			name = Restkit;
+			sourceTree = "<group>";
+		};
+		A507BCE21591A2BD00521FAF /* MultipleTable */ = {
+			isa = PBXGroup;
+			children = (
+				A507BCE31591A2D200521FAF /* ExproMultipleTableView.h */,
+				A507BCE41591A2D200521FAF /* ExproMultipleTableView.m */,
+			);
+			name = MultipleTable;
+			sourceTree = "<group>";
+		};
+		A507BCE51591A2D600521FAF /* Deal */ = {
+			isa = PBXGroup;
+			children = (
+				A507BCE61591A2E300521FAF /* ExproDealViewController.h */,
+				A507BCE71591A2E300521FAF /* ExproDealViewController.m */,
+				A507BCE81591A2FA00521FAF /* ExproDealUploader.h */,
+				A507BCE91591A2FA00521FAF /* ExproDealUploader.m */,
+			);
+			name = Deal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +458,7 @@
 				A513E66D15909DF20001B383 /* ExproUser.m in Sources */,
 				A513E67015909DF20001B383 /* ExproWarehouse.m in Sources */,
 				A513E67315909DF20001B383 /* ExproWarehouseWarrantItem.m in Sources */,
+				A507BCEA1591A2FA00521FAF /* ExproDealUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
