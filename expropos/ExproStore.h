@@ -2,14 +2,14 @@
 //  ExproStore.h
 //  expropos
 //
-//  Created by 昊 曹 on 12-6-19.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by ep3 on 12-6-21.
+//  Copyright (c) 2012年 expro. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ExproMerchant, ExproWarehouse;
+@class ExproDeal, ExproMember, ExproMerchant, ExproWarehouse;
 
 @interface ExproStore : NSManagedObject
 
@@ -26,6 +26,21 @@
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSString * transit_info;
 @property (nonatomic, retain) ExproMerchant *merchant;
-@property (nonatomic, retain) ExproWarehouse *warehose;
+@property (nonatomic, retain) ExproWarehouse *warehouse;
+@property (nonatomic, retain) NSSet *deals;
+@property (nonatomic, retain) NSSet *staffs;
+@end
+
+@interface ExproStore (CoreDataGeneratedAccessors)
+
+- (void)addDealsObject:(ExproDeal *)value;
+- (void)removeDealsObject:(ExproDeal *)value;
+- (void)addDeals:(NSSet *)values;
+- (void)removeDeals:(NSSet *)values;
+
+- (void)addStaffsObject:(ExproMember *)value;
+- (void)removeStaffsObject:(ExproMember *)value;
+- (void)addStaffs:(NSSet *)values;
+- (void)removeStaffs:(NSSet *)values;
 
 @end

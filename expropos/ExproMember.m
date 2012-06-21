@@ -2,14 +2,15 @@
 //  ExproMember.m
 //  expropos
 //
-//  Created by 昊 曹 on 12-6-19.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by ep3 on 12-6-21.
+//  Copyright (c) 2012年 expro. All rights reserved.
 //
 
 #import "ExproMember.h"
 #import "ExproDeal.h"
 #import "ExproMerchant.h"
 #import "ExproRole.h"
+#import "ExproStore.h"
 #import "ExproUser.h"
 #import "ExproWarehouseWarrant.h"
 
@@ -31,5 +32,6 @@
 @dynamic sales;
 @dynamic user;
 @dynamic warehouseWarrants;
+@dynamic store;
 
 @end

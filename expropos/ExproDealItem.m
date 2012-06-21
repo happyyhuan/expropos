@@ -2,8 +2,8 @@
 //  ExproDealItem.m
 //  expropos
 //
-//  Created by 昊 曹 on 12-6-19.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by ep3 on 12-6-21.
+//  Copyright (c) 2012年 expro. All rights reserved.
 //
 
 #import "ExproDealItem.h"
@@ -17,6 +17,7 @@
 @dynamic gid;
 @dynamic num;
 @dynamic totalCost;
+@dynamic lid;
 @dynamic deal;
 @dynamic goods;
 

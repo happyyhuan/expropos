@@ -2,11 +2,13 @@
 //  ExproStore.m
 //  expropos
 //
-//  Created by 昊 曹 on 12-6-19.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by ep3 on 12-6-21.
+//  Copyright (c) 2012年 expro. All rights reserved.
 //
 
 #import "ExproStore.h"
+#import "ExproDeal.h"
+#import "ExproMember.h"
 #import "ExproMerchant.h"
 #import "ExproWarehouse.h"
 
@@ -26,6 +28,8 @@
 @dynamic state;
 @dynamic transit_info;
 @dynamic merchant;
-@dynamic warehose;
+@dynamic warehouse;
+@dynamic deals;
+@dynamic staffs;
 
 @end

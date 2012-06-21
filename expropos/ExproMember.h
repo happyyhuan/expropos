@@ -2,14 +2,14 @@
 //  ExproMember.h
 //  expropos
 //
-//  Created by 昊 曹 on 12-6-19.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by ep3 on 12-6-21.
+//  Copyright (c) 2012年 expro. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ExproDeal, ExproMerchant, ExproRole, ExproUser, ExproWarehouseWarrant;
+@class ExproDeal, ExproMerchant, ExproRole, ExproStore, ExproUser, ExproWarehouseWarrant;
 
 @interface ExproMember : NSManagedObject
 
@@ -28,6 +28,7 @@
 @property (nonatomic, retain) NSSet *sales;
 @property (nonatomic, retain) ExproUser *user;
 @property (nonatomic, retain) NSSet *warehouseWarrants;
+@property (nonatomic, retain) ExproStore *store;
 @end
 
 @interface ExproMember (CoreDataGeneratedAccessors)

@@ -29,20 +29,20 @@
 		9187C50F1589B9B700AF5776 /* exproposSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 9187C50E1589B9B700AF5776 /* exproposSign.m */; };
 		9187C5121589E1AF00AF5776 /* ExproRestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */; };
 		918848601588448C0028B1AE /* exproposRestkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188485F1588448C0028B1AE /* exproposRestkit.m */; };
+		91DD3D231592F9E300E20B00 /* ExproDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D221592F9E300E20B00 /* ExproDeal.m */; };
+		91DD3D261592F9E300E20B00 /* ExproUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D251592F9E300E20B00 /* ExproUser.m */; };
+		91DD3D291592F9E300E20B00 /* ExproRole.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D281592F9E300E20B00 /* ExproRole.m */; };
+		91DD3D2C1592F9E400E20B00 /* ExproWarehouseWarrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D2B1592F9E400E20B00 /* ExproWarehouseWarrant.m */; };
+		91DD3D2F1592F9E400E20B00 /* ExproDealItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D2E1592F9E400E20B00 /* ExproDealItem.m */; };
+		91DD3D321592F9E400E20B00 /* ExproWarehouseWarrantItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D311592F9E400E20B00 /* ExproWarehouseWarrantItem.m */; };
+		91DD3D351592F9E400E20B00 /* ExproStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D341592F9E400E20B00 /* ExproStore.m */; };
+		91DD3D381592F9E400E20B00 /* ExproGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D371592F9E400E20B00 /* ExproGoods.m */; };
+		91DD3D3B1592F9E400E20B00 /* ExproGoodsType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D3A1592F9E400E20B00 /* ExproGoodsType.m */; };
+		91DD3D3E1592F9E400E20B00 /* ExproMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D3D1592F9E400E20B00 /* ExproMember.m */; };
+		91DD3D411592F9E400E20B00 /* ExproRouteTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D401592F9E400E20B00 /* ExproRouteTable.m */; };
+		91DD3D441592F9E400E20B00 /* ExproMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D431592F9E400E20B00 /* ExproMerchant.m */; };
+		91DD3D471592F9E400E20B00 /* ExproWarehouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DD3D461592F9E400E20B00 /* ExproWarehouse.m */; };
 		91E1C8EA1581F1A80003B22D /* expropos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C8E81581F1A80003B22D /* expropos.xcdatamodeld */; };
-		A513E64F15909DF20001B383 /* ExproDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E64E15909DF20001B383 /* ExproDeal.m */; };
-		A513E65215909DF20001B383 /* ExproGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E65115909DF20001B383 /* ExproGoods.m */; };
-		A513E65515909DF20001B383 /* ExproDealItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E65415909DF20001B383 /* ExproDealItem.m */; };
-		A513E65815909DF20001B383 /* ExproWarehouseWarrant.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E65715909DF20001B383 /* ExproWarehouseWarrant.m */; };
-		A513E65B15909DF20001B383 /* ExproRouteTable.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E65A15909DF20001B383 /* ExproRouteTable.m */; };
-		A513E65E15909DF20001B383 /* ExproMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E65D15909DF20001B383 /* ExproMerchant.m */; };
-		A513E66115909DF20001B383 /* ExproGoodsType.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E66015909DF20001B383 /* ExproGoodsType.m */; };
-		A513E66415909DF20001B383 /* ExproMember.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E66315909DF20001B383 /* ExproMember.m */; };
-		A513E66715909DF20001B383 /* ExproRole.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E66615909DF20001B383 /* ExproRole.m */; };
-		A513E66A15909DF20001B383 /* ExproStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E66915909DF20001B383 /* ExproStore.m */; };
-		A513E66D15909DF20001B383 /* ExproUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E66C15909DF20001B383 /* ExproUser.m */; };
-		A513E67015909DF20001B383 /* ExproWarehouse.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E66F15909DF20001B383 /* ExproWarehouse.m */; };
-		A513E67315909DF20001B383 /* ExproWarehouseWarrantItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A513E67215909DF20001B383 /* ExproWarehouseWarrantItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,33 +122,33 @@
 		9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproRestDelegate.m; sourceTree = "<group>"; };
 		9188485E1588448C0028B1AE /* exproposRestkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposRestkit.h; sourceTree = "<group>"; };
 		9188485F1588448C0028B1AE /* exproposRestkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposRestkit.m; sourceTree = "<group>"; };
+		91DD3D211592F9E300E20B00 /* ExproDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproDeal.h; path = expropos/ExproDeal.h; sourceTree = "<group>"; };
+		91DD3D221592F9E300E20B00 /* ExproDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproDeal.m; path = expropos/ExproDeal.m; sourceTree = "<group>"; };
+		91DD3D241592F9E300E20B00 /* ExproUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproUser.h; path = expropos/ExproUser.h; sourceTree = "<group>"; };
+		91DD3D251592F9E300E20B00 /* ExproUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproUser.m; path = expropos/ExproUser.m; sourceTree = "<group>"; };
+		91DD3D271592F9E300E20B00 /* ExproRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproRole.h; path = expropos/ExproRole.h; sourceTree = "<group>"; };
+		91DD3D281592F9E300E20B00 /* ExproRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproRole.m; path = expropos/ExproRole.m; sourceTree = "<group>"; };
+		91DD3D2A1592F9E400E20B00 /* ExproWarehouseWarrant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproWarehouseWarrant.h; path = expropos/ExproWarehouseWarrant.h; sourceTree = "<group>"; };
+		91DD3D2B1592F9E400E20B00 /* ExproWarehouseWarrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproWarehouseWarrant.m; path = expropos/ExproWarehouseWarrant.m; sourceTree = "<group>"; };
+		91DD3D2D1592F9E400E20B00 /* ExproDealItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproDealItem.h; path = expropos/ExproDealItem.h; sourceTree = "<group>"; };
+		91DD3D2E1592F9E400E20B00 /* ExproDealItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproDealItem.m; path = expropos/ExproDealItem.m; sourceTree = "<group>"; };
+		91DD3D301592F9E400E20B00 /* ExproWarehouseWarrantItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproWarehouseWarrantItem.h; path = expropos/ExproWarehouseWarrantItem.h; sourceTree = "<group>"; };
+		91DD3D311592F9E400E20B00 /* ExproWarehouseWarrantItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproWarehouseWarrantItem.m; path = expropos/ExproWarehouseWarrantItem.m; sourceTree = "<group>"; };
+		91DD3D331592F9E400E20B00 /* ExproStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproStore.h; path = expropos/ExproStore.h; sourceTree = "<group>"; };
+		91DD3D341592F9E400E20B00 /* ExproStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproStore.m; path = expropos/ExproStore.m; sourceTree = "<group>"; };
+		91DD3D361592F9E400E20B00 /* ExproGoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproGoods.h; path = expropos/ExproGoods.h; sourceTree = "<group>"; };
+		91DD3D371592F9E400E20B00 /* ExproGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproGoods.m; path = expropos/ExproGoods.m; sourceTree = "<group>"; };
+		91DD3D391592F9E400E20B00 /* ExproGoodsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproGoodsType.h; path = expropos/ExproGoodsType.h; sourceTree = "<group>"; };
+		91DD3D3A1592F9E400E20B00 /* ExproGoodsType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproGoodsType.m; path = expropos/ExproGoodsType.m; sourceTree = "<group>"; };
+		91DD3D3C1592F9E400E20B00 /* ExproMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproMember.h; path = expropos/ExproMember.h; sourceTree = "<group>"; };
+		91DD3D3D1592F9E400E20B00 /* ExproMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproMember.m; path = expropos/ExproMember.m; sourceTree = "<group>"; };
+		91DD3D3F1592F9E400E20B00 /* ExproRouteTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproRouteTable.h; path = expropos/ExproRouteTable.h; sourceTree = "<group>"; };
+		91DD3D401592F9E400E20B00 /* ExproRouteTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproRouteTable.m; path = expropos/ExproRouteTable.m; sourceTree = "<group>"; };
+		91DD3D421592F9E400E20B00 /* ExproMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproMerchant.h; path = expropos/ExproMerchant.h; sourceTree = "<group>"; };
+		91DD3D431592F9E400E20B00 /* ExproMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproMerchant.m; path = expropos/ExproMerchant.m; sourceTree = "<group>"; };
+		91DD3D451592F9E400E20B00 /* ExproWarehouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproWarehouse.h; path = expropos/ExproWarehouse.h; sourceTree = "<group>"; };
+		91DD3D461592F9E400E20B00 /* ExproWarehouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproWarehouse.m; path = expropos/ExproWarehouse.m; sourceTree = "<group>"; };
 		91E1C8E91581F1A80003B22D /* expropos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = expropos.xcdatamodel; sourceTree = "<group>"; };
-		A513E64D15909DF20001B383 /* ExproDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproDeal.h; path = expropos/ExproDeal.h; sourceTree = "<group>"; };
-		A513E64E15909DF20001B383 /* ExproDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproDeal.m; path = expropos/ExproDeal.m; sourceTree = "<group>"; };
-		A513E65015909DF20001B383 /* ExproGoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproGoods.h; path = expropos/ExproGoods.h; sourceTree = "<group>"; };
-		A513E65115909DF20001B383 /* ExproGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproGoods.m; path = expropos/ExproGoods.m; sourceTree = "<group>"; };
-		A513E65315909DF20001B383 /* ExproDealItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproDealItem.h; path = expropos/ExproDealItem.h; sourceTree = "<group>"; };
-		A513E65415909DF20001B383 /* ExproDealItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproDealItem.m; path = expropos/ExproDealItem.m; sourceTree = "<group>"; };
-		A513E65615909DF20001B383 /* ExproWarehouseWarrant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproWarehouseWarrant.h; path = expropos/ExproWarehouseWarrant.h; sourceTree = "<group>"; };
-		A513E65715909DF20001B383 /* ExproWarehouseWarrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproWarehouseWarrant.m; path = expropos/ExproWarehouseWarrant.m; sourceTree = "<group>"; };
-		A513E65915909DF20001B383 /* ExproRouteTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproRouteTable.h; path = expropos/ExproRouteTable.h; sourceTree = "<group>"; };
-		A513E65A15909DF20001B383 /* ExproRouteTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproRouteTable.m; path = expropos/ExproRouteTable.m; sourceTree = "<group>"; };
-		A513E65C15909DF20001B383 /* ExproMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproMerchant.h; path = expropos/ExproMerchant.h; sourceTree = "<group>"; };
-		A513E65D15909DF20001B383 /* ExproMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproMerchant.m; path = expropos/ExproMerchant.m; sourceTree = "<group>"; };
-		A513E65F15909DF20001B383 /* ExproGoodsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproGoodsType.h; path = expropos/ExproGoodsType.h; sourceTree = "<group>"; };
-		A513E66015909DF20001B383 /* ExproGoodsType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproGoodsType.m; path = expropos/ExproGoodsType.m; sourceTree = "<group>"; };
-		A513E66215909DF20001B383 /* ExproMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproMember.h; path = expropos/ExproMember.h; sourceTree = "<group>"; };
-		A513E66315909DF20001B383 /* ExproMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproMember.m; path = expropos/ExproMember.m; sourceTree = "<group>"; };
-		A513E66515909DF20001B383 /* ExproRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproRole.h; path = expropos/ExproRole.h; sourceTree = "<group>"; };
-		A513E66615909DF20001B383 /* ExproRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproRole.m; path = expropos/ExproRole.m; sourceTree = "<group>"; };
-		A513E66815909DF20001B383 /* ExproStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproStore.h; path = expropos/ExproStore.h; sourceTree = "<group>"; };
-		A513E66915909DF20001B383 /* ExproStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproStore.m; path = expropos/ExproStore.m; sourceTree = "<group>"; };
-		A513E66B15909DF20001B383 /* ExproUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproUser.h; path = expropos/ExproUser.h; sourceTree = "<group>"; };
-		A513E66C15909DF20001B383 /* ExproUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproUser.m; path = expropos/ExproUser.m; sourceTree = "<group>"; };
-		A513E66E15909DF20001B383 /* ExproWarehouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproWarehouse.h; path = expropos/ExproWarehouse.h; sourceTree = "<group>"; };
-		A513E66F15909DF20001B383 /* ExproWarehouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproWarehouse.m; path = expropos/ExproWarehouse.m; sourceTree = "<group>"; };
-		A513E67115909DF20001B383 /* ExproWarehouseWarrantItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExproWarehouseWarrantItem.h; path = expropos/ExproWarehouseWarrantItem.h; sourceTree = "<group>"; };
-		A513E67215909DF20001B383 /* ExproWarehouseWarrantItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExproWarehouseWarrantItem.m; path = expropos/ExproWarehouseWarrantItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,32 +177,32 @@
 			isa = PBXGroup;
 			children = (
 				91E1C8E81581F1A80003B22D /* expropos.xcdatamodeld */,
-				A513E67115909DF20001B383 /* ExproWarehouseWarrantItem.h */,
-				A513E67215909DF20001B383 /* ExproWarehouseWarrantItem.m */,
-				A513E66E15909DF20001B383 /* ExproWarehouse.h */,
-				A513E66F15909DF20001B383 /* ExproWarehouse.m */,
-				A513E66B15909DF20001B383 /* ExproUser.h */,
-				A513E66C15909DF20001B383 /* ExproUser.m */,
-				A513E66815909DF20001B383 /* ExproStore.h */,
-				A513E66915909DF20001B383 /* ExproStore.m */,
-				A513E66515909DF20001B383 /* ExproRole.h */,
-				A513E66615909DF20001B383 /* ExproRole.m */,
-				A513E66215909DF20001B383 /* ExproMember.h */,
-				A513E66315909DF20001B383 /* ExproMember.m */,
-				A513E65F15909DF20001B383 /* ExproGoodsType.h */,
-				A513E66015909DF20001B383 /* ExproGoodsType.m */,
-				A513E65C15909DF20001B383 /* ExproMerchant.h */,
-				A513E65D15909DF20001B383 /* ExproMerchant.m */,
-				A513E65915909DF20001B383 /* ExproRouteTable.h */,
-				A513E65A15909DF20001B383 /* ExproRouteTable.m */,
-				A513E65615909DF20001B383 /* ExproWarehouseWarrant.h */,
-				A513E65715909DF20001B383 /* ExproWarehouseWarrant.m */,
-				A513E65315909DF20001B383 /* ExproDealItem.h */,
-				A513E65415909DF20001B383 /* ExproDealItem.m */,
-				A513E65015909DF20001B383 /* ExproGoods.h */,
-				A513E65115909DF20001B383 /* ExproGoods.m */,
-				A513E64D15909DF20001B383 /* ExproDeal.h */,
-				A513E64E15909DF20001B383 /* ExproDeal.m */,
+				91DD3D451592F9E400E20B00 /* ExproWarehouse.h */,
+				91DD3D461592F9E400E20B00 /* ExproWarehouse.m */,
+				91DD3D421592F9E400E20B00 /* ExproMerchant.h */,
+				91DD3D431592F9E400E20B00 /* ExproMerchant.m */,
+				91DD3D3F1592F9E400E20B00 /* ExproRouteTable.h */,
+				91DD3D401592F9E400E20B00 /* ExproRouteTable.m */,
+				91DD3D3C1592F9E400E20B00 /* ExproMember.h */,
+				91DD3D3D1592F9E400E20B00 /* ExproMember.m */,
+				91DD3D391592F9E400E20B00 /* ExproGoodsType.h */,
+				91DD3D3A1592F9E400E20B00 /* ExproGoodsType.m */,
+				91DD3D361592F9E400E20B00 /* ExproGoods.h */,
+				91DD3D371592F9E400E20B00 /* ExproGoods.m */,
+				91DD3D331592F9E400E20B00 /* ExproStore.h */,
+				91DD3D341592F9E400E20B00 /* ExproStore.m */,
+				91DD3D301592F9E400E20B00 /* ExproWarehouseWarrantItem.h */,
+				91DD3D311592F9E400E20B00 /* ExproWarehouseWarrantItem.m */,
+				91DD3D2D1592F9E400E20B00 /* ExproDealItem.h */,
+				91DD3D2E1592F9E400E20B00 /* ExproDealItem.m */,
+				91DD3D2A1592F9E400E20B00 /* ExproWarehouseWarrant.h */,
+				91DD3D2B1592F9E400E20B00 /* ExproWarehouseWarrant.m */,
+				91DD3D271592F9E300E20B00 /* ExproRole.h */,
+				91DD3D281592F9E300E20B00 /* ExproRole.m */,
+				91DD3D241592F9E300E20B00 /* ExproUser.h */,
+				91DD3D251592F9E300E20B00 /* ExproUser.m */,
+				91DD3D211592F9E300E20B00 /* ExproDeal.h */,
+				91DD3D221592F9E300E20B00 /* ExproDeal.m */,
 			);
 			name = DataModel;
 			path = ..;
@@ -416,19 +416,19 @@
 				918848601588448C0028B1AE /* exproposRestkit.m in Sources */,
 				9187C50F1589B9B700AF5776 /* exproposSign.m in Sources */,
 				9187C5121589E1AF00AF5776 /* ExproRestDelegate.m in Sources */,
-				A513E64F15909DF20001B383 /* ExproDeal.m in Sources */,
-				A513E65215909DF20001B383 /* ExproGoods.m in Sources */,
-				A513E65515909DF20001B383 /* ExproDealItem.m in Sources */,
-				A513E65815909DF20001B383 /* ExproWarehouseWarrant.m in Sources */,
-				A513E65B15909DF20001B383 /* ExproRouteTable.m in Sources */,
-				A513E65E15909DF20001B383 /* ExproMerchant.m in Sources */,
-				A513E66115909DF20001B383 /* ExproGoodsType.m in Sources */,
-				A513E66415909DF20001B383 /* ExproMember.m in Sources */,
-				A513E66715909DF20001B383 /* ExproRole.m in Sources */,
-				A513E66A15909DF20001B383 /* ExproStore.m in Sources */,
-				A513E66D15909DF20001B383 /* ExproUser.m in Sources */,
-				A513E67015909DF20001B383 /* ExproWarehouse.m in Sources */,
-				A513E67315909DF20001B383 /* ExproWarehouseWarrantItem.m in Sources */,
+				91DD3D231592F9E300E20B00 /* ExproDeal.m in Sources */,
+				91DD3D261592F9E300E20B00 /* ExproUser.m in Sources */,
+				91DD3D291592F9E300E20B00 /* ExproRole.m in Sources */,
+				91DD3D2C1592F9E400E20B00 /* ExproWarehouseWarrant.m in Sources */,
+				91DD3D2F1592F9E400E20B00 /* ExproDealItem.m in Sources */,
+				91DD3D321592F9E400E20B00 /* ExproWarehouseWarrantItem.m in Sources */,
+				91DD3D351592F9E400E20B00 /* ExproStore.m in Sources */,
+				91DD3D381592F9E400E20B00 /* ExproGoods.m in Sources */,
+				91DD3D3B1592F9E400E20B00 /* ExproGoodsType.m in Sources */,
+				91DD3D3E1592F9E400E20B00 /* ExproMember.m in Sources */,
+				91DD3D411592F9E400E20B00 /* ExproRouteTable.m in Sources */,
+				91DD3D441592F9E400E20B00 /* ExproMerchant.m in Sources */,
+				91DD3D471592F9E400E20B00 /* ExproWarehouse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
