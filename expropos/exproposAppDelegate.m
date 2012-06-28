@@ -9,10 +9,15 @@
 #import <RestKit/RestKit.h>
 #import "exproposAppDelegate.h"
 #import "exproposRestkit.h"
+#import "exproposSysLoad.h"
 
 @implementation exproposAppDelegate
 
 @synthesize window = _window;
+@synthesize userName=_userName;
+@synthesize gid=_gid;
+@synthesize sysload=_sysload;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

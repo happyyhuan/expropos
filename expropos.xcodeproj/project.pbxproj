@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4279E156159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4279E154159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg */; };
+		4279E157159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4279E155159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg */; };
 		9120E1941574C25700400D05 /* exproposMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9120E1931574C25700400D05 /* exproposMainViewController.m */; };
 		914BB29415746A6B009FFBAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29315746A6B009FFBAE /* UIKit.framework */; };
 		914BB29615746A6B009FFBAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29515746A6B009FFBAE /* Foundation.framework */; };
@@ -91,6 +93,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4279E151159C265800D50CE5 /* exproposSysLoad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exproposSysLoad.h; sourceTree = "<group>"; };
+		4279E152159C265800D50CE5 /* exproposSysLoad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exproposSysLoad.m; sourceTree = "<group>"; };
+		4279E154159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "6KQ77{{@4I91_8SZ)F$66V5.jpg"; path = "../../../Downloads/IOD_DEV/expropos 副本 2/expropos/6KQ77{{@4I91_8SZ)F$66V5.jpg"; sourceTree = "<group>"; };
+		4279E155159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "8%7%38R9AKG23LY_[$PC~WM.jpg"; path = "../../../Downloads/IOD_DEV/expropos 副本 2/expropos/8%7%38R9AKG23LY_[$PC~WM.jpg"; sourceTree = "<group>"; };
 		9120E1921574C25700400D05 /* exproposMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMainViewController.h; sourceTree = "<group>"; };
 		9120E1931574C25700400D05 /* exproposMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMainViewController.m; sourceTree = "<group>"; };
 		914BB28F15746A6B009FFBAE /* expropos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expropos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +179,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4279E153159C272100D50CE5 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				4279E154159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg */,
+				4279E155159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
 		9149D5B0158324F5006A9FBF /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,10 +261,15 @@
 		914BB29915746A6B009FFBAE /* expropos */ = {
 			isa = PBXGroup;
 			children = (
+				914BB2A515746A6B009FFBAE /* MainStoryboard.storyboard */,
+				4279E153159C272100D50CE5 /* image */,
+				9187C50D1589B9B700AF5776 /* exproposSign.h */,
+				9187C50E1589B9B700AF5776 /* exproposSign.m */,
+				4279E151159C265800D50CE5 /* exproposSysLoad.h */,
+				4279E152159C265800D50CE5 /* exproposSysLoad.m */,
 				9149D5B0158324F5006A9FBF /* DataModel */,
 				914BB2A215746A6B009FFBAE /* exproposAppDelegate.h */,
 				914BB2A315746A6B009FFBAE /* exproposAppDelegate.m */,
-				914BB2A515746A6B009FFBAE /* MainStoryboard.storyboard */,
 				914BB2A815746A6C009FFBAE /* exproposViewController.h */,
 				914BB2A915746A6C009FFBAE /* exproposViewController.m */,
 				914BB29A15746A6B009FFBAE /* Supporting Files */,
@@ -292,8 +312,6 @@
 				9188485F1588448C0028B1AE /* exproposRestkit.m */,
 				9187C5101589E1AF00AF5776 /* ExproRestDelegate.h */,
 				9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */,
-				9187C50D1589B9B700AF5776 /* exproposSign.h */,
-				9187C50E1589B9B700AF5776 /* exproposSign.m */,
 			);
 			name = Restkit;
 			sourceTree = "<group>";
@@ -398,6 +416,8 @@
 				914BB2A715746A6C009FFBAE /* MainStoryboard.storyboard in Resources */,
 				914BB2B51574766D009FFBAE /* README.md in Resources */,
 				9166741A1588651100D8A584 /* RKSeedDatabase.sqlite in Resources */,
+				4279E156159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg in Resources */,
+				4279E157159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

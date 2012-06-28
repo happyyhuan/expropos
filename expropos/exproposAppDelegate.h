@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "exproposSysLoad.h"
 
 @interface exproposAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic,retain) NSString *userName;
+@property (nonatomic, retain) NSString * gid;
+@property (strong) exproposSysLoad *sysload;
 @end
