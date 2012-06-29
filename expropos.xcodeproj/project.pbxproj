@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4279E156159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4279E154159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg */; };
-		4279E157159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4279E155159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg */; };
 		5F4C39E3158B39650029F86D /* exproposMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C39E2158B39650029F86D /* exproposMainViewController.m */; };
 		5F656F391587432800EE249F /* exproposGoodSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F656F381587432800EE249F /* exproposGoodSelectedViewController.m */; };
 		5F656F3E1587433A00EE249F /* exproposMemberSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F656F3B1587433A00EE249F /* exproposMemberSelectedViewController.m */; };
@@ -107,8 +105,6 @@
 /* Begin PBXFileReference section */
 		4279E151159C265800D50CE5 /* exproposSysLoad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exproposSysLoad.h; sourceTree = "<group>"; };
 		4279E152159C265800D50CE5 /* exproposSysLoad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exproposSysLoad.m; sourceTree = "<group>"; };
-		4279E154159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "6KQ77{{@4I91_8SZ)F$66V5.jpg"; path = "../../../Downloads/IOD_DEV/expropos 副本 2/expropos/6KQ77{{@4I91_8SZ)F$66V5.jpg"; sourceTree = "<group>"; };
-		4279E155159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "8%7%38R9AKG23LY_[$PC~WM.jpg"; path = "../../../Downloads/IOD_DEV/expropos 副本 2/expropos/8%7%38R9AKG23LY_[$PC~WM.jpg"; sourceTree = "<group>"; };
 		5F4C39E1158B39650029F86D /* exproposMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMainViewController.h; sourceTree = "<group>"; };
 		5F4C39E2158B39650029F86D /* exproposMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMainViewController.m; sourceTree = "<group>"; };
 		5F656F371587432700EE249F /* exproposGoodSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposGoodSelectedViewController.h; sourceTree = "<group>"; };
@@ -218,8 +214,6 @@
 		4279E153159C272100D50CE5 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				4279E154159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg */,
-				4279E155159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -480,8 +474,6 @@
 				914BB29E15746A6B009FFBAE /* InfoPlist.strings in Resources */,
 				914BB2B51574766D009FFBAE /* README.md in Resources */,
 				9166741A1588651100D8A584 /* RKSeedDatabase.sqlite in Resources */,
-				4279E156159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg in Resources */,
-				4279E157159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg in Resources */,
 				5FA51746159DB58300F9DE5B /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
