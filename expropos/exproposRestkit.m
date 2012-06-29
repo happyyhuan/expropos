@@ -17,6 +17,7 @@
 #import "ExproGoodsType.h"
 #import "ExproRole.h"
 #import "ExproRouteTable.h"
+#import "ExproDeal.h"
 
 @implementation exproposRestkit
 
@@ -84,6 +85,19 @@
     [merchantMapping mapKeyPath:@"member" toRelationship:@"members" withMapping:memberMapping];
     [merchantMapping mapKeyPath:@"goods" toRelationship:@"goods" withMapping:goodsMapping];
     [objectManager.mappingProvider setMapping:merchantMapping forKeyPath:@"merchant"];
+
+    
+    RKManagedObjectMapping *dealMapping = [RKManagedObjectMapping mappingForClass:[ExproDeal class] inManagedObjectStore:objectManager.objectStore];
+    dealMapping.primaryKeyAttribute = @"gid";
+    [dealMapping mapKeyPathsToAttributes:@"_id",@"gid",@"type",@"type",@"state",@"state",@"payment",@"payment",
+    @"cash",@"cash",@"point",@"point",@"pay_type",@"payType",@"create_time",@"createTime",nil];
+    [dealMapping connectRelationship:@"store" withObjectForPrimaryKeyAttribute:@"store_id"];
+    [dealMapping connectRelationship:@"dealer" withObjectForPrimaryKeyAttribute:@"dealer_id"];
+    [dealMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"customer_id"];
+    [objectManager.mappingProvider setMapping:dealMapping forKeyPath:@"deal"];
+    [objectManager.mappingProvider setObjectMapping:dealMapping forResourcePathPattern:@"/deals"];
+    
+    
     
     
     [[self class] router:objectManager.router];

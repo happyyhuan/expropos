@@ -9,6 +9,8 @@
 #import "exproposViewController.h"
 #import "exproposSign.h"
 #import "ExproRestDelegate.h"
+#import "exproposAppDelegate.h"
+
 
 #import "exproposAppDelegate.h"
 #import "exproposMainViewController.h"
@@ -123,6 +125,7 @@
     
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -138,6 +141,17 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([@"showSplit" isEqualToString:segue.identifier]){
+        
+        exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        UISplitViewController *splitView = [self.storyboard instantiateViewControllerWithIdentifier:@"splitView"];
+        appDelegate.window.rootViewController = splitView;
+        
+    }
 }
 
 @end

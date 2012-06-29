@@ -12,12 +12,11 @@
 @class ExproDealItem, ExproGoodsType, ExproMerchant, ExproWarehouseWarrantItem;
 
 @interface ExproGoods : NSManagedObject
-
+@property (nonatomic,retain) NSString * name;
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSString * comment;
 @property (nonatomic, retain) NSDate * createTime;
 @property (nonatomic, retain) NSNumber * gid;
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * price;
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSSet *dealItems;

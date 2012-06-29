@@ -11,6 +11,7 @@
 
 @implementation exproposSign
 
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -30,15 +31,21 @@
     NSLog(@"signin user:%@, sex:%@", [user objectForKey:@"name"], [user objectForKey:@"sex"]);    
 }
 
+
+
 - (void) signin:(NSString *)cellphone password:(NSString *)password 
 {
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:cellphone,@"cellphone",password,@"password",@"1",@"org", nil];
+    ExproUser *user = [ExproUser object];
+    user.cellphone = cellphone;
+    user.password = password;
     
-    RKObjectMapping *signinMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [signinMapping mapKeyPathsToAttributes:@"_id", @"gid", @"name", @"name", @"sex", @"sex", nil];
-    
-    self.succeedCallBack = @selector(signinSucceed:);
-    
-    [self requestURL:@"/signin" method:RKRequestMethodPOST params:params mapping:signinMapping];
+    RKObjectMapping *signinSerializationMapping = [RKObjectMapping mappingForClass:[ExproUser class]];
+    [signinSerializationMapping mapAttributes:@"cellphone", @"password", nil];
+
+    [[RKObjectManager sharedManager] sendObject:user toResourcePath:@"/signin" usingBlock:^(RKObjectLoader *loader) {                    
+        loader.method = RKRequestMethodPOST;
+        loader.delegate = self;
+        loader.serializationMapping = signinSerializationMapping;
+    }]; 
 }
 @end

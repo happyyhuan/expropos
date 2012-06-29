@@ -9,14 +9,26 @@
 /* Begin PBXBuildFile section */
 		4279E156159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4279E154159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg */; };
 		4279E157159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4279E155159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg */; };
-		9120E1941574C25700400D05 /* exproposMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9120E1931574C25700400D05 /* exproposMainViewController.m */; };
+		5F4C39E3158B39650029F86D /* exproposMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C39E2158B39650029F86D /* exproposMainViewController.m */; };
+		5F656F391587432800EE249F /* exproposGoodSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F656F381587432800EE249F /* exproposGoodSelectedViewController.m */; };
+		5F656F3E1587433A00EE249F /* exproposMemberSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F656F3B1587433A00EE249F /* exproposMemberSelectedViewController.m */; };
+		5F656F3F1587433A00EE249F /* exproposMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F656F3D1587433A00EE249F /* exproposMenuViewController.m */; };
+		5F656F42158743B000EE249F /* NSDictionary+mutableDeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F656F41158743B000EE249F /* NSDictionary+mutableDeepCopy.m */; };
+		5F88E16B159962DF00058E1C /* exproposShowDealsSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F88E16A159962DE00058E1C /* exproposShowDealsSelectedViewController.m */; };
+		5F8BA3381592FF9700AD0025 /* exproposDealItemSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BA3371592FF9600AD0025 /* exproposDealItemSelectedViewController.m */; };
+		5F8BA33B1593179F00AD0025 /* exproposStoreSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BA33A1593179E00AD0025 /* exproposStoreSelectedViewController.m */; };
+		5F8BA33E159320A400AD0025 /* exproposPayTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BA33D159320A400AD0025 /* exproposPayTypeViewController.m */; };
+		5F99B41B15919D4500CCB896 /* exproposDateSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F99B41A15919D4500CCB896 /* exproposDateSelectedViewController.m */; };
+		5F99B4391591B3C400CCB896 /* exproposDealSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F99B4381591B3C400CCB896 /* exproposDealSelectedViewController.m */; };
+		5F9A8E3C1599B4870021FE68 /* ExproMultipleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9A8E3B1599B4870021FE68 /* ExproMultipleTableView.m */; };
+		5FA51746159DB58300F9DE5B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FA51744159DB58300F9DE5B /* MainStoryboard.storyboard */; };
+		5FE99495159423020017D351 /* exproposUpdateDeals.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE99494159423020017D351 /* exproposUpdateDeals.m */; };
 		914BB29415746A6B009FFBAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29315746A6B009FFBAE /* UIKit.framework */; };
 		914BB29615746A6B009FFBAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29515746A6B009FFBAE /* Foundation.framework */; };
 		914BB29815746A6B009FFBAE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29715746A6B009FFBAE /* CoreGraphics.framework */; };
 		914BB29E15746A6B009FFBAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 914BB29C15746A6B009FFBAE /* InfoPlist.strings */; };
 		914BB2A015746A6B009FFBAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 914BB29F15746A6B009FFBAE /* main.m */; };
 		914BB2A415746A6B009FFBAE /* exproposAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 914BB2A315746A6B009FFBAE /* exproposAppDelegate.m */; };
-		914BB2A715746A6C009FFBAE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914BB2A515746A6B009FFBAE /* MainStoryboard.storyboard */; };
 		914BB2AA15746A6C009FFBAE /* exproposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914BB2A915746A6C009FFBAE /* exproposViewController.m */; };
 		914BB2B51574766D009FFBAE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 914BB2B41574766D009FFBAE /* README.md */; };
 		9166741A1588651100D8A584 /* RKSeedDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 916674191588651100D8A584 /* RKSeedDatabase.sqlite */; };
@@ -97,8 +109,33 @@
 		4279E152159C265800D50CE5 /* exproposSysLoad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exproposSysLoad.m; sourceTree = "<group>"; };
 		4279E154159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "6KQ77{{@4I91_8SZ)F$66V5.jpg"; path = "../../../Downloads/IOD_DEV/expropos 副本 2/expropos/6KQ77{{@4I91_8SZ)F$66V5.jpg"; sourceTree = "<group>"; };
 		4279E155159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "8%7%38R9AKG23LY_[$PC~WM.jpg"; path = "../../../Downloads/IOD_DEV/expropos 副本 2/expropos/8%7%38R9AKG23LY_[$PC~WM.jpg"; sourceTree = "<group>"; };
-		9120E1921574C25700400D05 /* exproposMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMainViewController.h; sourceTree = "<group>"; };
-		9120E1931574C25700400D05 /* exproposMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMainViewController.m; sourceTree = "<group>"; };
+		5F4C39E1158B39650029F86D /* exproposMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMainViewController.h; sourceTree = "<group>"; };
+		5F4C39E2158B39650029F86D /* exproposMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMainViewController.m; sourceTree = "<group>"; };
+		5F656F371587432700EE249F /* exproposGoodSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposGoodSelectedViewController.h; sourceTree = "<group>"; };
+		5F656F381587432800EE249F /* exproposGoodSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposGoodSelectedViewController.m; sourceTree = "<group>"; };
+		5F656F3A1587433A00EE249F /* exproposMemberSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMemberSelectedViewController.h; sourceTree = "<group>"; };
+		5F656F3B1587433A00EE249F /* exproposMemberSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMemberSelectedViewController.m; sourceTree = "<group>"; };
+		5F656F3C1587433A00EE249F /* exproposMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMenuViewController.h; sourceTree = "<group>"; };
+		5F656F3D1587433A00EE249F /* exproposMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMenuViewController.m; sourceTree = "<group>"; };
+		5F656F40158743B000EE249F /* NSDictionary+mutableDeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+mutableDeepCopy.h"; sourceTree = "<group>"; };
+		5F656F41158743B000EE249F /* NSDictionary+mutableDeepCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+mutableDeepCopy.m"; sourceTree = "<group>"; };
+		5F88E169159962DE00058E1C /* exproposShowDealsSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposShowDealsSelectedViewController.h; sourceTree = "<group>"; };
+		5F88E16A159962DE00058E1C /* exproposShowDealsSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposShowDealsSelectedViewController.m; sourceTree = "<group>"; };
+		5F8BA3361592FF9600AD0025 /* exproposDealItemSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposDealItemSelectedViewController.h; sourceTree = "<group>"; };
+		5F8BA3371592FF9600AD0025 /* exproposDealItemSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposDealItemSelectedViewController.m; sourceTree = "<group>"; };
+		5F8BA3391593179E00AD0025 /* exproposStoreSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposStoreSelectedViewController.h; sourceTree = "<group>"; };
+		5F8BA33A1593179E00AD0025 /* exproposStoreSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposStoreSelectedViewController.m; sourceTree = "<group>"; };
+		5F8BA33C159320A300AD0025 /* exproposPayTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposPayTypeViewController.h; sourceTree = "<group>"; };
+		5F8BA33D159320A400AD0025 /* exproposPayTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposPayTypeViewController.m; sourceTree = "<group>"; };
+		5F99B41915919D4500CCB896 /* exproposDateSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposDateSelectedViewController.h; sourceTree = SOURCE_ROOT; };
+		5F99B41A15919D4500CCB896 /* exproposDateSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposDateSelectedViewController.m; sourceTree = SOURCE_ROOT; };
+		5F99B4371591B3C400CCB896 /* exproposDealSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposDealSelectedViewController.h; sourceTree = "<group>"; };
+		5F99B4381591B3C400CCB896 /* exproposDealSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposDealSelectedViewController.m; sourceTree = "<group>"; };
+		5F9A8E3A1599B4870021FE68 /* ExproMultipleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproMultipleTableView.h; sourceTree = "<group>"; };
+		5F9A8E3B1599B4870021FE68 /* ExproMultipleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproMultipleTableView.m; sourceTree = "<group>"; };
+		5FA51745159DB58300F9DE5B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		5FE99493159423020017D351 /* exproposUpdateDeals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposUpdateDeals.h; sourceTree = "<group>"; };
+		5FE99494159423020017D351 /* exproposUpdateDeals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposUpdateDeals.m; sourceTree = "<group>"; };
 		914BB28F15746A6B009FFBAE /* expropos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expropos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		914BB29315746A6B009FFBAE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		914BB29515746A6B009FFBAE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -109,7 +146,6 @@
 		914BB2A115746A6B009FFBAE /* expropos-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "expropos-Prefix.pch"; sourceTree = "<group>"; };
 		914BB2A215746A6B009FFBAE /* exproposAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exproposAppDelegate.h; sourceTree = "<group>"; };
 		914BB2A315746A6B009FFBAE /* exproposAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exproposAppDelegate.m; sourceTree = "<group>"; };
-		914BB2A615746A6C009FFBAE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		914BB2A815746A6C009FFBAE /* exproposViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exproposViewController.h; sourceTree = "<group>"; };
 		914BB2A915746A6C009FFBAE /* exproposViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exproposViewController.m; sourceTree = "<group>"; };
 		914BB2B41574766D009FFBAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -261,7 +297,7 @@
 		914BB29915746A6B009FFBAE /* expropos */ = {
 			isa = PBXGroup;
 			children = (
-				914BB2A515746A6B009FFBAE /* MainStoryboard.storyboard */,
+				5FA51744159DB58300F9DE5B /* MainStoryboard.storyboard */,
 				4279E153159C272100D50CE5 /* image */,
 				9187C50D1589B9B700AF5776 /* exproposSign.h */,
 				9187C50E1589B9B700AF5776 /* exproposSign.m */,
@@ -270,12 +306,37 @@
 				9149D5B0158324F5006A9FBF /* DataModel */,
 				914BB2A215746A6B009FFBAE /* exproposAppDelegate.h */,
 				914BB2A315746A6B009FFBAE /* exproposAppDelegate.m */,
+				5F99B41915919D4500CCB896 /* exproposDateSelectedViewController.h */,
+				5F99B41A15919D4500CCB896 /* exproposDateSelectedViewController.m */,
+				9149D5B0158324F5006A9FBF /* DataModel */,
+				914BB2A215746A6B009FFBAE /* exproposAppDelegate.h */,
+				914BB2A315746A6B009FFBAE /* exproposAppDelegate.m */,
+				5F656F371587432700EE249F /* exproposGoodSelectedViewController.h */,
+				5F656F381587432800EE249F /* exproposGoodSelectedViewController.m */,
+				5F4C39E1158B39650029F86D /* exproposMainViewController.h */,
+				5F4C39E2158B39650029F86D /* exproposMainViewController.m */,
+				5F656F3A1587433A00EE249F /* exproposMemberSelectedViewController.h */,
+				5F656F3B1587433A00EE249F /* exproposMemberSelectedViewController.m */,
+				5F656F3C1587433A00EE249F /* exproposMenuViewController.h */,
+				5F656F3D1587433A00EE249F /* exproposMenuViewController.m */,
 				914BB2A815746A6C009FFBAE /* exproposViewController.h */,
 				914BB2A915746A6C009FFBAE /* exproposViewController.m */,
-				914BB29A15746A6B009FFBAE /* Supporting Files */,
-				9120E1921574C25700400D05 /* exproposMainViewController.h */,
-				9120E1931574C25700400D05 /* exproposMainViewController.m */,
+				5F656F40158743B000EE249F /* NSDictionary+mutableDeepCopy.h */,
+				5F656F41158743B000EE249F /* NSDictionary+mutableDeepCopy.m */,
 				9187C5131589E1D200AF5776 /* Restkit */,
+				914BB29A15746A6B009FFBAE /* Supporting Files */,
+				5F99B4371591B3C400CCB896 /* exproposDealSelectedViewController.h */,
+				5F99B4381591B3C400CCB896 /* exproposDealSelectedViewController.m */,
+				5F8BA3361592FF9600AD0025 /* exproposDealItemSelectedViewController.h */,
+				5F8BA3371592FF9600AD0025 /* exproposDealItemSelectedViewController.m */,
+				5F8BA3391593179E00AD0025 /* exproposStoreSelectedViewController.h */,
+				5F8BA33A1593179E00AD0025 /* exproposStoreSelectedViewController.m */,
+				5F8BA33C159320A300AD0025 /* exproposPayTypeViewController.h */,
+				5F8BA33D159320A400AD0025 /* exproposPayTypeViewController.m */,
+				5F88E169159962DE00058E1C /* exproposShowDealsSelectedViewController.h */,
+				5F88E16A159962DE00058E1C /* exproposShowDealsSelectedViewController.m */,
+				5F9A8E3A1599B4870021FE68 /* ExproMultipleTableView.h */,
+				5F9A8E3B1599B4870021FE68 /* ExproMultipleTableView.m */,
 			);
 			path = expropos;
 			sourceTree = "<group>";
@@ -312,6 +373,10 @@
 				9188485F1588448C0028B1AE /* exproposRestkit.m */,
 				9187C5101589E1AF00AF5776 /* ExproRestDelegate.h */,
 				9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */,
+				9187C50D1589B9B700AF5776 /* exproposSign.h */,
+				9187C50E1589B9B700AF5776 /* exproposSign.m */,
+				5FE99493159423020017D351 /* exproposUpdateDeals.h */,
+				5FE99494159423020017D351 /* exproposUpdateDeals.m */,
 			);
 			name = Restkit;
 			sourceTree = "<group>";
@@ -413,11 +478,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				914BB29E15746A6B009FFBAE /* InfoPlist.strings in Resources */,
-				914BB2A715746A6C009FFBAE /* MainStoryboard.storyboard in Resources */,
 				914BB2B51574766D009FFBAE /* README.md in Resources */,
 				9166741A1588651100D8A584 /* RKSeedDatabase.sqlite in Resources */,
 				4279E156159C272E00D50CE5 /* 6KQ77{{@4I91_8SZ)F$66V5.jpg in Resources */,
 				4279E157159C272E00D50CE5 /* 8%7%38R9AKG23LY_[$PC~WM.jpg in Resources */,
+				5FA51746159DB58300F9DE5B /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +496,6 @@
 				914BB2A015746A6B009FFBAE /* main.m in Sources */,
 				914BB2A415746A6B009FFBAE /* exproposAppDelegate.m in Sources */,
 				914BB2AA15746A6C009FFBAE /* exproposViewController.m in Sources */,
-				9120E1941574C25700400D05 /* exproposMainViewController.m in Sources */,
 				91E1C8EA1581F1A80003B22D /* expropos.xcdatamodeld in Sources */,
 				918848601588448C0028B1AE /* exproposRestkit.m in Sources */,
 				9187C50F1589B9B700AF5776 /* exproposSign.m in Sources */,
@@ -449,6 +513,19 @@
 				91DD3D411592F9E400E20B00 /* ExproRouteTable.m in Sources */,
 				91DD3D441592F9E400E20B00 /* ExproMerchant.m in Sources */,
 				91DD3D471592F9E400E20B00 /* ExproWarehouse.m in Sources */,
+				5F656F391587432800EE249F /* exproposGoodSelectedViewController.m in Sources */,
+				5F656F3E1587433A00EE249F /* exproposMemberSelectedViewController.m in Sources */,
+				5F656F3F1587433A00EE249F /* exproposMenuViewController.m in Sources */,
+				5F656F42158743B000EE249F /* NSDictionary+mutableDeepCopy.m in Sources */,
+				5F4C39E3158B39650029F86D /* exproposMainViewController.m in Sources */,
+				5F99B41B15919D4500CCB896 /* exproposDateSelectedViewController.m in Sources */,
+				5F99B4391591B3C400CCB896 /* exproposDealSelectedViewController.m in Sources */,
+				5F8BA3381592FF9700AD0025 /* exproposDealItemSelectedViewController.m in Sources */,
+				5F8BA33B1593179F00AD0025 /* exproposStoreSelectedViewController.m in Sources */,
+				5F8BA33E159320A400AD0025 /* exproposPayTypeViewController.m in Sources */,
+				5FE99495159423020017D351 /* exproposUpdateDeals.m in Sources */,
+				5F88E16B159962DF00058E1C /* exproposShowDealsSelectedViewController.m in Sources */,
+				5F9A8E3C1599B4870021FE68 /* ExproMultipleTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,20 +540,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5FA51744159DB58300F9DE5B /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FA51745159DB58300F9DE5B /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
 		914BB29C15746A6B009FFBAE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				914BB29D15746A6B009FFBAE /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		914BB2A515746A6B009FFBAE /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				914BB2A615746A6C009FFBAE /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -536,11 +613,13 @@
 				GCC_PREFIX_HEADER = "expropos/expropos-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "expropos/expropos-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -552,11 +631,13 @@
 				GCC_PREFIX_HEADER = "expropos/expropos-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "expropos/expropos-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

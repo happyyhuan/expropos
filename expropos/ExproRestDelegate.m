@@ -56,7 +56,6 @@
         _ok = NSLocalizedString(@"OK", nil);
         [self addCode:400 info:NSLocalizedString(@"ClientError", nil) alert:YES succeed:NO];
         [self addCode:500 info:NSLocalizedString(@"ServerError", nil) alert:YES succeed:NO];
-        self.reserver = self;
     }
     return self;
 }
@@ -228,7 +227,7 @@
         self.request = loader;
     }];
 }
-/*
+
 - (NSString *) cookie {
     return _cookie;
 }
@@ -237,5 +236,5 @@
     if (![_cookie isEqualToString:cookie]) {
         _cookie = cookie;
     }
-}*/
+}
 @end

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Restkit/Restkit.h>
 
-@interface exproposMainViewController : UIViewController
+@interface exproposMainViewController : UIViewController <UISplitViewControllerDelegate,RKRequestDelegate>
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *menu;
+@property (strong, nonatomic) IBOutlet UIToolbar *menuTool;
+
+- (IBAction)logout:(UIBarButtonItem *)sender;
+
 
 @end
