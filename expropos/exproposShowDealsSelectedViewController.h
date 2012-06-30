@@ -7,10 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "exproposDealSelectedViewController.h"
+#import "ExproMultipleTableView.h"
+#import "exproposMainViewController.h"
+#import "exproposSign.h"
 
-@interface exproposShowDealsSelectedViewController : UITableViewController
+@class exproposDealSelectedViewController;
+@interface exproposShowDealsSelectedViewController :UIViewController <ExproMutableTableViewDataSource,ExproMutableTableViewDelegate>
 @property (strong,nonatomic) UIPopoverController *popover;
 @property (strong,nonatomic) UINavigationController *dealSelect;
 @property (strong,nonatomic )NSArray *data;
+@property (strong,nonatomic )exproposMainViewController *mainViewController;
+
+@property (nonatomic,strong)IBOutlet ExproMultipleTableView *tableView;
+
+
+
 @end

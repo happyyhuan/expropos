@@ -12,6 +12,7 @@
 #import "ExproGoods.h"
 #import "ExproGoodsType.h"
 #import "ExproMerchant.h"
+#import "exproposAppDelegate.h"
 
 @interface exproposGoodSelectedViewController ()
 @property (nonatomic,strong)ExproMerchant *merchant;
@@ -39,8 +40,11 @@
     self.tableView.dataSource = self;
     self.searchBar.delegate = self;
     
+    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    
     NSFetchRequest *request = [ExproMerchant fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",121212];
+    request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appDelegate.gid];
     NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
     self.merchant = [merchants objectAtIndex:0];
     

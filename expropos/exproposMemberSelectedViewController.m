@@ -52,7 +52,9 @@
     self.searchBar.delegate = self;
     self.searchBar.keyboardType = UIKeyboardTypePhonePad;
     
- /*  NSFetchRequest *request = [ExproMerchant fetchRequest];
+    //[UIApplication sharedApplication]
+    
+   NSFetchRequest *request = [ExproMerchant fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",121212];
     
     NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
@@ -61,10 +63,8 @@
   
     NSSet *alls =  merchant.members;
     NSArray *roles = [ExproRole findAll];
-    */
+    
   
-    NSArray *alls =  [ExproMember findAll];
-    NSArray *roles = [ExproRole findAll];
     
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:100];

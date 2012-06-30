@@ -27,12 +27,19 @@
 
 -(void)upDateDealStart:(int)start end:(int)end bt:(NSDate*)bt et:(NSDate*)et
 {
- 
-    NSString *url = [NSString stringWithFormat:@"/deals?bt=%@&et=%@",bt,et];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:url delegate:self];
+ //start=起始行数&limit=每页显示行数&bt=交易发生时间起点&et=交易发生时间的截至时间&sidx=排序字段名&sord=排序方式asc,desc
+    NSDictionary *params = [[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInt: 1] ,@"start",[NSNumber numberWithInt:100],@"limit", nil];
+ ;
+    [self requestURL:@"/deals" method:RKRequestMethodGET params:params mapping:nil];
     
 }
 
+-(void)updateDealItems:(ExproDeal *)deal
+{
+    for(ExproDealItem *item in deal.items){
+        [self requestURL:@"/deals/:gid" method:RKRequestMethodGET object:item mapping:nil serialMapping:nil];
+    }
+}
 
 
 @end

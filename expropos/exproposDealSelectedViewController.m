@@ -61,6 +61,21 @@
         deals = [self searchInLoacl];
     }
     _showDeals.data = deals;
+    
+    [UIView beginAnimations:@"View Flip" context:nil];
+    [UIView setAnimationDuration:2];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    
+    UIView *superView  = _showDeals.tableView.superview;
+    
+    
+    [UIView setAnimationTransition:
+     UIViewAnimationTransitionFlipFromRight
+                           forView:_showDeals.tableView cache:YES];
+    [_showDeals.tableView removeFromSuperview];
+    [superView insertSubview:_showDeals.tableView atIndex:0];
+  
+    [UIView commitAnimations];
     [_showDeals.tableView reloadData];
     [self.myPopover dismissPopoverAnimated:YES];
     

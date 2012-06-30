@@ -32,7 +32,7 @@
         NSString *_resource = [NSString stringWithFormat:@"/sync/merchants/%qu",gid];
         [self requestURL:_resource method:RKRequestMethodGET params:nil mapping:kRestDefaultMapping];
         
-        //dispatch_async(dispatch_get_main_queue(), completion);    
+        //dispatch_async(dispatch_get_main_queue(), completion);   
     });
 }
 

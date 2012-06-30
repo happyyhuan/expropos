@@ -86,9 +86,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    UITableViewCell *cell = nil;
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         NSInteger segments = [_multipleDataSource numberOfSegmentInMultipleTableView:(ExproMultipleTableView *)tableView];
         CGFloat orgin = 0;
         CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];

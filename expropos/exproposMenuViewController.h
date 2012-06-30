@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "exproposMainViewController.h"
+#import "exproposShowDealsSelectedViewController.h"
 
 @interface exproposMenuViewController : UITableViewController 
 @property (strong,nonatomic) exproposMainViewController *mainViewController;
 @property (strong,nonatomic) NSArray *menus;
-@property (strong,nonatomic) UINavigationController *nav;
+@property (strong,nonatomic) exproposShowDealsSelectedViewController *showDeal;
 @end

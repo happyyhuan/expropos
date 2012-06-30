@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "exproMember.h"
 #import "exproposUpdateDeals.h"
+
 @class exproposShowDealsSelectedViewController;
 
 @interface exproposDealSelectedViewController : UITableViewController <UITextFieldDelegate>
