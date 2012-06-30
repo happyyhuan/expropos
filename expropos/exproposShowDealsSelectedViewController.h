@@ -10,6 +10,7 @@
 #import "ExproMultipleTableView.h"
 #import "exproposMainViewController.h"
 #import "exproposSign.h"
+#import "exproposUpdateDeals.h"
 
 @class exproposDealSelectedViewController;
 @interface exproposShowDealsSelectedViewController :UIViewController <ExproMutableTableViewDataSource,ExproMutableTableViewDelegate>
@@ -19,7 +20,7 @@
 @property (strong,nonatomic )exproposMainViewController *mainViewController;
 
 @property (nonatomic,strong)IBOutlet ExproMultipleTableView *tableView;
-
+@property (nonatomic,strong) exproposUpdateDeals *updateDeals;
 
 
 @end

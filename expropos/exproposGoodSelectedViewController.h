@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "exproposSysLoad.h"
 
 @interface exproposGoodSelectedViewController : UITableViewController<UISearchBarDelegate>
 @property (nonatomic,strong)UIViewController *viewController;
@@ -15,6 +16,6 @@
 
 @property (nonatomic,strong)NSMutableArray *searchData;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-
-
+@property (nonatomic,strong) exproposSysLoad *sysLoad;
+@property (nonatomic,strong)NSMutableArray *mySelectedGoods;
 @end

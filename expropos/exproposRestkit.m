@@ -9,7 +9,7 @@
 #import "exproposRestkit.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/CoreData.h>
-
+#import "ExproDealItem.h"
 #import "ExproMerchant.h"
 #import "ExproMember.h"
 #import "ExproUser.h"
@@ -97,6 +97,18 @@
     [objectManager.mappingProvider setMapping:dealMapping forKeyPath:@"deal"];
     [objectManager.mappingProvider setObjectMapping:dealMapping forResourcePathPattern:@"/deals"];
     
+ 
+    
+    RKManagedObjectMapping *dealItemMapping = [RKManagedObjectMapping mappingForClass:[ExproDealItem class] inManagedObjectStore:objectManager.objectStore];
+    dealItemMapping.primaryKeyAttribute = @"gid";
+    [dealItemMapping mapKeyPathsToAttributes:@"_id",@"gid",@"closing_cost",@"closingCost",@"total_cost",@"totalCost", nil];
+    [dealItemMapping mapAttributes:@"num", nil];
+    [dealItemMapping connectRelationship:@"deal" withObjectForPrimaryKeyAttribute:@"deal_id"];
+    [dealItemMapping connectRelationship:@"goods" withObjectForPrimaryKeyAttribute:@"goods_id"];
+    [objectManager.mappingProvider setMapping:dealItemMapping forKeyPath:@"deal_item"];
+    
+    [dealMapping hasMany:@"items" withMapping:dealItemMapping];
+    [dealItemMapping hasOne:@"deal" withMapping:dealMapping];
     
     
     

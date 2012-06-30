@@ -186,7 +186,7 @@
             fromAmount.tag = 1;
             fromAmount.delegate = self;
             fromAmount.keyboardType = UIKeyboardTypeNumberPad;
-            [fromAmount addTarget:self action:@selector(saveFromMenoy) forControlEvents:UIControlEventEditingChanged];
+            [fromAmount addTarget:self action:@selector(saveFromMenoy:) forControlEvents:UIControlEventEditingChanged];
         }else if(indexPath.row ==1 ){
             cell.textLabel.text = @"金额<";
             cell.detailTextLabel.text = @"";
@@ -262,11 +262,10 @@
     return cell;
 }
 
--(void)saveFromMenoy
+-(void)saveFromMenoy:(id)sender
 {
-    UITableViewCell *cell  = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]] ;
-    UITextField *field =(UITextField *)[cell viewWithTag:1];
-    self.fromAmoutOfMoney = field.text;
+   UITextField *f = (UITextField *)sender;
+    self.fromAmoutOfMoney = f.text;
 }
 -(void)saveEndMenoy:(id)sender
 {

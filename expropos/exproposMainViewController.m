@@ -12,6 +12,7 @@
 @synthesize menu = _menu;
 @synthesize menuTool = _menuTool;
 @synthesize masterPopoverController = _masterPopoverController;
+@synthesize signout = _signout;
 
 
 
@@ -35,7 +36,7 @@
     [data removeObject:self.menu];
     self.menuTool.items = data;
     self.splitViewController.delegate = self;
-
+    _signout = [[exproposSignout alloc]init];
 }
 
 - (void)viewDidUnload
@@ -92,23 +93,21 @@
 
 - (IBAction)logout:(UIBarButtonItem *)sender {
     
-    [[RKClient sharedClient] get:@"/signout" delegate:self];
+   // [[RKClient sharedClient] get:@"/signout" delegate:self];
+    _signout.reserver = self;
+    _signout.succeedCallBack = @selector(didSignout);
+     _signout.contrller = self;
+    [_signout signout];
+}
+
+
+-(void)didSignout
+{
+        exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        appDelegate.window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
     
 }
 
-#pragma mark PKRequestDelegate Method
--(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response
-{
-    if(response.statusCode == 200){
-        exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        appDelegate.window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
-    }
-}
 
 
--(void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error
-{
-    RKLogInfo(@"logout error:%@",[error localizedDescription]);
-}
-#pragma mark -
 @end

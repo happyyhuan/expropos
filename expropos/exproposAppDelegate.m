@@ -14,6 +14,8 @@
 #import "ExproMember.h"
 #import "ExproUser.h"
 #import "ExproStore.h"
+#import "ExproGoods.h"
+#import "ExproGoodsType.h"
 
 
 
@@ -31,39 +33,29 @@
     [exproposRestkit InitRestKit];
     
         //test
- /*       RKObjectManager *manager = [RKObjectManager sharedManager];
+       RKObjectManager *manager = [RKObjectManager sharedManager];
         
         
         for(int i=0;i<10;i++){
-            ExproRole *r = [ExproRole object];
-            r.gid = [NSNumber numberWithInt:i];
-            r.name = [NSString stringWithFormat:@"role %i",i];
+            ExproGoodsType *type = [ExproGoodsType object];
+            type.gid = [NSNumber numberWithInt:i];
+            type.name = [NSString stringWithFormat:@"type%i",i];
             [manager.objectStore save:nil];
         }
         
         
-        NSArray *d = [ExproRole findAll] ;
+        NSArray *d = [ExproGoodsType findAll] ;
         for(int i=0;i<10;i++){
-            ExproMember *m = [ExproMember object];
-            m.gid = [NSNumber numberWithInt:i];
-            m.petName = [NSString stringWithFormat:@"petName %i",i];
-            m.role = [d objectAtIndex:i];
-            ExproUser *user = [ExproUser object];
-            user.cellphone = [NSString stringWithFormat:@"1876182900%i",i];
-            user.gid = [NSNumber numberWithInt:i];
-            m.user= user;
-            
+            ExproGoods *g = [ExproGoods object];
+            g.gid = [NSNumber numberWithInt:i];
+            g.name = [NSString stringWithFormat:@"goods%i",i];
+            g.type = [d objectAtIndex:i];
+            g.code = [NSString stringWithFormat:@"cod%i",i];
             [manager.objectStore save:nil];
         }
         
-    for(int i=0;i<10;i++){
-        ExproStore *store = [ExproStore object];
-        store.gid = [NSNumber numberWithInt:i];
-        store.name = [NSString stringWithFormat:@"name%i",i];
-        [[[RKObjectManager sharedManager] objectStore]save:nil];
-    }
    
-*/
+
     
     // Override point for customization after application launch.
     

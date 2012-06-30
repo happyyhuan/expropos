@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "exproposSysLoad.h"
 
 @interface exproposMemberSelectedViewController : UITableViewController <UISearchBarDelegate>
 @property (nonatomic,strong) UIViewController *viewController;
@@ -18,6 +19,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *updateTime;
 
 - (IBAction)update:(UIBarButtonItem *)sender;
-
+@property (nonatomic,strong)exproposSysLoad *sysLoad;
 
 @end

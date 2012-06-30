@@ -25,6 +25,24 @@
 @synthesize searchBar = _searchBar;
 @synthesize merchant = _merchant;
 @synthesize viewController = _viewController;
+@synthesize sysLoad = _sysLoad;
+@synthesize mySelectedGoods = _mySelectedGoods;
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if([_viewController respondsToSelector:@selector(mySelectedGoods)]){
+        _mySelectedGoods = [NSMutableArray arrayWithArray:[[self.viewController valueForKey:@"mySelectedGoods" ] mutableCopy]];
+    }else {
+        _mySelectedGoods = [NSMutableArray arrayWithCapacity:20];
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+     if([_viewController respondsToSelector:@selector(setMySelectedGoods)]){
+         [_viewController setValue:_mySelectedGoods forKey:@"mySelectedGoods"];
+     }
+}
 
 -(void)awakeFromNib
 {
@@ -49,7 +67,7 @@
     self.merchant = [merchants objectAtIndex:0];
     
     NSFetchRequest *request2 = [ExproGoodsType fetchRequest];
-    request2.predicate = [NSPredicate predicateWithFormat:@"%@ = nil", @"parent"];
+    request2.predicate = [NSPredicate predicateWithFormat:@"parent = %@", nil];
     self.allDatas = [[NSArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];
     
     self.datas = [_allDatas mutableCopy];
@@ -76,7 +94,7 @@
 #pragma mark UITableViewDelegate and DataSource Methods
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -100,6 +118,9 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if(section == 0){
+        return 1;
+    }
     if(self.searchData == nil){
         return self.datas.count;
     }else {
@@ -109,6 +130,16 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {   
+    if(indexPath.section ==0){
+        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        cell.textLabel.text = @"所有商品";
+        if([_mySelectedGoods count]==0){
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }else {
+             cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        return cell;
+    }
     static NSString *CellIdentifier = nil;
     UITableViewCell *cell = nil;
     if(self.searchData == nil){
@@ -130,6 +161,11 @@
             cell.textLabel.text = g.name;
             cell.indentationWidth = 20.0f;
             cell.imageView.image = [UIImage imageNamed:@"unselected.png"];
+            if([_mySelectedGoods containsObject:g]){
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }else {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
         }
     }else {
         CellIdentifier = @"searchCell";
@@ -142,6 +178,11 @@
         cell.textLabel.text = g.code;
         cell.detailTextLabel.text = g.name;
         cell.imageView.image = [UIImage imageNamed:@"unselected.png"];
+        if([_mySelectedGoods containsObject:g]){
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     
     return cell;
@@ -152,13 +193,36 @@
 //选择商品时进行的处理
 -(void)tableView:(UITableView *)tableView gooddidSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    if(indexPath.section == 0){
+        [_mySelectedGoods removeAllObjects];
+        [self.tableView reloadData];
+        return;
+    }
+    if(self.searchData!=nil){
+        if([_mySelectedGoods containsObject:[self.searchData objectAtIndex:indexPath.row]]){
+            [_mySelectedGoods removeObject:[self.searchData objectAtIndex:indexPath.row]];
+        }else {
+            [_mySelectedGoods addObject:[self.searchData objectAtIndex:indexPath.row]];
+        }
+    }else {
+        if([_mySelectedGoods containsObject:[self.datas objectAtIndex:indexPath.row]]){
+            [_mySelectedGoods removeObject:[self.datas objectAtIndex:indexPath.row]];
+        }else {
+            [_mySelectedGoods addObject:[self.datas objectAtIndex:indexPath.row]];
+        }
+    }
+    
+    [self.tableView reloadData];
 }
 
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(indexPath.section ==0){
+        [self tableView:tableView gooddidSelectRowAtIndexPath:indexPath];
+        return ;
+    }
     if(self.searchData!=nil){
         [self tableView:tableView gooddidSelectRowAtIndexPath:indexPath];
         return;
@@ -179,6 +243,7 @@
         }
        
         
+        
         for(ExproGoodsType *t in set){
             NSInteger index = [self.datas indexOfObjectIdenticalTo:t];
             isInserted =  (index>0&&index != NSIntegerMax);
@@ -198,23 +263,20 @@
             
             [self removeGoodsTypes:set Goods:InGoods];
         }else {
-            
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            cell.imageView.image = [UIImage imageNamed:@"descending.png"];
             NSUInteger count = indexPath.row+1;
             NSMutableArray *arrCells = [NSMutableArray array];
             for(ExproGoodsType *t  in set){
-                
-                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-                cell.imageView.image = [UIImage imageNamed:@"descending.png"];
-                
-                [arrCells addObject:[NSIndexPath indexPathForRow:count inSection:0]];
+                [arrCells addObject:[NSIndexPath indexPathForRow:count inSection:1]];
                 [self.datas insertObject:t atIndex:count++];
             }
             for(ExproGoods *g in InGoods){
-                [arrCells addObject:[NSIndexPath indexPathForRow:count inSection:0]];
+                [arrCells addObject:[NSIndexPath indexPathForRow:count inSection:1]];
                 [self.datas insertObject:g atIndex:count++];
             }
             
-            [tableView insertRowsAtIndexPaths:arrCells withRowAnimation:UITableViewRowAnimationLeft];
+            [tableView insertRowsAtIndexPaths:arrCells withRowAnimation:UITableViewRowAnimationFade];
         }
         
         
@@ -246,7 +308,7 @@
         }
         if( [self.datas indexOfObjectIdenticalTo:t ]!=NSNotFound){
             [self.datas removeObjectIdenticalTo:t];
-            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
         }
     }
     
@@ -254,7 +316,7 @@
         NSUInteger index = [self.datas indexOfObjectIdenticalTo:g];
         if( [self.datas indexOfObjectIdenticalTo:g ]!=NSNotFound){
             [self.datas removeObjectIdenticalTo:g];
-            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
         }
     }
 }
@@ -274,6 +336,7 @@
         [tmpdata addObject:g];
     }
     self.searchData = [tmpdata mutableCopy];
+    
 }
 
 -(void)searchWithNameOrId:(NSString *)nameOrId
@@ -281,7 +344,7 @@
     [self reset];
     NSMutableArray *deletes = [[NSMutableArray alloc]initWithCapacity:20];
     for(ExproGoods *good in self.searchData){
-        
+        NSLog(@"%@,%@",good.name,good.code);
         if([good.name rangeOfString:nameOrId ].location == NSNotFound &&
            [good.code rangeOfString:nameOrId].location == NSNotFound)
         {
@@ -317,4 +380,23 @@
 
 
 #pragma mark -
+
+- (IBAction)update:(UIBarButtonItem *)sender {
+    NSLog(@"%@",self.navigationItem.rightBarButtonItem.title);
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    NSLog(@"%@",self.navigationItem.rightBarButtonItem);
+    dispatch_queue_t downloadQueue = dispatch_queue_create("information downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+        [_sysLoad loadSysData:appdelegate.gid  completion:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.navigationItem.rightBarButtonItem = sender;
+             [self.tableView reloadData];
+        });
+    });
+    dispatch_release(downloadQueue);    
+}
+
 @end

@@ -34,10 +34,10 @@
     
 }
 
--(void)updateDealItems:(ExproDeal *)deal
+-(void)updateDeal
 {
-    for(ExproDealItem *item in deal.items){
-        [self requestURL:@"/deals/:gid" method:RKRequestMethodGET object:item mapping:nil serialMapping:nil];
+    for(ExproDeal *deal in [ExproDeal findAll]){
+        [self requestURL:@"/deals/:gid" method:RKRequestMethodGET object:deal mapping:nil serialMapping:nil];
     }
 }
 

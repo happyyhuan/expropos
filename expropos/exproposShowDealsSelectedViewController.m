@@ -21,6 +21,7 @@
 @synthesize data = _data;
 @synthesize tableView = _tableView;
 @synthesize mainViewController = _mainViewController;
+@synthesize updateDeals = _updateDeals;
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -33,21 +34,69 @@
             num = 1;
         }
     }
+    
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithTitle:@"更新" style: UIBarButtonItemStyleBordered   target:self action:@selector(updates:)];
+    [items insertObject:item2 atIndex:items.count -1];
+    
     [items insertObject:item atIndex:num];
     self.mainViewController.menuTool.items = items;
+}
+
+-(void)updates:(UIBarButtonItem *)sender {
+
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    UIBarButtonItem *spinnerIteam = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
+    UIBarButtonItem *updateItem = nil;
+    for(UIBarButtonItem *item in items){
+        if([item.title isEqualToString:@"更新"]){
+            updateItem = item;
+        }
+    }
+    [items removeObject:updateItem];
+    [items insertObject:spinnerIteam atIndex:items.count -1];
+    self.mainViewController.menuTool.items = items;
+    sender = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+
+dispatch_queue_t downloadQueue = dispatch_queue_create("deals downloader", NULL);
+dispatch_async(downloadQueue, ^{
+     exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
+     [_updateDeals  upDateDealStart:0 end:100 bt:nil et:nil];
+    [_updateDeals updateDeal];
+    _data = [s searchInLoacl];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
+        NSMutableArray *removeItems = [NSMutableArray arrayWithCapacity:2];
+        for(UIBarButtonItem *item in items){
+            if(item == spinnerIteam){
+                [removeItems addObject: item];
+            }
+        }
+        [items removeObjectsInArray:removeItems];
+        [items insertObject:updateItem atIndex:items.count-1];
+         self.mainViewController.menuTool.items = items;
+        
+        [self.tableView reloadData];
+    });
+});
+dispatch_release(downloadQueue);    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
-    UIBarButtonItem *removeItem = nil;
+    NSMutableArray *removeItems = [NSMutableArray arrayWithCapacity:10];
     for(UIBarButtonItem *item in items){
         if([item.title isEqualToString:@"条件筛选"]){
-            removeItem = item; 
+            [removeItems addObject: item]; 
+        }
+        if([item.title isEqualToString:@"更新"]){
+            [removeItems addObject: item];
         }
     }
-    [items removeObject:removeItem];
+    [items removeObjectsInArray:removeItems];
     self.mainViewController.menuTool.items = items;
 }
 
@@ -62,6 +111,7 @@
     }
     s.myPopover  =  _popover;
     s.showDeals = self;
+    _updateDeals = [[exproposUpdateDeals alloc]init];
  
     
 }

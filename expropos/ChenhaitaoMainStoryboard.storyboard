@@ -34,7 +34,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2733" y="-1947"/>
+            <point key="canvasLocation" x="-2773" y="-1955"/>
         </scene>
         <!--Expropos Menu View Controller - 主菜单-->
         <scene sceneID="DeZ-XH-B9U">
@@ -115,18 +115,19 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Item" id="j1j-6L-z1b">
-                            <connections>
-                                <action selector="update:" destination="52X-uq-aiN" id="GjO-Yu-GsZ"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="THg-FK-yjV"/>
                         <barButtonItem title="updatetime" style="plain" id="gic-HZ-hvI">
                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="FdQ-bq-KK7"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="会员选择" id="5Q3-JZ-Wgc"/>
+                    <navigationItem key="navigationItem" title="会员选择" id="5Q3-JZ-Wgc">
+                        <barButtonItem key="rightBarButtonItem" title="刷新" id="hxJ-qN-ebL">
+                            <connections>
+                                <action selector="update:" destination="52X-uq-aiN" id="NEp-eT-u1d"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="jm9-Xa-fcT" id="AGB-4s-Abt"/>
@@ -402,7 +403,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="AGR-ma-Bt3" id="Zzi-LT-key"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="商品选择" id="oT5-OY-rIL"/>
+                    <navigationItem key="navigationItem" title="商品选择" id="oT5-OY-rIL">
+                        <barButtonItem key="rightBarButtonItem" title="刷新" id="34o-cs-8Sq">
+                            <connections>
+                                <action selector="update:" destination="AGR-ma-Bt3" id="gtz-Dl-UVX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="2cP-DD-5V0" id="9Xi-lI-8Tx"/>
                     </connections>

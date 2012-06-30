@@ -15,6 +15,7 @@
 #import "RestKit/RestKit.h"
 #import "exproposDealSelectedViewController.h"
 #import "RestKit/CoreData.h"
+#import "exproposAppDelegate.h"
 
 @interface exproposMemberSelectedViewController ()
 
@@ -27,7 +28,7 @@
 @synthesize searchBar = _searchBar;
 @synthesize updateTime = _updateTime;
 @synthesize viewController = _viewController;
-
+@synthesize sysLoad = _sysLoad;
 
 -(void)awakeFromNib
 {
@@ -48,14 +49,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     self.contentSizeForViewInPopover = CGSizeMake(300, 310);
     self.searchBar.delegate = self;
     self.searchBar.keyboardType = UIKeyboardTypePhonePad;
     
-    //[UIApplication sharedApplication]
+    exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate  ];
     
    NSFetchRequest *request = [ExproMerchant fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",121212];
+    request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appdelegate.gid];
     
     NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
     ExproMerchant *merchant = [merchants objectAtIndex:0];
@@ -304,15 +304,30 @@
 
 - (IBAction)update:(UIBarButtonItem *)sender {
     
-    //实例化一个NSDateFormatter对象
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //设定时间格式,这里可以设置成自己需要的格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    //用[NSDate date]可以获取系统当前时间
-    NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
-    //输出格式为：2010-10-27 10:22:13
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     
-    self.updateTime.title = currentDateStr;
-   
+    dispatch_queue_t downloadQueue = dispatch_queue_create("information downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        //NSArray *photos = [FlickrFetcher recentGeoreferencedPhotos];
+        exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+        [_sysLoad loadSysData:appdelegate.gid  completion:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.navigationItem.rightBarButtonItem = sender;
+            
+            //实例化一个NSDateFormatter对象
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            //设定时间格式,这里可以设置成自己需要的格式
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            //用[NSDate date]可以获取系统当前时间
+            NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
+            //输出格式为：2010-10-27 10:22:13
+            
+            self.updateTime.title = currentDateStr;
+            [self.tableView reloadData];
+        });
+    });
+    dispatch_release(downloadQueue);    
 }
 @end

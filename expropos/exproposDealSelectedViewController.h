@@ -25,4 +25,7 @@
 @property (nonatomic,strong) NSMutableArray *payTypes;
 @property (nonatomic,strong) exproposUpdateDeals *update;
 @property (nonatomic,strong) UIPopoverController *myPopover;
+
+-(NSArray*) searchInLoacl;
+
 @end
