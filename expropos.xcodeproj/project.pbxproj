@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F0533E0159E86C10005FB21 /* ExproDealItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533D6159E86C10005FB21 /* ExproDealItem.m */; };
 		5F0533E1159E86C10005FB21 /* ExproGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533D8159E86C10005FB21 /* ExproGoods.m */; };
 		5F0533E2159E86C10005FB21 /* ExproGoodsType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533DA159E86C10005FB21 /* ExproGoodsType.m */; };
 		5F0533E3159E86C10005FB21 /* ExproMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533DC159E86C10005FB21 /* ExproMember.m */; };
@@ -23,6 +22,7 @@
 		5F0533FF159E873A0005FB21 /* ExproWarehouseWarrantItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533F8159E873A0005FB21 /* ExproWarehouseWarrantItem.m */; };
 		5F053401159E88040005FB21 /* ChenhaitaoMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F053400159E88040005FB21 /* ChenhaitaoMainStoryboard.storyboard */; };
 		5F053414159EE7000005FB21 /* exproposSignout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F053413159EE7000005FB21 /* exproposSignout.m */; };
+		5F2F97F315A14F8600E68455 /* ExproDealItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F97F215A14F8600E68455 /* ExproDealItem.m */; };
 		5F4C39E3158B39650029F86D /* exproposMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C39E2158B39650029F86D /* exproposMainViewController.m */; };
 		5F656F391587432800EE249F /* exproposGoodSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F656F381587432800EE249F /* exproposGoodSelectedViewController.m */; };
 		5F656F3E1587433A00EE249F /* exproposMemberSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F656F3B1587433A00EE249F /* exproposMemberSelectedViewController.m */; };
@@ -107,8 +107,6 @@
 /* Begin PBXFileReference section */
 		4279E151159C265800D50CE5 /* exproposSysLoad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = exproposSysLoad.h; sourceTree = "<group>"; };
 		4279E152159C265800D50CE5 /* exproposSysLoad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exproposSysLoad.m; sourceTree = "<group>"; };
-		5F0533D5159E86C10005FB21 /* ExproDealItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproDealItem.h; sourceTree = "<group>"; };
-		5F0533D6159E86C10005FB21 /* ExproDealItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproDealItem.m; sourceTree = "<group>"; };
 		5F0533D7159E86C10005FB21 /* ExproGoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproGoods.h; sourceTree = "<group>"; };
 		5F0533D8159E86C10005FB21 /* ExproGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproGoods.m; sourceTree = "<group>"; };
 		5F0533D9159E86C10005FB21 /* ExproGoodsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproGoodsType.h; sourceTree = "<group>"; };
@@ -137,6 +135,8 @@
 		5F053400159E88040005FB21 /* ChenhaitaoMainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChenhaitaoMainStoryboard.storyboard; sourceTree = "<group>"; };
 		5F053412159EE7000005FB21 /* exproposSignout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposSignout.h; sourceTree = "<group>"; };
 		5F053413159EE7000005FB21 /* exproposSignout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposSignout.m; sourceTree = "<group>"; };
+		5F2F97F115A14F8600E68455 /* ExproDealItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproDealItem.h; sourceTree = "<group>"; };
+		5F2F97F215A14F8600E68455 /* ExproDealItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproDealItem.m; sourceTree = "<group>"; };
 		5F4C39E1158B39650029F86D /* exproposMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMainViewController.h; sourceTree = "<group>"; };
 		5F4C39E2158B39650029F86D /* exproposMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMainViewController.m; sourceTree = "<group>"; };
 		5F656F371587432700EE249F /* exproposGoodSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposGoodSelectedViewController.h; sourceTree = "<group>"; };
@@ -242,9 +242,9 @@
 				5F0533F8159E873A0005FB21 /* ExproWarehouseWarrantItem.m */,
 				5FC9671D15A03086004C486D /* ExproDeal.h */,
 				5FC9671E15A03086004C486D /* ExproDeal.m */,
+				5F2F97F115A14F8600E68455 /* ExproDealItem.h */,
+				5F2F97F215A14F8600E68455 /* ExproDealItem.m */,
 				5F0533E8159E86F90005FB21 /* expropos.xcdatamodeld */,
-				5F0533D5159E86C10005FB21 /* ExproDealItem.h */,
-				5F0533D6159E86C10005FB21 /* ExproDealItem.m */,
 				5F0533D7159E86C10005FB21 /* ExproGoods.h */,
 				5F0533D8159E86C10005FB21 /* ExproGoods.m */,
 				5F0533D9159E86C10005FB21 /* ExproGoodsType.h */,
@@ -529,7 +529,6 @@
 				5FE99495159423020017D351 /* exproposUpdateDeals.m in Sources */,
 				5F88E16B159962DF00058E1C /* exproposShowDealsSelectedViewController.m in Sources */,
 				5F9A8E3C1599B4870021FE68 /* ExproMultipleTableView.m in Sources */,
-				5F0533E0159E86C10005FB21 /* ExproDealItem.m in Sources */,
 				5F0533E1159E86C10005FB21 /* ExproGoods.m in Sources */,
 				5F0533E2159E86C10005FB21 /* ExproGoodsType.m in Sources */,
 				5F0533E3159E86C10005FB21 /* ExproMember.m in Sources */,
@@ -546,6 +545,7 @@
 				5F053414159EE7000005FB21 /* exproposSignout.m in Sources */,
 				5FC9671F15A03086004C486D /* ExproDeal.m in Sources */,
 				5F8DE18B15A13FFA00CBEB69 /* exproposSign.m in Sources */,
+				5F2F97F315A14F8600E68455 /* ExproDealItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,4 +18,7 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic,strong) exproposSysLoad *sysLoad;
 @property (nonatomic,strong)NSMutableArray *mySelectedGoods;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *FlashButton;
+
+
 @end

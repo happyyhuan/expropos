@@ -18,17 +18,12 @@
         [self addCode:401 info:NSLocalizedString(@"Unauthorized", nil) alert:YES succeed:NO];
         self.succeedTitle = NSLocalizedString(@"UpDateSucceed", nil);
         self.errorTitle = NSLocalizedString(@"UpdateFailed", nil);
-      // self.reserver = self;
-      //  self.succeedCallBack = @selector(ForUpDate);
+       
     }
     return self;
 }
 
--(void)ForUpDate
-{
-    [self updateDeal];
-    
-}
+
 
 -(void)upDateDealStart:(int)start end:(int)end bt:(NSDate*)bt et:(NSDate*)et
 {
@@ -40,8 +35,10 @@
 -(void)updateDeal
 {
     for(ExproDeal *deal in [ExproDeal findAll]){
-        [self requestURL:@"/deals/:gid" method:RKRequestMethodGET object:deal mapping:nil serialMapping:nil];
+        NSString *url = [NSString stringWithFormat:@"/deals/%i",deal.gid.intValue];
+       [self requestURL:url   method:RKRequestMethodGET object:nil mapping:nil serialMapping:nil];
     }
+    
 }
 
 

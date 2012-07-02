@@ -52,23 +52,6 @@
 -(void)didUpDataSuccess
 {
     _showDeals.data = [self searchInLoacl];
-    [_showDeals.tableView reloadData];
-}
-
--(void)dealSelect
-{
-       
-   NSArray *deals = [self searchInLoacl];
-    
-    if([deals count]==0){
-        _update = [[exproposUpdateDeals alloc]init];
-        _update.reserver = self;
-        _update.succeedCallBack = @selector(didUpDataSuccess);
-        [_update upDateDealStart:0 end:100 bt:self.beginDate et:self.endDate];
-        
-    }
-    _showDeals.data = deals;
-    
     [UIView beginAnimations:@"View Flip" context:nil];
     [UIView setAnimationDuration:2];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -81,11 +64,43 @@
                            forView:_showDeals.tableView cache:YES];
     [_showDeals.tableView removeFromSuperview];
     [superView insertSubview:_showDeals.tableView atIndex:0];
-  
+    
     [UIView commitAnimations];
     [_showDeals.tableView reloadData];
     [self.myPopover dismissPopoverAnimated:YES];
+}
+
+
+-(void)dealSelect
+{
+       
+   NSArray *deals = [self searchInLoacl];
     
+    if([deals count]==0){
+        _update = [[exproposUpdateDeals alloc]init];
+        _update.reserver = self;
+        _update.succeedCallBack = @selector(didUpDataSuccess);
+        [_update upDateDealStart:0 end:100 bt:self.beginDate et:self.endDate];
+    }else {
+         _showDeals.data = deals;
+        [UIView beginAnimations:@"View Flip" context:nil];
+        [UIView setAnimationDuration:2];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        
+        UIView *superView  = _showDeals.tableView.superview;
+        
+        
+        
+        
+        [UIView setAnimationTransition:
+         UIViewAnimationTransitionFlipFromRight forView:_showDeals.tableView cache:YES];
+        [_showDeals.tableView removeFromSuperview];
+        [superView insertSubview:_showDeals.tableView atIndex:0];
+        
+        [UIView commitAnimations];
+        [_showDeals.tableView reloadData];
+        [self.myPopover dismissPopoverAnimated:YES];
+    }
 }
 
 
@@ -93,24 +108,66 @@
 -(NSArray*) searchInLoacl
 {
     NSFetchRequest *request = [ExproDeal fetchRequest];
-  /*  NSPredicate *predicate = 
-    [NSPredicate predicateWithFormat:@"(createTime >=%@ and createTime<= %@ )and (customer IN %@) and (type IN %@) and (payType IN %@) and (store IN %@)",self.beginDate,self.endDate,self.members,self.dealItems,self.payTypes,self.stores];
-   // [NSPredicate predicateWithFormat:@"(createTime >=%@ and createTime<= %@ )",self.beginDate,self.endDate];
+    
+        
+   
+   
+    NSPredicate *predicate = nil;
+   
+       
+    NSMutableString *str = [[NSMutableString alloc]initWithString:@"((createTime >= %@) AND (createTime<= %@ ))" ];
+    NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:self.beginDate,self.endDate, nil];
+    if(self.payTypes.count >0 ){
+        [str appendString:@" AND ( payType IN %@ ) "];
+        [params addObject:self.payTypes];
+    }
+    
+    if(self.dealItems.count > 0 ){
+        [str appendString:@" AND ( type IN %@ )"];
+        [params addObject:self.dealItems];
+    }
+    
+    if(self.fromAmoutOfMoney.length >0 ){
+        double amount = self.fromAmoutOfMoney.doubleValue ;
+        if(amount!=0){
+            [str appendString:@" AND ( payment >= %g )"];
+            [params addObject:[NSNumber numberWithDouble:self.fromAmoutOfMoney.doubleValue ]];
+        }
+    }
+    
+    if(self.endAmoutOfMoney.length >0 ){
+        double amount = self.endAmoutOfMoney.doubleValue ;
+        if(amount!=0){
+            [str appendString:@" AND ( payment <= %g )"];
+            [params addObject:[NSNumber numberWithDouble:self.endAmoutOfMoney.doubleValue ]];
+        }
+    }
+    
+    if(self.members.count >0 ){
+        [str appendString:@" AND ( customerID IN %@ ) "];
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:20];
+        for(ExproMember *m in self.members){
+            [arr addObject:m.gid];
+        }
+        [params addObject:arr];
+    }
+    
+    if(self.stores.count >0 ){
+        [str appendString:@" AND ( storeID IN %@ ) "];
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:20];
+        for(ExproStore *s in self.stores){
+            [arr addObject:s.gid];
+        }
+        [params addObject:arr];
+    }
+    
+    predicate = [NSPredicate predicateWithFormat:str argumentArray:params];
+    
+    NSLog(@"%@",predicate);
     request.sortDescriptors = [[NSArray alloc]initWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO], nil];
-    request.predicate = predicate;
-    NSArray *allDeals = [ExproDeal objectsWithFetchRequest:request];
-    NSMutableArray *deals = [[NSMutableArray alloc] initWithCapacity:20];
-    for(ExproDeal *deal in allDeals){
-        double total = 0.0;
-        for(ExproDealItem *item in deal.items){
-            total += item.totalCost.doubleValue;
-        }
-        if(self.fromAmoutOfMoney.doubleValue<=total && total<=self.endAmoutOfMoney.doubleValue){
-            [deals addObject:deal];
-        }
-    }*/
-//      NSMutableArray *deals = [[NSMutableArray alloc] initWithCapacity:20];
-    NSArray * deals = [ExproDeal findAll];
+     request.predicate = predicate;
+    NSArray *deals = [ExproDeal objectsWithFetchRequest:request];
+   
     return deals;
 }
 

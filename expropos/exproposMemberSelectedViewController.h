@@ -19,6 +19,9 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *updateTime;
 
 - (IBAction)update:(UIBarButtonItem *)sender;
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *freshButton;
+
 @property (nonatomic,strong)exproposSysLoad *sysLoad;
 
 @end

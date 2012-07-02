@@ -17,4 +17,6 @@
 @property (nonatomic, retain) NSString * gid;
 @property (strong) exproposSysLoad *sysload;
 
+
+
 @end

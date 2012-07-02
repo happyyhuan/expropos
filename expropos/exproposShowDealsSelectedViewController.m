@@ -72,19 +72,13 @@ dispatch_async(downloadQueue, ^{
     _updateDeals.reserver = self;
     _updateDeals.succeedCallBack =  @selector(updateSuccess);
      [_updateDeals  upDateDealStart:1 end:100 bt:nil et:nil];
-    dispatch_async(dispatch_get_main_queue(), ^{
-      //  [self updateSuccess];      
-    });
 });
 dispatch_release(downloadQueue);    
 }
 
 -(void)updateSuccess
 {
-    dispatch_queue_t updateQueue = dispatch_queue_create("dealItems update", NULL);
-    dispatch_async(updateQueue, ^{
-        [_updateDeals updateDeal];
-        dispatch_async(dispatch_get_main_queue(), ^{
+    
             NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
             NSMutableArray *removeItems = [NSMutableArray arrayWithCapacity:2];
             for(UIBarButtonItem *item in items){
@@ -99,9 +93,6 @@ dispatch_release(downloadQueue);
             exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
             self.data = [s searchInLoacl];
             [self.tableView reloadData];
-        });
-    });
-
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -135,7 +126,6 @@ dispatch_release(downloadQueue);
     s.showDeals = self;
     _updateDeals = [[exproposUpdateDeals alloc]init];
  
-    
 }
 
 -(void)showSelected:(id)sender
@@ -171,14 +161,14 @@ dispatch_release(downloadQueue);
 
 - (NSInteger)numberOfSegmentInMultipleTableView:(ExproMultipleTableView *)tableView
 {
-    return 7;
+    return 6;
 }
 - (CGFloat)multipleTableView:(ExproMultipleTableView *)tableView proportionForSegment:(NSInteger)segment
 {
-    if(segment == 0){
-        return 0.25;
+    if(segment == 5){
+        return 0.20;
     }else {
-        return 0.125;
+        return 0.16;
     }
 }
 - (NSString *)multipleTableView:(ExproMultipleTableView *)tableView titleForSegment:(NSInteger)segment
@@ -202,9 +192,7 @@ dispatch_release(downloadQueue);
         case 5:
             return @"网点";
             break;
-        case 6:
-            return @"备注";
-            break;
+        
         default:
             break;
     }
@@ -234,10 +222,7 @@ dispatch_release(downloadQueue);
         {
             UILabel *menoy = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _width, 44)];
             double menoys = 0.0;
-            NSSet *dealItems = deal.items;
-            for(ExproDealItem *item in dealItems){
-                menoys += item.totalCost.doubleValue;
-            }
+            menoys =  deal.payment.doubleValue;
             menoy.text = [NSString stringWithFormat:@"%g",menoys];
             if(segment%2==0){
                 menoy.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];

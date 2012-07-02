@@ -2,8 +2,8 @@
 //  ExproDealItem.h
 //  expropos
 //
-//  Created by ep3 on 12-6-21.
-//  Copyright (c) 2012年 expro. All rights reserved.
+//  Created by haitao chen on 12-7-2.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,9 +15,11 @@
 
 @property (nonatomic, retain) NSNumber * closingCost;
 @property (nonatomic, retain) NSNumber * gid;
+@property (nonatomic, retain) NSNumber * lid;
 @property (nonatomic, retain) NSNumber * num;
 @property (nonatomic, retain) NSNumber * totalCost;
-@property (nonatomic, retain) NSNumber * lid;
+@property (nonatomic, retain) NSNumber * dealID;
+@property (nonatomic, retain) NSNumber * goodsID;
 @property (nonatomic, retain) ExproDeal *deal;
 @property (nonatomic, retain) ExproGoods *goods;
 

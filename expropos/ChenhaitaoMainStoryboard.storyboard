@@ -100,6 +100,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="freshButton" destination="hxJ-qN-ebL" id="fDg-ea-RLx"/>
                         <outlet property="searchBar" destination="jm9-Xa-fcT" id="AGB-4s-Abt"/>
                         <outlet property="updateTime" destination="gic-HZ-hvI" id="ea0-Pw-M9q"/>
                     </connections>
@@ -381,6 +382,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="FlashButton" destination="34o-cs-8Sq" id="Pra-08-fwG"/>
                         <outlet property="searchBar" destination="2cP-DD-5V0" id="9Xi-lI-8Tx"/>
                     </connections>
                 </tableViewController>

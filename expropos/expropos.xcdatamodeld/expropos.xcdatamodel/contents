@@ -20,7 +20,9 @@
     </entity>
     <entity name="ExproDealItem" representedClassName="ExproDealItem" syncable="YES">
         <attribute name="closingCost" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="dealID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="goodsID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="lid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="num" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="totalCost" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -157,7 +159,7 @@
     </entity>
     <elements>
         <element name="ExproDeal" positionX="160" positionY="192" width="128" height="285"/>
-        <element name="ExproDealItem" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="ExproDealItem" positionX="160" positionY="192" width="128" height="180"/>
         <element name="ExproGoods" positionX="340" positionY="-63" width="128" height="210"/>
         <element name="ExproGoodsType" positionX="243" positionY="153" width="128" height="180"/>
         <element name="ExproMember" positionX="-218" positionY="357" width="128" height="270"/>

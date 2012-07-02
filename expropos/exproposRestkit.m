@@ -25,6 +25,7 @@
 + (void) router:(RKObjectRouter *)router 
 {
     [router routeClass:[ExproMerchant class] toResourcePath:@"/sync/merchant/:gid" forMethod:RKRequestMethodGET];
+    [router routeClass:[ExproDeal class] toResourcePath:@"/deals/:gid" forMethod:RKRequestMethodGET];
 }
 
 + (void) objectMapWithManager:(RKObjectManager *)objectManager 
@@ -107,19 +108,26 @@
     [dealMapping mapKeyPath:@"storeID" toRelationship:@"store" withMapping:storeMapping];
     [objectManager.mappingProvider setMapping:dealMapping forKeyPath:@"deal"];
  
+ //   [objectManager.mappingProvider setEntry:dealMapping forResourcePathPattern:@"/deals"];
 //    [storeMapping mapKeyPath:@"deal" toRelationship:@"deals" withMapping:dealMapping];
     
  
     
     RKManagedObjectMapping *dealItemMapping = [RKManagedObjectMapping mappingForClass:[ExproDealItem class] inManagedObjectStore:objectManager.objectStore];
     dealItemMapping.primaryKeyAttribute = @"gid";
-    [dealItemMapping mapKeyPathsToAttributes:@"_id",@"gid",@"closing_cost",@"closingCost",@"total_cost",@"totalCost", nil];
+    [dealItemMapping mapKeyPathsToAttributes:@"_id",@"gid",@"closing_cost",@"closingCost",@"total_cost",@"totalCost", 
+     @"deal_id",@"deal_ID",@"goods_id",@"goodsID",nil];
     [dealItemMapping mapAttributes:@"num", nil];
-    [dealItemMapping connectRelationship:@"deal" withObjectForPrimaryKeyAttribute:@"deal_id"];
-    [dealItemMapping connectRelationship:@"goods" withObjectForPrimaryKeyAttribute:@"goods_id"];
+    [dealItemMapping connectRelationship:@"deal" withObjectForPrimaryKeyAttribute:@"dealID"];
+    [dealItemMapping connectRelationship:@"goods" withObjectForPrimaryKeyAttribute:@"goodsID"];
+    [dealItemMapping mapKeyPath:@"dealID" toRelationship:@"deal" withMapping:dealMapping];
+    [dealItemMapping mapKeyPath:@"goodsID" toRelationship:@"goods" withMapping:goodsMapping];
+    
+    
     [objectManager.mappingProvider setMapping:dealItemMapping forKeyPath:@"deal_item"];
     
-    [dealItemMapping mapKeyPath:@"deal" toRelationship:@"deal" withMapping:dealMapping];
+    
+  //  [dealItemMapping mapKeyPath:@"deal" toRelationship:@"deal" withMapping:dealMapping];
    
     
     

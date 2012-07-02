@@ -27,6 +27,7 @@
 @synthesize viewController = _viewController;
 @synthesize sysLoad = _sysLoad;
 @synthesize mySelectedGoods = _mySelectedGoods;
+@synthesize FlashButton = _FlashButton;
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -80,6 +81,7 @@
     self.searchData = nil;
     self.searchBar = nil;
     self.merchant = nil;
+    [self setFlashButton:nil];
     [super viewDidUnload];
 }
 
@@ -382,21 +384,25 @@
 #pragma mark -
 
 - (IBAction)update:(UIBarButtonItem *)sender {
-    NSLog(@"%@",self.navigationItem.rightBarButtonItem.title);
+  
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-    NSLog(@"%@",self.navigationItem.rightBarButtonItem);
+    
     dispatch_queue_t downloadQueue = dispatch_queue_create("information downloader", NULL);
     dispatch_async(downloadQueue, ^{
+        _sysLoad.reserver = self;
+        _sysLoad.succeedCallBack = @selector(updateSuccess);
         exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
         [_sysLoad loadSysData:appdelegate.gid  completion:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.navigationItem.rightBarButtonItem = sender;
-             [self.tableView reloadData];
-        });
     });
     dispatch_release(downloadQueue);    
+}
+
+-(void)updateSuccess
+{
+    self.navigationItem.rightBarButtonItem = _FlashButton;
+    [self.tableView reloadData];
 }
 
 @end
