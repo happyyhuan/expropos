@@ -23,6 +23,10 @@
 {
     // Override point for customization after application launch.
     [exproposRestkit InitRestKit];
+   // self.sysload = [exproposSysLoad init];
+    //[self.sysload loadSysData:@"1" completion:nil];
+    
+    
     return YES;
 }
 							

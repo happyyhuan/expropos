@@ -97,9 +97,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="loginview" destination="GZD-1B-Abm" id="owV-ve-c9B"/>
-                        <outlet property="passwordField" destination="8HH-bK-FFg" id="aTI-OX-OAC"/>
-                        <outlet property="userField" destination="dzy-52-2B7" id="1p8-Ms-Lm1"/>
-                        <segue destination="fA9-9Q-Jb0" kind="modal" id="uKr-Fc-lpU"/>
+                        <outlet property="passwordField" destination="dzy-52-2B7" id="jML-IR-Taf"/>
+                        <outlet property="userField" destination="8HH-bK-FFg" id="haX-6D-7dx"/>
+                        <segue destination="fA9-9Q-Jb0" kind="modal" identifier="successed" id="uKr-Fc-lpU"/>
                     </connections>
                 </viewController>
             </objects>
