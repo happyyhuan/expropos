@@ -39,13 +39,18 @@
     user.cellphone = cellphone;
     user.password = password;
     
-    RKObjectMapping *signinSerializationMapping = [RKObjectMapping mappingForClass:[ExproUser class]];
-    [signinSerializationMapping mapAttributes:@"cellphone", @"password", nil];
+    NSDictionary *prams = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:1],@"org",user.cellphone,@"cellphone",user.password,@"password", nil];
+    
+//    RKManagedObjectMapping* signinMapping = [RKManagedObjectMapping mappingForClass:[ExproUser class] inManagedObjectStore:[[RKObjectManager sharedManager] objectStore]];
+    RKObjectMapping *signinMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [signinMapping mapKeyPathsToAttributes:@"_id", @"gid", nil];
+    [signinMapping mapAttributes:@"name", @"sex", nil];
 
     [[RKObjectManager sharedManager] sendObject:user toResourcePath:@"/signin" usingBlock:^(RKObjectLoader *loader) {                    
         loader.method = RKRequestMethodPOST;
         loader.delegate = self;
-        loader.serializationMapping = signinSerializationMapping;
+        loader.objectMapping = signinMapping;
+        loader.params = prams;
     }]; 
 }
 @end

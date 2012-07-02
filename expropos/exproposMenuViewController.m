@@ -88,6 +88,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.mainViewController.masterPopoverController dismissPopoverAnimated:YES];
     int row = indexPath.row;
     NSString *menu = [self.menus objectAtIndex:row];
     if([menu isEqualToString:@"交易查询"]){

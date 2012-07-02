@@ -32,31 +32,6 @@
     
     [exproposRestkit InitRestKit];
     
-        //test
-       RKObjectManager *manager = [RKObjectManager sharedManager];
-        
-        
-        for(int i=0;i<10;i++){
-            ExproGoodsType *type = [ExproGoodsType object];
-            type.gid = [NSNumber numberWithInt:i];
-            type.name = [NSString stringWithFormat:@"type%i",i];
-            [manager.objectStore save:nil];
-        }
-        
-        
-        NSArray *d = [ExproGoodsType findAll] ;
-        for(int i=0;i<10;i++){
-            ExproGoods *g = [ExproGoods object];
-            g.gid = [NSNumber numberWithInt:i];
-            g.name = [NSString stringWithFormat:@"goods%i",i];
-            g.type = [d objectAtIndex:i];
-            g.code = [NSString stringWithFormat:@"cod%i",i];
-            [manager.objectStore save:nil];
-        }
-        
-   
-
-    
     // Override point for customization after application launch.
     
     return YES;

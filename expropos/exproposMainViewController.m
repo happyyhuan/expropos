@@ -5,7 +5,7 @@
 
 
 @interface exproposMainViewController ()
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
 @end
 
 @implementation exproposMainViewController
@@ -76,6 +76,7 @@
     self.menuTool.items = data;
     
     self.masterPopoverController = pc;
+   // [self.splitViewController.viewControllers objectAtIndex:0]
 }
 
 

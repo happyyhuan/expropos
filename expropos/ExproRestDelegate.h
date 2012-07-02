@@ -13,6 +13,7 @@
 #define kRestDefaultMapping nil
 #endif
 
+
 @interface ExproHttpCodeOption : NSObject {
     int _statusCode;
     NSString *_info;

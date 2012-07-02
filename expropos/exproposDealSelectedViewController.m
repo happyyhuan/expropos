@@ -49,6 +49,11 @@
     }
     return self;
 }
+-(void)didUpDataSuccess
+{
+    _showDeals.data = [self searchInLoacl];
+    [_showDeals.tableView reloadData];
+}
 
 -(void)dealSelect
 {
@@ -57,8 +62,10 @@
     
     if([deals count]==0){
         _update = [[exproposUpdateDeals alloc]init];
+        _update.reserver = self;
+        _update.succeedCallBack = @selector(didUpDataSuccess);
         [_update upDateDealStart:0 end:100 bt:self.beginDate et:self.endDate];
-        deals = [self searchInLoacl];
+        
     }
     _showDeals.data = deals;
     
@@ -86,8 +93,9 @@
 -(NSArray*) searchInLoacl
 {
     NSFetchRequest *request = [ExproDeal fetchRequest];
-    NSPredicate *predicate = 
+  /*  NSPredicate *predicate = 
     [NSPredicate predicateWithFormat:@"(createTime >=%@ and createTime<= %@ )and (customer IN %@) and (type IN %@) and (payType IN %@) and (store IN %@)",self.beginDate,self.endDate,self.members,self.dealItems,self.payTypes,self.stores];
+   // [NSPredicate predicateWithFormat:@"(createTime >=%@ and createTime<= %@ )",self.beginDate,self.endDate];
     request.sortDescriptors = [[NSArray alloc]initWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO], nil];
     request.predicate = predicate;
     NSArray *allDeals = [ExproDeal objectsWithFetchRequest:request];
@@ -100,7 +108,9 @@
         if(self.fromAmoutOfMoney.doubleValue<=total && total<=self.endAmoutOfMoney.doubleValue){
             [deals addObject:deal];
         }
-    }
+    }*/
+//      NSMutableArray *deals = [[NSMutableArray alloc] initWithCapacity:20];
+    NSArray * deals = [ExproDeal findAll];
     return deals;
 }
 

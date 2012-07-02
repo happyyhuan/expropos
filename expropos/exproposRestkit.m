@@ -18,6 +18,7 @@
 #import "ExproRole.h"
 #import "ExproRouteTable.h"
 #import "ExproDeal.h"
+#import "ExproStore.h"
 
 @implementation exproposRestkit
 
@@ -67,9 +68,9 @@
     memberMapping.primaryKeyAttribute = @"gid";
     [memberMapping mapKeyPathsToAttributes:@"_id", @"gid", @"pet_name", @"petName", @"create_time", @"createTime", @"due_time", @"dueTime", nil];
     [memberMapping mapAttributes:@"state", @"privacy", @"point", @"savings", @"comment", nil];
-    [memberMapping connectRelationship:@"user" withObjectForPrimaryKeyAttribute:@"user_id"];
-    [memberMapping connectRelationship:@"org" withObjectForPrimaryKeyAttribute:@"org_id"];
-    [memberMapping connectRelationship:@"role" withObjectForPrimaryKeyAttribute:@"role_id"];
+//    [memberMapping connectRelationship:@"user" withObjectForPrimaryKeyAttribute:@"user_id"];
+//    [memberMapping connectRelationship:@"org" withObjectForPrimaryKeyAttribute:@"org_id"];
+//    [memberMapping connectRelationship:@"role" withObjectForPrimaryKeyAttribute:@"role_id"];
     [objectManager.mappingProvider setMapping:memberMapping forKeyPath:@"member"];
 
     RKManagedObjectMapping* userMapping = [RKManagedObjectMapping mappingForClass:[ExproUser class] inManagedObjectStore:objectManager.objectStore];
@@ -86,16 +87,27 @@
     [merchantMapping mapKeyPath:@"goods" toRelationship:@"goods" withMapping:goodsMapping];
     [objectManager.mappingProvider setMapping:merchantMapping forKeyPath:@"merchant"];
 
+    RKManagedObjectMapping *storeMapping = [RKManagedObjectMapping mappingForClass:[ExproStore class] inManagedObjectStore:objectManager.objectStore];
+    storeMapping.primaryKeyAttribute = @"gid";
+    [storeMapping mapKeyPathsToAttributes:@"_id",@"gid",@"name",@"name", nil];
+    
+    [objectManager.mappingProvider setMapping:storeMapping forKeyPath:@"store"];
+    
     
     RKManagedObjectMapping *dealMapping = [RKManagedObjectMapping mappingForClass:[ExproDeal class] inManagedObjectStore:objectManager.objectStore];
     dealMapping.primaryKeyAttribute = @"gid";
-    [dealMapping mapKeyPathsToAttributes:@"_id",@"gid",@"type",@"type",@"state",@"state",@"payment",@"payment",
+    [dealMapping mapKeyPathsToAttributes:@"_id",@"gid",@"store_id",@"storeID",@"dealer_id",@"dealerID",@"customer_id",@"customerID",@"type",@"type",@"state",@"state",@"payment",@"payment",
     @"cash",@"cash",@"point",@"point",@"pay_type",@"payType",@"create_time",@"createTime",nil];
-    [dealMapping connectRelationship:@"store" withObjectForPrimaryKeyAttribute:@"store_id"];
-    [dealMapping connectRelationship:@"dealer" withObjectForPrimaryKeyAttribute:@"dealer_id"];
-    [dealMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"customer_id"];
+    [dealMapping connectRelationship:@"store" withObjectForPrimaryKeyAttribute:@"storeID"];
+    [dealMapping connectRelationship:@"dealer" withObjectForPrimaryKeyAttribute:@"dealerID"];
+    [dealMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"customerID"];
+    
+    [dealMapping mapKeyPath:@"dealerID" toRelationship:@"dealer" withMapping:memberMapping];
+    [dealMapping mapKeyPath:@"customerID" toRelationship:@"customer" withMapping:memberMapping];
+    [dealMapping mapKeyPath:@"storeID" toRelationship:@"store" withMapping:storeMapping];
     [objectManager.mappingProvider setMapping:dealMapping forKeyPath:@"deal"];
-    [objectManager.mappingProvider setObjectMapping:dealMapping forResourcePathPattern:@"/deals"];
+ 
+//    [storeMapping mapKeyPath:@"deal" toRelationship:@"deals" withMapping:dealMapping];
     
  
     
@@ -107,9 +119,8 @@
     [dealItemMapping connectRelationship:@"goods" withObjectForPrimaryKeyAttribute:@"goods_id"];
     [objectManager.mappingProvider setMapping:dealItemMapping forKeyPath:@"deal_item"];
     
-    [dealMapping hasMany:@"items" withMapping:dealItemMapping];
-    [dealItemMapping hasOne:@"deal" withMapping:dealMapping];
-    
+    [dealItemMapping mapKeyPath:@"deal" toRelationship:@"deal" withMapping:dealMapping];
+   
     
     
     [[self class] router:objectManager.router];

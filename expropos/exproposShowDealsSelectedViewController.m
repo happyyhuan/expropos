@@ -12,6 +12,9 @@
 #import "exproposDealSelectedViewController.h"
 
 @interface exproposShowDealsSelectedViewController ()
+@property (nonatomic,strong) UIActivityIndicatorView *spinner;
+@property (nonatomic,strong) UIBarButtonItem *spinnerIteam;
+@property (nonatomic,strong)  UIBarButtonItem *updateItem;
 
 @end
 
@@ -22,6 +25,9 @@
 @synthesize tableView = _tableView;
 @synthesize mainViewController = _mainViewController;
 @synthesize updateDeals = _updateDeals;
+@synthesize spinner = _spinner;
+@synthesize spinnerIteam = _spinnerIteam;
+@synthesize updateItem = _updateItem;
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -34,53 +40,68 @@
             num = 1;
         }
     }
-    
-    UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithTitle:@"更新" style: UIBarButtonItemStyleBordered   target:self action:@selector(updates:)];
-    [items insertObject:item2 atIndex:items.count -1];
-    
     [items insertObject:item atIndex:num];
-    self.mainViewController.menuTool.items = items;
+    if(_updateItem == nil){
+        UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithTitle:@"更新" style: UIBarButtonItemStyleBordered   target:self action:@selector(updates:)];
+        [items insertObject:item2 atIndex:items.count -1];
+        self.mainViewController.menuTool.items = items;
+    }else {
+        [items insertObject:_spinnerIteam atIndex:items.count-1];
+        self.mainViewController.menuTool.items = items;
+    }
 }
 
 -(void)updates:(UIBarButtonItem *)sender {
 
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [spinner startAnimating];
-    UIBarButtonItem *spinnerIteam = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [_spinner startAnimating];
+    _spinnerIteam = [[UIBarButtonItem alloc] initWithCustomView:_spinner];
     NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
-    UIBarButtonItem *updateItem = nil;
+   
     for(UIBarButtonItem *item in items){
         if([item.title isEqualToString:@"更新"]){
-            updateItem = item;
+            _updateItem = item;
         }
     }
-    [items removeObject:updateItem];
-    [items insertObject:spinnerIteam atIndex:items.count -1];
+    [items removeObject:_updateItem];
+    [items insertObject:_spinnerIteam atIndex:items.count -1];
     self.mainViewController.menuTool.items = items;
-    sender = [[UIBarButtonItem alloc] initWithCustomView:spinner];
 
 dispatch_queue_t downloadQueue = dispatch_queue_create("deals downloader", NULL);
 dispatch_async(downloadQueue, ^{
-     exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
-     [_updateDeals  upDateDealStart:0 end:100 bt:nil et:nil];
-    [_updateDeals updateDeal];
-    _data = [s searchInLoacl];
+    _updateDeals.reserver = self;
+    _updateDeals.succeedCallBack =  @selector(updateSuccess);
+     [_updateDeals  upDateDealStart:1 end:100 bt:nil et:nil];
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
-        NSMutableArray *removeItems = [NSMutableArray arrayWithCapacity:2];
-        for(UIBarButtonItem *item in items){
-            if(item == spinnerIteam){
-                [removeItems addObject: item];
-            }
-        }
-        [items removeObjectsInArray:removeItems];
-        [items insertObject:updateItem atIndex:items.count-1];
-         self.mainViewController.menuTool.items = items;
-        
-        [self.tableView reloadData];
+      //  [self updateSuccess];      
     });
 });
 dispatch_release(downloadQueue);    
+}
+
+-(void)updateSuccess
+{
+    dispatch_queue_t updateQueue = dispatch_queue_create("dealItems update", NULL);
+    dispatch_async(updateQueue, ^{
+        [_updateDeals updateDeal];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
+            NSMutableArray *removeItems = [NSMutableArray arrayWithCapacity:2];
+            for(UIBarButtonItem *item in items){
+                if(item == _spinnerIteam){
+                    [removeItems addObject: item];
+                }
+            }
+            [items removeObjectsInArray:removeItems];
+            [items insertObject:_updateItem atIndex:items.count-1];
+            self.mainViewController.menuTool.items = items;
+            _spinnerIteam = nil;
+            exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
+            self.data = [s searchInLoacl];
+            [self.tableView reloadData];
+        });
+    });
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -97,6 +118,7 @@ dispatch_release(downloadQueue);
         }
     }
     [items removeObjectsInArray:removeItems];
+    [items removeObject:self.spinnerIteam];
     self.mainViewController.menuTool.items = items;
 }
 

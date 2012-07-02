@@ -9,6 +9,7 @@
 #import "ExproRestDelegate.h"
 //#import "AppDelegate.h"
 
+static NSString *gcookie;
 @implementation ExproHttpCodeOption
 
 @synthesize statusCode = _statusCode;
@@ -203,7 +204,7 @@
             loader.objectMapping = aMapping;
         }
         if (self.cookie) {
-            [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Set-Cookie"];
+            [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
         }
         self.request = loader;
     }];
@@ -222,19 +223,21 @@
             loader.objectMapping = aMapping;
         }
         if (self.cookie) {
-            [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Set-Cookie"];
+            [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
         }
         self.request = loader;
     }];
 }
 
 - (NSString *) cookie {
-    return _cookie;
+   // return _cookie;
+    return gcookie;
 }
 
 - (void) setCookie:(NSString *)cookie {
-    if (![_cookie isEqualToString:cookie]) {
+  /*  if (![_cookie isEqualToString:cookie]) {
         _cookie = cookie;
-    }
+    }*/
+    gcookie = cookie;
 }
 @end

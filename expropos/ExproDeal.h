@@ -2,8 +2,8 @@
 //  ExproDeal.h
 //  expropos
 //
-//  Created by ep3 on 12-6-21.
-//  Copyright (c) 2012年 expro. All rights reserved.
+//  Created by haitao chen on 12-7-1.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -16,12 +16,15 @@
 @property (nonatomic, retain) NSNumber * cash;
 @property (nonatomic, retain) NSDate * createTime;
 @property (nonatomic, retain) NSNumber * gid;
+@property (nonatomic, retain) NSNumber * lid;
 @property (nonatomic, retain) NSNumber * payment;
 @property (nonatomic, retain) NSNumber * payType;
 @property (nonatomic, retain) NSNumber * point;
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSNumber * type;
-@property (nonatomic, retain) NSNumber * lid;
+@property (nonatomic, retain) NSNumber * storeID;
+@property (nonatomic, retain) NSNumber * dealerID;
+@property (nonatomic, retain) NSNumber * customerID;
 @property (nonatomic, retain) ExproMember *customer;
 @property (nonatomic, retain) ExproMember *dealer;
 @property (nonatomic, retain) NSSet *items;

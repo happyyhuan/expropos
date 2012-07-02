@@ -18,20 +18,23 @@
         [self addCode:401 info:NSLocalizedString(@"Unauthorized", nil) alert:YES succeed:NO];
         self.succeedTitle = NSLocalizedString(@"UpDateSucceed", nil);
         self.errorTitle = NSLocalizedString(@"UpdateFailed", nil);
-        self.reserver = self;
+      // self.reserver = self;
+      //  self.succeedCallBack = @selector(ForUpDate);
     }
     return self;
 }
 
-
+-(void)ForUpDate
+{
+    [self updateDeal];
+    
+}
 
 -(void)upDateDealStart:(int)start end:(int)end bt:(NSDate*)bt et:(NSDate*)et
 {
  //start=起始行数&limit=每页显示行数&bt=交易发生时间起点&et=交易发生时间的截至时间&sidx=排序字段名&sord=排序方式asc,desc
     NSDictionary *params = [[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInt: 1] ,@"start",[NSNumber numberWithInt:100],@"limit", nil];
- ;
     [self requestURL:@"/deals" method:RKRequestMethodGET params:params mapping:nil];
-    
 }
 
 -(void)updateDeal
