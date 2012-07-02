@@ -41,7 +41,6 @@
         }
     }
     [items insertObject:item atIndex:num];
-    NSLog(@"spi  = %@",_spinnerIteam);
     if(_spinnerIteam == nil){
         UIBarButtonItem *item2 = [[UIBarButtonItem alloc]initWithTitle:@"更新" style: UIBarButtonItemStyleBordered   target:self action:@selector(updates:)];
         [items insertObject:item2 atIndex:items.count -1];
