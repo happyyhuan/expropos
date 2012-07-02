@@ -10,6 +10,14 @@
 #import "exproposAppDelegate.h"
 #import "exproposRestkit.h"
 #import "exproposSysLoad.h"
+#import "ExproRole.h"
+#import "ExproMember.h"
+#import "ExproUser.h"
+#import "ExproStore.h"
+#import "ExproGoods.h"
+#import "ExproGoodsType.h"
+
+
 
 @implementation exproposAppDelegate
 
@@ -21,10 +29,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    
     [exproposRestkit InitRestKit];
+
    // self.sysload = [exproposSysLoad init];
     //[self.sysload loadSysData:@"1" completion:nil];
+    
     
     
     return YES;

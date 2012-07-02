@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Restkit/Restkit.h>
+#import "exproposSignout.h"
 
-@interface exproposMainViewController : UIViewController
+@interface exproposMainViewController : UIViewController <UISplitViewControllerDelegate,RKRequestDelegate>
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *menu;
+@property (strong, nonatomic) IBOutlet UIToolbar *menuTool;
+@property (strong, nonatomic) exproposSignout *signout;
+@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
+
+- (IBAction)logout:(UIBarButtonItem *)sender;
+
+-(void)didSignout;
 @end

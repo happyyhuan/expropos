@@ -9,7 +9,7 @@
 #import "exproposRestkit.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/CoreData.h>
-
+#import "ExproDealItem.h"
 #import "ExproMerchant.h"
 #import "ExproMember.h"
 #import "ExproUser.h"
@@ -17,12 +17,15 @@
 #import "ExproGoodsType.h"
 #import "ExproRole.h"
 #import "ExproRouteTable.h"
+#import "ExproDeal.h"
+#import "ExproStore.h"
 
 @implementation exproposRestkit
 
 + (void) router:(RKObjectRouter *)router 
 {
     [router routeClass:[ExproMerchant class] toResourcePath:@"/sync/merchant/:gid" forMethod:RKRequestMethodGET];
+    [router routeClass:[ExproDeal class] toResourcePath:@"/deals/:gid" forMethod:RKRequestMethodGET];
 }
 
 + (void) objectMapWithManager:(RKObjectManager *)objectManager 
@@ -66,9 +69,9 @@
     memberMapping.primaryKeyAttribute = @"gid";
     [memberMapping mapKeyPathsToAttributes:@"_id", @"gid", @"pet_name", @"petName", @"create_time", @"createTime", @"due_time", @"dueTime", nil];
     [memberMapping mapAttributes:@"state", @"privacy", @"point", @"savings", @"comment", nil];
-    [memberMapping connectRelationship:@"user" withObjectForPrimaryKeyAttribute:@"user_id"];
-    [memberMapping connectRelationship:@"org" withObjectForPrimaryKeyAttribute:@"org_id"];
-    [memberMapping connectRelationship:@"role" withObjectForPrimaryKeyAttribute:@"role_id"];
+//    [memberMapping connectRelationship:@"user" withObjectForPrimaryKeyAttribute:@"user_id"];
+//    [memberMapping connectRelationship:@"org" withObjectForPrimaryKeyAttribute:@"org_id"];
+//    [memberMapping connectRelationship:@"role" withObjectForPrimaryKeyAttribute:@"role_id"];
     [objectManager.mappingProvider setMapping:memberMapping forKeyPath:@"member"];
 
     RKManagedObjectMapping* userMapping = [RKManagedObjectMapping mappingForClass:[ExproUser class] inManagedObjectStore:objectManager.objectStore];
@@ -84,6 +87,48 @@
     [merchantMapping mapKeyPath:@"member" toRelationship:@"members" withMapping:memberMapping];
     [merchantMapping mapKeyPath:@"goods" toRelationship:@"goods" withMapping:goodsMapping];
     [objectManager.mappingProvider setMapping:merchantMapping forKeyPath:@"merchant"];
+
+    RKManagedObjectMapping *storeMapping = [RKManagedObjectMapping mappingForClass:[ExproStore class] inManagedObjectStore:objectManager.objectStore];
+    storeMapping.primaryKeyAttribute = @"gid";
+    [storeMapping mapKeyPathsToAttributes:@"_id",@"gid",@"name",@"name", nil];
+    
+    [objectManager.mappingProvider setMapping:storeMapping forKeyPath:@"store"];
+    
+    
+    RKManagedObjectMapping *dealMapping = [RKManagedObjectMapping mappingForClass:[ExproDeal class] inManagedObjectStore:objectManager.objectStore];
+    dealMapping.primaryKeyAttribute = @"gid";
+    [dealMapping mapKeyPathsToAttributes:@"_id",@"gid",@"store_id",@"storeID",@"dealer_id",@"dealerID",@"customer_id",@"customerID",@"type",@"type",@"state",@"state",@"payment",@"payment",
+    @"cash",@"cash",@"point",@"point",@"pay_type",@"payType",@"create_time",@"createTime",nil];
+    [dealMapping connectRelationship:@"store" withObjectForPrimaryKeyAttribute:@"storeID"];
+    [dealMapping connectRelationship:@"dealer" withObjectForPrimaryKeyAttribute:@"dealerID"];
+    [dealMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"customerID"];
+    
+    [dealMapping mapKeyPath:@"dealerID" toRelationship:@"dealer" withMapping:memberMapping];
+    [dealMapping mapKeyPath:@"customerID" toRelationship:@"customer" withMapping:memberMapping];
+    [dealMapping mapKeyPath:@"storeID" toRelationship:@"store" withMapping:storeMapping];
+    [objectManager.mappingProvider setMapping:dealMapping forKeyPath:@"deal"];
+ 
+ //   [objectManager.mappingProvider setEntry:dealMapping forResourcePathPattern:@"/deals"];
+//    [storeMapping mapKeyPath:@"deal" toRelationship:@"deals" withMapping:dealMapping];
+    
+ 
+    
+    RKManagedObjectMapping *dealItemMapping = [RKManagedObjectMapping mappingForClass:[ExproDealItem class] inManagedObjectStore:objectManager.objectStore];
+    dealItemMapping.primaryKeyAttribute = @"gid";
+    [dealItemMapping mapKeyPathsToAttributes:@"_id",@"gid",@"closing_cost",@"closingCost",@"total_cost",@"totalCost", 
+     @"deal_id",@"deal_ID",@"goods_id",@"goodsID",nil];
+    [dealItemMapping mapAttributes:@"num", nil];
+    [dealItemMapping connectRelationship:@"deal" withObjectForPrimaryKeyAttribute:@"dealID"];
+    [dealItemMapping connectRelationship:@"goods" withObjectForPrimaryKeyAttribute:@"goodsID"];
+    [dealItemMapping mapKeyPath:@"dealID" toRelationship:@"deal" withMapping:dealMapping];
+    [dealItemMapping mapKeyPath:@"goodsID" toRelationship:@"goods" withMapping:goodsMapping];
+    
+    
+    [objectManager.mappingProvider setMapping:dealItemMapping forKeyPath:@"deal_item"];
+    
+    
+  //  [dealItemMapping mapKeyPath:@"deal" toRelationship:@"deal" withMapping:dealMapping];
+   
     
     
     [[self class] router:objectManager.router];

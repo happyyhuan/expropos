@@ -9,6 +9,9 @@
 #import "exproposViewController.h"
 #import "exproposSign.h"
 #import "ExproRestDelegate.h"
+#import "exproposAppDelegate.h"
+#import "ExproUser.h"
+
 
 #import "exproposAppDelegate.h"
 #import "exproposMainViewController.h"
@@ -41,8 +44,8 @@
 }
 @synthesize sign = _sign;
 - (IBAction)login:(id)sender {    
-    username = _userField.text;
-    password = _passwordField.text;
+    password = _userField.text;
+     username= _passwordField.text;
     if (username && [username length] && password && [password length]) {
         self.sign = [[exproposSign alloc]init];
         _sign.reserver = self;
@@ -60,6 +63,7 @@
 }
 
 - (void) signinSucceed:(id)object {
+//    NSLog(@"my login:%@ sex:%d, gid:%qu", user.name, user.sex.intValue, user.gid.unsignedLongLongValue);
     NSDictionary *user = (NSDictionary *)object;
     NSLog(@"signin user:%@, sex:%@", [user objectForKey:@"name"], [user objectForKey:@"sex"]);   
     exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
@@ -67,9 +71,9 @@
     NSLog(@"appDelegatename:%@",appDelegate.userName);
     appDelegate.gid =[user objectForKey:@"gid"];
     NSLog(@"appDelegategid:%@",appDelegate.gid);
-    [self performSegueWithIdentifier:@"successed" sender:self];
+   // [self performSegueWithIdentifier:@"successed" sender:self];
     
-    
+    [self didLoginSuccess];
     
 //    ExproUser *person=(ExproUser *)[NSEntityDescription insertNewObjectForEntityForName:@"ExproUser" inManagedObjectContext:[self managedObjectContext]]; 
 //    person.name=@"张三";
@@ -100,6 +104,9 @@
 - (void) signinFailed:(id)object {
     _userField.text = nil;
     _passwordField.text=nil;
+    
+    
+    
 //    ExproUser *person=(ExproUser *)[NSEntityDescription insertNewObjectForEntityForName:@"ExproUser" inManagedObjectContext:self.managedObjectContext]; 
 //    person.name=@"张三";
 //    
@@ -123,10 +130,11 @@
     
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.loginview.hidden = true;  
+    //self.loginview.hidden = true;  
 }
 
 - (void)viewDidUnload
@@ -138,6 +146,15 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+-(void)didLoginSuccess
+{
+        
+        exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        UISplitViewController *splitView = [self.storyboard instantiateViewControllerWithIdentifier:@"splitView"];
+        appDelegate.window.rootViewController = splitView;
+        
 }
 
 @end
