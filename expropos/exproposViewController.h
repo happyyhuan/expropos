@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "exproposMainViewController.h"
 
-@interface exproposViewController : UIViewController
+@interface exproposViewController : UIViewController <UITextFieldDelegate>
 {
     NSString *username;
     NSString *password;
     UIView *refreshHeaderView;
     exproposMainViewController *mainViewController;
+    
     
 }
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *userField;
 @property (nonatomic,strong)UIManagedDocument *exprodatabase;
 @property (nonatomic,strong) IBOutlet UIView *loginview;
+@property (nonatomic,strong) NSArray *members;
 
 
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
