@@ -2,12 +2,13 @@
 //  ExproUser.m
 //  expropos
 //
-//  Created by ep3 on 12-6-21.
-//  Copyright (c) 2012年 expro. All rights reserved.
+//  Created by chen on 12-7-5.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import "ExproUser.h"
 #import "ExproMember.h"
+#import "ExproSignHistory.h"
 
 
 @implementation ExproUser
@@ -25,5 +26,6 @@
 @dynamic sex;
 @dynamic state;
 @dynamic members;
+@dynamic signHistory;
 
 @end

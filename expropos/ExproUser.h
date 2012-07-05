@@ -2,14 +2,14 @@
 //  ExproUser.h
 //  expropos
 //
-//  Created by ep3 on 12-6-21.
-//  Copyright (c) 2012年 expro. All rights reserved.
+//  Created by chen on 12-7-5.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ExproMember;
+@class ExproMember, ExproSignHistory;
 
 @interface ExproUser : NSManagedObject
 
@@ -26,6 +26,7 @@
 @property (nonatomic, retain) NSNumber * sex;
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSSet *members;
+@property (nonatomic, retain) NSSet *signHistory;
 @end
 
 @interface ExproUser (CoreDataGeneratedAccessors)
@@ -34,5 +35,10 @@
 - (void)removeMembersObject:(ExproMember *)value;
 - (void)addMembers:(NSSet *)values;
 - (void)removeMembers:(NSSet *)values;
+
+- (void)addSignHistoryObject:(ExproSignHistory *)value;
+- (void)removeSignHistoryObject:(ExproSignHistory *)value;
+- (void)addSignHistory:(NSSet *)values;
+- (void)removeSignHistory:(NSSet *)values;
 
 @end

@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *userField;
 @property (nonatomic,strong)UIManagedDocument *exprodatabase;
 @property (nonatomic,strong) IBOutlet UIView *loginview;
-@property (nonatomic,strong) NSArray *members;
+@property (nonatomic,strong) NSArray *users;
 
 
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;

@@ -14,6 +14,8 @@
 		427B405C15A4115D006DF731 /* chengang.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427B405B15A4115D006DF731 /* chengang.storyboard */; };
 		427B405E15A4133D006DF731 /* login_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 427B405D15A4133D006DF731 /* login_main.png */; };
 		427B407115A4225C006DF731 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427B407015A4225B006DF731 /* head.jpg */; };
+		427FE42615A52D2D00492804 /* ExproSignHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 427FE42515A52D2D00492804 /* ExproSignHistory.m */; };
+		427FE42915A52D2E00492804 /* ExproUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 427FE42815A52D2E00492804 /* ExproUser.m */; };
 		42AC534315A4246200682E84 /* login_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 42AC534215A4246200682E84 /* login_ico.png */; };
 		5F0533E1159E86C10005FB21 /* ExproGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533D8159E86C10005FB21 /* ExproGoods.m */; };
 		5F0533E2159E86C10005FB21 /* ExproGoodsType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533DA159E86C10005FB21 /* ExproGoodsType.m */; };
@@ -24,7 +26,6 @@
 		5F0533F9159E873A0005FB21 /* ExproRole.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533EC159E873A0005FB21 /* ExproRole.m */; };
 		5F0533FA159E873A0005FB21 /* ExproRouteTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533EE159E873A0005FB21 /* ExproRouteTable.m */; };
 		5F0533FB159E873A0005FB21 /* ExproStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533F0159E873A0005FB21 /* ExproStore.m */; };
-		5F0533FC159E873A0005FB21 /* ExproUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533F2159E873A0005FB21 /* ExproUser.m */; };
 		5F0533FD159E873A0005FB21 /* ExproWarehouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533F4159E873A0005FB21 /* ExproWarehouse.m */; };
 		5F0533FE159E873A0005FB21 /* ExproWarehouseWarrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533F6159E873A0005FB21 /* ExproWarehouseWarrant.m */; };
 		5F0533FF159E873A0005FB21 /* ExproWarehouseWarrantItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533F8159E873A0005FB21 /* ExproWarehouseWarrantItem.m */; };
@@ -122,6 +123,10 @@
 		427B405B15A4115D006DF731 /* chengang.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = chengang.storyboard; sourceTree = "<group>"; };
 		427B405D15A4133D006DF731 /* login_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_main.png; path = ../../../Desktop/login_main.png; sourceTree = "<group>"; };
 		427B407015A4225B006DF731 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = head.jpg; path = ../../../Desktop/head.jpg; sourceTree = "<group>"; };
+		427FE42415A52D2D00492804 /* ExproSignHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproSignHistory.h; sourceTree = "<group>"; };
+		427FE42515A52D2D00492804 /* ExproSignHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproSignHistory.m; sourceTree = "<group>"; };
+		427FE42715A52D2E00492804 /* ExproUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproUser.h; sourceTree = "<group>"; };
+		427FE42815A52D2E00492804 /* ExproUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproUser.m; sourceTree = "<group>"; };
 		42AC534215A4246200682E84 /* login_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_ico.png; path = ../../../Desktop/login_ico.png; sourceTree = "<group>"; };
 		5F0533D7159E86C10005FB21 /* ExproGoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproGoods.h; sourceTree = "<group>"; };
 		5F0533D8159E86C10005FB21 /* ExproGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproGoods.m; sourceTree = "<group>"; };
@@ -140,8 +145,6 @@
 		5F0533EE159E873A0005FB21 /* ExproRouteTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproRouteTable.m; sourceTree = "<group>"; };
 		5F0533EF159E873A0005FB21 /* ExproStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproStore.h; sourceTree = "<group>"; };
 		5F0533F0159E873A0005FB21 /* ExproStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproStore.m; sourceTree = "<group>"; };
-		5F0533F1159E873A0005FB21 /* ExproUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproUser.h; sourceTree = "<group>"; };
-		5F0533F2159E873A0005FB21 /* ExproUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproUser.m; sourceTree = "<group>"; };
 		5F0533F3159E873A0005FB21 /* ExproWarehouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproWarehouse.h; sourceTree = "<group>"; };
 		5F0533F4159E873A0005FB21 /* ExproWarehouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproWarehouse.m; sourceTree = "<group>"; };
 		5F0533F5159E873A0005FB21 /* ExproWarehouseWarrant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproWarehouseWarrant.h; sourceTree = "<group>"; };
@@ -255,8 +258,6 @@
 				5F0533EE159E873A0005FB21 /* ExproRouteTable.m */,
 				5F0533EF159E873A0005FB21 /* ExproStore.h */,
 				5F0533F0159E873A0005FB21 /* ExproStore.m */,
-				5F0533F1159E873A0005FB21 /* ExproUser.h */,
-				5F0533F2159E873A0005FB21 /* ExproUser.m */,
 				5F0533F3159E873A0005FB21 /* ExproWarehouse.h */,
 				5F0533F4159E873A0005FB21 /* ExproWarehouse.m */,
 				5F0533F5159E873A0005FB21 /* ExproWarehouseWarrant.h */,
@@ -267,6 +268,10 @@
 				5FC9671E15A03086004C486D /* ExproDeal.m */,
 				5F2F97F115A14F8600E68455 /* ExproDealItem.h */,
 				5F2F97F215A14F8600E68455 /* ExproDealItem.m */,
+				427FE42415A52D2D00492804 /* ExproSignHistory.h */,
+				427FE42715A52D2E00492804 /* ExproUser.h */,
+				427FE42815A52D2E00492804 /* ExproUser.m */,
+				427FE42515A52D2D00492804 /* ExproSignHistory.m */,
 				5F0533E8159E86F90005FB21 /* expropos.xcdatamodeld */,
 				5F0533D7159E86C10005FB21 /* ExproGoods.h */,
 				5F0533D8159E86C10005FB21 /* ExproGoods.m */,
@@ -569,7 +574,6 @@
 				5F0533F9159E873A0005FB21 /* ExproRole.m in Sources */,
 				5F0533FA159E873A0005FB21 /* ExproRouteTable.m in Sources */,
 				5F0533FB159E873A0005FB21 /* ExproStore.m in Sources */,
-				5F0533FC159E873A0005FB21 /* ExproUser.m in Sources */,
 				5F0533FD159E873A0005FB21 /* ExproWarehouse.m in Sources */,
 				5F0533FE159E873A0005FB21 /* ExproWarehouseWarrant.m in Sources */,
 				5F0533FF159E873A0005FB21 /* ExproWarehouseWarrantItem.m in Sources */,
@@ -578,6 +582,8 @@
 				5F8DE18B15A13FFA00CBEB69 /* exproposSign.m in Sources */,
 				5F2F97F315A14F8600E68455 /* ExproDealItem.m in Sources */,
 				5FADDD4115A1AC640049FDA2 /* exproposDateSelectedViewController.m in Sources */,
+				427FE42615A52D2D00492804 /* ExproSignHistory.m in Sources */,
+				427FE42915A52D2E00492804 /* ExproUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

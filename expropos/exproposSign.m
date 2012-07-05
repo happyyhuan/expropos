@@ -45,6 +45,9 @@
     RKObjectMapping *signinMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [signinMapping mapKeyPathsToAttributes:@"_id", @"gid", nil];
     [signinMapping mapAttributes:@"name", @"sex", nil];
+    
+    
+    
 
     [[RKObjectManager sharedManager] sendObject:user toResourcePath:@"/signin" usingBlock:^(RKObjectLoader *loader) {                    
         loader.method = RKRequestMethodPOST;
@@ -52,5 +55,13 @@
         loader.objectMapping = signinMapping;
         loader.params = prams;
     }]; 
+    
+    NSFetchRequest *request = [ExproUser fetchRequest];
+    NSPredicate *predicate = nil;
+    
+    request.predicate = predicate;
+    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+    NSLog(@"%i",deals.count);
+
 }
 @end

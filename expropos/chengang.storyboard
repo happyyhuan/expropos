@@ -450,7 +450,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <rect key="frame" x="160" y="116" width="167" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="Kf0-Ne-79h" id="Q16-Db-xWl"/>
                                         </connections>
@@ -474,7 +474,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <rect key="frame" x="160" y="66" width="167" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="Kf0-Ne-79h" id="AJd-fF-bIr"/>
                                         </connections>
@@ -524,65 +524,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="4.jpg" width="798" height="76"/>
         <image name="login_main.png" width="514" height="314"/>
     </resources>
-    <classes>
-        <class className="ExproMultipleTableView" superclassName="UITableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExproMultipleTableView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="multipleDataSource"/>
-                <relationship kind="outlet" name="multipleDelegate"/>
-            </relationships>
-        </class>
-        <class className="exproposDateSelectedViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDateSelectedViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-            </relationships>
-        </class>
-        <class className="exproposDealSelectedViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDealSelectedViewController.h"/>
-        </class>
-        <class className="exproposGoodSelectedViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposGoodSelectedViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="FlashButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="exproposMainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMainViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logout:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="menu" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="menuTool" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="exproposMemberSelectedViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberSelectedViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="update:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="freshButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="updateTime" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="exproposMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMenuViewController.h"/>
-        </class>
-        <class className="exproposShowDealsSelectedViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposShowDealsSelectedViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="ExproMultipleTableView"/>
-            </relationships>
-        </class>
-        <class className="exproposViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="loginview" candidateClass="UIView"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

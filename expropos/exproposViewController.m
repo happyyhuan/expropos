@@ -12,6 +12,7 @@
 #import "exproposAppDelegate.h"
 #import "ExproUser.h"
 #import "ExproMember.h"
+#import "ExproSignHistory.h"
 
 
 
@@ -32,19 +33,19 @@
 @synthesize managedObjectContext;
 @synthesize persistentStoreCoordinator;
 @synthesize applicationDocumentsDirectory;
-@synthesize members=_members;
+@synthesize users=_users;
 
 
 
 - (IBAction)showLoginView:(id)sender {
    
     UIButton *bu = (UIButton *)sender;
-    for (ExproMember *member in _members)
+    for (ExproUser *user in _users)
     {
-        NSLog(@"%@", member);
-        if (member.gid.intValue == bu.tag)
+        NSLog(@"%@", user);
+        if (user.gid.intValue == bu.tag)
         {
-            _userField.text = member.user.cellphone;
+            _userField.text = user.cellphone;
         }
     }
 }
@@ -57,6 +58,14 @@
         _sign.reserver = self;
         _sign.succeedCallBack = @selector(signinSucceed:);
         _sign.failedCallBack = @selector(signinFailed:);
+        
+        NSFetchRequest *request = [ExproUser fetchRequest];
+        NSPredicate *predicate = nil;
+        
+        request.predicate = predicate;
+        NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+        NSLog(@"%i",deals.count);
+        
         [self.sign signin:username password:password];    }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
@@ -69,14 +78,42 @@
 }
 
 - (void) signinSucceed:(id)object {
-//    NSLog(@"my login:%@ sex:%d, gid:%qu", user.name, user.sex.intValue, user.gid.unsignedLongLongValue);
+
     NSDictionary *user = (NSDictionary *)object;
     NSLog(@"signin user:%@, sex:%@", [user objectForKey:@"name"], [user objectForKey:@"sex"]);   
     exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
+    
+    //登录成功后保存登录用户历史信息
+    RKObjectManager *manager = [RKObjectManager sharedManager];
+    ExproUser * signUser = [ExproUser object];
+    signUser.cellphone = username;
+    signUser.password=password;
+    signUser.sex = [user objectForKey:@"sex"];
+    signUser.name = [user objectForKey:@"name"];
+    signUser.gid = [user objectForKey:@"gid"];
+    
+    ExproSignHistory * signHistory = [ExproSignHistory object];
+    signHistory.gid = [user objectForKey:@"gid"];
+    NSDate *now = [NSDate date];
+    signHistory.signintime = now;
+    [signUser addSignHistoryObject:signHistory];        
+    [manager.objectStore save:nil];
+    
+    
     appDelegate.userName = [user objectForKey:@"name"];
-    NSLog(@"appDelegatename:%@",appDelegate.userName);
     appDelegate.gid =[user objectForKey:@"gid"];
-    NSLog(@"appDelegategid:%@",appDelegate.gid);    [self didLoginSuccess];}
+    
+   
+    
+    NSFetchRequest *request = [ExproSignHistory fetchRequest];
+    NSPredicate *predicate = nil;
+    
+    request.predicate = predicate;
+    NSArray *deals = [ExproSignHistory objectsWithFetchRequest:request];
+    NSLog(@"%i",deals.count);
+    
+    [self didLoginSuccess];
+}
 
 - (void) signinFailed:(id)object {
     _userField.text = nil;
@@ -91,38 +128,37 @@
      NSArray *array = [self loadSinginUser];
     if (!array.count)
     {
-        [self saveTestDate];
         array = [self loadSinginUser];
     }
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 300,700,40)];    
-//    UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(5,5,200,90)];
-    
+  
     for (int i = 0 ; i < array.count ; i++)
     {
-            ExproMember *member = [array objectAtIndex:i];
+            ExproUser *user = [array objectAtIndex:i];
+            if (user.signHistory)
+            {
+                CGRect frame = CGRectMake(50*(i+1), 5, 50, 40);
+                
+                UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
         
-             CGRect frame = CGRectMake(50*(i+1), 5, 50, 40);
+                    myButton.frame = frame;
+                [myButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
              
-             UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
+                [myButton setTitle:user.name forState:UIControlStateHighlighted];
+             
+                [myButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
+                myButton.tag = user.gid.intValue;
         
-             myButton.frame = frame;
-             [myButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
-             
-             [myButton setTitle:member.user.name forState:UIControlStateHighlighted];
-             
-             [myButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
-              myButton.tag = member.gid.intValue;
-        
-        [scrollView addSubview:myButton];
-//             [view1 addSubview:myButton];        
+                [scrollView addSubview:myButton];
+            }        
     }    
-//    [scrollView addSubview:view1];
+
     [self.view addSubview:scrollView];
     
     scrollView.contentSize = CGSizeMake(760, 40);
     scrollView.contentOffset = CGPointMake(0, 0);
-    //scrollView.pagingEnabled = YES;
+ 
     
 }
 
@@ -139,41 +175,42 @@
 
 -(void)didLoginSuccess
 {
-        
+   
+   
         exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         UISplitViewController *splitView = [self.storyboard instantiateViewControllerWithIdentifier:@"splitView"];
         appDelegate.window.rootViewController = splitView;
         
 }
 
--(void)saveTestDate
-{
-    RKObjectManager *manager = [RKObjectManager sharedManager];
-        for(int i=0;i<5;i++){
-        ExproMember *m = [ExproMember object];
-        m.gid = [NSNumber numberWithInt:i];
-        m.petName = [NSString stringWithFormat:@"petName %i",i];
-        m.savings = [NSNumber numberWithInt:i];
-        m.point = [NSNumber numberWithInt:i];
-        ExproUser *user = [ExproUser object];
-        user.cellphone = [NSString stringWithFormat:@"1876182900%i",i];
-        user.name = @"陈纲";
-        user.gid = [NSNumber numberWithInt:i];
-        m.user= user;
-        
-        [manager.objectStore save:nil];
-    }
-}
+//-(void)saveTestDate
+//{
+//    RKObjectManager *manager = [RKObjectManager sharedManager];
+//        for(int i=0;i<5;i++){
+//        ExproMember *m = [ExproMember object];
+//        m.gid = [NSNumber numberWithInt:i];
+//        m.petName = [NSString stringWithFormat:@"petName %i",i];
+//        m.savings = [NSNumber numberWithInt:i];
+//        m.point = [NSNumber numberWithInt:i];
+//        ExproUser *user = [ExproUser object];
+//        user.cellphone = [NSString stringWithFormat:@"1876182900%i",i];
+//        user.name = @"陈纲";
+//        user.gid = [NSNumber numberWithInt:i];
+//        m.user= user;
+//        
+//        [manager.objectStore save:nil];
+//    }
+//}
 
 -(NSArray *)loadSinginUser
 {
-    NSFetchRequest *request = [ExproMember fetchRequest];
+    NSFetchRequest *request = [ExproUser fetchRequest];
     NSPredicate *predicate = nil;
     
     request.predicate = predicate;
-    NSArray *deals = [ExproMember objectsWithFetchRequest:request];
+    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
     NSLog(@"%i",deals.count);
-    self.members = deals;
+    self.users = deals;
     return deals;
 
 }

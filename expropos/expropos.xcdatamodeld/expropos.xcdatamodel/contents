@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50d" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ExproDeal" representedClassName="ExproDeal" syncable="YES">
         <attribute name="cash" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -100,6 +100,11 @@
         <attribute name="route" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="role" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproRole" inverseName="routeTables" inverseEntity="ExproRole" syncable="YES"/>
     </entity>
+    <entity name="ExproSignHistory" representedClassName="ExproSignHistory" syncable="YES">
+        <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="signintime" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproUser" inverseName="signHistory" inverseEntity="ExproUser" syncable="YES"/>
+    </entity>
     <entity name="ExproStore" representedClassName="ExproStore" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -120,7 +125,7 @@
     </entity>
     <entity name="ExproUser" representedClassName="ExproUser" syncable="YES">
         <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="cellphone" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="cellphone" attributeType="String" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createTime" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -132,6 +137,7 @@
         <attribute name="sex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="user" inverseEntity="ExproMember" syncable="YES"/>
+        <relationship name="signHistory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproSignHistory" inverseName="user" inverseEntity="ExproSignHistory" syncable="YES"/>
     </entity>
     <entity name="ExproWarehouse" representedClassName="ExproWarehouse" syncable="YES">
         <attribute name="gid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -167,9 +173,10 @@
         <element name="ExproRole" positionX="-180" positionY="27" width="128" height="135"/>
         <element name="ExproRouteTable" positionX="-486" positionY="192" width="128" height="135"/>
         <element name="ExproStore" positionX="160" positionY="192" width="128" height="255"/>
-        <element name="ExproUser" positionX="72" positionY="-117" width="128" height="240"/>
+        <element name="ExproUser" positionX="72" positionY="-117" width="128" height="255"/>
         <element name="ExproWarehouse" positionX="160" positionY="192" width="128" height="120"/>
         <element name="ExproWarehouseWarrant" positionX="160" positionY="192" width="128" height="150"/>
         <element name="ExproWarehouseWarrantItem" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="ExproSignHistory" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>
