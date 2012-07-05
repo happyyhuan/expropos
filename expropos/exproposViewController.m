@@ -102,15 +102,24 @@
     
     appDelegate.userName = [user objectForKey:@"name"];
     appDelegate.gid =[user objectForKey:@"gid"];
+
+//    NSFetchRequest *request = [ExproSignHistory fetchRequest];
+//    NSPredicate *predicate = nil;
+//    
+//    request.predicate = predicate;
+//    NSArray *deals = [ExproSignHistory objectsWithFetchRequest:request];
+//    NSLog(@"%i",deals.count);
+//    
+//    for (ExproSignHistory *historys in deals)
+//    {
+//        NSLog(@"historys.gid%@",historys.gid);
+//         NSLog(@"historys.user.gid%@",historys.user.gid);
+//        NSLog(@"historys.user.cellphone%@",historys.user.cellphone);
+//        NSLog(@"historys.user.sex%@",historys.user.sex);
+//        NSLog(@"historys.user.name%@",historys.user.name);
+//    }
     
-   
     
-    NSFetchRequest *request = [ExproSignHistory fetchRequest];
-    NSPredicate *predicate = nil;
-    
-    request.predicate = predicate;
-    NSArray *deals = [ExproSignHistory objectsWithFetchRequest:request];
-    NSLog(@"%i",deals.count);
     
     [self didLoginSuccess];
 }
