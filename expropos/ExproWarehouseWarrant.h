@@ -2,7 +2,7 @@
 //  ExproWarehouseWarrant.h
 //  expropos
 //
-//  Created by ep3 on 12-7-4.
+//  Created by ep3 on 12-7-5.
 //  Copyright (c) 2012年 expro. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * comment;
 @property (nonatomic, retain) NSDate * createTime;
 @property (nonatomic, retain) NSNumber * gid;
+@property (nonatomic, retain) NSNumber * operatorID;
 @property (nonatomic, retain) NSSet *items;
 @property (nonatomic, retain) ExproMember *operator;
 @property (nonatomic, retain) ExproWarehouse *recipient;

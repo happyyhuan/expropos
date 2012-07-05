@@ -98,39 +98,29 @@
     request.sortDescriptors = [[NSArray alloc]initWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO], nil];
     request.predicate = predicate;
     NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+    ExproUser *signUser = nil;
     if (deals.count)
     {
-        ExproSignHistory * signHistory = [ExproSignHistory object];
-        signHistory.gid = [user objectForKey:@"gid"];
-        NSDate *now = [NSDate date];
-        signHistory.signintime = now;
-        ExproUser *u = (ExproUser *)[deals objectAtIndex:0];
-        signHistory.user = u;
-        [manager.objectStore save:nil];
+        signUser = (ExproUser *)[deals objectAtIndex:0];
     }
-    else {
-        ExproUser * signUser = [ExproUser object];
+    else 
+    {
+        signUser = [ExproUser object];
         signUser.cellphone = username;
         signUser.password=password;
         signUser.sex = [user objectForKey:@"sex"];
         signUser.name = [user objectForKey:@"name"];
         signUser.gid = [user objectForKey:@"gid"];
-        
-        ExproSignHistory * signHistory = [ExproSignHistory object];
-        signHistory.gid = [user objectForKey:@"gid"];
-        NSDate *now = [NSDate date];
-        signHistory.signintime = now;
-        [signUser addSignHistoryObject:signHistory];        
-        [manager.objectStore save:nil];
     }
+    ExproSignHistory * signHistory = [ExproSignHistory object];
+    signHistory.gid = [user objectForKey:@"gid"];
+    NSDate *now = [NSDate date];
+    signHistory.signintime = now;
+    signHistory.user = signUser;
+    [manager.objectStore save:nil];
     
-    
-    
-    
-       
-    
-    appDelegate.userName = [user objectForKey:@"name"];
-    appDelegate.gid =[user objectForKey:@"gid"];
+    appDelegate.currentUser = signUser;
+    [appDelegate.sync syncStore:[NSNumber numberWithInt:15]];
 
 //    NSFetchRequest *request = [ExproSignHistory fetchRequest];
 //    NSPredicate *predicate = nil;

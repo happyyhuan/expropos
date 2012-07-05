@@ -19,6 +19,9 @@
 #import "ExproRoute.h"
 #import "ExproDeal.h"
 #import "ExproStore.h"
+#import "ExproWarehouse.h"
+#import "ExproWarehouseWarrant.h"
+#import "ExproWarehouseWarrantItem.h"
 
 @implementation exproposRestkit
 
@@ -82,12 +85,36 @@
     [memberMapping connectRelationship:@"role" withObjectForPrimaryKeyAttribute:@"roleID"];
     [objectManager.mappingProvider setMapping:memberMapping forKeyPath:@"member"];
 
+    RKManagedObjectMapping *warrentItemMapping = [RKManagedObjectMapping mappingForClass:[ExproWarehouseWarrantItem class] inManagedObjectStore:objectManager.objectStore];
+    warrentItemMapping.primaryKeyAttribute = @"gid";
+    [warrentItemMapping mapKeyPathsToAttributes:@"_id",@"gid",@"goods_id",@"goodsID",@"unit_cost", @"unitCost",@"total_cost", @"totalCost",nil];
+    [warrentItemMapping mapAttributes:@"num", nil];
+    [warrentItemMapping mapRelationship:@"goods" withMapping:goodsMapping];
+    [warrentItemMapping connectRelationship:@"goods" withObjectForPrimaryKeyAttribute:@"goodsID"];
+    
+    RKManagedObjectMapping *warrentMapping = [RKManagedObjectMapping mappingForClass:[ExproWarehouseWarrant class] inManagedObjectStore:objectManager.objectStore];
+    warrentMapping.primaryKeyAttribute = @"gid";
+    [warrentMapping mapKeyPathsToAttributes:@"_id",@"gid",@"create_time",@"createTime",@"operator_id", @"operatorID",nil];
+    [warrentMapping mapAttributes:@"comment", nil];
+    [warrentMapping mapRelationship:@"operator" withMapping:memberMapping];
+    [warrentMapping connectRelationship:@"operator" withObjectForPrimaryKeyAttribute:@"operatorID"];
+    [warrentMapping mapKeyPath:@"item" toRelationship:@"items" withMapping:warrentItemMapping];
+    
+    RKManagedObjectMapping *warehouseMapping = [RKManagedObjectMapping mappingForClass:[ExproWarehouse class] inManagedObjectStore:objectManager.objectStore];
+    warehouseMapping.primaryKeyAttribute = @"gid";
+    [warehouseMapping mapKeyPathsToAttributes:@"_id",@"gid", nil];
+    [warehouseMapping mapAttributes:@"name", nil];
+    [warehouseMapping mapKeyPath:@"stock_in" toRelationship:@"stockIn" withMapping:warrentMapping];
+    [warehouseMapping mapKeyPath:@"stock_out" toRelationship:@"stockOut" withMapping:warrentMapping];
+
     RKManagedObjectMapping *storeMapping = [RKManagedObjectMapping mappingForClass:[ExproStore class] inManagedObjectStore:objectManager.objectStore];
     storeMapping.primaryKeyAttribute = @"gid";
     [storeMapping mapKeyPathsToAttributes:@"_id",@"gid",@"district_code", @"districtCode", @"inventar_num", @"inventarNum", @"create_time", @"createTime", @"map_info", @"mapInfo", @"transit_info", @"transitInfo", nil];
     [storeMapping mapAttributes:@"address", @"comment", @"notice", @"state", @"name", nil];
     [storeMapping mapKeyPath:@"staff" toRelationship:@"staffs" withMapping:memberMapping];
     [objectManager.mappingProvider setMapping:storeMapping forKeyPath:@"store"];
+    [storeMapping mapRelationship:@"warehouse" withMapping:warehouseMapping];
+    [objectManager.mappingProvider setMapping:storeMapping forKeyPath:@"sync_store"];
 
     RKManagedObjectMapping* merchantMapping = [RKManagedObjectMapping mappingForClass:[ExproMerchant class] inManagedObjectStore:objectManager.objectStore];
     merchantMapping.primaryKeyAttribute = @"gid";

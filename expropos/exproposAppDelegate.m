@@ -16,13 +16,11 @@
 #import "ExproStore.h"
 #import "ExproGoods.h"
 #import "ExproGoodsType.h"
-#import "exproposSyncModel.h"
 
 @implementation exproposAppDelegate
 
 @synthesize window = _window;
-@synthesize userName=_userName;
-@synthesize gid=_gid;
+@synthesize currentUser = _currentUser;
 @synthesize sysload=_sysload;
 @synthesize sync = _sync;
 
@@ -56,10 +54,8 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)succeedSync:(NSArray *)objects {
-    for (id object in objects) {
-        NSLog(@"====gbo===%@", object);
-    }
+- (void)succeedSync:(id)objects {
+//    NSLog(@"sync merchant has got %d objects", objects.count);
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

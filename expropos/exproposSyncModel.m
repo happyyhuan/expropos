@@ -15,6 +15,9 @@
 #import "ExproMember.h"
 #import "ExproUser.h"
 #import "ExproGoods.h"
+#import "ExproWarehouse.h"
+#import "ExproWarehouseWarrant.h"
+#import "ExproWarehouseWarrantItem.h"
 
 @implementation exproposSyncModel
 
@@ -32,14 +35,16 @@
     return self;
 }
 
-- (void) printSelf:(ExproRoute *)route {
-    NSLog(@"route==%@", route);
-}
 - (void) succeed:(id)object {
     [super succeed:object];
-    ExproRole * role = (ExproRole *)object;
-    ExproRoute *route = (ExproRoute *)[role.routes anyObject];
-    NSLog(@"gbo==%@", route);
+    ExproStore * store = (ExproStore *)object;
+    NSLog(@"sync store:%@, warehouse:%@", store.gid, store.warehouse.name);
+    for( ExproWarehouseWarrant * si in store.warehouse.stockIn) {
+        NSLog(@"=warehouse warrant:%qu, operator:%@", si.gid.unsignedLongLongValue,si.operator.petName);
+        for(ExproWarehouseWarrantItem *item in si.items) {
+            NSLog(@"==warrant item:%qu, goods:%@", item.gid.unsignedLongLongValue, item.goods.name);
+        }
+    }
 }
 
 - (void) succeed4Parallel:(NSArray *)array {
@@ -92,6 +97,7 @@
 {
     NSString *syncURL = [NSString stringWithFormat:@"/sync/stores/%qu",gid.unsignedLongLongValue];
     
+    self.acceptParallelResults = NO;
     [self requestURL:syncURL method:RKRequestMethodGET params:nil mapping:nil];
 }
 @end

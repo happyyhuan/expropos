@@ -63,7 +63,7 @@
     
     
     NSFetchRequest *request = [ExproMerchant fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appDelegate.gid];
+    request.predicate = [NSPredicate predicateWithFormat:@"%K = %qu", @"gid",appDelegate.currentUser.gid.unsignedLongLongValue];
     NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
     self.merchant = [merchants objectAtIndex:0];
     
@@ -394,7 +394,7 @@
         _sysLoad.reserver = self;
         _sysLoad.succeedCallBack = @selector(updateSuccess);
         exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
-        [_sysLoad loadSysData:appdelegate.gid  completion:nil];
+        [_sysLoad loadSysData:appdelegate.currentUser.gid.stringValue completion:nil];
     });
     dispatch_release(downloadQueue);    
 }

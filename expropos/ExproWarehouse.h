@@ -2,7 +2,7 @@
 //  ExproWarehouse.h
 //  expropos
 //
-//  Created by ep3 on 12-7-4.
+//  Created by ep3 on 12-7-5.
 //  Copyright (c) 2012年 expro. All rights reserved.
 //
 
@@ -15,8 +15,21 @@
 
 @property (nonatomic, retain) NSNumber * gid;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSSet *stockIn;
+@property (nonatomic, retain) NSSet *stockOut;
 @property (nonatomic, retain) ExproStore *store;
-@property (nonatomic, retain) ExproWarehouseWarrant *stockIn;
-@property (nonatomic, retain) ExproWarehouseWarrant *stockOut;
+@end
+
+@interface ExproWarehouse (CoreDataGeneratedAccessors)
+
+- (void)addStockInObject:(ExproWarehouseWarrant *)value;
+- (void)removeStockInObject:(ExproWarehouseWarrant *)value;
+- (void)addStockIn:(NSSet *)values;
+- (void)removeStockIn:(NSSet *)values;
+
+- (void)addStockOutObject:(ExproWarehouseWarrant *)value;
+- (void)removeStockOutObject:(ExproWarehouseWarrant *)value;
+- (void)addStockOut:(NSSet *)values;
+- (void)removeStockOut:(NSSet *)values;
 
 @end

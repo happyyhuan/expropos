@@ -56,7 +56,7 @@
     exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate  ];
     
    NSFetchRequest *request = [ExproMerchant fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appdelegate.gid];
+    request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appdelegate.currentUser.gid];
     
     NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
     ExproMerchant *merchant = [merchants objectAtIndex:0];
@@ -314,7 +314,7 @@
     dispatch_async(downloadQueue, ^{
        
         exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
-        [_sysLoad loadSysData:appdelegate.gid  completion:nil];
+        [_sysLoad loadSysData:appdelegate.currentUser.gid.stringValue  completion:nil];
     });
     dispatch_release(downloadQueue);    
 }

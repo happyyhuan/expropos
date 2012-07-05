@@ -2,7 +2,7 @@
 //  ExproStore.h
 //  expropos
 //
-//  Created by ep3 on 12-7-4.
+//  Created by ep3 on 12-7-5.
 //  Copyright (c) 2012年 expro. All rights reserved.
 //
 
@@ -28,7 +28,7 @@
 @property (nonatomic, retain) NSSet *deals;
 @property (nonatomic, retain) ExproMerchant *merchant;
 @property (nonatomic, retain) NSSet *staffs;
-@property (nonatomic, retain) ExproWarehouse *warehose;
+@property (nonatomic, retain) ExproWarehouse *warehouse;
 @end
 
 @interface ExproStore (CoreDataGeneratedAccessors)

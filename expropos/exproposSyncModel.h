@@ -12,5 +12,5 @@
 @interface exproposSyncModel : ExproRestDelegate
 
 - (void) syncMerchant;
-
+- (void) syncStore:(NSNumber *)gid;
 @end

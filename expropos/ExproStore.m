@@ -2,7 +2,7 @@
 //  ExproStore.m
 //  expropos
 //
-//  Created by ep3 on 12-7-4.
+//  Created by ep3 on 12-7-5.
 //  Copyright (c) 2012年 expro. All rights reserved.
 //
 
@@ -30,6 +30,6 @@
 @dynamic deals;
 @dynamic merchant;
 @dynamic staffs;
-@dynamic warehose;
+@dynamic warehouse;
 
 @end
