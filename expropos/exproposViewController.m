@@ -85,20 +85,49 @@
     
     //登录成功后保存登录用户历史信息
     RKObjectManager *manager = [RKObjectManager sharedManager];
-    ExproUser * signUser = [ExproUser object];
-    signUser.cellphone = username;
-    signUser.password=password;
-    signUser.sex = [user objectForKey:@"sex"];
-    signUser.name = [user objectForKey:@"name"];
-    signUser.gid = [user objectForKey:@"gid"];
     
-    ExproSignHistory * signHistory = [ExproSignHistory object];
-    signHistory.gid = [user objectForKey:@"gid"];
-    NSDate *now = [NSDate date];
-    signHistory.signintime = now;
-    [signUser addSignHistoryObject:signHistory];        
-    [manager.objectStore save:nil];
+    //查找是否存在user用户
+    NSFetchRequest *request = [ExproUser fetchRequest];
+    NSPredicate *predicate = nil;
+    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(cellphone=%@)" ];
+    NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:username, nil];
+        
+    predicate = [NSPredicate predicateWithFormat:str argumentArray:params];
     
+    NSLog(@"%@",predicate);
+    request.sortDescriptors = [[NSArray alloc]initWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO], nil];
+    request.predicate = predicate;
+    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+    if (deals.count)
+    {
+        ExproSignHistory * signHistory = [ExproSignHistory object];
+        signHistory.gid = [user objectForKey:@"gid"];
+        NSDate *now = [NSDate date];
+        signHistory.signintime = now;
+        ExproUser *u = (ExproUser *)[deals objectAtIndex:0];
+        signHistory.user = u;
+        [manager.objectStore save:nil];
+    }
+    else {
+        ExproUser * signUser = [ExproUser object];
+        signUser.cellphone = username;
+        signUser.password=password;
+        signUser.sex = [user objectForKey:@"sex"];
+        signUser.name = [user objectForKey:@"name"];
+        signUser.gid = [user objectForKey:@"gid"];
+        
+        ExproSignHistory * signHistory = [ExproSignHistory object];
+        signHistory.gid = [user objectForKey:@"gid"];
+        NSDate *now = [NSDate date];
+        signHistory.signintime = now;
+        [signUser addSignHistoryObject:signHistory];        
+        [manager.objectStore save:nil];
+    }
+    
+    
+    
+    
+       
     
     appDelegate.userName = [user objectForKey:@"name"];
     appDelegate.gid =[user objectForKey:@"gid"];
