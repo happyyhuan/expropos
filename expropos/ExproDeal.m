@@ -2,8 +2,8 @@
 //  ExproDeal.m
 //  expropos
 //
-//  Created by haitao chen on 12-7-1.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by ep3 on 12-7-4.
+//  Copyright (c) 2012年 expro. All rights reserved.
 //
 
 #import "ExproDeal.h"
@@ -16,16 +16,16 @@
 
 @dynamic cash;
 @dynamic createTime;
+@dynamic customerID;
+@dynamic dealerID;
 @dynamic gid;
 @dynamic lid;
 @dynamic payment;
 @dynamic payType;
 @dynamic point;
 @dynamic state;
-@dynamic type;
 @dynamic storeID;
-@dynamic dealerID;
-@dynamic customerID;
+@dynamic type;
 @dynamic customer;
 @dynamic dealer;
 @dynamic items;

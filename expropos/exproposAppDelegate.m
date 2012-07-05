@@ -16,8 +16,7 @@
 #import "ExproStore.h"
 #import "ExproGoods.h"
 #import "ExproGoodsType.h"
-
-
+#import "exproposSyncModel.h"
 
 @implementation exproposAppDelegate
 
@@ -25,6 +24,7 @@
 @synthesize userName=_userName;
 @synthesize gid=_gid;
 @synthesize sysload=_sysload;
+@synthesize sync = _sync;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -34,9 +34,8 @@
 
    // self.sysload = [exproposSysLoad init];
     //[self.sysload loadSysData:@"1" completion:nil];
-    
-    
-    
+    _sync = [[exproposSyncModel alloc] init];
+   
     return YES;
 }
 							
@@ -57,9 +56,22 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
+- (void)succeedSync:(NSArray *)objects {
+    for (id object in objects) {
+        NSLog(@"====gbo===%@", object);
+    }
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setInteger:1 forKey:@"merchantID"];
+    if ([userDefault integerForKey:@"merchantID"]) {
+        self.sync.reserver = self;
+        self.sync.succeedCallBack = @selector(succeedSync:);
+        [self.sync syncMerchant];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

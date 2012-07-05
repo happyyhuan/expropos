@@ -2,7 +2,7 @@
 //  ExproGoodsType.h
 //  expropos
 //
-//  Created by ep3 on 12-6-21.
+//  Created by ep3 on 12-7-4.
 //  Copyright (c) 2012年 expro. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSNumber * isleaf;
 @property (nonatomic, retain) NSNumber * level;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * parentID;
 @property (nonatomic, retain) NSSet *goods;
 @property (nonatomic, retain) NSSet *leaves;
 @property (nonatomic, retain) ExproGoodsType *parent;

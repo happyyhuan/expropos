@@ -2,7 +2,7 @@
 //  ExproStore.h
 //  expropos
 //
-//  Created by ep3 on 12-6-21.
+//  Created by ep3 on 12-7-4.
 //  Copyright (c) 2012年 expro. All rights reserved.
 //
 
@@ -16,19 +16,19 @@
 @property (nonatomic, retain) NSString * address;
 @property (nonatomic, retain) NSString * comment;
 @property (nonatomic, retain) NSDate * createTime;
-@property (nonatomic, retain) NSString * district_code;
+@property (nonatomic, retain) NSString * districtCode;
 @property (nonatomic, retain) NSNumber * gid;
-@property (nonatomic, retain) NSString * inventar_num;
+@property (nonatomic, retain) NSString * inventarNum;
 @property (nonatomic, retain) NSDate * lastModified;
-@property (nonatomic, retain) NSString * map_info;
+@property (nonatomic, retain) NSString * mapInfo;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * notice;
 @property (nonatomic, retain) NSNumber * state;
-@property (nonatomic, retain) NSString * transit_info;
-@property (nonatomic, retain) ExproMerchant *merchant;
-@property (nonatomic, retain) ExproWarehouse *warehouse;
+@property (nonatomic, retain) NSString * transitInfo;
 @property (nonatomic, retain) NSSet *deals;
+@property (nonatomic, retain) ExproMerchant *merchant;
 @property (nonatomic, retain) NSSet *staffs;
+@property (nonatomic, retain) ExproWarehouse *warehose;
 @end
 
 @interface ExproStore (CoreDataGeneratedAccessors)

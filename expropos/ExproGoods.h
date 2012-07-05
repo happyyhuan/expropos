@@ -2,7 +2,7 @@
 //  ExproGoods.h
 //  expropos
 //
-//  Created by ep3 on 12-6-21.
+//  Created by ep3 on 12-7-5.
 //  Copyright (c) 2012年 expro. All rights reserved.
 //
 
@@ -12,17 +12,19 @@
 @class ExproDealItem, ExproGoodsType, ExproMerchant, ExproWarehouseWarrantItem;
 
 @interface ExproGoods : NSManagedObject
-@property (nonatomic,retain) NSString * name;
+
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSString * comment;
 @property (nonatomic, retain) NSDate * createTime;
 @property (nonatomic, retain) NSNumber * gid;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * price;
 @property (nonatomic, retain) NSNumber * state;
+@property (nonatomic, retain) NSNumber * typeID;
 @property (nonatomic, retain) NSSet *dealItems;
 @property (nonatomic, retain) NSSet *merchants;
 @property (nonatomic, retain) ExproGoodsType *type;
-@property (nonatomic, retain) ExproWarehouseWarrantItem *warrantItems;
+@property (nonatomic, retain) NSSet *warrantItems;
 @end
 
 @interface ExproGoods (CoreDataGeneratedAccessors)
@@ -36,5 +38,10 @@
 - (void)removeMerchantsObject:(ExproMerchant *)value;
 - (void)addMerchants:(NSSet *)values;
 - (void)removeMerchants:(NSSet *)values;
+
+- (void)addWarrantItemsObject:(ExproWarehouseWarrantItem *)value;
+- (void)removeWarrantItemsObject:(ExproWarehouseWarrantItem *)value;
+- (void)addWarrantItems:(NSSet *)values;
+- (void)removeWarrantItems:(NSSet *)values;
 
 @end

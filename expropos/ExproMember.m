@@ -2,7 +2,7 @@
 //  ExproMember.m
 //  expropos
 //
-//  Created by ep3 on 12-6-21.
+//  Created by ep3 on 12-7-4.
 //  Copyright (c) 2012年 expro. All rights reserved.
 //
 
@@ -26,12 +26,15 @@
 @dynamic privacy;
 @dynamic savings;
 @dynamic state;
+@dynamic userID;
+@dynamic orgID;
+@dynamic roleID;
 @dynamic org;
 @dynamic purchases;
 @dynamic role;
 @dynamic sales;
+@dynamic store;
 @dynamic user;
 @dynamic warehouseWarrants;
-@dynamic store;
 
 @end

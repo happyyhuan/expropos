@@ -1,22 +1,22 @@
 //
-//  ExproRouteTable.m
+//  ExproRoute.m
 //  expropos
 //
-//  Created by ep3 on 12-6-21.
+//  Created by ep3 on 12-7-4.
 //  Copyright (c) 2012年 expro. All rights reserved.
 //
 
-#import "ExproRouteTable.h"
+#import "ExproRoute.h"
 #import "ExproRole.h"
 
 
-@implementation ExproRouteTable
+@implementation ExproRoute
 
 @dynamic desc;
 @dynamic gid;
 @dynamic method;
 @dynamic module;
-@dynamic route;
+@dynamic pathname;
 @dynamic role;
 
 @end

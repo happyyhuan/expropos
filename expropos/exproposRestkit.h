@@ -9,10 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #define kHost @"192.168.0.115"
-
-
-//#define kHost @"127.0.0.1"
-
 //#define kHost @"127.0.0.1"
 
 #define kPort @":10080"

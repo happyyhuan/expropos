@@ -9,7 +9,7 @@
 #import "ExproRestDelegate.h"
 //#import "AppDelegate.h"
 
-static NSString *gcookie;
+static NSString *gCookie = nil;
 @implementation ExproHttpCodeOption
 
 @synthesize statusCode = _statusCode;
@@ -41,7 +41,7 @@ static NSString *gcookie;
 @synthesize succeedTitle = _succeedTitle;
 @synthesize ok = _ok;
 @synthesize acceptParallelResults = _acceptParallelResults;
-@synthesize cookie = _cookie;
+@synthesize cookie;
 
 - (id)init {
     self = [super init];
@@ -111,9 +111,9 @@ static NSString *gcookie;
         if ([_option isSucceed]) {
             _title = _succeedTitle;
             NSDictionary *headers = [response allHeaderFields];
-            NSString *cookie = [headers objectForKey:@"Set-Cookie"];
-            if (cookie) {
-                self.cookie = cookie;
+            NSString *theCookie = [headers objectForKey:@"Set-Cookie"];
+            if (theCookie) {
+                self.cookie = theCookie;
             }
         }
         _shouldAlert = [_option shouldAlert];
@@ -158,10 +158,12 @@ static NSString *gcookie;
 
 - (void)safePerformSelector:(SEL)aSelector withObject:(id)object {
     if ([_reserver respondsToSelector:aSelector]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [_reserver performSelector:aSelector withObject:object];
-#pragma clang diagnostic pop
+            [_reserver performSelector:aSelector withObject:object];
+#pragma clang diagnostic pop            
+        });   
     }
 }
 
@@ -196,48 +198,53 @@ static NSString *gcookie;
 
 - (void)requestURL:(NSString *)aURL method:(RKRequestMethod)aMethod params:(NSDictionary *)params mapping:(RKObjectMapping *)aMapping {
     [self canceled];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:aURL usingBlock:^(RKObjectLoader *loader) {
-        loader.method = aMethod;
-        loader.delegate = self;
-        [loader setBody:params forMIMEType:@"application/json"];
-        if (aMapping) {
-            loader.objectMapping = aMapping;
-        }
-        if (self.cookie) {
-            [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
-        }
-        self.request = loader;
-    }];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[RKObjectManager sharedManager] loadObjectsAtResourcePath:aURL usingBlock:^(RKObjectLoader *loader) {
+            loader.method = aMethod;
+            loader.delegate = self;
+            if(params) {
+                [loader setBody:params forMIMEType:@"application/json"];
+            }
+            if (aMapping) {
+                loader.objectMapping = aMapping;
+            }
+            if (self.cookie) {
+                [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
+            }
+            self.request = loader;
+        }];
+    });
 }
 
 - (void)requestURL:(NSString *)aURL method:(RKRequestMethod)aMethod object:(id)aObject mapping:(RKObjectMapping *)aMapping serialMapping:(RKObjectMapping *)aSerialMapping {
     [self canceled];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:aURL usingBlock:^(RKObjectLoader *loader) {
-        loader.method = aMethod;
-        if (aSerialMapping) {
-            loader.serializationMapping = aSerialMapping;
-        }
-        loader.serializationMIMEType = @"application/json";
-        loader.sourceObject = aObject;
-        if (aMapping) {
-            loader.objectMapping = aMapping;
-        }
-        if (self.cookie) {
-            [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
-        }
-        self.request = loader;
-    }];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[RKObjectManager sharedManager] loadObjectsAtResourcePath:aURL usingBlock:^(RKObjectLoader *loader) {
+            loader.method = aMethod;
+            if (aSerialMapping) {
+                loader.serializationMapping = aSerialMapping;
+            }
+            loader.serializationMIMEType = @"application/json";
+            loader.sourceObject = aObject;
+            if (aMapping) {
+                loader.objectMapping = aMapping;
+            }
+            if (self.cookie) {
+                [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
+            }
+            self.request = loader;
+        }];
+    });
 }
 
 - (NSString *) cookie {
    // return _cookie;
-    return gcookie;
+    return gCookie;
 }
 
-- (void) setCookie:(NSString *)cookie {
-  /*  if (![_cookie isEqualToString:cookie]) {
-        _cookie = cookie;
-    }*/
-    gcookie = cookie;
+- (void) setCookie:(NSString *)theCookie {
+    if (![gCookie isEqualToString:theCookie]) {
+        gCookie = theCookie;
+    }
 }
 @end

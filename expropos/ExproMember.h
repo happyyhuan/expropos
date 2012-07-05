@@ -2,7 +2,7 @@
 //  ExproMember.h
 //  expropos
 //
-//  Created by ep3 on 12-6-21.
+//  Created by ep3 on 12-7-4.
 //  Copyright (c) 2012年 expro. All rights reserved.
 //
 
@@ -22,13 +22,16 @@
 @property (nonatomic, retain) NSNumber * privacy;
 @property (nonatomic, retain) NSNumber * savings;
 @property (nonatomic, retain) NSNumber * state;
+@property (nonatomic, retain) NSNumber * userID;
+@property (nonatomic, retain) NSNumber * orgID;
+@property (nonatomic, retain) NSNumber * roleID;
 @property (nonatomic, retain) ExproMerchant *org;
 @property (nonatomic, retain) NSSet *purchases;
 @property (nonatomic, retain) ExproRole *role;
 @property (nonatomic, retain) NSSet *sales;
+@property (nonatomic, retain) ExproStore *store;
 @property (nonatomic, retain) ExproUser *user;
 @property (nonatomic, retain) NSSet *warehouseWarrants;
-@property (nonatomic, retain) ExproStore *store;
 @end
 
 @interface ExproMember (CoreDataGeneratedAccessors)

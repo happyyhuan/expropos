@@ -2,8 +2,8 @@
 //  ExproUser.h
 //  expropos
 //
-//  Created by chen on 12-7-5.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by ep3 on 12-7-4.
+//  Copyright (c) 2012年 expro. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
