@@ -19,12 +19,16 @@
     
 }
 
+@property (strong, nonatomic) IBOutlet UITextField *orgField;
+@property (strong, nonatomic) IBOutlet UILabel *orglabel;
+
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *userField;
 @property (nonatomic,strong)UIManagedDocument *exprodatabase;
 @property (nonatomic,strong) IBOutlet UIView *loginview;
 @property (nonatomic,strong) NSArray *users;
 
+@property (strong, nonatomic) IBOutlet UILabel *phonelable;
 
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;

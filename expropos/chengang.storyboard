@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="Kf0-Ne-79h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="8nt-Bl-MaS">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -430,33 +430,42 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="1013" y="892"/>
         </scene>
         <!--Expropos View Controller-->
-        <scene sceneID="dEa-uJ-nQc">
+        <scene sceneID="7Mc-2A-Jjm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cQM-cw-EXW" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="viewController" id="Kf0-Ne-79h" customClass="exproposViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rJE-lY-Mem" customClass="UIScrollView">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="88x-wb-4tq" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="viewController" id="8nt-Bl-MaS" customClass="exproposViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="elx-jK-cmn" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="16J-sU-45C">
+                            <view contentMode="scaleToFill" id="m5E-Os-EAg">
                                 <rect key="frame" x="135" y="412" width="512" height="278"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="login_main.png" id="G0L-jC-UpG">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="login_main.png" id="RnN-aV-5ml">
                                         <rect key="frame" x="-16" y="-12" width="565" height="302"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="sLn-5g-Gje">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="umN-W1-tff">
                                         <rect key="frame" x="160" y="116" width="167" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                         <connections>
-                                            <outlet property="delegate" destination="Kf0-Ne-79h" id="Q16-Db-xWl"/>
+                                            <outlet property="delegate" destination="8nt-Bl-MaS" id="3Ks-9J-bY8"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nQZ-5O-pcy">
-                                        <rect key="frame" x="199" y="210" width="72" height="37"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Sdi-LV-NMz">
+                                        <rect key="frame" x="160" y="171" width="167" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="8nt-Bl-MaS" id="kfl-DR-vNT"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KLe-MI-667">
+                                        <rect key="frame" x="199" y="221" width="72" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="登陆">
@@ -467,27 +476,34 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="login:" destination="Kf0-Ne-79h" eventType="touchUpInside" id="sVk-m8-gAy"/>
+                                            <action selector="login:" destination="8nt-Bl-MaS" eventType="touchUpInside" id="DR9-k3-Xer"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="biV-Yb-9gI">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="JSn-6D-bba">
                                         <rect key="frame" x="160" y="66" width="167" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
-                                            <outlet property="delegate" destination="Kf0-Ne-79h" id="AJd-fF-bIr"/>
+                                            <outlet property="delegate" destination="8nt-Bl-MaS" id="WXk-HP-G1j"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="手机号码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HJp-fS-PJW">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="手机号码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="v40-j4-OFk">
                                         <rect key="frame" x="57" y="71" width="68" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="3V4-on-UyQ">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="密       码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="W5q-q8-toU">
                                         <rect key="frame" x="57" y="121" width="68" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="商户编号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yJF-KN-FJn">
+                                        <rect key="frame" x="57" y="171" width="68" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -496,11 +512,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.96078437569999997" blue="0.68235296010000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" image="4.jpg" id="QM3-qc-eUC">
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" image="4.jpg" id="TUP-Cq-57c">
                                 <rect key="frame" x="0.0" y="0.0" width="1031" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="3.jpg" id="Tz7-bg-5qq">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="3.jpg" id="5BZ-PQ-Tuu">
                                 <rect key="frame" x="0.0" y="127" width="1024" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -510,9 +526,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="loginview" destination="16J-sU-45C" id="F5L-DT-Qd1"/>
-                        <outlet property="passwordField" destination="sLn-5g-Gje" id="rMd-a8-hyw"/>
-                        <outlet property="userField" destination="biV-Yb-9gI" id="7jR-Sc-b7G"/>
+                        <outlet property="loginview" destination="m5E-Os-EAg" id="Zgd-Sh-yuu"/>
+                        <outlet property="orgField" destination="Sdi-LV-NMz" id="lVx-dl-ffR"/>
+                        <outlet property="orglabel" destination="yJF-KN-FJn" id="E80-gy-Jda"/>
+                        <outlet property="passwordField" destination="umN-W1-tff" id="ZO3-V9-gS1"/>
+                        <outlet property="phonelable" destination="v40-j4-OFk" id="1LC-v9-4er"/>
+                        <outlet property="userField" destination="JSn-6D-bba" id="d1U-C8-Dgh"/>
                     </connections>
                 </viewController>
             </objects>
@@ -578,7 +597,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="loginview" candidateClass="UIView"/>
+                <relationship kind="outlet" name="orgField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="orglabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phonelable" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="userField" candidateClass="UITextField"/>
             </relationships>
         </class>

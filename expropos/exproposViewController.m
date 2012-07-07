@@ -24,6 +24,8 @@
 @end
 
 @implementation exproposViewController 
+@synthesize orgField;
+@synthesize orglabel;
 @synthesize passwordField = _passwordField;
 @synthesize userField = _userField;
 @synthesize exprodatabase=_exprodatabase;
@@ -34,25 +36,51 @@
 @synthesize persistentStoreCoordinator;
 @synthesize applicationDocumentsDirectory;
 @synthesize users=_users;
+@synthesize phonelable;
 
 
 
 - (IBAction)showLoginView:(id)sender {
-   
+    
     UIButton *bu = (UIButton *)sender;
-    for (ExproUser *user in _users)
+    
+    if (bu.tag == 0)
     {
-        NSLog(@"%@", user);
-        if (user.gid.intValue == bu.tag)
-        {
-            _userField.text = user.cellphone;
-        }
+        _userField.text = nil;
+        self.userField.hidden= false;
+        self.phonelable.hidden=false;
+        self.orglabel.hidden=false;
+        self.orgField.hidden=false;
+        self.orgField.text=nil;
     }
+    else {
+        for (ExproUser *user in _users)
+        {
+            if (user.gid.intValue == bu.tag)
+            {
+                _userField.text = user.cellphone;
+                self.userField.hidden= true;
+                self.phonelable.hidden=true;
+                self.orgField.hidden=true;
+                self.orglabel.hidden=true;
+                
+            }
+        }
+    }        
+    CGContextRef context = UIGraphicsGetCurrentContext(); 
+    [UIView beginAnimations:@"Curl" context:context]; 
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut]; 
+    [UIView setAnimationDuration:0.5]; 
+    CGRect rect = [self.loginview frame]; 
+    rect.origin.x = (self.view.frame.size.width-rect.size.width)/2 ; 
+    [self.loginview setFrame:rect]; 
+    [UIView commitAnimations]; 
+    self.loginview.hidden=false;
 }
 @synthesize sign = _sign;
 - (IBAction)login:(id)sender {    
     password = _passwordField.text;
-     username= _userField.text;
+    username= _userField.text;
     if (username && [username length] && password && [password length]) {
         self.sign = [[exproposSign alloc]init];
         _sign.reserver = self;
@@ -78,7 +106,7 @@
 }
 
 - (void) signinSucceed:(id)object {
-
+    
     NSDictionary *user = (NSDictionary *)object;
     NSLog(@"signin user:%@, sex:%@", [user objectForKey:@"name"], [user objectForKey:@"sex"]);   
     exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
@@ -91,7 +119,7 @@
     NSPredicate *predicate = nil;
     NSMutableString *str = [[NSMutableString alloc]initWithString:@"(cellphone=%@)" ];
     NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:username, nil];
-        
+    
     predicate = [NSPredicate predicateWithFormat:str argumentArray:params];
     
     NSLog(@"%@",predicate);
@@ -121,22 +149,22 @@
     
     appDelegate.currentUser = signUser;
     [appDelegate.sync syncStore:[NSNumber numberWithInt:15]];
-
-//    NSFetchRequest *request = [ExproSignHistory fetchRequest];
-//    NSPredicate *predicate = nil;
-//    
-//    request.predicate = predicate;
-//    NSArray *deals = [ExproSignHistory objectsWithFetchRequest:request];
-//    NSLog(@"%i",deals.count);
-//    
-//    for (ExproSignHistory *historys in deals)
-//    {
-//        NSLog(@"historys.gid%@",historys.gid);
-//         NSLog(@"historys.user.gid%@",historys.user.gid);
-//        NSLog(@"historys.user.cellphone%@",historys.user.cellphone);
-//        NSLog(@"historys.user.sex%@",historys.user.sex);
-//        NSLog(@"historys.user.name%@",historys.user.name);
-//    }
+    
+    //    NSFetchRequest *request = [ExproSignHistory fetchRequest];
+    //    NSPredicate *predicate = nil;
+    //    
+    //    request.predicate = predicate;
+    //    NSArray *deals = [ExproSignHistory objectsWithFetchRequest:request];
+    //    NSLog(@"%i",deals.count);
+    //    
+    //    for (ExproSignHistory *historys in deals)
+    //    {
+    //        NSLog(@"historys.gid%@",historys.gid);
+    //         NSLog(@"historys.user.gid%@",historys.user.gid);
+    //        NSLog(@"historys.user.cellphone%@",historys.user.cellphone);
+    //        NSLog(@"historys.user.sex%@",historys.user.sex);
+    //        NSLog(@"historys.user.name%@",historys.user.name);
+    //    }
     
     
     
@@ -146,54 +174,81 @@
 - (void) signinFailed:(id)object {
     _userField.text = nil;
     _passwordField.text=nil;
-    }
+}
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-     NSArray *array = [self loadSinginUser];
+    NSArray *array = [self loadSinginUser];
     if (!array.count)
     {
         array = [self loadSinginUser];
     }
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 300,700,40)];    
-  
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-(array.count*50))/2, 300,700,70)];    
+    
+    
     for (int i = 0 ; i < array.count ; i++)
     {
-            ExproUser *user = [array objectAtIndex:i];
-            if (user.signHistory)
-            {
-                CGRect frame = CGRectMake(50*(i+1), 5, 50, 40);
-                
-                UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
-        
-                    myButton.frame = frame;
-                [myButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
-             
-                [myButton setTitle:user.name forState:UIControlStateHighlighted];
-             
-                [myButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
-                myButton.tag = user.gid.intValue;
-        
-                [scrollView addSubview:myButton];
-            }        
-    }    
-
+        ExproUser *user = [array objectAtIndex:i];
+        if (user.signHistory)
+        {
+            CGRect frame = CGRectMake(50*i, 5, 50, 40);
+            
+            UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
+            myButton.frame = frame;
+            [myButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
+            [myButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
+            myButton.tag = user.gid.intValue;
+            
+            CGRect labelframe = CGRectMake(10+50*i, 40, 50, 30);
+            UILabel *mylabel = [UILabel new];
+            mylabel.frame = labelframe;
+            [mylabel setText:user.name];
+            [mylabel setBackgroundColor:self.view.backgroundColor];
+            [mylabel setFont:[UIFont systemFontOfSize:12]];
+            [scrollView addSubview:myButton];
+            [scrollView addSubview:mylabel];
+        }        
+    }  
+    
+    CGRect frame = CGRectMake(50*array.count, 5, 50, 40);
+    UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    myButton.frame = frame;
+    [myButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
+    [myButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
+    myButton.tag = 0;
+    CGRect labelframe = CGRectMake(50*array.count+10, 40, 50, 30);
+    UILabel *mylabel = [UILabel new];
+    mylabel.frame = labelframe;
+    [mylabel setText:@"新用户"];
+    [mylabel setBackgroundColor:self.view.backgroundColor];
+    [mylabel setFont:[UIFont systemFontOfSize:12]];
+    [scrollView addSubview:myButton];
+    [scrollView addSubview:mylabel];
+    
+    
     [self.view addSubview:scrollView];
     
-    scrollView.contentSize = CGSizeMake(760, 40);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 70);
     scrollView.contentOffset = CGPointMake(0, 0);
- 
+    self.loginview.hidden=true;
+    CGRect rect = [self.loginview frame]; 
     
+    rect.origin.x = 0.0f-rect.size.width; 
+    
+    [self.loginview setFrame:rect];
 }
 
 - (void)viewDidUnload
 {
     [self setPasswordField:nil];
     [self setUserField:nil];
+    [self setPhonelable:nil];
+    [self setOrgField:nil];
+    [self setOrglabel:nil];
     [super viewDidUnload];}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -203,12 +258,12 @@
 
 -(void)didLoginSuccess
 {
-   
-   
-        exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        UISplitViewController *splitView = [self.storyboard instantiateViewControllerWithIdentifier:@"splitView"];
-        appDelegate.window.rootViewController = splitView;
-        
+    
+    
+    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    UISplitViewController *splitView = [self.storyboard instantiateViewControllerWithIdentifier:@"splitView"];
+    appDelegate.window.rootViewController = splitView;
+    
 }
 
 //-(void)saveTestDate
@@ -240,7 +295,7 @@
     NSLog(@"%i",deals.count);
     self.users = deals;
     return deals;
-
+    
 }
 
 
@@ -289,5 +344,5 @@
     [UIView commitAnimations];                  
 }  
 
-    
+
 @end
