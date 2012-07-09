@@ -2,7 +2,7 @@
 //  exproposMyTableView.m
 //  expropos
 //
-//  Created by haitao chen on 12-6-26.
+//  Created by 昊 曹 on 12-6-15.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -12,10 +12,12 @@
 @synthesize multipleDataSource = _multipleDataSource;
 @synthesize multipleDelegate = _multipleDelegate;
 
+
 -(void)reloadDatas
 {
     [super reloadData];
 }
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -37,13 +39,13 @@
     return self;
 }
 /*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -150,3 +152,4 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 @end
+
