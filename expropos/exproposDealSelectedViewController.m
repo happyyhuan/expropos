@@ -42,6 +42,7 @@
 @synthesize update=_update;
 @synthesize myPopover=_myPopover;
 @synthesize showDeals=_showDeals;
+@synthesize deals = _deals;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -53,7 +54,8 @@
 }
 -(void)didUpDataSuccess
 {
-    _showDeals.data = [self searchInLoacl];
+    [self searchInLoacl];
+    _showDeals.data = _deals;
     [UIView beginAnimations:@"View Flip" context:nil];
     [UIView setAnimationDuration:2];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -75,16 +77,16 @@
 
 -(void)dealSelect
 {
-       
-   NSArray *deals = [self searchInLoacl];
+    [self searchInLoacl];
     
-    if([deals count]==0){
+    if([_deals count]==0){
         _update = [[exproposUpdateDeals alloc]init];
         _update.reserver = self;
         _update.succeedCallBack = @selector(didUpDataSuccess);
-        [_update upDateDealStart:0 end:100 bt:self.beginDate et:self.endDate];
+        [_update upDateDealStart:0 end:10 bt:self.beginDate et:self.endDate];
+        
     }else {
-         _showDeals.data = deals;
+        _showDeals.data = _deals;
         [UIView beginAnimations:@"View Flip" context:nil];
         [UIView setAnimationDuration:2];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -107,7 +109,7 @@
 
 
 
--(NSArray*) searchInLoacl
+-(void) searchInLoacl
 {
     NSFetchRequest *request = [ExproDeal fetchRequest];
     
@@ -168,9 +170,9 @@
     NSLog(@"%@",predicate);
     request.sortDescriptors = [[NSArray alloc]initWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO], nil];
      request.predicate = predicate;
-    NSArray *deals = [ExproDeal objectsWithFetchRequest:request];
-   
-    return deals;
+    [_deals removeAllObjects];
+    [_deals addObjectsFromArray:[ExproDeal objectsWithFetchRequest:request]];
+    //return _deals;
 }
 
 
@@ -187,13 +189,13 @@
     _dealItems = [[NSMutableArray alloc] initWithCapacity:20];
     _stores = [[NSMutableArray alloc] initWithCapacity:20];
     _payTypes = [[NSMutableArray alloc] initWithCapacity:20];
+    _deals = [[NSMutableArray alloc]initWithCapacity:20];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    self.beginDate = nil;
-    self.endDate = nil;
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -201,10 +203,23 @@
     NSTimeInterval secondsPerDay = 24 * 60 * 60 - 60; 
     _beginDate = [[NSDate date] beginningOfDay];
     _beginDate = [[NSDate alloc]initWithTimeInterval:8*60*60 sinceDate:_beginDate];
-    NSLog(@"_begin:::%@======%@",_beginDate,[NSDate date]);
     
     _endDate = [[NSDate alloc] initWithTimeInterval:secondsPerDay sinceDate:_beginDate];
-    NSLog(@"%@,%@",_beginDate,_endDate);
+    [self.tableView reloadData];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+  /*  self.beginDate = nil;
+    self.endDate = nil;
+   _fromAmoutOfMoney = nil;
+    _endAmoutOfMoney = nil;
+   [_members removeAllObjects];
+   [_dealItems removeAllObjects];
+    [_stores removeAllObjects];
+    [_payTypes removeAllObjects];
+    [self.tableView reloadData];*/
+    [super viewWillDisappear:animated];
 }
 
 -(NSDate *)localDate

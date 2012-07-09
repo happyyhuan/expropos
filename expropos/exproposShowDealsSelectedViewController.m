@@ -18,6 +18,8 @@
 
 @end
 
+static int pageNum = 0;
+
 @implementation exproposShowDealsSelectedViewController
 @synthesize popover = _popover;
 @synthesize dealSelect = _dealSelect;
@@ -52,7 +54,7 @@
 }
 
 -(void)updates:(UIBarButtonItem *)sender {
-
+    exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
     _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [_spinner startAnimating];
     _spinnerIteam = [[UIBarButtonItem alloc] initWithCustomView:_spinner];
@@ -71,7 +73,7 @@ dispatch_queue_t downloadQueue = dispatch_queue_create("deals downloader", NULL)
 dispatch_async(downloadQueue, ^{
     _updateDeals.reserver = self;
     _updateDeals.succeedCallBack =  @selector(updateSuccess);
-     [_updateDeals  upDateDealStart:1 end:100 bt:nil et:nil];
+     [_updateDeals  upDateDealStart:1 end:100 bt:s.beginDate   et:s.endDate];
 });
 dispatch_release(downloadQueue);    
 }
@@ -91,7 +93,7 @@ dispatch_release(downloadQueue);
             self.mainViewController.menuTool.items = items;
             _spinnerIteam = nil;
             exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
-            self.data = [s searchInLoacl];
+            [s searchInLoacl];
             [self.tableView reloadData];
 }
 
@@ -150,6 +152,7 @@ dispatch_release(downloadQueue);
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    pageNum = 0;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -329,6 +332,18 @@ dispatch_release(downloadQueue);
     }else {
         return [UIColor lightGrayColor];
     }
+}
+
+-(void)multipleTableView:(ExproMultipleTableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  /*  if (indexPath.row == self.data.count-1) {
+        _dealSelect = [self.storyboard instantiateViewControllerWithIdentifier:@"showChoose"];
+        exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
+        
+        
+        [self.updateDeals upDateDealStart:pageNum*10+1 end:10 bt:s.beginDate et:s.endDate];
+        
+    }*/
 }
 
 @end

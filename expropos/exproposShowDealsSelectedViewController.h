@@ -16,7 +16,7 @@
 @interface exproposShowDealsSelectedViewController :UIViewController <ExproMutableTableViewDataSource,ExproMutableTableViewDelegate>
 @property (strong,nonatomic) UIPopoverController *popover;
 @property (strong,nonatomic) UINavigationController *dealSelect;
-@property (strong,nonatomic )NSArray *data;
+@property (strong,nonatomic )NSMutableArray *data;
 @property (strong,nonatomic )exproposMainViewController *mainViewController;
 
 @property (nonatomic,strong)IBOutlet ExproMultipleTableView *tableView;

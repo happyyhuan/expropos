@@ -142,4 +142,11 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([_multipleDelegate respondsToSelector:@selector(multipleTableView:willDisplayCell:forRowAtIndexPath:)]){
+        [_multipleDelegate multipleTableView:(ExproMultipleTableView*)tableView willDisplayCell:cell forRowAtIndexPath:indexPath];
+    }
+}
+
 @end
