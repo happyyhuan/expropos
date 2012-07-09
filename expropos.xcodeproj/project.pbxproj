@@ -34,12 +34,8 @@
 		5F8D03A015A411BA00C13112 /* exproposDealOperateMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8D039F15A411BA00C13112 /* exproposDealOperateMenuViewController.m */; };
 		5F8DE18B15A13FFA00CBEB69 /* exproposSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE18A15A13FFA00CBEB69 /* exproposSign.m */; };
 		5F900CA415A68E0E00D1032E /* dealID.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F900CA315A68E0E00D1032E /* dealID.plist */; };
-<<<<<<< HEAD
 		5F91790215A2D19600B8E100 /* (null) in Sources */ = {isa = PBXBuildFile; };
-=======
-		5F91790215A2D19600B8E100 /* exproposSysLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 4279E152159C265800D50CE5 /* exproposSysLoad.m */; };
 		5F95C8E815A82C1F006AB1F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29515746A6B009FFBAE /* Foundation.framework */; };
->>>>>>> 687a2fc... deal operate commit
 		5F99B4391591B3C400CCB896 /* exproposDealSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F99B4381591B3C400CCB896 /* exproposDealSelectedViewController.m */; };
 		5F9A8E3C1599B4870021FE68 /* ExproMultipleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9A8E3B1599B4870021FE68 /* ExproMultipleTableView.m */; };
 		5F9F7DB415A6EC2700EF8D5A /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F7DB315A6EC2700EF8D5A /* NSDate+Helper.m */; };
