@@ -53,13 +53,14 @@
 
 -(void)loadData
 {
+    ExproMerchant *merchant = nil;
     exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate  ];
-    
-     NSFetchRequest *request = [ExproMerchant fetchRequest];
-     request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appdelegate.gid];
-     
-     NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
-     ExproMerchant *merchant = [merchants objectAtIndex:0];
+    NSArray *members = [ExproMember findAll];
+    for(ExproMember *member in members){
+        if(member.user.gid == appdelegate.currentUser.gid){
+            merchant = member.org;
+        }
+    }
      //初始化会员选择数据
      
      NSSet *alls =  merchant.members;
@@ -70,6 +71,10 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:100];
     for(ExproRole *role in roles){
+        if([role.name isEqualToString:@"商户业主"]||[role.name isEqualToString:@"商户收银员"]){
+            continue;
+        }
+        
         NSMutableArray *tmpMembers = [[NSMutableArray alloc]initWithCapacity:20];
         for(ExproMember *m in alls){
             if(m.role.gid.intValue == role.gid.intValue){

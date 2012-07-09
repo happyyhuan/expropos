@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="RCY-Jc-csf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="FiI-Wo-2QG">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -317,7 +317,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </splitViewController>
             </objects>
-            <point key="canvasLocation" x="-1419" y="-2006"/>
+            <point key="canvasLocation" x="-1291" y="-1998"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XQR-ot-daj">
@@ -472,26 +472,33 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="957" y="508"/>
         </scene>
         <!--Expropos View Controller-->
-        <scene sceneID="cw1-F9-4e4">
+        <scene sceneID="GBw-Ob-Sf5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TJp-rk-LwI" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="viewController" id="RCY-Jc-csf" customClass="exproposViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7GI-ci-2Ev">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UFq-PV-Fk7" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="viewController" id="FiI-Wo-2QG" customClass="exproposViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wcO-rX-yKA" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="rkb-jm-wJ0">
-                                <rect key="frame" x="139" y="299" width="512" height="374"/>
+                            <view contentMode="scaleToFill" id="ang-3v-bju">
+                                <rect key="frame" x="135" y="412" width="512" height="278"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="tPe-kR-E1d">
-                                        <rect key="frame" x="239" y="118" width="167" height="31"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="login_main.png" id="fG4-Q4-rLg">
+                                        <rect key="frame" x="-16" y="-12" width="565" height="302"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Dth-d5-ehX">
+                                        <rect key="frame" x="160" y="116" width="167" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="FiI-Wo-2QG" id="imH-Nv-2If"/>
+                                        </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L1g-Of-I8u">
-                                        <rect key="frame" x="202" y="175" width="72" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LMg-f5-54r">
+                                        <rect key="frame" x="199" y="210" width="72" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="登陆">
@@ -502,24 +509,27 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="login:" destination="RCY-Jc-csf" eventType="touchUpInside" id="FqG-sN-F95"/>
+                                            <action selector="login:" destination="FiI-Wo-2QG" eventType="touchUpInside" id="5Jb-P1-xc2"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="gRT-34-d14">
-                                        <rect key="frame" x="239" y="61" width="167" height="31"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="wXc-cD-vU6">
+                                        <rect key="frame" x="160" y="66" width="167" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="FiI-Wo-2QG" id="Ajk-iH-VPS"/>
+                                        </connections>
                                     </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="手机号码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="nyN-Tq-Nzm">
-                                        <rect key="frame" x="112" y="65" width="68" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="手机号码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="1s8-NK-w6M">
+                                        <rect key="frame" x="57" y="71" width="68" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="vLK-y5-Ugv">
-                                        <rect key="frame" x="112" y="118" width="68" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jMt-Dr-aLS">
+                                        <rect key="frame" x="57" y="121" width="68" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -528,21 +538,34 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.96078437569999997" blue="0.68235296010000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" image="4.jpg" id="zCh-vy-mUY">
+                                <rect key="frame" x="0.0" y="0.0" width="1031" height="126"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="3.jpg" id="fvM-M0-FRE">
+                                <rect key="frame" x="0.0" y="127" width="1024" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="loginview" destination="rkb-jm-wJ0" id="nHh-ca-nAm"/>
-                        <outlet property="passwordField" destination="gRT-34-d14" id="EAh-LM-xUk"/>
-                        <outlet property="userField" destination="tPe-kR-E1d" id="OUn-fs-wbz"/>
+                        <outlet property="loginview" destination="ang-3v-bju" id="f3i-ar-Dub"/>
+                        <outlet property="passwordField" destination="Dth-d5-ehX" id="nYB-LG-BWo"/>
+                        <outlet property="userField" destination="wXc-cD-vU6" id="lxZ-gh-FKN"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2796" y="-2006"/>
+            <point key="canvasLocation" x="-2524" y="-2022"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="3.jpg" width="962" height="257"/>
+        <image name="4.jpg" width="798" height="76"/>
+        <image name="login_main.png" width="514" height="314"/>
+    </resources>
     <classes>
         <class className="ExproMultipleTableView" superclassName="UITableView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExproMultipleTableView.h"/>

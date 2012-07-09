@@ -153,9 +153,9 @@
     [dealMapping connectRelationship:@"dealer" withObjectForPrimaryKeyAttribute:@"dealerID"];
     [dealMapping mapKeyPath:@"dealerID" toRelationship:@"dealer" withMapping:memberMapping serialize:NO];
     [dealMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"customerID"];
-    [dealMapping mapKeyPath:@"customerID" toRelationship:@"customer" withMapping:memberMapping serialize:NO];
+    [dealMapping mapKeyPath:@"customer" toRelationship:@"customer" withMapping:memberMapping serialize:NO];
+  //  dealMapping mapRelationship:@"customer" withMapping:memberMapping
     [dealMapping mapKeyPath:@"deal_item" toRelationship:@"items" withMapping:dealItemMapping serialize:NO];
-    [memberMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"gid"];
     [objectManager.mappingProvider setMapping:dealMapping forKeyPath:@"deal"];
         
     
@@ -182,7 +182,7 @@
     [callbackdealMapping connectRelationship:@"dealer" withObjectForPrimaryKeyAttribute:@"dealerID"];
     [callbackdealMapping mapKeyPath:@"dealerID" toRelationship:@"dealer" withMapping:memberMapping serialize:NO];
     [callbackdealMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"customerID"];
-    [callbackdealMapping mapKeyPath:@"customerID" toRelationship:@"customer" withMapping:memberMapping serialize:NO];
+    [callbackdealMapping mapKeyPath:@"customer" toRelationship:@"customer" withMapping:memberMapping serialize:NO];
     [callbackdealMapping mapKeyPath:@"cbdeal_item" toRelationship:@"items" withMapping:callbackDealItemMapping serialize:NO];
    // [callbackDealItemMapping mapKeyPath:@"dealID" toRelationship:@"cbdeal" withMapping:callbackdealMapping serialize:NO];
     

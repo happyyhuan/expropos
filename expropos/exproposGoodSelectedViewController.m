@@ -14,6 +14,7 @@
 #import "ExproMerchant.h"
 #import "exproposAppDelegate.h"
 #import "exproposDealOperateViewController.h"
+#import "ExproMember.h"
 
 @interface exproposGoodSelectedViewController ()
 @property (nonatomic,strong)ExproMerchant *merchant;
@@ -92,16 +93,19 @@
 {
     exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
-    NSFetchRequest *request = [ExproMerchant fetchRequest];
 
-     request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appDelegate.gid];
-     NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
-     self.merchant = [merchants objectAtIndex:0];
+    NSArray *members = [ExproMember findAll];
+    for(ExproMember *member in members){
+        if(member.user.gid == appDelegate.currentUser.gid){
+            self.merchant = member.org;
+        }
+    }
+     
      
      NSFetchRequest *request2 = [ExproGoodsType fetchRequest];
      request2.predicate = [NSPredicate predicateWithFormat:@"parent = %@", nil];
      self.allDatas = [[NSArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];
-    self.allDatas = [[NSArray alloc] initWithArray:[ExproGoodsType findAll]];
+   
     
     self.datas = [_allDatas mutableCopy];
 }
@@ -288,14 +292,6 @@
             }
         }
         
-      /* //test
-        for(ExproGoods *g in [ExproGoods findAll]){
-            if(g.type.gid == t.gid){
-                [InGoods addObject:g];
-            }
-        }
-        //test end */
-        
         for(ExproGoodsType *t in set){
             NSInteger index = [self.datas indexOfObjectIdenticalTo:t];
             isInserted =  (index>0&&index != NSIntegerMax);
@@ -316,7 +312,12 @@
             [self removeGoodsTypes:set Goods:InGoods];
         }else {
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-            cell.imageView.image = [UIImage imageNamed:@"descending.png"];
+            if(set.count == 0 && InGoods.count == 0){
+                cell.imageView.image = [UIImage imageNamed:@"TriangleSmall.png"];
+            }else {
+               cell.imageView.image = [UIImage imageNamed:@"descending.png"];
+            }
+            
             NSUInteger count = indexPath.row+1;
             NSMutableArray *arrCells = [NSMutableArray array];
             for(ExproGoodsType *t  in set){
