@@ -16,6 +16,9 @@
 #import "exproposDealSelectedViewController.h"
 #import "RestKit/CoreData.h"
 #import "exproposAppDelegate.h"
+#import "exproposDealOperateViewController.h"
+#import "ExproMultipleTableView.h"
+#import "exproposDealOperateMenuViewController.h"
 
 @interface exproposMemberSelectedViewController ()
 
@@ -30,6 +33,7 @@
 @synthesize viewController = _viewController;
 @synthesize freshButton = _freshButton;
 @synthesize sysLoad = _sysLoad;
+@synthesize  popover = _popover;
 
 -(void)awakeFromNib
 {
@@ -47,44 +51,50 @@
     return self;
 }
 
-- (void)viewDidLoad
+-(void)loadData
 {
-    [super viewDidLoad];
-    self.searchBar.delegate = self;
-    self.searchBar.keyboardType = UIKeyboardTypePhonePad;
-    
     exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate  ];
     
 
-  /* NSFetchRequest *request = [ExproMerchant fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appdelegate.gid];
-    
-    NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
-    ExproMerchant *merchant = [merchants objectAtIndex:0];
-    //初始化会员选择数据
-  
-    NSSet *alls =  merchant.members;*/
+    /* NSFetchRequest *request = [ExproMerchant fetchRequest];
+     request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appdelegate.gid];
+     
+     NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
+     ExproMerchant *merchant = [merchants objectAtIndex:0];
+     //初始化会员选择数据
+     
+     NSSet *alls =  merchant.members;*/
     NSArray *alls = [ExproMember findAll];
     NSArray *roles = [ExproRole findAll];
     
-  
+    
     
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:100];
     for(ExproRole *role in roles){
         NSMutableArray *tmpMembers = [[NSMutableArray alloc]initWithCapacity:20];
         for(ExproMember *m in alls){
-            if(m.role.gid == role.gid){
+            if(m.role.gid.intValue == role.gid.intValue){
                 [tmpMembers addObject:m];
             }
         }
-      
+        
         if([tmpMembers count]>0){
             [dic setObject:tmpMembers forKey:role.name];
         }
     }
     
     self.allMembers = [NSDictionary dictionaryWithDictionary:dic];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.searchBar.delegate = self;
+    self.searchBar.keyboardType = UIKeyboardTypePhonePad;
+    
+    [self loadData];
+    
     
     [self restSearch];
     [self.tableView setContentOffset:CGPointMake(0.0, 0.0) animated:NO];
@@ -219,6 +229,11 @@
             }
             return cell;
         }
+        if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
+            cell.textLabel.text = @"请选择会员";
+            cell.detailTextLabel.text = @"";
+            return cell;
+        }
     }
     
     NSString *memberType = [self.memberTypes objectAtIndex:section-1];
@@ -227,7 +242,7 @@
     
     cell.textLabel.text = member.petName;
     cell.detailTextLabel.text = member.user.cellphone;
-    cell.imageView.image = [UIImage imageNamed:@"cb4.png"];
+    cell.imageView.image = [UIImage imageNamed:@"member.png"];
     
     if([self.viewController isKindOfClass:[exproposDealSelectedViewController class]]){
         exproposDealSelectedViewController *deal = (exproposDealSelectedViewController *)self.viewController;
@@ -237,6 +252,18 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
+    
+    if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
+        exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)self.viewController;
+            
+           /* if(dealOperate.member!=nil && dealOperate.member.gid.intValue == member.gid.intValue){
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }else {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }*/
+        
+    }
+
 
     return cell;
 }
@@ -261,12 +288,17 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UITableViewCell *cell0 = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     NSInteger section = indexPath.section;
+    
+    
     if(section == 0){
         cell0.accessoryType = UITableViewCellAccessoryCheckmark;
         if([self.viewController isKindOfClass:[exproposDealSelectedViewController class]]){
             exproposDealSelectedViewController *deal = (exproposDealSelectedViewController *)self.viewController;
             [deal.members removeAllObjects];
             [deal.tableView reloadData];
+        }
+        if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
+            return;
         }
         [self.tableView reloadData];
         [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
@@ -292,6 +324,23 @@
         }
          [deal.tableView reloadData];
     }
+    if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
+        exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)self.viewController;
+        if(dealOperate.member != nil && dealOperate.member.gid.intValue == member.gid.intValue){
+            dealOperate.member = nil;
+        }else {
+            dealOperate.member = member;
+        }
+        [self.tableView reloadData];
+        
+        [dealOperate.dealOperateMenu.menuTableView reloadData];
+        [dealOperate.mySelectedGoods removeAllObjects];
+        [dealOperate.goodsAndAmount removeAllObjects];
+        dealOperate.deal = nil;
+        [dealOperate.dealItemTableView reloadData];
+        [dealOperate addToolBarItem];
+        [_popover dismissPopoverAnimated:YES];
+    }
     
 }
 
@@ -314,7 +363,9 @@
     
     dispatch_queue_t downloadQueue = dispatch_queue_create("informations downloader", NULL);
     dispatch_async(downloadQueue, ^{
-       
+        _sysLoad = [[exproposSysLoad alloc]init];
+        _sysLoad.reserver = self;
+        _sysLoad.succeedCallBack = @selector(updateSuccess);
         exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
         [_sysLoad loadSysData:appdelegate.currentUser.gid.stringValue  completion:nil];
     });
@@ -324,7 +375,7 @@
 -(void)updateSuccess
 {
     self.navigationItem.rightBarButtonItem = _freshButton;
-    
+    [self loadData];
     //实例化一个NSDateFormatter对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //设定时间格式,这里可以设置成自己需要的格式

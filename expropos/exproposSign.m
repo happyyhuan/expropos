@@ -35,27 +35,6 @@
 
 - (void) signin:(NSString *)cellphone password:(NSString *)password 
 {
-//    ExproUser *user = [ExproUser object];
-//    user.cellphone = cellphone;
-//    user.password = password;
-//    
-//    NSDictionary *prams = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:1],@"org",user.cellphone,@"cellphone",user.password,@"password", nil];
-//    
-////    RKManagedObjectMapping* signinMapping = [RKManagedObjectMapping mappingForClass:[ExproUser class] inManagedObjectStore:[[RKObjectManager sharedManager] objectStore]];
-//    RKObjectMapping *signinMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-//    [signinMapping mapKeyPathsToAttributes:@"_id", @"gid", nil];
-//    [signinMapping mapAttributes:@"name", @"sex", nil];
-//    
-//    
-//    
-//
-//    [[RKObjectManager sharedManager] sendObject:user toResourcePath:@"/signin" usingBlock:^(RKObjectLoader *loader) {                    
-//        loader.method = RKRequestMethodPOST;
-//        loader.delegate = self;
-//        loader.objectMapping = signinMapping;
-//        loader.params = prams;
-//    }]; 
-    
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:cellphone,@"cellphone",password,@"password",@"1",@"org", nil];
     

@@ -16,6 +16,7 @@
 @property (assign) IBOutlet id<ExproMutableTableViewDataSource> multipleDataSource;
 @property (assign) IBOutlet id<ExproMutableTableViewDelegate>   multipleDelegate;
 
+-(void)reloadDatas;
 @end
 
 @protocol ExproMutableTableViewDataSource <NSObject>
@@ -27,7 +28,6 @@
 @optional
 - (NSString *)multipleTableView:(ExproMultipleTableView *)tableView titleForSegment:(NSInteger)segment;
 
-
 @end
 
 @protocol ExproMutableTableViewDelegate <NSObject>
@@ -38,5 +38,9 @@
 - (CGFloat)multipleTableView:(ExproMultipleTableView *)tableView heightForCellAtIndexPath:(NSIndexPath *)indexPath;
 - (UIColor *)multipleTableView:(ExproMultipleTableView *)tableView backgroundColorForHeaderInSection:(NSInteger)section;
 - (UIColor *)multipleTableView:(ExproMultipleTableView *)tableView backgroundColorSegment:(NSInteger)segment;
+
+- (void)multipleTableView:(ExproMultipleTableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+        forRowAtIndexPath:(NSIndexPath *)indexPath ;
 
 @end

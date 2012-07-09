@@ -1,6 +1,8 @@
 #import "exproposMainViewController.h"
 #import "exproposAppDelegate.h"
 #import "exproposViewController.h"
+#import "exproposMenuViewController.h"
+#import "exproposDealOperateViewController.h"
 
 
 
@@ -109,6 +111,10 @@
     
 }
 
-
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers objectAtIndex:0];
+    exproposMenuViewController *menu =(exproposMenuViewController*)[nav.viewControllers objectAtIndex:0];
+    [menu.dealoperate didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
 
 @end

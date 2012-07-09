@@ -12,6 +12,11 @@
 @synthesize multipleDataSource = _multipleDataSource;
 @synthesize multipleDelegate = _multipleDelegate;
 
+-(void)reloadDatas
+{
+    [super reloadData];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -73,6 +78,7 @@
             CGFloat contentWidth = [_multipleDataSource multipleTableView:(ExproMultipleTableView *)tableView proportionForSegment:index]*self.frame.size.width;
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(orgin, 0, contentWidth, height)];
             label.backgroundColor = [UIColor clearColor];
+            label.font = [UIFont systemFontOfSize:15];
             label.text = [_multipleDataSource multipleTableView:(ExproMultipleTableView *)tableView titleForSegment:index];
             [titleView addSubview:label];
             orgin += contentWidth;
@@ -92,23 +98,48 @@
         NSInteger segments = [_multipleDataSource numberOfSegmentInMultipleTableView:(ExproMultipleTableView *)tableView];
         CGFloat orgin = 0;
         CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
+        NSLog(@"width === %g",self.frame.size.width);
         for (NSInteger index=0; index<segments; index++) {
             CGFloat contentWidth = [_multipleDataSource multipleTableView:(ExproMultipleTableView *)tableView proportionForSegment:index]*self.frame.size.width;
             UIView *background = [[UIView alloc] initWithFrame:CGRectMake(orgin, 0, contentWidth, height)];
             if ([_multipleDelegate respondsToSelector:@selector(multipleTableView:backgroundColorSegment:)]) {
                 background.backgroundColor = [_multipleDelegate multipleTableView:(ExproMultipleTableView *)tableView backgroundColorSegment:index];
             }
-            UIView *view = [_multipleDataSource multipleTableView:(ExproMultipleTableView *)tableView viewForSegment:index indexPath:indexPath];;
+            UIView *view = [_multipleDataSource multipleTableView:(ExproMultipleTableView *)tableView viewForSegment:index indexPath:indexPath];
             [background addSubview:view];
             [cell addSubview:background];
             orgin += contentWidth;
         }
     }
+    cell.showsReorderControl = YES;
+    cell.editingAccessoryType = UITableViewCellEditingStyleDelete;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    //点击按钮事件发生
+    [_multipleDelegate multipleTableView:(ExproMultipleTableView*)tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
+}
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+          editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //手指滑动出现按钮
+    return UITableViewCellEditingStyleDelete;
+}
+-(NSString *)tableView:(UITableView *)tableView
+titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //设置按钮的名称
+    return @"删除";
+}
+-(BOOL)tableView:(UITableView *)tableView
+canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
 @end

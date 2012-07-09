@@ -29,6 +29,66 @@
 {
     
     [exproposRestkit InitRestKit];
+    
+    //test
+    RKObjectManager *manager = [RKObjectManager sharedManager];
+     
+     
+     for(int i=0;i<10;i++){
+     ExproRole *r = [ExproRole object];
+     r.gid = [NSNumber numberWithInt:i];
+     r.name = [NSString stringWithFormat:@"role %i",i];
+     [manager.objectStore save:nil];
+     }
+     
+     
+     NSArray *d = [ExproRole findAll] ;
+     for(int i=0;i<10;i++){
+     ExproMember *m = [ExproMember object];
+     m.gid = [NSNumber numberWithInt:(24+i)];
+     m.petName = [NSString stringWithFormat:@"petName %i",m.gid.intValue];
+     m.role = [d objectAtIndex:i];
+         m.savings = [NSNumber numberWithInt:i];
+         m.point = [NSNumber numberWithInt:i];
+     ExproUser *user = [ExproUser object];
+     user.cellphone = [NSString stringWithFormat:@"1876182900%i",i];
+     user.gid = [NSNumber numberWithInt:i];
+         user.createTime = [NSDate date];
+         user.password = @"123456";
+     m.user= user;
+     
+     [manager.objectStore save:nil];
+     }
+   
+     
+     for(int i=0;i<10;i++){
+     ExproStore *store = [ExproStore object];
+     store.gid = [NSNumber numberWithInt:i];
+     store.name = [NSString stringWithFormat:@"name%i",i];
+     [[[RKObjectManager sharedManager] objectStore]save:nil];
+     }
+     
+     
+    //test
+    //RKObjectManager *manager = [RKObjectManager sharedManager];
+    for(int i=0;i<10;i++){
+        ExproGoodsType *type = [ExproGoodsType object];
+        type.gid = [NSNumber numberWithInt:i];
+        type.name = [NSString stringWithFormat:@"type %i",i];
+        
+        [manager.objectStore save:nil];
+    }
+    for(int i=0;i<10;i++){
+        ExproGoods *g = [ExproGoods object];
+        g.gid = [NSNumber numberWithInt:i];
+        g.name = [NSString stringWithFormat:@"goods%i",i];
+        g.price = [NSNumber numberWithInt:20];
+        NSArray *types = [ExproGoodsType findAll];
+        g.type = [types objectAtIndex:i];
+        g.code = [NSString stringWithFormat:@"code %i",i];
+        [manager.objectStore save:nil];
+    }
+    //test end
 
    // self.sysload = [exproposSysLoad init];
     //[self.sysload loadSysData:@"1" completion:nil];

@@ -23,5 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *freshButton;
 
 @property (nonatomic,strong)exproposSysLoad *sysLoad;
+@property (nonatomic,strong) UIPopoverController *popover;
 
 @end

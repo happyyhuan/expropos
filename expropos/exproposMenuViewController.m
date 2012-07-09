@@ -9,6 +9,7 @@
 #import "exproposMenuViewController.h"
 #import "exproposDealSelectedViewController.h"
 #import "exproposDealOperateViewController.h"
+#import "exproposDealOperateMenuViewController.h"
 
 @interface exproposMenuViewController ()
 
@@ -94,7 +95,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.mainViewController.masterPopoverController dismissPopoverAnimated:YES];
+    
     int row = indexPath.row;
     NSString *menu = [self.menus objectAtIndex:row];
     if([menu isEqualToString:@"交易查询"]){
@@ -106,6 +107,7 @@
         _showDeal.mainViewController = self.mainViewController;
         
         [self.mainViewController.view addSubview: _showDeal.view];
+        [self.mainViewController.masterPopoverController dismissPopoverAnimated:YES];
     }
     
     if([menu isEqualToString:@"消费"]){
@@ -113,8 +115,13 @@
             [contro.view removeFromSuperview];
         }
         [_controllers addObject:_dealoperate];
-         _dealoperate.view.frame = CGRectMake(0, 44, 768, 1024-44);
-       
+         _dealoperate.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
+         
+        _dealoperate.mainController = self.mainViewController;
+        exproposDealOperateMenuViewController *dealOperateMenu = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperateMenu"];
+        dealOperateMenu.dealOperate = _dealoperate;
+        _dealoperate.dealOperateMenu = dealOperateMenu;
+        [self.navigationController pushViewController:dealOperateMenu animated:YES];
         [self.mainViewController.view addSubview:_dealoperate.view];
     }
    
@@ -122,7 +129,6 @@
     
    
 }
-
 
 
 

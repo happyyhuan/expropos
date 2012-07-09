@@ -13,6 +13,7 @@
 #import "ExproGoodsType.h"
 #import "ExproMerchant.h"
 #import "exproposAppDelegate.h"
+#import "exproposDealOperateViewController.h"
 
 @interface exproposGoodSelectedViewController ()
 @property (nonatomic,strong)ExproMerchant *merchant;
@@ -31,8 +32,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if([_viewController respondsToSelector:@selector(mySelectedGoods)]){
-        _mySelectedGoods = [NSMutableArray arrayWithArray:[[self.viewController valueForKey:@"mySelectedGoods" ] mutableCopy]];
+    if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
+        exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)_viewController;
+        _mySelectedGoods = [NSMutableArray arrayWithArray:[dealOperate.mySelectedGoods mutableCopy]];
     }else {
         _mySelectedGoods = [NSMutableArray arrayWithCapacity:20];
     }
@@ -40,8 +42,31 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-     if([_viewController respondsToSelector:@selector(setMySelectedGoods)]){
-         [_viewController setValue:_mySelectedGoods forKey:@"mySelectedGoods"];
+    /*if([_viewController respondsToSelector:@selector(setMySelectedGoods:)]){
+        [_viewController setValue:_mySelectedGoods forKey:@"mySelectedGoods"];
+        if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
+            exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)_viewController;
+            for(ExproGoods *g in _mySelectedGoods){
+                [dealOperate.goodsAndAmount setObject:[NSNumber numberWithInt:1] forKey:g.gid];
+            }
+            [dealOperate reloadDatas];
+        }
+    }*/
+     if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
+         exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)_viewController;
+          NSMutableDictionary *newGoodsAndAmount = [[NSMutableDictionary alloc] initWithDictionary:dealOperate.goodsAndAmount copyItems:YES];
+         [dealOperate.goodsAndAmount removeAllObjects];
+         for(ExproGoods *g in _mySelectedGoods){
+             int num =  [[newGoodsAndAmount objectForKey:g.gid] intValue];
+             if(num <=0){
+                 num =1;
+             }
+             [dealOperate.goodsAndAmount setObject:[NSNumber numberWithInt:num] forKey:g.gid];
+         }
+         dealOperate.mySelectedGoods = _mySelectedGoods;
+        
+         
+         [dealOperate reloadDatas];
      }
 }
 
@@ -59,17 +84,23 @@
     self.tableView.dataSource = self;
     self.searchBar.delegate = self;
     
+   
+    [self loaddata];
+    
+}
+-(void)loaddata
+{
     exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
-    
-    NSFetchRequest *request = [ExproMerchant fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"%K = %qu", @"gid",appDelegate.currentUser.gid.unsignedLongLongValue];
-    NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
-    self.merchant = [merchants objectAtIndex:0];
-    
-    NSFetchRequest *request2 = [ExproGoodsType fetchRequest];
-    request2.predicate = [NSPredicate predicateWithFormat:@"parent = %@", nil];
-    self.allDatas = [[NSArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];
+    /* NSFetchRequest *request = [ExproMerchant fetchRequest];
+     request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appDelegate.gid];
+     NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
+     self.merchant = [merchants objectAtIndex:0];
+     
+     NSFetchRequest *request2 = [ExproGoodsType fetchRequest];
+     request2.predicate = [NSPredicate predicateWithFormat:@"parent = %@", nil];
+     self.allDatas = [[NSArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];*/
+    self.allDatas = [[NSArray alloc] initWithArray:[ExproGoodsType findAll]];
     
     self.datas = [_allDatas mutableCopy];
 }
@@ -133,7 +164,15 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {   
     if(indexPath.section ==0){
+        
+        
         UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        
+        if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
+            cell.textLabel.text  =  @"请选择商品";
+            return cell;
+        }
+        
         cell.textLabel.text = @"所有商品";
         if([_mySelectedGoods count]==0){
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -158,6 +197,7 @@
             cell.textLabel.text = t.name;
             cell.indentationWidth = 20.0f;
             cell.imageView.image = [UIImage imageNamed:@"TriangleSmall.png"];
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }else if([obj isKindOfClass:[ExproGoods class]]){
             ExproGoods *g = (ExproGoods *)obj;
             cell.textLabel.text = g.name;
@@ -196,6 +236,9 @@
 -(void)tableView:(UITableView *)tableView gooddidSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0){
+        if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
+            return;
+        }
         [_mySelectedGoods removeAllObjects];
         [self.tableView reloadData];
         return;
@@ -243,8 +286,14 @@
                 [InGoods addObject:g];
             }
         }
-       
         
+       //test
+        for(ExproGoods *g in [ExproGoods findAll]){
+            if(g.type.gid == t.gid){
+                [InGoods addObject:g];
+            }
+        }
+        //test end
         
         for(ExproGoodsType *t in set){
             NSInteger index = [self.datas indexOfObjectIdenticalTo:t];
@@ -338,7 +387,10 @@
         [tmpdata addObject:g];
     }
     self.searchData = [tmpdata mutableCopy];
+    //test
+    self.searchData = [[ExproGoods findAll] mutableCopy];
     
+    //test end
 }
 
 -(void)searchWithNameOrId:(NSString *)nameOrId
@@ -346,7 +398,6 @@
     [self reset];
     NSMutableArray *deletes = [[NSMutableArray alloc]initWithCapacity:20];
     for(ExproGoods *good in self.searchData){
-        NSLog(@"%@,%@",good.name,good.code);
         if([good.name rangeOfString:nameOrId ].location == NSNotFound &&
            [good.code rangeOfString:nameOrId].location == NSNotFound)
         {
@@ -355,7 +406,6 @@
     }
     
     [self.searchData removeObjectsInArray:deletes];
-    NSLog(@"%@",deletes);
     [self.tableView reloadData];
 }
 
@@ -391,6 +441,7 @@
     
     dispatch_queue_t downloadQueue = dispatch_queue_create("information downloader", NULL);
     dispatch_async(downloadQueue, ^{
+        _sysLoad = [[exproposSysLoad alloc]init];
         _sysLoad.reserver = self;
         _sysLoad.succeedCallBack = @selector(updateSuccess);
         exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
@@ -402,6 +453,7 @@
 -(void)updateSuccess
 {
     self.navigationItem.rightBarButtonItem = _FlashButton;
+    [self loaddata];
     [self.tableView reloadData];
 }
 

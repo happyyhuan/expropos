@@ -180,7 +180,8 @@
     self.navigationItem.rightBarButtonItem = rightItem;
     _fromAmoutOfMoney = @"";
     _endAmoutOfMoney = @"";
-    _beginDate = [NSDate date];
+    NSTimeInterval secondsPerDay = 24 * 60 * 60;    
+    _beginDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-secondsPerDay];
     _endDate = [NSDate date];
     _members = [[NSMutableArray alloc] initWithCapacity:20];
     _dealItems = [[NSMutableArray alloc] initWithCapacity:20];
@@ -378,6 +379,7 @@
         if(indexPath.row == 0){
             exproposMemberSelectedViewController *memberSelect = [self.storyboard instantiateViewControllerWithIdentifier:@"memberSelect2"];
             memberSelect.viewController = self;
+            memberSelect.contentSizeForViewInPopover =  CGSizeMake(500, 500);
             [self.navigationController pushViewController:memberSelect animated:YES];
         }
         
@@ -405,7 +407,7 @@
 
 -(void)showOrderNumPopover:(UITableViewCell *)cell {
     //弹出窗口大小，如果屏幕画不下，会挤小的。这个值默认是320x1100
-    //_popover.popoverContentSize = CGSizeMake(300, 216);
+    _popover.popoverContentSize = CGSizeMake(300, 400);
     //popoverRect的中心点是用来画箭头的，如果中心点如果出了屏幕，系统会优化到窗口边缘
     CGRect popoverRect = CGRectMake(cell.bounds.origin.x + cell.bounds.size.width - 100, cell.bounds.origin.y,27, 32);
     [_popover presentPopoverFromRect:popoverRect

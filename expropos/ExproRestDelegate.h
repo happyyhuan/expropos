@@ -65,4 +65,6 @@
 - (void)succeedWithoutData;
 - (void)failed:(NSError *)error;
 - (void)canceled;
+
+- (void)requestsURL:(NSString *)aURL method:(RKRequestMethod)aMethod object:(id)aObject mapping:(RKObjectMapping *)aMapping serialMapping:(RKObjectMapping *)aSerialMapping ;
 @end
