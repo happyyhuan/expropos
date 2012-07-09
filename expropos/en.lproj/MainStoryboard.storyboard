@@ -142,7 +142,7 @@
                 <relationship kind="outlet" name="userField" candidateClass="UITextField"/>
             </relationships>
         </class>
-    </classes>
+</classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
