@@ -55,16 +55,14 @@
 {
     exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate  ];
     
-
-    /* NSFetchRequest *request = [ExproMerchant fetchRequest];
+     NSFetchRequest *request = [ExproMerchant fetchRequest];
      request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appdelegate.gid];
      
      NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
      ExproMerchant *merchant = [merchants objectAtIndex:0];
      //初始化会员选择数据
      
-     NSSet *alls =  merchant.members;*/
-    NSArray *alls = [ExproMember findAll];
+     NSSet *alls =  merchant.members;
     NSArray *roles = [ExproRole findAll];
     
     
@@ -256,11 +254,11 @@
     if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
         exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)self.viewController;
             
-           /* if(dealOperate.member!=nil && dealOperate.member.gid.intValue == member.gid.intValue){
+           if(dealOperate.member!=nil && dealOperate.member.gid.intValue == member.gid.intValue){
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }else {
                 cell.accessoryType = UITableViewCellAccessoryNone;
-            }*/
+            }
         
     }
 

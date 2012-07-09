@@ -42,7 +42,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    /*if([_viewController respondsToSelector:@selector(setMySelectedGoods:)]){
+    if([_viewController respondsToSelector:@selector(setMySelectedGoods:)]){
         [_viewController setValue:_mySelectedGoods forKey:@"mySelectedGoods"];
         if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
             exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)_viewController;
@@ -51,7 +51,7 @@
             }
             [dealOperate reloadDatas];
         }
-    }*/
+    }
      if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
          exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)_viewController;
           NSMutableDictionary *newGoodsAndAmount = [[NSMutableDictionary alloc] initWithDictionary:dealOperate.goodsAndAmount copyItems:YES];
@@ -92,14 +92,15 @@
 {
     exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
-    /* NSFetchRequest *request = [ExproMerchant fetchRequest];
+    NSFetchRequest *request = [ExproMerchant fetchRequest];
+
      request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appDelegate.gid];
      NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
      self.merchant = [merchants objectAtIndex:0];
      
      NSFetchRequest *request2 = [ExproGoodsType fetchRequest];
      request2.predicate = [NSPredicate predicateWithFormat:@"parent = %@", nil];
-     self.allDatas = [[NSArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];*/
+     self.allDatas = [[NSArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];
     self.allDatas = [[NSArray alloc] initWithArray:[ExproGoodsType findAll]];
     
     self.datas = [_allDatas mutableCopy];
@@ -287,13 +288,13 @@
             }
         }
         
-       //test
+      /* //test
         for(ExproGoods *g in [ExproGoods findAll]){
             if(g.type.gid == t.gid){
                 [InGoods addObject:g];
             }
         }
-        //test end
+        //test end */
         
         for(ExproGoodsType *t in set){
             NSInteger index = [self.datas indexOfObjectIdenticalTo:t];
@@ -387,10 +388,10 @@
         [tmpdata addObject:g];
     }
     self.searchData = [tmpdata mutableCopy];
-    //test
+  /*  //test
     self.searchData = [[ExproGoods findAll] mutableCopy];
     
-    //test end
+    //test end*/
 }
 
 -(void)searchWithNameOrId:(NSString *)nameOrId
