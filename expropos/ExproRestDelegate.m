@@ -238,24 +238,21 @@ static NSString *gCookie = nil;
 }
 - (void)requestsURL:(NSString *)aURL method:(RKRequestMethod)aMethod object:(id)aObject mapping:(RKObjectMapping *)aMapping serialMapping:(RKObjectMapping *)aSerialMapping {
     [self canceled];
-    [[RKObjectManager sharedManager] sendObject:aObject toResourcePath:aURL usingBlock:^(RKObjectLoader *loader) {   
-  
-           loader.method = aMethod;
-       
-        if (aSerialMapping) {
-            loader.serializationMapping = aSerialMapping;
-        }
-        loader.serializationMIMEType = @"application/json";
-      //  loader.sourceObject = aObject;
-        if (aMapping) {
-            loader.objectMapping = aMapping;
-        }
-        if (self.cookie) {
-            [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
-        }
-        self.request = loader;
-    }];
+    RKObjectLoader *loader = [[RKObjectManager sharedManager] loaderForObject:aObject method:RKRequestMethodPOST];
+    loader.delegate = self;
+    if (self.cookie) {
+        [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
+    }
+    if (aSerialMapping) {
+        loader.serializationMapping = aSerialMapping;
+    }
+    if (aMapping) {
+        loader.objectMapping = aMapping;
+    }
+    [loader send];
+     
 }
+
 
 
 

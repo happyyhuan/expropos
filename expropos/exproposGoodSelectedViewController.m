@@ -64,7 +64,7 @@
              [dealOperate.goodsAndAmount setObject:[NSNumber numberWithInt:num] forKey:g.gid];
          }
          dealOperate.mySelectedGoods = _mySelectedGoods;
-        
+         [dealOperate addToolBarItem];
          
          [dealOperate reloadDatas];
      }

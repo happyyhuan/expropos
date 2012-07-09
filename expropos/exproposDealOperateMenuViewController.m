@@ -134,23 +134,26 @@
     
     if(section == 1){
         if(row == 0){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+            cell.textLabel.text = @"应收：";
            if(self.dealOperate.goodsAndAmount == nil){
-                cell.textLabel.text = @"应收：¥0";
+                
+                cell.detailTextLabel.text = @"¥0";
             }else {
                 double sum = 0.0;
                 for(ExproGoods *g in self.dealOperate.mySelectedGoods){
                     int amout = [[self.dealOperate.goodsAndAmount objectForKey:g.gid] intValue];
                     sum += g.price.doubleValue * amout;
                 }
-                cell.textLabel.text = [NSString stringWithFormat:@"应收：¥%g",sum];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"¥%g",sum];
             }
-            // cell.textLabel.text = [NSString stringWithFormat:@"应收：¥%g",0];
+           
         }
         if(row == 1){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             cell.textLabel.text = @"实收：¥";
-            UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(90, cell.bounds.size.height/4, 70, cell.bounds.size.height/2)];
+            UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(200, cell.bounds.size.height/6, 90, 2*cell.bounds.size.height/3)];
+            
             textField.text =[NSString stringWithFormat:@"%g", _getMeony];
             [textField setBackgroundColor:[UIColor lightGrayColor]];
             textField.borderStyle = UITextBorderStyleLine;
@@ -211,7 +214,7 @@
             cell.textLabel.text = @"结算：";
             NSArray *payTypes = [NSArray arrayWithObjects:@"现金",@"存储卡", nil];
             UISegmentedControl *seg = [[UISegmentedControl alloc] initWithItems:payTypes];
-            seg.frame = CGRectMake(70, cell.bounds.size.height/6, 98, cell.bounds.size.height*2/3);
+            seg.frame = CGRectMake(200, cell.bounds.size.height/6, 110, cell.bounds.size.height*2/3);
             [seg addTarget:self  action:@selector(payTypeSelected:) forControlEvents:UIControlEventValueChanged];
             seg.selectedSegmentIndex = 0;
             [cell addSubview:seg];
@@ -221,7 +224,7 @@
         if(row == 3){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             cell.textLabel.text = @"积分消费";
-            UISwitch *switchs = [[UISwitch alloc] initWithFrame:CGRectMake(90,  cell.bounds.size.height/5, 80, cell.bounds.size.height)];
+            UISwitch *switchs = [[UISwitch alloc] initWithFrame:CGRectMake(230,  cell.bounds.size.height/5, 80, cell.bounds.size.height)];
             switchs.On = YES;
             [switchs addTarget:self action:@selector(integralOperate:) forControlEvents:UIControlEventValueChanged];
             [cell addSubview:switchs];
@@ -229,7 +232,7 @@
         if(row == 4){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             cell.textLabel.text = @"优惠券";
-            UISwitch *switchs = [[UISwitch alloc] initWithFrame:CGRectMake(90, cell.bounds.size.height/5, 80, cell.bounds.size.height)];
+            UISwitch *switchs = [[UISwitch alloc] initWithFrame:CGRectMake(230, cell.bounds.size.height/5, 80, cell.bounds.size.height)];
             switchs.On = YES;
             [switchs addTarget:self action:@selector(couponOperate:) forControlEvents:UIControlEventValueChanged];
             [cell addSubview:switchs];

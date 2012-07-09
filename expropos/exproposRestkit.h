@@ -8,7 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 #define kHost @"192.168.0.115"
+=======
+#define kHost @"192.168.0.22"
+
+
+//#define kHost @"127.0.0.1"
+
+>>>>>>> 687a2fc... deal operate commit
 //#define kHost @"127.0.0.1"
 
 #define kPort @":10080"

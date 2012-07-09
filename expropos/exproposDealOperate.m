@@ -27,21 +27,11 @@
 {
    // {"deal":{"lid":123, "_id":322, "deal_item":[{"lid":234, "_id":23,"dealer_id":34}]}}
     
-    RKObjectMapping *getDealMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [getDealMapping mapKeyPathsToAttributes:@"_id", @"gid", nil];
-    [getDealMapping mapAttributes:@"lid", nil];
-    
-    RKObjectMapping *getDealItemmapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [getDealItemmapping mapKeyPathsToAttributes:@"_id",@"gid",@"dealer_id",@"dealerID",nil];
-    [getDealItemmapping mapAttributes:@"lid", nil];
-    //[[RKObjectManager sharedManager].mappingProvider setMapping:getDealItemmapping forKeyPath:@"deal_item"];
-    [getDealMapping mapRelationship:@"deal_item" withMapping:getDealItemmapping];
-    
-    
+        
    //  [[RKObjectManager sharedManager].mappingProvider setMapping:getDealMapping forKeyPath:@"deal"];
         
-    [self requestURL:@"/deals" method:RKRequestMethodPOST object:deal
-             mapping:getDealMapping
+    [self requestsURL:@"/deals" method:RKRequestMethodPOST object:deal
+             mapping:nil
             serialMapping:[[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[ExproDeal class]]];
     
 }

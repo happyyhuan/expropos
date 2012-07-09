@@ -22,6 +22,8 @@
 #import "ExproWarehouseWarrant.h"
 #import "exproposUpdateDeals.h"
 #import "exproposShowDealsSelectedViewController.h"
+#import "NSDate+Helper.h"
+#import <Foundation/Foundation.h>
 
 @interface exproposDealSelectedViewController ()
 
@@ -113,7 +115,7 @@
    
    
     NSPredicate *predicate = nil;
-   
+    NSLog(@"%@,%@",self.beginDate,self.endDate);
        
     NSMutableString *str = [[NSMutableString alloc]initWithString:@"((createTime >= %@) AND (createTime<= %@ ))" ];
     NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:self.beginDate,self.endDate, nil];
@@ -180,9 +182,7 @@
     self.navigationItem.rightBarButtonItem = rightItem;
     _fromAmoutOfMoney = @"";
     _endAmoutOfMoney = @"";
-    NSTimeInterval secondsPerDay = 24 * 60 * 60;    
-    _beginDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-secondsPerDay];
-    _endDate = [NSDate date];
+    
     _members = [[NSMutableArray alloc] initWithCapacity:20];
     _dealItems = [[NSMutableArray alloc] initWithCapacity:20];
     _stores = [[NSMutableArray alloc] initWithCapacity:20];
@@ -192,9 +192,29 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.beginDate = nil;
+    self.endDate = nil;
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSTimeInterval secondsPerDay = 24 * 60 * 60 - 60; 
+    _beginDate = [[NSDate date] beginningOfDay];
+    _beginDate = [[NSDate alloc]initWithTimeInterval:8*60*60 sinceDate:_beginDate];
+    NSLog(@"_begin:::%@======%@",_beginDate,[NSDate date]);
+    
+    _endDate = [[NSDate alloc] initWithTimeInterval:secondsPerDay sinceDate:_beginDate];
+    NSLog(@"%@,%@",_beginDate,_endDate);
+}
+
+-(NSDate *)localDate
+{
+    NSDate *date = [NSDate date];
+    date = [[NSDate alloc] initWithTimeInterval:8*60*60 sinceDate:date];
+    NSLog(@"localDate:%@",date);
+    return date;
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -228,14 +248,16 @@
     }
     if(indexPath.section ==0 && indexPath.row == 0){
         cell.textLabel.text = @"开始时间";
-        if([[self dateToString:self.beginDate] isEqualToString: [self dateToString:[NSDate date]]]){
+       
+        if([[self dateToString:self.beginDate] isEqualToString: [self dateToString:[self localDate]]]){
             cell.detailTextLabel.text = @"今天";
         }else {
              cell.detailTextLabel.text = [self dateToString:self.beginDate];
         }
     }else if( indexPath.section == 0 && indexPath.row == 1){
         cell.textLabel.text = @"结束时间";
-        if([[self dateToString:self.endDate] isEqualToString: [self dateToString: [NSDate date]]]){
+         NSLog(@"beginDate:%@,,,,%@",[self dateToString:self.endDate],[self dateToString:[self localDate]]);
+        if( [[self dateToString: [NSDate date]] isEqualToString:  [self dateToString:self.endDate]] ){
             cell.detailTextLabel.text = @"今天";
         }else {
             cell.detailTextLabel.text = [self dateToString:self.endDate];
@@ -347,13 +369,17 @@
 -(NSString *)dateToString:(NSDate*)date
 {
     
-    //实例化一个NSDateFormatter对象
+   /* //实例化一个NSDateFormatter对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //设定时间格式,这里可以设置成自己需要的格式
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     //用[NSDate date]可以获取系统当前时间
     NSString *dateStr = [dateFormatter stringFromDate:date];
     //输出格式为：2010-10-27
+    return dateStr;*/
+    NSLog(@"%@",[date description]);
+    NSString *dateStr = [date description];
+    dateStr = [dateStr substringToIndex:10];
     return dateStr;
 }
 

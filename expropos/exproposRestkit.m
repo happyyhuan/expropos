@@ -28,7 +28,7 @@
 + (void) router:(RKObjectRouter *)router 
 {
     [router routeClass:[ExproMerchant class] toResourcePath:@"/sync/merchant/:gid" forMethod:RKRequestMethodGET];
-    [router routeClass:[ExproDeal class] toResourcePath:@"/deals/:gid" forMethod:RKRequestMethodGET];
+    [router routeClass:[ExproDeal class] toResourcePath:@"/deals" forMethod:RKRequestMethodPOST];
 }
 
 + (void) objectMapWithManager:(RKObjectManager *)objectManager 
@@ -130,7 +130,7 @@
     
     
     RKManagedObjectMapping *dealItemMapping = [RKManagedObjectMapping mappingForClass:[ExproDealItem class] inManagedObjectStore:objectManager.objectStore];
-    dealItemMapping.primaryKeyAttribute = @"lid";
+    dealItemMapping.primaryKeyAttribute = @"gid";
     [dealItemMapping mapKeyPathsToAttributes:@"_id",@"gid",@"closing_cost",@"closingCost",@"total_cost",@"totalCost", @"lid",@"lid",
      @"deal_id",@"dealID",@"goods_id",@"goodsID",nil];
     [dealItemMapping mapAttributes:@"num", nil];
@@ -145,7 +145,7 @@
     
 
     RKManagedObjectMapping *dealMapping = [RKManagedObjectMapping mappingForClass:[ExproDeal class] inManagedObjectStore:objectManager.objectStore];
-    dealMapping.primaryKeyAttribute = @"lid";
+    dealMapping.primaryKeyAttribute = @"gid";
     [dealMapping mapKeyPathsToAttributes:@"_id",@"gid",@"store_id",@"storeID",@"dealer_id",@"dealerID",@"customer_id",@"customerID",@"type",@"type",@"state",@"state",@"payment",@"payment",@"lid",@"lid",
     @"cash",@"cash",@"point",@"point",@"pay_type",@"payType",@"create_time",@"createTime",nil];
     [dealMapping connectRelationship:@"store" withObjectForPrimaryKeyAttribute:@"storeID"];
@@ -159,6 +159,35 @@
     [objectManager.mappingProvider setMapping:dealMapping forKeyPath:@"deal"];
         
     
+    
+    RKManagedObjectMapping *callbackDealItemMapping = [RKManagedObjectMapping mappingForClass:[ExproDealItem class] inManagedObjectStore:objectManager.objectStore];
+    callbackDealItemMapping.primaryKeyAttribute = @"lid";
+    [callbackDealItemMapping mapKeyPathsToAttributes:@"_id",@"gid",@"closing_cost",@"closingCost",@"total_cost",@"totalCost", @"lid",@"lid",@"deal_id",@"dealID",@"goods_id",@"goodsID",nil];
+    [callbackDealItemMapping mapAttributes:@"num", nil];
+    
+     //[callbackDealItemMapping connectRelationship:@"cbdeal" withObjectForPrimaryKeyAttribute:@"dealID"];
+    
+    [callbackDealItemMapping connectRelationship:@"goods" withObjectForPrimaryKeyAttribute:@"goodsID"];
+     
+    [callbackDealItemMapping mapKeyPath:@"goodsID" toRelationship:@"goods" withMapping:goodsMapping  serialize:NO];        
+    [objectManager.mappingProvider setMapping:callbackDealItemMapping forKeyPath:@"cbdeal_item"];
+    //    [dealItemMapping mapKeyPath:@"dealID" toRelationship:@"deal" withMapping:dealMapping serialize:NO];
+    
+    RKManagedObjectMapping *callbackdealMapping = [RKManagedObjectMapping mappingForClass:[ExproDeal class] inManagedObjectStore:objectManager.objectStore];
+    callbackdealMapping.primaryKeyAttribute = @"lid";
+    [callbackdealMapping mapKeyPathsToAttributes:@"_id",@"gid",@"store_id",@"storeID",@"dealer_id",@"dealerID",@"customer_id",@"customerID",@"type",@"type",@"state",@"state",@"payment",@"payment",@"lid",@"lid",
+     @"cash",@"cash",@"point",@"point",@"pay_type",@"payType",@"create_time",@"createTime",nil];
+    [callbackdealMapping connectRelationship:@"store" withObjectForPrimaryKeyAttribute:@"storeID"];
+    [callbackdealMapping mapKeyPath:@"storeID" toRelationship:@"store" withMapping:storeMapping serialize:NO];
+    [callbackdealMapping connectRelationship:@"dealer" withObjectForPrimaryKeyAttribute:@"dealerID"];
+    [callbackdealMapping mapKeyPath:@"dealerID" toRelationship:@"dealer" withMapping:memberMapping serialize:NO];
+    [callbackdealMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"customerID"];
+    [callbackdealMapping mapKeyPath:@"customerID" toRelationship:@"customer" withMapping:memberMapping serialize:NO];
+    [callbackdealMapping mapKeyPath:@"cbdeal_item" toRelationship:@"items" withMapping:callbackDealItemMapping serialize:NO];
+   // [callbackDealItemMapping mapKeyPath:@"dealID" toRelationship:@"cbdeal" withMapping:callbackdealMapping serialize:NO];
+    
+   // [memberMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"gid"];
+    [objectManager.mappingProvider setMapping:callbackdealMapping forKeyPath:@"cbdeal"];
     
     RKObjectMapping *serializationDealMapping2 = [dealItemMapping inverseMapping];
     [serializationDealMapping2 removeMappingForKeyPath:@"gid"];

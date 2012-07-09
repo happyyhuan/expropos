@@ -77,6 +77,7 @@
     
     NSMutableArray *items = [self.mainController.menuTool.items mutableCopy];
     int index=0;
+    BOOL flag = NO;
     for(UIBarButtonItem *item in items){
         if([item.title isEqualToString:@"完成"]){
             return;
@@ -84,12 +85,39 @@
         if([item.title isEqualToString:@"菜单"]){
             index = 1;
         }
+        if([item.title isEqualToString:@"添加商品"]){
+            flag = YES;
+        }
     }
-    [items insertObject:finish atIndex:index];
-    [items insertObject:addGoods atIndex:index+1];
+    if(flag){
+        [items insertObject:finish atIndex:index];
+        [items insertObject:cancel atIndex:(items.count - 1)];
+         self.mainController.menuTool.items = items;
+        return;
+    }
+    [items insertObject:addGoods atIndex:index];
    
-    [items insertObject:cancel atIndex:items.count-1];
+    
     self.mainController.menuTool.items = items;
+}
+
+-(void)removeSmallToolBarItem
+{
+    NSMutableArray *items = [self.mainController.menuTool.items mutableCopy];
+    NSMutableArray *removeItems = [[NSMutableArray alloc]initWithCapacity:20];
+    for(UIBarButtonItem *item in items){
+        if([item.title isEqualToString:@"完成"]){
+            [removeItems addObject:item];
+        }
+        if([item.title isEqualToString:@"取消"]){
+            [removeItems addObject:item];
+        }
+    }
+    if(removeItems.count > 0 ){
+        [items removeObjectsInArray:removeItems];
+    }
+    self.mainController.menuTool.items = items;
+    
 }
 
 -(void)removeToolBarItem
@@ -201,7 +229,7 @@
     if(_deal == nil){
         _deal = [ExproDeal object];
     }
-    _deal.createTime = [NSDate date];
+    _deal.createTime = [[NSDate alloc]initWithTimeInterval:8*60*60 sinceDate:[NSDate date]];
     double sum = 0.0;
     for(ExproGoods *g in _mySelectedGoods){
         int amout = [[_goodsAndAmount objectForKey:g.gid] intValue];
@@ -246,17 +274,18 @@
    
     _operatingDeals = [[exproposDealOperate alloc]init];
     _operatingDeals.reserver = self;
-    _operatingDeals.succeedCallBack = @selector(createDealSuccess);
+    _operatingDeals.succeedCallBack = @selector(createDealSuccess:);
     _operatingDeals.failedCallBack = @selector(createDealSuccess2);
     [_operatingDeals createDeal:_deal];
     
-    [self cancels:nil];
+   
     
 }
 
--(void)createDealSuccess
+-(void)createDealSuccess:(id)object
 {
     NSLog(@"success");
+    [self cancels:nil];
 }
 
 -(void)createDealSuccess2
@@ -273,6 +302,7 @@
     [_goodsAndAmount removeAllObjects];
     _member = nil;
     _deal = nil;
+    [self removeSmallToolBarItem];
     [self reloadDatas];
 }
 -(void)addGoods:(id)sender

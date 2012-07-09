@@ -338,7 +338,7 @@
         [dealOperate.goodsAndAmount removeAllObjects];
         dealOperate.deal = nil;
         [dealOperate.dealItemTableView reloadData];
-        [dealOperate addToolBarItem];
+        //[dealOperate addToolBarItem];
         [_popover dismissPopoverAnimated:YES];
     }
     
