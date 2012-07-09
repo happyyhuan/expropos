@@ -1,8 +1,7 @@
 //
 //  exproposMyTableView.m
 //  expropos
-//
-//  Created by 昊 曹 on 12-6-15.
+//  Created by haitao chen on 12-6-26.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
