@@ -8,6 +8,7 @@
 
 #import "exproposMenuViewController.h"
 #import "exproposDealSelectedViewController.h"
+#import "exproposDealOperateViewController.h"
 
 @interface exproposMenuViewController ()
 
@@ -17,6 +18,8 @@
 @synthesize menus = _menus;
 @synthesize mainViewController = _mainViewController;
 @synthesize showDeal   =  _showDeal;
+@synthesize dealoperate = _dealoperate;
+@synthesize controllers = _controllers;
 
 
 - (void)awakeFromNib
@@ -41,13 +44,16 @@
 
     self.mainViewController = [self.splitViewController.viewControllers lastObject];
     _showDeal = [self.storyboard instantiateViewControllerWithIdentifier:@"showDeals"];
+    _dealoperate  = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperate"];
+    _controllers = [[NSMutableArray alloc]initWithCapacity:20];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    _showDeal = nil;
+    _dealoperate = nil;
+    _controllers = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -92,12 +98,24 @@
     int row = indexPath.row;
     NSString *menu = [self.menus objectAtIndex:row];
     if([menu isEqualToString:@"交易查询"]){
-        
+        for(UIViewController *contro in _controllers){
+            [contro.view removeFromSuperview];
+        }
+        [_controllers addObject:_showDeal];
         _showDeal.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
         _showDeal.mainViewController = self.mainViewController;
-       // [self.mainViewController.view addSubview:_showDeal.view];
         
-        [self.mainViewController.view insertSubview:_showDeal.view atIndex:0];
+        [self.mainViewController.view addSubview: _showDeal.view];
+    }
+    
+    if([menu isEqualToString:@"消费"]){
+        for(UIViewController *contro in _controllers){
+            [contro.view removeFromSuperview];
+        }
+        [_controllers addObject:_dealoperate];
+         _dealoperate.view.frame = CGRectMake(0, 44, 768, 1024-44);
+       
+        [self.mainViewController.view addSubview:_dealoperate.view];
     }
    
 

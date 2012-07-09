@@ -55,14 +55,16 @@
     
     exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate  ];
     
-   NSFetchRequest *request = [ExproMerchant fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appdelegate.currentUser.gid];
+
+  /* NSFetchRequest *request = [ExproMerchant fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"%K = %d", @"gid",appdelegate.gid];
     
     NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
     ExproMerchant *merchant = [merchants objectAtIndex:0];
     //初始化会员选择数据
   
-    NSSet *alls =  merchant.members;
+    NSSet *alls =  merchant.members;*/
+    NSArray *alls = [ExproMember findAll];
     NSArray *roles = [ExproRole findAll];
     
   

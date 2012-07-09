@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "exproposMainViewController.h"
 #import "exproposShowDealsSelectedViewController.h"
-
+@class exproposDealOperateViewController;
 @interface exproposMenuViewController : UITableViewController 
 @property (strong,nonatomic) exproposMainViewController *mainViewController;
 @property (strong,nonatomic) NSArray *menus;
 @property (strong,nonatomic) exproposShowDealsSelectedViewController *showDeal;
+@property (strong,nonatomic) exproposDealOperateViewController *dealoperate;
+@property (strong,nonatomic) NSMutableArray *controllers;
 @end

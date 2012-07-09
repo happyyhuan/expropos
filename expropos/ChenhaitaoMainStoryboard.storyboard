@@ -191,6 +191,42 @@
             </objects>
             <point key="canvasLocation" x="3021" y="-1181"/>
         </scene>
+        <!--Expropos Deal Operate View Controller-->
+        <scene sceneID="jJh-eo-vnm">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upt-Zs-szm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="dealOperate" id="J4h-Ps-aKi" customClass="exproposDealOperateViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qgZ-yD-xDm">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="pNS-YF-g9l">
+                                <rect key="frame" x="0.0" y="0.0" width="177" height="1004"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="1T8-Bb-bo2">
+                                <rect key="frame" x="179" y="0.0" width="589" height="194"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WSk-4b-ILs" customClass="ExproMultipleTableView">
+                                <rect key="frame" x="179" y="194" width="589" height="810"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="dealItemTableView" destination="WSk-4b-ILs" id="sxp-Gl-oRb"/>
+                        <outlet property="menuTableView" destination="pNS-YF-g9l" id="evo-9c-lPc"/>
+                        <outlet property="scanGoodsView" destination="1T8-Bb-bo2" id="aae-oT-HJe"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2838" y="440"/>
+        </scene>
         <!--Expropos Date Selected View Controller-->
         <scene sceneID="vHC-JF-K07">
             <objects>
@@ -317,7 +353,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="8009" y="-582"/>
+            <point key="canvasLocation" x="5289" y="-1140"/>
         </scene>
         <!--Expropos Good Selected View Controller - 商品选择-->
         <scene sceneID="LQZ-yY-KpM">
@@ -387,7 +423,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="9171" y="-574"/>
+            <point key="canvasLocation" x="6387" y="-1134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="412-RK-o9s">
@@ -427,7 +463,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1013" y="892"/>
+            <point key="canvasLocation" x="1309" y="380"/>
         </scene>
         <!--Expropos View Controller-->
         <scene sceneID="cw1-F9-4e4">
@@ -501,6 +537,73 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="-2796" y="-2006"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="ExproMultipleTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExproMultipleTableView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="multipleDataSource"/>
+                <relationship kind="outlet" name="multipleDelegate"/>
+            </relationships>
+        </class>
+        <class className="exproposDateSelectedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDateSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="exproposDealOperateViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDealOperateViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dealItemTableView" candidateClass="ExproMultipleTableView"/>
+                <relationship kind="outlet" name="menuTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="scanGoodsView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="exproposDealSelectedViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDealSelectedViewController.h"/>
+        </class>
+        <class className="exproposGoodSelectedViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposGoodSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="FlashButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="exproposMainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="menu" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="menuTool" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="exproposMemberSelectedViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="update:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="freshButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="updateTime" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="exproposMenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMenuViewController.h"/>
+        </class>
+        <class className="exproposShowDealsSelectedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposShowDealsSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="ExproMultipleTableView"/>
+            </relationships>
+        </class>
+        <class className="exproposViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="loginview" candidateClass="UIView"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
