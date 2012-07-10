@@ -29,7 +29,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //实现同步数据代码    
         NSLog(@"实现同步数据代码 ");
-        NSString *_resource = [NSString stringWithFormat:@"/sync/merchants/%qu",gid];
+        NSString *_resource = [NSString stringWithFormat:@"/sync/merchants/%@",gid];
         [self requestURL:_resource method:RKRequestMethodGET params:nil mapping:kRestDefaultMapping];
         
         //dispatch_async(dispatch_get_main_queue(), completion);   

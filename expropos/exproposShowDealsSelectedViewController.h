@@ -21,6 +21,9 @@
 
 @property (nonatomic,strong)IBOutlet ExproMultipleTableView *tableView;
 @property (nonatomic,strong) exproposUpdateDeals *updateDeals;
-
-
+@property (nonatomic) int dealNum;
+@property (nonatomic) int pageNum;
+@property (nonatomic,strong) UIActivityIndicatorView *updateIcon;
+@property (nonatomic) int addRow;
+@property (nonatomic) BOOL scrollUpdateFlag;
 @end

@@ -77,6 +77,8 @@
 
 -(void)dealSelect
 {
+    self.showDeals.dealNum = 0;
+    self.showDeals.pageNum = 1;
     [self searchInLoacl];
     
     if([_deals count]==0){

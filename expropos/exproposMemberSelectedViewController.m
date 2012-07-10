@@ -370,7 +370,8 @@
         _sysLoad.reserver = self;
         _sysLoad.succeedCallBack = @selector(updateSuccess);
         exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
-        [_sysLoad loadSysData:appdelegate.currentUser.gid.stringValue  completion:nil];
+        NSString *gidstr = [NSString stringWithFormat:@"%qu",appdelegate.currentUser.gid.unsignedLongLongValue];
+        [_sysLoad loadSysData:gidstr  completion:nil];
     });
     dispatch_release(downloadQueue);    
 }

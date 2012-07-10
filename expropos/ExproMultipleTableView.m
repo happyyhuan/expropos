@@ -151,5 +151,55 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if([_multipleDelegate respondsToSelector:@selector(multipleTableViewScrollViewDidScroll:)]){
+        [_multipleDelegate multipleTableViewScrollViewDidScroll:scrollView];
+    }
+}
+
+
+/*- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGPoint offset1 = scrollView.contentOffset;
+    CGRect bounds1 = scrollView.bounds;
+    CGSize size1 = scrollView.contentSize;
+    UIEdgeInsets inset1 = scrollView.contentInset;
+    float y1 = offset1.y + bounds1.size.height - inset1.bottom;
+    float h1 = size1.height;
+    if (y1 > tableViewController.frame.size.height) {
+        flagShuaxin = YES;
+    }
+    else if (y1 < tableViewController.frame.size.height) {
+        flagShuaxin = NO;
+    }
+    else if (y1 == tableViewController.frame.size.height) {
+        DLog(@"%@", flagShuaxin ? @"上拉刷新" : @"下拉刷新");
+    }
+ 
+ CGPoint offset = scrollView.contentOffset;
+ CGRect bounds = scrollView.bounds;
+ //CGSize size1 = scrollView.contentSize;
+ UIEdgeInsets inset = scrollView.contentInset;
+ float y = offset.y + bounds.size.height - inset.bottom;
+ NSLog(@"==float==y1=======%f",y1);
+ NSLog(@"===ttableView.frame.size.height======%f",ttableView.frame.size.height);
+ if (y > ttableView.frame.size.height) {
+ flagIsrefresh = YES;
+ }
+ else if (y < ttableView.frame.size.height) {
+ flagIsrefresh = NO;
+ }
+ else if (y == ttableView.frame.size.height) {
+ NSLog(@"%@", flagIsrefresh ? @"上提刷新" : @"下拉刷新");
+ if (flagIsrefresh) {
+ [self nextPageContext];
+ }else {
+ 
+ }
+ 
+ }
+}*/
+
+
 @end
 

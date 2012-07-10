@@ -18,7 +18,6 @@
 
 @end
 
-static int pageNum = 0;
 
 @implementation exproposShowDealsSelectedViewController
 @synthesize popover = _popover;
@@ -30,6 +29,11 @@ static int pageNum = 0;
 @synthesize spinner = _spinner;
 @synthesize spinnerIteam = _spinnerIteam;
 @synthesize updateItem = _updateItem;
+@synthesize dealNum = _dealNum;
+@synthesize pageNum = _pageNum;
+@synthesize updateIcon = _updateIcon;
+@synthesize addRow = _addRow;
+@synthesize scrollUpdateFlag = _scrollUpdateFlag;
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -127,6 +131,10 @@ dispatch_release(downloadQueue);
     s.myPopover  =  _popover;
     s.showDeals = self;
     _updateDeals = [[exproposUpdateDeals alloc]init];
+    _dealNum = 0;
+    _pageNum = 1;
+    _addRow = 1;
+    _scrollUpdateFlag = YES;
  
 }
 
@@ -152,7 +160,6 @@ dispatch_release(downloadQueue);
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    pageNum = 0;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -204,7 +211,21 @@ dispatch_release(downloadQueue);
 
 - (UIView *)multipleTableView:(ExproMultipleTableView *)tableView viewForSegment:(NSInteger)segment indexPath:(NSIndexPath *)indexPath
 {
-    CGFloat _width = [self multipleTableView:tableView proportionForSegment:segment]*tableView.bounds.size.width;
+   
+    if(indexPath.row == self.data.count){
+        if(segment == 3){
+            UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 44)];
+            
+            _updateIcon = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(10, 10, 30, 30)];
+           // [_updateIcon startAnimating];
+            [view addSubview:_updateIcon];
+            return view;
+        }else {
+            return nil;
+        }
+    }
+    
+     CGFloat _width = [self multipleTableView:tableView proportionForSegment:segment]*tableView.bounds.size.width;
     ExproDeal *deal = (ExproDeal*)[_data objectAtIndex:indexPath.row];
     switch (segment) {
         case 0:
@@ -318,7 +339,12 @@ dispatch_release(downloadQueue);
 
 - (NSInteger)multipleTableView:(ExproMultipleTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.data.count;
+    int num = self.data.count;
+    if( num >15){
+        return num+_addRow;
+    }else {
+        return num;
+    }
 }
 
 - (UIColor *)multipleTableView:(ExproMultipleTableView *)tableView backgroundColorForHeaderInSection:(NSInteger)section
@@ -334,16 +360,74 @@ dispatch_release(downloadQueue);
     }
 }
 
--(void)multipleTableView:(ExproMultipleTableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)multipleTableViewScrollViewDidScroll:(UIScrollView *)scrollView
 {
-  /*  if (indexPath.row == self.data.count-1) {
-        _dealSelect = [self.storyboard instantiateViewControllerWithIdentifier:@"showChoose"];
-        exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
+    NSLog(@"%g*%g",scrollView.bounds.size.width,scrollView.bounds.size.height);
+    CGPoint offset1 = scrollView.contentOffset;
+    CGRect bounds1 = scrollView.bounds;
+    CGSize size1 = scrollView.contentSize;
+    UIEdgeInsets inset1 = scrollView.contentInset;
+    float y1 = offset1.y + bounds1.size.height - inset1.bottom;
+    float h1 = size1.height;
+    if (y1 > self.tableView.frame.size.height) {
+        if(_scrollUpdateFlag){
+            _scrollUpdateFlag = NO;
+            [self willScorollUpdateDeals];
+        }else {
+            return;
+        }
         
         
-        [self.updateDeals upDateDealStart:pageNum*10+1 end:10 bt:s.beginDate et:s.endDate];
-        
-    }*/
+    }
+    
+}
+
+
+-(void)willScorollUpdateDeals
+{
+    NSLog(@"willScorollUpdateDeals");
+            exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
+            
+            NSFetchRequest *request = [ExproDeal fetchRequest];
+            NSPredicate *predicate = nil;
+
+            NSMutableString *str = [[NSMutableString alloc]initWithString:@"((createTime >= %@) AND (createTime<= %@ ))" ];
+            NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:s.beginDate,s.endDate, nil];
+            predicate = [NSPredicate predicateWithFormat:str argumentArray:params];
+            request.sortDescriptors = [[NSArray alloc]initWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO], nil];
+            request.predicate = predicate;
+            NSArray *deals = [ExproDeal objectsWithFetchRequest:request];
+            
+            if(deals.count > _dealNum){
+                [_updateIcon startAnimating];
+                _dealNum = deals.count;
+                _updateDeals.reserver = self;
+                _updateDeals.succeedCallBack = @selector(downUpdateSuccess);
+                _updateDeals.failedCallBack = @selector(downUpdateFail);
+                [_updateDeals  upDateDealStart:(_pageNum++*100 +1) end:100 bt:s.beginDate   et:s.endDate];
+            }else {
+                _addRow = 0;
+                [_updateIcon stopAnimating];
+            }
+            
+    
+    
+}
+-(void)downUpdateSuccess
+{
+    exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
+    [_updateIcon stopAnimating];
+    _scrollUpdateFlag = YES;
+    [s searchInLoacl];
+    [self.tableView reloadData];
+}
+
+-(void)downUpdateFail
+{
+    _addRow = 0;
+    _scrollUpdateFlag = YES;
+    [_updateIcon stopAnimating];
+    [self.tableView reloadData];
 }
 
 @end

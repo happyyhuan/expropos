@@ -44,4 +44,5 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
         forRowAtIndexPath:(NSIndexPath *)indexPath ;
 
 -(void)multipleTableView:(ExproMultipleTableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
+-(void)multipleTableViewScrollViewDidScroll:(UIScrollView *)scrollView;
 @end

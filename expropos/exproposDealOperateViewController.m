@@ -22,6 +22,7 @@
 #import "ExproDealItem.h"
 #import "exproposDealOperate.h"
 #import "ExproStore.h"
+#import "exproposAppDelegate.h"
 
 
 @interface exproposDealOperateViewController ()
@@ -229,6 +230,7 @@
     if(_deal == nil){
         _deal = [ExproDeal object];
     }
+    _deal.state = [NSNumber numberWithInt:1];
     _deal.createTime = [[NSDate alloc]initWithTimeInterval:8*60*60 sinceDate:[NSDate date]];
     double sum = 0.0;
     for(ExproGoods *g in _mySelectedGoods){
@@ -257,16 +259,17 @@
          [dic setValue:[NSNumber numberWithInt:(dealItemGid+i+1)] forKey:@"dealItemGid"];
         i++;
     }
-    ExproStore *store = [ExproStore object];
-    store.gid = [NSNumber numberWithInt:20];
-    _deal.store = store;
-//    _deal.storeID = store.gid;
-    ExproMember *dealer = [ExproMember object];
-    dealer.gid = [NSNumber numberWithInt:24];
-//    _deal.dealerID = dealer.gid;
-    _deal.dealer = dealer;
     
-    NSLog(@"dic === %@",_deal);
+    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSArray *members = [ExproMember findAll];
+    for(ExproMember *member in members){
+        if(member.user.gid == appDelegate.currentUser.gid){
+            _deal.dealer = member;
+            _deal.store =  member.store;
+        }
+    }
+   
     [dic writeToFile:filename atomically:YES];  
     
     [objectManager.objectStore save:nil];
