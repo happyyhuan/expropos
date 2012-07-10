@@ -10,6 +10,7 @@
 #import "ExproDealItem.h"
 #import "ExproStore.h"
 #import "exproposDealSelectedViewController.h"
+#import "NSDate+Helper.h"
 
 @interface exproposShowDealsSelectedViewController ()
 @property (nonatomic,strong) UIActivityIndicatorView *spinner;
@@ -133,6 +134,12 @@ dispatch_release(downloadQueue);
     }
     s.myPopover  =  _popover;
     s.showDeals = self;
+    NSTimeInterval secondsPerDay = 24 * 60 * 60 - 60; 
+    s.beginDate = [[NSDate date] beginningOfDay];
+    s.beginDate = [[NSDate alloc]initWithTimeInterval:8*60*60 sinceDate:s.beginDate];
+    
+    s.endDate = [[NSDate alloc] initWithTimeInterval:secondsPerDay sinceDate:s.beginDate];
+    [s dealSelect];
     _updateDeals = [[exproposUpdateDeals alloc]init];
     _dealNum = 0;
     _pageNum = 0;

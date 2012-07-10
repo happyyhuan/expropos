@@ -28,5 +28,5 @@
 @property (nonatomic,strong)  NSMutableArray *deals;
 
 -(void) searchInLoacl;
-
+-(void)dealSelect;
 @end
