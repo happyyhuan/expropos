@@ -79,6 +79,7 @@
 {
     self.showDeals.dealNum = 0;
     self.showDeals.pageNum = 1;
+    self.showDeals.scrollUpdateFlag = YES;
     [self searchInLoacl];
     
     if([_deals count]==0){

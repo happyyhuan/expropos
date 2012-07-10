@@ -387,6 +387,9 @@ dispatch_release(downloadQueue);
 {
     NSLog(@"willScorollUpdateDeals");
             exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
+        if(s.beginDate == nil || s.endDate == nil){
+            return;
+        }
             
             NSFetchRequest *request = [ExproDeal fetchRequest];
             NSPredicate *predicate = nil;
@@ -397,7 +400,8 @@ dispatch_release(downloadQueue);
             request.sortDescriptors = [[NSArray alloc]initWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO], nil];
             request.predicate = predicate;
             NSArray *deals = [ExproDeal objectsWithFetchRequest:request];
-            
+        
+    
             if(deals.count > _dealNum){
                 [_updateIcon startAnimating];
                 _dealNum = deals.count;
