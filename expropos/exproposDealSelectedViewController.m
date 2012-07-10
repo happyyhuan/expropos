@@ -78,7 +78,7 @@
 -(void)dealSelect
 {
     self.showDeals.dealNum = 0;
-    self.showDeals.pageNum = 1;
+    self.showDeals.pageNum = 0;
     self.showDeals.scrollUpdateFlag = YES;
     [self searchInLoacl];
     
@@ -86,7 +86,8 @@
         _update = [[exproposUpdateDeals alloc]init];
         _update.reserver = self;
         _update.succeedCallBack = @selector(didUpDataSuccess);
-        [_update upDateDealStart:0 end:10 bt:self.beginDate et:self.endDate];
+        self.showDeals.pageNum = 1;
+        [_update upDateDealStart:0 end:100 bt:self.beginDate et:self.endDate];
         
     }else {
         _showDeals.data = _deals;

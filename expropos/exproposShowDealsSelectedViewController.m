@@ -77,6 +77,9 @@ dispatch_queue_t downloadQueue = dispatch_queue_create("deals downloader", NULL)
 dispatch_async(downloadQueue, ^{
     _updateDeals.reserver = self;
     _updateDeals.succeedCallBack =  @selector(updateSuccess);
+    if(_pageNum == 0){
+        _pageNum=1;
+    }
      [_updateDeals  upDateDealStart:1 end:100 bt:s.beginDate   et:s.endDate];
 });
 dispatch_release(downloadQueue);    
@@ -132,7 +135,7 @@ dispatch_release(downloadQueue);
     s.showDeals = self;
     _updateDeals = [[exproposUpdateDeals alloc]init];
     _dealNum = 0;
-    _pageNum = 1;
+    _pageNum = 0;
     _addRow = 1;
     _scrollUpdateFlag = YES;
  
