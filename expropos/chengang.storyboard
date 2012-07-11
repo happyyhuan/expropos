@@ -106,7 +106,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="5554" y="-2789"/>
+            <point key="canvasLocation" x="6618" y="-2101"/>
         </scene>
         <!--Expropos Main View Controller-->
         <scene sceneID="lQP-7d-RaJ">
@@ -298,7 +298,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="4492" y="-2765"/>
+            <point key="canvasLocation" x="5196" y="-2145"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tUy-QE-d3S">
@@ -537,6 +537,54 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-2796" y="-2006"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lsi-Rw-SnP">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lsa-4r-d9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="memberRegister" toolbarHidden="NO" id="qxn-bg-qCh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="deA-dB-lgP">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" barStyle="blackOpaque" id="Wui-Tp-5Zr">
+                        <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="Bmz-wD-rHN" kind="relationship" relationship="rootViewController" id="Ip3-tz-gbi"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="2950" y="-2570"/>
+        </scene>
+        <!--Expropos Member Register Controller-->
+        <scene sceneID="aKG-NE-oxo">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g1r-4G-T04" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Bmz-wD-rHN" customClass="exproposMemberRegisterController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LRA-EY-M2s">
+                        <rect key="frame" x="0.0" y="64" width="768" height="916"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="emW-ze-JHy">
+                                <rect key="frame" x="-207" y="-229" width="975" height="1145"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bo7-8C-egc"/>
+                    <connections>
+                        <outlet property="view" destination="emW-ze-JHy" id="iM9-WV-Zfq"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3991" y="-2562"/>
+        </scene>
     </scenes>
     <resources>
         <image name="3.jpg" width="962" height="257"/>
@@ -574,6 +622,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="menu" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="menuTool" candidateClass="UIToolbar"/>
             </relationships>
+        </class>
+        <class className="exproposMemberRegisterController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberRegisterController.h"/>
         </class>
         <class className="exproposMemberSelectedViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberSelectedViewController.h"/>

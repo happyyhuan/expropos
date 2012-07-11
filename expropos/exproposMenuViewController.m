@@ -21,7 +21,7 @@
 @synthesize showDeal   =  _showDeal;
 @synthesize dealoperate = _dealoperate;
 @synthesize controllers = _controllers;
-
+@synthesize memberRegister = _memberRegister;
 
 - (void)awakeFromNib
 {
@@ -47,6 +47,9 @@
     _showDeal = [self.storyboard instantiateViewControllerWithIdentifier:@"showDeals"];
     _dealoperate  = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperate"];
     _controllers = [[NSMutableArray alloc]initWithCapacity:20];
+    
+    _memberRegister = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
+    
 }
 
 - (void)viewDidUnload
@@ -127,7 +130,13 @@
    
 
     
-   
+    if([menu isEqualToString:@"会员开户"]){
+        
+        _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
+        //_memberRegister.viewController = self.mainViewController;
+        
+        [self.mainViewController.view insertSubview:_memberRegister.view atIndex:0];
+    }   
 }
 
 

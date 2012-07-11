@@ -14,6 +14,10 @@
 		427FE45E15A586F800492804 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45815A586F800492804 /* 4.jpg */; };
 		427FE45F15A586F800492804 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45915A586F800492804 /* head.jpg */; };
 		427FE46015A586F800492804 /* login_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45A15A586F800492804 /* login_main.png */; };
+		42FD68D215ABCA0D00356923 /* login_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FD68D115ABCA0D00356923 /* login_ico.png */; };
+		42FD68D615ABCA6C00356923 /* exproposMemberRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FD68D515ABCA6C00356923 /* exproposMemberRegisterController.m */; };
+		42FD693315AC02C200356923 /* GSTETextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FD691815ABF6AB00356923 /* GSTETextFieldCell.m */; };
+		42FD693615AC1C6400356923 /* exproposLeverSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FD693515AC1C6400356923 /* exproposLeverSelectViewController.m */; };
 		5F03F22215A2943100F8362D /* member.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F03F22115A2943100F8362D /* member.png */; };
 		5F0533E7159E86E50005FB21 /* exproposAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533E6159E86E40005FB21 /* exproposAppDelegate.m */; };
 		5F0533EA159E86F90005FB21 /* expropos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F0533E8159E86F90005FB21 /* expropos.xcdatamodeld */; };
@@ -135,6 +139,13 @@
 		427FE45815A586F800492804 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 4.jpg; path = image/4.jpg; sourceTree = "<group>"; };
 		427FE45915A586F800492804 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = head.jpg; path = image/head.jpg; sourceTree = "<group>"; };
 		427FE45A15A586F800492804 /* login_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_main.png; path = image/login_main.png; sourceTree = "<group>"; };
+		42FD68D115ABCA0D00356923 /* login_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_ico.png; sourceTree = "<group>"; };
+		42FD68D415ABCA6C00356923 /* exproposMemberRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMemberRegisterController.h; sourceTree = "<group>"; };
+		42FD68D515ABCA6C00356923 /* exproposMemberRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMemberRegisterController.m; sourceTree = "<group>"; };
+		42FD691715ABF6AB00356923 /* GSTETextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSTETextFieldCell.h; sourceTree = "<group>"; };
+		42FD691815ABF6AB00356923 /* GSTETextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSTETextFieldCell.m; sourceTree = "<group>"; };
+		42FD693415AC1C6300356923 /* exproposLeverSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposLeverSelectViewController.h; sourceTree = "<group>"; };
+		42FD693515AC1C6400356923 /* exproposLeverSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposLeverSelectViewController.m; sourceTree = "<group>"; };
 		5F03F22115A2943100F8362D /* member.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = member.png; sourceTree = "<group>"; };
 		5F0533E5159E86E40005FB21 /* exproposAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposAppDelegate.h; sourceTree = "<group>"; };
 		5F0533E6159E86E40005FB21 /* exproposAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposAppDelegate.m; sourceTree = "<group>"; };
@@ -275,6 +286,7 @@
 				5F95E24315AAD4B20091144D /* descending.png */,
 				427FE45515A586F800492804 /* 1.jpg */,
 				427FE45615A586F800492804 /* 2.jpg */,
+				42FD68D115ABCA0D00356923 /* login_ico.png */,
 				427FE45715A586F800492804 /* 3.jpg */,
 				427FE45815A586F800492804 /* 4.jpg */,
 				427FE45915A586F800492804 /* head.jpg */,
@@ -282,6 +294,19 @@
 				5F03F22115A2943100F8362D /* member.png */,
 			);
 			name = image;
+			sourceTree = "<group>";
+		};
+		42FD68D315ABCA2C00356923 /* MemberRegister */ = {
+			isa = PBXGroup;
+			children = (
+				42FD691715ABF6AB00356923 /* GSTETextFieldCell.h */,
+				42FD691815ABF6AB00356923 /* GSTETextFieldCell.m */,
+				42FD68D415ABCA6C00356923 /* exproposMemberRegisterController.h */,
+				42FD68D515ABCA6C00356923 /* exproposMemberRegisterController.m */,
+				42FD693415AC1C6300356923 /* exproposLeverSelectViewController.h */,
+				42FD693515AC1C6400356923 /* exproposLeverSelectViewController.m */,
+			);
+			name = MemberRegister;
 			sourceTree = "<group>";
 		};
 		5F0533D2159E86930005FB21 /* ModelData */ = {
@@ -414,6 +439,7 @@
 		914BB29915746A6B009FFBAE /* expropos */ = {
 			isa = PBXGroup;
 			children = (
+				42FD68D315ABCA2C00356923 /* MemberRegister */,
 				5F78DEC915A2864300BB05A5 /* DealOperate */,
 				5F8DE18515A13A3400CBEB69 /* DealSelected */,
 				5F8DE18415A139FB00CBEB69 /* GoodsSelected */,
@@ -595,6 +621,7 @@
 				427FE45F15A586F800492804 /* head.jpg in Resources */,
 				427FE46015A586F800492804 /* login_main.png in Resources */,
 				918CDDEA15A54CC800002D25 /* Settings.bundle in Resources */,
+				42FD68D215ABCA0D00356923 /* login_ico.png in Resources */,
 				5F03F22215A2943100F8362D /* member.png in Resources */,
 				5F95E24415AAD4B20091144D /* descending.png in Resources */,
 				5F95E24615AAD4B20091144D /* unselected.png in Resources */,
@@ -609,6 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42FD693315AC02C200356923 /* GSTETextFieldCell.m in Sources */,
 				5F91790215A2D19600B8E100 /* (null) in Sources */,
 				914BB2A015746A6B009FFBAE /* main.m in Sources */,
 				914BB2AA15746A6C009FFBAE /* exproposViewController.m in Sources */,
@@ -647,6 +675,8 @@
 				916BA73115A5A638007D39EA /* ExproWarehouseWarrant.m in Sources */,
 				916BA73415A5A7D0007D39EA /* ExproStore.m in Sources */,
 				916BA73715A5B0C1007D39EA /* ExproWarehouseWarrantItem.m in Sources */,
+				42FD68D615ABCA6C00356923 /* exproposMemberRegisterController.m in Sources */,
+				42FD693615AC1C6400356923 /* exproposLeverSelectViewController.m in Sources */,
 				5F78DECC15A286CD00BB05A5 /* exproposDealOperateViewController.m in Sources */,
 				5F8D039D15A3D26C00C13112 /* exproposMyTableView.m in Sources */,
 				5F8D03A015A411BA00C13112 /* exproposDealOperateMenuViewController.m in Sources */,

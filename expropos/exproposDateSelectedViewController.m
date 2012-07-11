@@ -8,6 +8,7 @@
 
 #import "exproposDateSelectedViewController.h"
 #import "exproposDealSelectedViewController.h"
+#import "exproposMemberRegisterController.h"
 
 @interface exproposDateSelectedViewController ()
 
@@ -18,8 +19,18 @@
 @synthesize viewController = _viewController;
 @synthesize isBegin = _isBegin;
 
+
+
 -(void)viewWillDisappear:(BOOL)animated
 {
+    if ([self.viewController isKindOfClass:[exproposMemberRegisterController class]])
+    {
+        exproposMemberRegisterController *dealSelect = (exproposMemberRegisterController *)self.viewController;
+        dealSelect.birth = self.datePicker.date;
+        [dealSelect.tableView reloadData];
+    }
+    else
+    {
     exproposDealSelectedViewController *dealSelect = (exproposDealSelectedViewController *)self.viewController;
     if(self.isBegin){
         dealSelect.beginDate = self.datePicker.date;
@@ -27,6 +38,7 @@
         dealSelect.endDate = self.datePicker.date;
     }
     [dealSelect.tableView reloadData];
+    }
     [super viewWillDisappear:animated];
     
 }
