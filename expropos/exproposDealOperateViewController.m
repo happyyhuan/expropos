@@ -278,7 +278,7 @@
     _operatingDeals = [[exproposDealOperate alloc]init];
     _operatingDeals.reserver = self;
     _operatingDeals.succeedCallBack = @selector(createDealSuccess:);
-    _operatingDeals.failedCallBack = @selector(createDealSuccess2);
+    _operatingDeals.failedCallBack = @selector(createDealfail);
     [_operatingDeals createDeal:_deal];
     
    
@@ -291,9 +291,9 @@
     [self cancels:nil];
 }
 
--(void)createDealSuccess2
+-(void)createDealfail
 {
-     NSLog(@"success2");
+     NSLog(@"fail");
 }
 
 

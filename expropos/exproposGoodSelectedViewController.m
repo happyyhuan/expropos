@@ -43,16 +43,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    if([_viewController respondsToSelector:@selector(setMySelectedGoods:)]){
-        [_viewController setValue:_mySelectedGoods forKey:@"mySelectedGoods"];
-        if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
-            exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)_viewController;
-            for(ExproGoods *g in _mySelectedGoods){
-                [dealOperate.goodsAndAmount setObject:[NSNumber numberWithInt:1] forKey:g.gid];
-            }
-            [dealOperate reloadDatas];
-        }
-    }
+    
      if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
          exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)_viewController;
           NSMutableDictionary *newGoodsAndAmount = [[NSMutableDictionary alloc] initWithDictionary:dealOperate.goodsAndAmount copyItems:YES];
