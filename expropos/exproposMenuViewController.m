@@ -22,6 +22,7 @@
 @synthesize dealoperate = _dealoperate;
 @synthesize controllers = _controllers;
 @synthesize memberRegister = _memberRegister;
+@synthesize addMoney  = _addMoney;
 
 - (void)awakeFromNib
 {
@@ -47,7 +48,7 @@
     _showDeal = [self.storyboard instantiateViewControllerWithIdentifier:@"showDeals"];
     _dealoperate  = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperate"];
     _controllers = [[NSMutableArray alloc]initWithCapacity:20];
-    
+    _addMoney = [self.storyboard instantiateViewControllerWithIdentifier:@"addMoney"];
     _memberRegister = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
     
 }
@@ -58,6 +59,7 @@
     _showDeal = nil;
     _dealoperate = nil;
     _controllers = nil;
+    _addMoney = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -139,7 +141,19 @@
         //_memberRegister.viewController = self.mainViewController;
         
         [self.mainViewController.view insertSubview:_memberRegister.view atIndex:0];
-    }   
+    }  
+    
+    if([menu isEqualToString:@"充值"]){
+        for(UIViewController *contro in _controllers){
+            [contro.view removeFromSuperview];
+        }
+        [_controllers addObject:_addMoney];
+        _addMoney.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
+        [self.mainViewController.view addSubview:_addMoney.view];
+        [self.mainViewController.masterPopoverController dismissPopoverAnimated:YES];
+    }
+
+    
 }
 
 

@@ -47,6 +47,7 @@
 		5F9F7DB415A6EC2700EF8D5A /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F7DB315A6EC2700EF8D5A /* NSDate+Helper.m */; };
 		5FA51746159DB58300F9DE5B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FA51744159DB58300F9DE5B /* MainStoryboard.storyboard */; };
 		5FADDD4115A1AC640049FDA2 /* exproposDateSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FADDD4015A1AC640049FDA2 /* exproposDateSelectedViewController.m */; };
+		5FD30DAC15AD821B00A751E0 /* exproposAddMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD30DAB15AD821B00A751E0 /* exproposAddMoneyViewController.m */; };
 		5FE99495159423020017D351 /* exproposUpdateDeals.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE99494159423020017D351 /* exproposUpdateDeals.m */; };
 		914BB29415746A6B009FFBAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29315746A6B009FFBAE /* UIKit.framework */; };
 		914BB29815746A6B009FFBAE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29715746A6B009FFBAE /* CoreGraphics.framework */; };
@@ -191,6 +192,8 @@
 		5FA51745159DB58300F9DE5B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		5FADDD3F15A1AC640049FDA2 /* exproposDateSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposDateSelectedViewController.h; sourceTree = "<group>"; };
 		5FADDD4015A1AC640049FDA2 /* exproposDateSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposDateSelectedViewController.m; sourceTree = "<group>"; };
+		5FD30DAA15AD821B00A751E0 /* exproposAddMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposAddMoneyViewController.h; sourceTree = "<group>"; };
+		5FD30DAB15AD821B00A751E0 /* exproposAddMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposAddMoneyViewController.m; sourceTree = "<group>"; };
 		5FE99493159423020017D351 /* exproposUpdateDeals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposUpdateDeals.h; sourceTree = "<group>"; };
 		5FE99494159423020017D351 /* exproposUpdateDeals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposUpdateDeals.m; sourceTree = "<group>"; };
 		914BB28F15746A6B009FFBAE /* expropos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expropos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -399,6 +402,15 @@
 			name = DealSelected;
 			sourceTree = "<group>";
 		};
+		5FD30DA615AD815000A751E0 /* AddMoney */ = {
+			isa = PBXGroup;
+			children = (
+				5FD30DAA15AD821B00A751E0 /* exproposAddMoneyViewController.h */,
+				5FD30DAB15AD821B00A751E0 /* exproposAddMoneyViewController.m */,
+			);
+			name = AddMoney;
+			sourceTree = "<group>";
+		};
 		914BB28415746A6B009FFBAE = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +449,7 @@
 		914BB29915746A6B009FFBAE /* expropos */ = {
 			isa = PBXGroup;
 			children = (
+				5FD30DA615AD815000A751E0 /* AddMoney */,
 				42FD68D315ABCA2C00356923 /* MemberRegister */,
 				5F78DEC915A2864300BB05A5 /* DealOperate */,
 				5F8DE18515A13A3400CBEB69 /* DealSelected */,
@@ -680,6 +693,7 @@
 				5F8D03A015A411BA00C13112 /* exproposDealOperateMenuViewController.m in Sources */,
 				5F8C150915A5766200FA076D /* exproposDealOperate.m in Sources */,
 				5F9F7DB415A6EC2700EF8D5A /* NSDate+Helper.m in Sources */,
+				5FD30DAC15AD821B00A751E0 /* exproposAddMoneyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

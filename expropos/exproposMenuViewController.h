@@ -10,6 +10,7 @@
 #import "exproposMainViewController.h"
 #import "exproposShowDealsSelectedViewController.h"
 #import "exproposMemberRegisterController.h"
+#import "exproposAddMoneyViewController.h"
 
 
 @class exproposDealOperateViewController;
@@ -18,6 +19,7 @@
 @property (strong,nonatomic) NSArray *menus;
 @property (strong,nonatomic) exproposShowDealsSelectedViewController *showDeal;
 @property (strong,nonatomic) exproposDealOperateViewController *dealoperate;
+@property (strong,nonatomic) exproposAddMoneyViewController *addMoney;
 @property (strong,nonatomic) NSMutableArray *controllers;
 
 
