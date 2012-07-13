@@ -425,9 +425,9 @@ dispatch_release(downloadQueue);
             }else {
                 _addRow = 0;
                 [_updateIcon stopAnimating];
+                [self.tableView reloadData];
             }
             
-    
     
 }
 -(void)downUpdateSuccess

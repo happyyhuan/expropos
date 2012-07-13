@@ -56,8 +56,11 @@
              [dealOperate.goodsAndAmount setObject:[NSNumber numberWithInt:num] forKey:g.gid];
          }
          dealOperate.mySelectedGoods = _mySelectedGoods;
-         [dealOperate addToolBarItem];
-         
+         if(dealOperate.mySelectedGoods.count >0){
+             [dealOperate addToolBarItem];
+         }else {
+             [dealOperate removeSmallToolBarItem];
+         }
          [dealOperate reloadDatas];
      }
 }
