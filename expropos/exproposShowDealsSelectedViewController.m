@@ -400,6 +400,9 @@ dispatch_release(downloadQueue);
         if(s.beginDate == nil || s.endDate == nil){
             return;
         }
+    if(self.data.count ==0 ){
+        return;
+    }
             
             NSFetchRequest *request = [ExproDeal fetchRequest];
             NSPredicate *predicate = nil;
