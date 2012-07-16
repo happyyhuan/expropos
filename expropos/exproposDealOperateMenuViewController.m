@@ -153,7 +153,6 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             cell.textLabel.text = @"实收：¥";
             UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(200, cell.bounds.size.height/6, 90, 2*cell.bounds.size.height/3)];
-            
             textField.text =[NSString stringWithFormat:@"%g", _getMeony];
             [textField setBackgroundColor:[UIColor lightGrayColor]];
             textField.borderStyle = UITextBorderStyleLine;
