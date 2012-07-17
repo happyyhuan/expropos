@@ -23,6 +23,8 @@
 #import "exproposDealOperate.h"
 #import "ExproStore.h"
 #import "exproposAppDelegate.h"
+#import "exproposDateSelectedViewController.h"
+
 
 
 @interface exproposDealOperateViewController ()
@@ -170,12 +172,9 @@
     _mySelectedGoods = [[NSMutableArray alloc]initWithCapacity:20];
     _goodsAndAmount = [[NSMutableDictionary alloc]initWithCapacity:20];
     
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self                                                         
-     selector:@selector(keyboardWillHide:)                                                                 
-     name:UIKeyboardWillHideNotification
-     object:nil
-     ];
+   
+    
+   
    
    }
 
@@ -402,6 +401,11 @@
            [amount addTarget:self action:@selector(amoutChanged:) forControlEvents:UIControlEventEditingChanged];
             
             [amount addTarget:self action:@selector(amoutEnd:) forControlEvents:UIControlEventEditingDidEndOnExit];
+            //test
+            [amount addTarget:self action:@selector(amoutBegin:) forControlEvents:UIControlEventEditingDidBegin];
+            amount.tag = indexPath.row;
+            NSLog(@"row === %i",indexPath.row);
+            //test end
             amount.keyboardType = UIKeyboardTypeNumberPad;
             int amounts = [[_goodsAndAmount objectForKey:goods.gid] intValue];
         
@@ -528,6 +532,32 @@
     
  
 }
+
+
+-(void)amoutBegin:(id)sender
+{    
+    /*UITextField *f = (UITextField *)sender;
+    
+    NSInteger index = f.tag;
+  
+   CGFloat _width = [self multipleTableView:self.dealItemTableView proportionForSegment:0]*self.dealItemTableView.bounds.size.width;
+    CGFloat _width2 = [self multipleTableView:self.dealItemTableView proportionForSegment:1]*self.dealItemTableView.bounds.size.width;
+   
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    UITableViewCell *cell = [self.dealItemTableView cellForRowAtIndexPath:indexPath];
+    CGRect rect = CGRectMake(cell.frame.origin.x+_width, cell.frame.origin.y, _width2, cell.frame.size.height);
+  
+    exproposDateSelectedViewController *picker = [self.storyboard instantiateViewControllerWithIdentifier:@"dateSelect"];   
+    _popover.popoverContentSize=CGSizeMake(300, 200);   
+    _popover.contentViewController = picker;
+   [_popover presentPopoverFromRect:rect inView:self.dealItemTableView  
+                     permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];  
+    [f resignFirstResponder];*/
+    
+    
+}
+
+
 - (void) keyboardWillHide:(NSNotification *)note
 {
     [self performSelector:@selector(reloadDatas) withObject:nil afterDelay:0.01];

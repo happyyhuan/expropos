@@ -19,7 +19,7 @@
 #import "exproposMyTableView.h"
 #import "exproposDealOperateViewController.h"
 #import "ExproDeal.h"
-
+#import "exproposDateSelectedViewController.h"
 
 @interface exproposDealOperateMenuViewController ()
 
@@ -50,6 +50,10 @@
     _menuTableView.myTableViewDelegate = self;
     _menuTableView.myTableViewDataSource = self;
     self.contentSizeForViewInPopover = CGSizeMake(300, 400);
+    
+    exproposDateSelectedViewController *picker = [self.storyboard instantiateViewControllerWithIdentifier:@"dateSelect"];
+    [self.menuTableView addSubview:picker.view];
+    self.menuTableView.alpha = 0.5;
 }
 
 - (void)viewDidUnload
@@ -266,6 +270,7 @@
 
 -(void)getMeonyChanged:(id)sender
 {
+
     UITextField *filed = (UITextField *)sender;
     NSString *filedStr = filed.text;
     filedStr = [filedStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -277,6 +282,8 @@
             _getMeony = 0.0;
         }
     }
+    
+    
 }
 -(void)getMeonyEnd
 {

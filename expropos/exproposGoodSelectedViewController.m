@@ -85,7 +85,7 @@
 }
 -(void)loaddata
 {
-    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+   exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
 
     NSArray *members = [ExproMember findAll];
@@ -285,7 +285,6 @@
                 [InGoods addObject:g];
             }
         }
-        
         for(ExproGoodsType *t in set){
             NSInteger index = [self.datas indexOfObjectIdenticalTo:t];
             isInserted =  (index>0&&index != NSIntegerMax);
