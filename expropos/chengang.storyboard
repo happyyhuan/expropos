@@ -580,6 +580,30 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="3021" y="128"/>
         </scene>
+        <!--Expropos Deal Operate Menu View Controller-->
+        <scene sceneID="r2j-Pf-K4L">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XT2-HT-6BE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="dealOperateMenu" id="miP-to-NIE" customClass="exproposDealOperateMenuViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uQJ-O7-OxM">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="aeE-Ey-4qC" customClass="exproposMyTableView">
+                                <rect key="frame" x="-5" y="0.0" width="778" height="1019"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="menuTableView" destination="aeE-Ey-4qC" id="U4a-eT-d5g"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1977" y="248"/>
+        </scene>
     </scenes>
     <resources>
         <image name="3.jpg" width="962" height="257"/>
