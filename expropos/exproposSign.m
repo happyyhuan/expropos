@@ -10,7 +10,7 @@
 #import "ExproUser.h"
 
 @implementation exproposSign
-
+@synthesize statusCode=_statusCode;
 
 - (id)init {
     self = [super init];
@@ -18,7 +18,7 @@
         [self addCode:200 info:NSLocalizedString(@"LoginSucceed", nil) alert:NO succeed:YES];
         [self addCode:401 info:NSLocalizedString(@"IncorrectPassword", nil) alert:YES succeed:NO];
         [self addCode:403 info:NSLocalizedString(@"ForbidUser", nil) alert:YES succeed:NO];
-        [self addCode:404 info:NSLocalizedString(@"NoSuchUser", nil) alert:YES succeed:NO];
+        
         self.succeedTitle = NSLocalizedString(@"LoginSucceed", nil);
         self.errorTitle = NSLocalizedString(@"LoginFailed", nil);
         self.reserver = self;

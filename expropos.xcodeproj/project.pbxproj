@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		427A895315AEA7B100E303D8 /* exproposValidater.m in Sources */ = {isa = PBXBuildFile; fileRef = 427A895215AEA7B100E303D8 /* exproposValidater.m */; };
 		427B405C15A4115D006DF731 /* chengang.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427B405B15A4115D006DF731 /* chengang.storyboard */; };
 		427FE45B15A586F800492804 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45515A586F800492804 /* 1.jpg */; };
 		427FE45C15A586F800492804 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45615A586F800492804 /* 2.jpg */; };
@@ -14,6 +15,8 @@
 		427FE45E15A586F800492804 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45815A586F800492804 /* 4.jpg */; };
 		427FE45F15A586F800492804 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45915A586F800492804 /* head.jpg */; };
 		427FE46015A586F800492804 /* login_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45A15A586F800492804 /* login_main.png */; };
+		4280FAC715AE60BD00CB7712 /* exproposRegistr.m in Sources */ = {isa = PBXBuildFile; fileRef = 4280FAC615AE60BD00CB7712 /* exproposRegistr.m */; };
+		42BF9B1115B408A80098286E /* exproposPrivacyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BF9B1015B408A80098286E /* exproposPrivacyController.m */; };
 		42FD68D215ABCA0D00356923 /* login_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FD68D115ABCA0D00356923 /* login_ico.png */; };
 		42FD68D615ABCA6C00356923 /* exproposMemberRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FD68D515ABCA6C00356923 /* exproposMemberRegisterController.m */; };
 		42FD693315AC02C200356923 /* GSTETextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FD691815ABF6AB00356923 /* GSTETextFieldCell.m */; };
@@ -130,6 +133,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		427A895115AEA7B100E303D8 /* exproposValidater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposValidater.h; sourceTree = "<group>"; };
+		427A895215AEA7B100E303D8 /* exproposValidater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposValidater.m; sourceTree = "<group>"; };
 		427B405B15A4115D006DF731 /* chengang.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = chengang.storyboard; sourceTree = "<group>"; };
 		427FE45515A586F800492804 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1.jpg; path = image/1.jpg; sourceTree = "<group>"; };
 		427FE45615A586F800492804 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2.jpg; path = image/2.jpg; sourceTree = "<group>"; };
@@ -137,6 +142,10 @@
 		427FE45815A586F800492804 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 4.jpg; path = image/4.jpg; sourceTree = "<group>"; };
 		427FE45915A586F800492804 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = head.jpg; path = image/head.jpg; sourceTree = "<group>"; };
 		427FE45A15A586F800492804 /* login_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_main.png; path = image/login_main.png; sourceTree = "<group>"; };
+		4280FAC515AE60BD00CB7712 /* exproposRegistr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposRegistr.h; sourceTree = "<group>"; };
+		4280FAC615AE60BD00CB7712 /* exproposRegistr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposRegistr.m; sourceTree = "<group>"; };
+		42BF9B0F15B408A70098286E /* exproposPrivacyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposPrivacyController.h; sourceTree = "<group>"; };
+		42BF9B1015B408A80098286E /* exproposPrivacyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposPrivacyController.m; sourceTree = "<group>"; };
 		42FD68D115ABCA0D00356923 /* login_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_ico.png; sourceTree = "<group>"; };
 		42FD68D415ABCA6C00356923 /* exproposMemberRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMemberRegisterController.h; sourceTree = "<group>"; };
 		42FD68D515ABCA6C00356923 /* exproposMemberRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMemberRegisterController.m; sourceTree = "<group>"; };
@@ -303,6 +312,8 @@
 				42FD68D515ABCA6C00356923 /* exproposMemberRegisterController.m */,
 				42FD693415AC1C6300356923 /* exproposLeverSelectViewController.h */,
 				42FD693515AC1C6400356923 /* exproposLeverSelectViewController.m */,
+				42BF9B0F15B408A70098286E /* exproposPrivacyController.h */,
+				42BF9B1015B408A80098286E /* exproposPrivacyController.m */,
 			);
 			name = MemberRegister;
 			sourceTree = "<group>";
@@ -506,6 +517,10 @@
 				5F053413159EE7000005FB21 /* exproposSignout.m */,
 				5F8C150715A5766200FA076D /* exproposDealOperate.h */,
 				5F8C150815A5766200FA076D /* exproposDealOperate.m */,
+				4280FAC515AE60BD00CB7712 /* exproposRegistr.h */,
+				4280FAC615AE60BD00CB7712 /* exproposRegistr.m */,
+				427A895115AEA7B100E303D8 /* exproposValidater.h */,
+				427A895215AEA7B100E303D8 /* exproposValidater.m */,
 			);
 			name = Restkit;
 			sourceTree = "<group>";
@@ -680,6 +695,9 @@
 				5F8D03A015A411BA00C13112 /* exproposDealOperateMenuViewController.m in Sources */,
 				5F8C150915A5766200FA076D /* exproposDealOperate.m in Sources */,
 				5F9F7DB415A6EC2700EF8D5A /* NSDate+Helper.m in Sources */,
+				4280FAC715AE60BD00CB7712 /* exproposRegistr.m in Sources */,
+				427A895315AEA7B100E303D8 /* exproposValidater.m in Sources */,
+				42BF9B1115B408A80098286E /* exproposPrivacyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

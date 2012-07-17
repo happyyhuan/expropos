@@ -174,6 +174,7 @@
 - (void) signinFailed:(id)object {
     _userField.text = nil;
     _passwordField.text=nil;
+    NSLog(@"statuscode == %i",self.sign.statusCode);
 }
 
 
