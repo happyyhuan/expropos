@@ -567,6 +567,54 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-2524" y="-2022"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="88b-rf-Tc3">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="512-TI-u9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="memberRegister" toolbarHidden="NO" id="vDy-PO-eXD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="tJJ-ge-vrc">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" barStyle="blackOpaque" id="Ily-hT-wA4">
+                        <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="0JY-pa-rOV" kind="relationship" relationship="rootViewController" id="JPQ-Q1-pYF"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="2374" y="-2874"/>
+        </scene>
+        <!--Expropos Member Register Controller-->
+        <scene sceneID="IDF-Gy-2ag">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e8y-zr-xN2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="0JY-pa-rOV" customClass="exproposMemberRegisterController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="euW-Aw-YLL">
+                        <rect key="frame" x="0.0" y="64" width="768" height="916"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Mps-Ue-4gy">
+                                <rect key="frame" x="-207" y="-229" width="975" height="1145"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3HE-cY-vxZ"/>
+                    <connections>
+                        <outlet property="view" destination="Mps-Ue-4gy" id="4QZ-8a-Cft"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3327" y="-2898"/>
+        </scene>
     </scenes>
     <resources>
         <image name="3.jpg" width="962" height="257"/>
@@ -618,6 +666,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="menuTool" candidateClass="UIToolbar"/>
             </relationships>
         </class>
+        <class className="exproposMemberRegisterController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberRegisterController.h"/>
+        </class>
         <class className="exproposMemberSelectedViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberSelectedViewController.h"/>
             <relationships>
@@ -647,7 +698,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="loginview" candidateClass="UIView"/>
+                <relationship kind="outlet" name="orgField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="orglabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phonelable" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="userField" candidateClass="UITextField"/>
             </relationships>
         </class>

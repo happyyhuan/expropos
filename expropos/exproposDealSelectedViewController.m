@@ -186,6 +186,12 @@
     self.contentSizeForViewInPopover = CGSizeMake(500, 500);
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"查询" style:UIBarButtonItemStyleBordered target:self action:@selector(dealSelect)];
     self.navigationItem.rightBarButtonItem = rightItem;
+    NSTimeInterval secondsPerDay = 24 * 60 * 60 - 60; 
+    _beginDate = [[NSDate date] beginningOfDay];
+    _beginDate = [[NSDate alloc]initWithTimeInterval:8*60*60 sinceDate:_beginDate];
+    
+    _endDate = [[NSDate alloc] initWithTimeInterval:secondsPerDay sinceDate:_beginDate];
+    
     _fromAmoutOfMoney = @"";
     _endAmoutOfMoney = @"";
     
@@ -200,16 +206,12 @@
 {
     [super viewDidUnload];
     
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSTimeInterval secondsPerDay = 24 * 60 * 60 - 60; 
-    _beginDate = [[NSDate date] beginningOfDay];
-    _beginDate = [[NSDate alloc]initWithTimeInterval:8*60*60 sinceDate:_beginDate];
-    
-    _endDate = [[NSDate alloc] initWithTimeInterval:secondsPerDay sinceDate:_beginDate];
-    [self.tableView reloadData];
+   
 }
 
 -(void)viewWillDisappear:(BOOL)animated

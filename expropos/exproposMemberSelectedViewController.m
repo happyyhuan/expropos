@@ -234,6 +234,7 @@
         }
         if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
             cell.textLabel.text = @"请选择会员";
+            cell.accessoryType = UITableViewCellAccessoryNone;
             cell.detailTextLabel.text = @"";
             return cell;
         }
@@ -301,6 +302,7 @@
             [deal.tableView reloadData];
         }
         if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
+            cell0.accessoryType = UITableViewCellAccessoryNone;
             return;
         }
         [self.tableView reloadData];

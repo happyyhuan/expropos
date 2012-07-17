@@ -35,4 +35,5 @@
 
 -(void)addToolBarItem;
 -(void)reloadDatas;
+-(void)removeSmallToolBarItem;
 @end

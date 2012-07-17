@@ -400,6 +400,9 @@ dispatch_release(downloadQueue);
         if(s.beginDate == nil || s.endDate == nil){
             return;
         }
+    if(self.data.count ==0 ){
+        return;
+    }
             
             NSFetchRequest *request = [ExproDeal fetchRequest];
             NSPredicate *predicate = nil;
@@ -422,9 +425,9 @@ dispatch_release(downloadQueue);
             }else {
                 _addRow = 0;
                 [_updateIcon stopAnimating];
+                [self.tableView reloadData];
             }
             
-    
     
 }
 -(void)downUpdateSuccess
