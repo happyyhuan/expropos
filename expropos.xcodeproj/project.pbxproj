@@ -47,10 +47,15 @@
 		5F95E24815AAD4B20091144D /* TriangleSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F95E24715AAD4B20091144D /* TriangleSmall.png */; };
 		5F99B4391591B3C400CCB896 /* exproposDealSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F99B4381591B3C400CCB896 /* exproposDealSelectedViewController.m */; };
 		5F9A8E3C1599B4870021FE68 /* ExproMultipleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9A8E3B1599B4870021FE68 /* ExproMultipleTableView.m */; };
+		5F9EC04C15B4F4710022F928 /* exproposShowDealOperateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9EC04B15B4F4710022F928 /* exproposShowDealOperateViewController.m */; };
 		5F9F7DB415A6EC2700EF8D5A /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F7DB315A6EC2700EF8D5A /* NSDate+Helper.m */; };
 		5FA51746159DB58300F9DE5B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FA51744159DB58300F9DE5B /* MainStoryboard.storyboard */; };
 		5FADDD4115A1AC640049FDA2 /* exproposDateSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FADDD4015A1AC640049FDA2 /* exproposDateSelectedViewController.m */; };
 		5FE99495159423020017D351 /* exproposUpdateDeals.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE99494159423020017D351 /* exproposUpdateDeals.m */; };
+		5FF5979415B64E870089C337 /* exproposNumKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF5979315B64E870089C337 /* exproposNumKeyboard.m */; };
+		5FF5979715B671240089C337 /* exproposPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF5979615B671240089C337 /* exproposPayViewController.m */; };
+		5FF8BA2315B52F48005A0E1F /* JPStupidButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF8BA2215B52F48005A0E1F /* JPStupidButton.m */; };
+		5FF8BA2515B52FAA005A0E1F /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8BA2415B52FAA005A0E1F /* delete.png */; };
 		914BB29415746A6B009FFBAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29315746A6B009FFBAE /* UIKit.framework */; };
 		914BB29815746A6B009FFBAE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29715746A6B009FFBAE /* CoreGraphics.framework */; };
 		914BB29E15746A6B009FFBAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 914BB29C15746A6B009FFBAE /* InfoPlist.strings */; };
@@ -193,6 +198,8 @@
 		5F99B4381591B3C400CCB896 /* exproposDealSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposDealSelectedViewController.m; sourceTree = "<group>"; };
 		5F9A8E3A1599B4870021FE68 /* ExproMultipleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproMultipleTableView.h; sourceTree = "<group>"; };
 		5F9A8E3B1599B4870021FE68 /* ExproMultipleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproMultipleTableView.m; sourceTree = "<group>"; };
+		5F9EC04A15B4F4710022F928 /* exproposShowDealOperateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposShowDealOperateViewController.h; sourceTree = "<group>"; };
+		5F9EC04B15B4F4710022F928 /* exproposShowDealOperateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposShowDealOperateViewController.m; sourceTree = "<group>"; };
 		5F9F7DB215A6EC2700EF8D5A /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
 		5F9F7DB315A6EC2700EF8D5A /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		5FA2666C15B6B0F900C74531 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/chenhaitao/Documents/expropos/expropos/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
@@ -202,6 +209,13 @@
 		5FADDD4015A1AC640049FDA2 /* exproposDateSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposDateSelectedViewController.m; sourceTree = "<group>"; };
 		5FE99493159423020017D351 /* exproposUpdateDeals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposUpdateDeals.h; sourceTree = "<group>"; };
 		5FE99494159423020017D351 /* exproposUpdateDeals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposUpdateDeals.m; sourceTree = "<group>"; };
+		5FF5979215B64E870089C337 /* exproposNumKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposNumKeyboard.h; sourceTree = "<group>"; };
+		5FF5979315B64E870089C337 /* exproposNumKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposNumKeyboard.m; sourceTree = "<group>"; };
+		5FF5979515B671240089C337 /* exproposPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposPayViewController.h; sourceTree = "<group>"; };
+		5FF5979615B671240089C337 /* exproposPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposPayViewController.m; sourceTree = "<group>"; };
+		5FF8BA2115B52F48005A0E1F /* JPStupidButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPStupidButton.h; sourceTree = "<group>"; };
+		5FF8BA2215B52F48005A0E1F /* JPStupidButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPStupidButton.m; sourceTree = "<group>"; };
+		5FF8BA2415B52FAA005A0E1F /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		914BB28F15746A6B009FFBAE /* expropos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expropos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		914BB29315746A6B009FFBAE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		914BB29515746A6B009FFBAE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -288,6 +302,7 @@
 		427FE46115A5870300492804 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				5FF8BA2415B52FAA005A0E1F /* delete.png */,
 				5F95E24715AAD4B20091144D /* TriangleSmall.png */,
 				5F95E24515AAD4B20091144D /* unselected.png */,
 				5F95E24315AAD4B20091144D /* descending.png */,
@@ -410,6 +425,21 @@
 			name = DealSelected;
 			sourceTree = "<group>";
 		};
+		5F9EC04915B4F4340022F928 /* DealOperateRedo */ = {
+			isa = PBXGroup;
+			children = (
+				5FF8BA2115B52F48005A0E1F /* JPStupidButton.h */,
+				5FF8BA2215B52F48005A0E1F /* JPStupidButton.m */,
+				5F9EC04A15B4F4710022F928 /* exproposShowDealOperateViewController.h */,
+				5F9EC04B15B4F4710022F928 /* exproposShowDealOperateViewController.m */,
+				5FF5979215B64E870089C337 /* exproposNumKeyboard.h */,
+				5FF5979315B64E870089C337 /* exproposNumKeyboard.m */,
+				5FF5979515B671240089C337 /* exproposPayViewController.h */,
+				5FF5979615B671240089C337 /* exproposPayViewController.m */,
+			);
+			name = DealOperateRedo;
+			sourceTree = "<group>";
+		};
 		914BB28415746A6B009FFBAE = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +478,7 @@
 		914BB29915746A6B009FFBAE /* expropos */ = {
 			isa = PBXGroup;
 			children = (
+				5F9EC04915B4F4340022F928 /* DealOperateRedo */,
 				42FD68D315ABCA2C00356923 /* MemberRegister */,
 				5F78DEC915A2864300BB05A5 /* DealOperate */,
 				5F8DE18515A13A3400CBEB69 /* DealSelected */,
@@ -639,6 +670,7 @@
 				5F95E24415AAD4B20091144D /* descending.png in Resources */,
 				5F95E24615AAD4B20091144D /* unselected.png in Resources */,
 				5F95E24815AAD4B20091144D /* TriangleSmall.png in Resources */,
+				5FF8BA2515B52FAA005A0E1F /* delete.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +730,10 @@
 				4280FAC715AE60BD00CB7712 /* exproposRegistr.m in Sources */,
 				427A895315AEA7B100E303D8 /* exproposValidater.m in Sources */,
 				42BF9B1115B408A80098286E /* exproposPrivacyController.m in Sources */,
+				5F9EC04C15B4F4710022F928 /* exproposShowDealOperateViewController.m in Sources */,
+				5FF8BA2315B52F48005A0E1F /* JPStupidButton.m in Sources */,
+				5FF5979415B64E870089C337 /* exproposNumKeyboard.m in Sources */,
+				5FF5979715B671240089C337 /* exproposPayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
