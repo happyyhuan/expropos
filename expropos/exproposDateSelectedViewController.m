@@ -21,12 +21,19 @@
 
 
 
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     if ([self.viewController isKindOfClass:[exproposMemberRegisterController class]])
     {
         exproposMemberRegisterController *dealSelect = (exproposMemberRegisterController *)self.viewController;
-        dealSelect.birth = self.datePicker.date;
+        if ([dealSelect.dateSel isEqualToString:@"birthTime"])
+        {
+            dealSelect.birth = self.datePicker.date;
+        }
+        else {
+            dealSelect.dueTime = self.datePicker.date;
+        }
         [dealSelect.tableView reloadData];
     }
     else

@@ -134,11 +134,18 @@
         for(UIViewController *contro in _controllers){
             [contro.view removeFromSuperview];
         }
-         [_controllers addObject:_memberRegister];
+        [_controllers addObject:_memberRegister];
         _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
-        //_memberRegister.viewController = self.mainViewController;
+        _memberRegister.mainViewController = self.mainViewController;
         
-        [self.mainViewController.view insertSubview:_memberRegister.view atIndex:0];
+        [self.mainViewController.view addSubview: _memberRegister.view];
+        [self.mainViewController.masterPopoverController dismissPopoverAnimated:YES];
+        
+//        
+//        _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
+//        //_memberRegister.viewController = self.mainViewController;
+//        
+//        [self.mainViewController.view insertSubview:_memberRegister.view atIndex:0];
     }   
 }
 

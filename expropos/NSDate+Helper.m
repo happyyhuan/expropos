@@ -50,7 +50,7 @@
 	NSDateFormatter *mdf = [[NSDateFormatter alloc] init];
 	[mdf setDateFormat:@"yyyy-MM-dd"];
 	NSDate *midnight = [mdf dateFromString:[mdf stringFromDate:self]];
-	//[mdf release];
+
 	
 	return (int)[midnight timeIntervalSinceNow] / (60*60*24) *-1;
 }
@@ -89,7 +89,7 @@
 	NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
 	[inputFormatter setDateFormat:format];
 	NSDate *date = [inputFormatter dateFromString:string];
-	//[inputFormatter release];
+
 	return date;
 }
 
@@ -131,7 +131,7 @@
 		NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
 		[componentsToSubtract setDay:-7];
 		NSDate *lastweek = [calendar dateByAddingComponents:componentsToSubtract toDate:today options:0];
-		//[componentsToSubtract release];
+
         NSComparisonResult lastweek_result = [date compare:lastweek];
 		if (lastweek_result == NSOrderedDescending) {
             if (displayTime) {
@@ -172,7 +172,7 @@
 	// use display formatter to return formatted date string
 	displayString = [displayFormatter stringFromDate:date];
     
-   // [displayFormatter release];
+
     
 	return displayString;
 }
@@ -189,7 +189,7 @@
 	NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 	[outputFormatter setDateFormat:format];
 	NSString *timestamp_str = [outputFormatter stringFromDate:self];
-	//[outputFormatter release];
+
 	return timestamp_str;
 }
 
@@ -202,7 +202,7 @@
 	[outputFormatter setDateStyle:dateStyle];
 	[outputFormatter setTimeStyle:timeStyle];
 	NSString *outputString = [outputFormatter stringFromDate:self];
-	//[outputFormatter release];
+
 	return outputString;
 }
 
@@ -229,8 +229,7 @@
 	[componentsToSubtract setDay: 0 - ([weekdayComponents weekday] - 1)];
 	beginningOfWeek = nil;
 	beginningOfWeek = [calendar dateByAddingComponents:componentsToSubtract toDate:self options:0];
-	//[componentsToSubtract release];
-	
+
 	//normalize to midnight, extract the year, month, and day components and create a new date from those components.
 	NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit)
 											   fromDate:beginningOfWeek];
@@ -253,7 +252,7 @@
 	// to get the end of week for a particular date, add (7 - weekday) days
 	[componentsToAdd setDay:(7 - [weekdayComponents weekday])];
 	NSDate *endOfWeek = [calendar dateByAddingComponents:componentsToAdd toDate:self options:0];
-	//[componentsToAdd release];
+
 	
 	return endOfWeek;
 }
