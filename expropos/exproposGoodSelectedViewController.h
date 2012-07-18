@@ -20,5 +20,5 @@
 @property (nonatomic,strong)NSMutableArray *mySelectedGoods;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *FlashButton;
 
-
+-(void)searchWithNameOrId:(NSString *)nameOrId;
 @end

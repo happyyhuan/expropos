@@ -19,6 +19,7 @@
 #import "exproposDealOperateViewController.h"
 #import "ExproMultipleTableView.h"
 #import "exproposDealOperateMenuViewController.h"
+#import "exproposShowDealOperateViewController.h"
 
 @interface exproposMemberSelectedViewController ()
 
@@ -71,9 +72,9 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:100];
     for(ExproRole *role in roles){
-        if([role.name isEqualToString:@"商户业主"]||[role.name isEqualToString:@"商户收银员"]){
+      /*  if([role.name isEqualToString:@"商户业主"]||[role.name isEqualToString:@"商户收银员"]){
             continue;
-        }
+        }*/
         
         NSMutableArray *tmpMembers = [[NSMutableArray alloc]initWithCapacity:20];
         for(ExproMember *m in alls){
@@ -238,6 +239,13 @@
             cell.detailTextLabel.text = @"";
             return cell;
         }
+        
+        if([self.viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
+            cell.textLabel.text = @"请选择会员";
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.detailTextLabel.text = @"";
+            return cell;
+        }
     }
     
     NSString *memberType = [self.memberTypes objectAtIndex:section-1];
@@ -268,7 +276,16 @@
         
     }
 
-
+    if([self.viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
+        exproposShowDealOperateViewController *dealOperate = (exproposShowDealOperateViewController *)self.viewController;
+        
+        if(dealOperate.member!=nil && dealOperate.member.gid.intValue == member.gid.intValue){
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+    }
     return cell;
 }
 
@@ -302,6 +319,10 @@
             [deal.tableView reloadData];
         }
         if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
+            cell0.accessoryType = UITableViewCellAccessoryNone;
+            return;
+        }
+        if([self.viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
             cell0.accessoryType = UITableViewCellAccessoryNone;
             return;
         }
@@ -343,7 +364,21 @@
         [dealOperate.goodsAndAmount removeAllObjects];
         dealOperate.deal = nil;
         [dealOperate.dealItemTableView reloadData];
-        //[dealOperate addToolBarItem];
+        [_popover dismissPopoverAnimated:YES];
+    }
+    
+    if([self.viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
+        exproposShowDealOperateViewController *dealOperate = (exproposShowDealOperateViewController *)self.viewController;
+        if(dealOperate.member != nil && dealOperate.member.gid.intValue == member.gid.intValue){
+            dealOperate.member = nil;
+        }else {
+            dealOperate.member = member;
+        }
+        [self.tableView reloadData];
+        [dealOperate.mySelectedGoods removeAllObjects];
+        [dealOperate.goodsAndAmount removeAllObjects];
+        dealOperate.deal = nil;
+        [dealOperate reloadViews];
         [_popover dismissPopoverAnimated:YES];
     }
     

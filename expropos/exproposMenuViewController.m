@@ -10,6 +10,7 @@
 #import "exproposDealSelectedViewController.h"
 #import "exproposDealOperateViewController.h"
 #import "exproposDealOperateMenuViewController.h"
+#import "exproposAppDelegate.h"
 
 @interface exproposMenuViewController ()
 
@@ -114,7 +115,7 @@
     }
     
     if([menu isEqualToString:@"消费"]){
-        for(UIViewController *contro in _controllers){
+      /*  for(UIViewController *contro in _controllers){
             [contro.view removeFromSuperview];
         }
         [_controllers addObject:_dealoperate];
@@ -125,7 +126,11 @@
         dealOperateMenu.dealOperate = _dealoperate;
         _dealoperate.dealOperateMenu = dealOperateMenu;
         [self.navigationController pushViewController:dealOperateMenu animated:YES];
-        [self.mainViewController.view addSubview:_dealoperate.view];
+        [self.mainViewController.view addSubview:_dealoperate.view];*/
+        
+        exproposShowDealsSelectedViewController *dealOperate = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperateVersion2"];
+        exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        appDelegate.window.rootViewController = dealOperate;
     }
    
 
