@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JPStupidButton.h"
+#import "ExproMultipleTableView.h"
 @class JPStupidButton;
 @class ExproMultipleTableView;
 @class exproposMemberSelectedViewController;
@@ -17,7 +19,7 @@
 @class exproposDealOperateMenuViewController;
 @class ExproDeal;
 @class exproposDealOperate;
-@protocol ButtonClick ;
+@protocol ButtonClick;
 @class exproposGoodSelectedViewController;
 
 @interface exproposShowDealOperateViewController : UIViewController <ExproMutableTableViewDataSource,ExproMutableTableViewDelegate,ButtonClick>

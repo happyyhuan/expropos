@@ -44,7 +44,6 @@
 
     self.mainViewController = [self.splitViewController.viewControllers lastObject];
     _showDeal = [self.storyboard instantiateViewControllerWithIdentifier:@"showDeals"];
-    _dealoperate  = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperate"];
     _controllers = [[NSMutableArray alloc]initWithCapacity:20];
     
     _memberRegister = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
@@ -113,19 +112,6 @@
     }
     
     if([menu isEqualToString:@"消费"]){
-      /*  for(UIViewController *contro in _controllers){
-            [contro.view removeFromSuperview];
-        }
-        [_controllers addObject:_dealoperate];
-         _dealoperate.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
-         
-        _dealoperate.mainController = self.mainViewController;
-        exproposDealOperateMenuViewController *dealOperateMenu = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperateMenu"];
-        dealOperateMenu.dealOperate = _dealoperate;
-        _dealoperate.dealOperateMenu = dealOperateMenu;
-        [self.navigationController pushViewController:dealOperateMenu animated:YES];
-        [self.mainViewController.view addSubview:_dealoperate.view];*/
-        
         exproposShowDealsSelectedViewController *dealOperate = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperateVersion2"];
         exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         appDelegate.window.rootViewController = dealOperate;

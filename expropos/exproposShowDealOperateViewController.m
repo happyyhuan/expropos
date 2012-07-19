@@ -408,6 +408,8 @@
 - (IBAction)goodsSelected:(id)sender {
     if(!_isPopover){
         _goodsSelected.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(finishGoodsSelected)];
+        _goodsSelected.searchData = nil;
+        [_goodsSelected.tableView reloadData];
         if(_popover == nil){
             _popover = [[UIPopoverController alloc] initWithContentViewController:_nav];
           
@@ -421,6 +423,7 @@
         _popover.passthroughViews = _buttons;
         _popover.popoverContentSize = CGSizeMake(600, 750);
         [_popover presentPopoverFromRect:CGRectMake(12, 52, 136, 45) inView:self.rightView permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+        
         _isPopover = YES;
     }
 }

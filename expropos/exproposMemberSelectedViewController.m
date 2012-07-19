@@ -334,16 +334,21 @@
     
     if([self.viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
         exproposShowDealOperateViewController *dealOperate = (exproposShowDealOperateViewController *)self.viewController;
+        
+        if(dealOperate.member != nil){
+            [dealOperate.mySelectedGoods removeAllObjects];
+            [dealOperate.goodsAndAmount removeAllObjects];
+            dealOperate.deal = nil;
+        }
+        
         if(dealOperate.member != nil && dealOperate.member.gid.intValue == member.gid.intValue){
             dealOperate.member = nil;
         }else {
             dealOperate.member = member;
         }
         [self.tableView reloadData];
-        [dealOperate.mySelectedGoods removeAllObjects];
-        [dealOperate.goodsAndAmount removeAllObjects];
-        dealOperate.deal = nil;
-        [dealOperate reloadViews];
+        
+         [dealOperate reloadViews];
         [_popover dismissPopoverAnimated:YES];
     }
     

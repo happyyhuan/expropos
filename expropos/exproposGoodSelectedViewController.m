@@ -353,7 +353,7 @@
                 [theGoddsInT addObject:g];
             }
         }
-        if(set && set.count>0){
+        if(theGoddsInT.count >0 ||(set && set.count>0)){
             [self removeGoodsTypes:set Goods:theGoddsInT];
         }
         if( [self.datas indexOfObjectIdenticalTo:t ]!=NSNotFound){

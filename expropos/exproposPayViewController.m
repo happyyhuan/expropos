@@ -61,6 +61,14 @@
     for(JPStupidButton *button in _mykeyboards){
         button.buttonClickDelegate = self;
     }
+    
+    [_haveGetMoney addTarget:self action:@selector(deleteKeyboard:) forControlEvents:UIControlEventEditingDidBegin];
+}
+
+-(void)deleteKeyboard:(id)sender
+{
+    UITextField *f = (UITextField*)sender;
+    [f resignFirstResponder];
 }
 
 - (void)viewDidUnload

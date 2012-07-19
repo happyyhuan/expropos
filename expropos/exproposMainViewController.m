@@ -111,9 +111,6 @@
     
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
-    UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers objectAtIndex:0];
-    exproposMenuViewController *menu =(exproposMenuViewController*)[nav.viewControllers objectAtIndex:0];
-}
+
 
 @end

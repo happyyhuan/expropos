@@ -375,10 +375,9 @@ dispatch_release(downloadQueue);
     NSLog(@"%g*%g",scrollView.bounds.size.width,scrollView.bounds.size.height);
     CGPoint offset1 = scrollView.contentOffset;
     CGRect bounds1 = scrollView.bounds;
-    CGSize size1 = scrollView.contentSize;
+   // CGSize size1 = scrollView.contentSize;
     UIEdgeInsets inset1 = scrollView.contentInset;
     float y1 = offset1.y + bounds1.size.height - inset1.bottom;
-    float h1 = size1.height;
     if (y1 > self.tableView.frame.size.height) {
         if(_scrollUpdateFlag){
             _scrollUpdateFlag = NO;
