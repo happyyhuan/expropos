@@ -16,8 +16,6 @@
 #import "exproposMainViewController.h"
 #import "exproposGoodSelectedViewController.h"
 #import "ExproMultipleTableView.h"
-#import "exproposMyTableView.h"
-#import "exproposDealOperateMenuViewController.h"
 #import "ExproDeal.h"
 #import "ExproDealItem.h"
 #import "exproposDealOperate.h"

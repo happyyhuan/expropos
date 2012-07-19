@@ -8,8 +8,6 @@
 
 #import "exproposMenuViewController.h"
 #import "exproposDealSelectedViewController.h"
-#import "exproposDealOperateViewController.h"
-#import "exproposDealOperateMenuViewController.h"
 #import "exproposAppDelegate.h"
 
 @interface exproposMenuViewController ()

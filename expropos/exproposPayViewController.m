@@ -107,6 +107,9 @@
     _shouldPopMoney.text = [NSString stringWithFormat:@"¥%g",(_haveGetMoney.text.doubleValue - _showOperate.allGoodsPayments.text.doubleValue)];
 }
 - (IBAction)finish:(id)sender {
+    if(_haveGetMoney.text.doubleValue < _showOperate.allGoodsPayments.text.doubleValue){
+        return;
+    }
     [_showOperate finish];
     [_showOperate dismissModalViewControllerAnimated:YES];
 }

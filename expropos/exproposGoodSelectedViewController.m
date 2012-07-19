@@ -13,7 +13,6 @@
 #import "ExproGoodsType.h"
 #import "ExproMerchant.h"
 #import "exproposAppDelegate.h"
-#import "exproposDealOperateViewController.h"
 #import "ExproMember.h"
 #import "exproposShowDealOperateViewController.h"
 
@@ -34,10 +33,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
-        exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)_viewController;
-        _mySelectedGoods = [NSMutableArray arrayWithArray:[dealOperate.mySelectedGoods mutableCopy]];
-    }else if([_viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
+    if([_viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
         exproposShowDealOperateViewController *dealOperate = (exproposShowDealOperateViewController *)_viewController;
         _mySelectedGoods = [NSMutableArray arrayWithArray:[dealOperate.mySelectedGoods mutableCopy]];
     }else{
@@ -47,26 +43,6 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    
-     if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
-         exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)_viewController;
-          NSMutableDictionary *newGoodsAndAmount = [[NSMutableDictionary alloc] initWithDictionary:dealOperate.goodsAndAmount copyItems:YES];
-         [dealOperate.goodsAndAmount removeAllObjects];
-         for(ExproGoods *g in _mySelectedGoods){
-             int num =  [[newGoodsAndAmount objectForKey:g.gid] intValue];
-             if(num <=0){
-                 num =1;
-             }
-             [dealOperate.goodsAndAmount setObject:[NSNumber numberWithInt:num] forKey:g.gid];
-         }
-         dealOperate.mySelectedGoods = _mySelectedGoods;
-         if(dealOperate.mySelectedGoods.count >0){
-             [dealOperate addToolBarItem];
-         }else {
-             [dealOperate removeSmallToolBarItem];
-         }
-         [dealOperate reloadDatas];
-     }
     
     if([_viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
         exproposShowDealOperateViewController *dealOperate = (exproposShowDealOperateViewController *)_viewController;
@@ -192,10 +168,7 @@
         
         UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         
-        if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
-            cell.textLabel.text  =  @"请选择商品";
-            return cell;
-        }
+      
         if([_viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
             cell.textLabel.text  =  @"请选择商品";
             return cell;
@@ -264,9 +237,7 @@
 -(void)tableView:(UITableView *)tableView gooddidSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0){
-        if([_viewController isKindOfClass:[exproposDealOperateViewController class]]){
-            return;
-        }
+     
         if([_viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
             return;
         }

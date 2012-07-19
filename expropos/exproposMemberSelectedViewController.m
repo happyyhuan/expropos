@@ -16,9 +16,7 @@
 #import "exproposDealSelectedViewController.h"
 #import "RestKit/CoreData.h"
 #import "exproposAppDelegate.h"
-#import "exproposDealOperateViewController.h"
 #import "ExproMultipleTableView.h"
-#import "exproposDealOperateMenuViewController.h"
 #import "exproposShowDealOperateViewController.h"
 
 @interface exproposMemberSelectedViewController ()
@@ -233,12 +231,6 @@
             }
             return cell;
         }
-        if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
-            cell.textLabel.text = @"请选择会员";
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.detailTextLabel.text = @"";
-            return cell;
-        }
         
         if([self.viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
             cell.textLabel.text = @"请选择会员";
@@ -265,16 +257,7 @@
         }
     }
     
-    if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
-        exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)self.viewController;
-            
-           if(dealOperate.member!=nil && dealOperate.member.gid.intValue == member.gid.intValue){
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            }else {
-                cell.accessoryType = UITableViewCellAccessoryNone;
-            }
-        
-    }
+
 
     if([self.viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
         exproposShowDealOperateViewController *dealOperate = (exproposShowDealOperateViewController *)self.viewController;
@@ -318,10 +301,7 @@
             [deal.members removeAllObjects];
             [deal.tableView reloadData];
         }
-        if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
-            cell0.accessoryType = UITableViewCellAccessoryNone;
-            return;
-        }
+    
         if([self.viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
             cell0.accessoryType = UITableViewCellAccessoryNone;
             return;
@@ -350,22 +330,7 @@
         }
          [deal.tableView reloadData];
     }
-    if([self.viewController isKindOfClass:[exproposDealOperateViewController class]]){
-        exproposDealOperateViewController *dealOperate = (exproposDealOperateViewController *)self.viewController;
-        if(dealOperate.member != nil && dealOperate.member.gid.intValue == member.gid.intValue){
-            dealOperate.member = nil;
-        }else {
-            dealOperate.member = member;
-        }
-        [self.tableView reloadData];
-        
-        [dealOperate.dealOperateMenu.menuTableView reloadData];
-        [dealOperate.mySelectedGoods removeAllObjects];
-        [dealOperate.goodsAndAmount removeAllObjects];
-        dealOperate.deal = nil;
-        [dealOperate.dealItemTableView reloadData];
-        [_popover dismissPopoverAnimated:YES];
-    }
+   
     
     if([self.viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
         exproposShowDealOperateViewController *dealOperate = (exproposShowDealOperateViewController *)self.viewController;
