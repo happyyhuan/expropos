@@ -159,14 +159,8 @@
 		42FD693515AC1C6400356923 /* exproposLeverSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposLeverSelectViewController.m; sourceTree = "<group>"; };
 <<<<<<< HEAD
 =======
-<<<<<<< Updated upstream
-		42FD69F215AD582100356923 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/cc/dev/expropos/expropos/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
-		42FD69F315AD582100356923 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/cc/dev/expropos/expropos/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
-=======
-		42FD69E015AD534400356923 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/cc/dev/expropos/expropos/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
 		42FD69E115AD534400356923 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/cc/dev/expropos/expropos/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
->>>>>>> Stashed changes
->>>>>>> 47f3dec... 修正
+>>>>>>> c2d00d4... tijiaoxiugai
 		5F03F22115A2943100F8362D /* member.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = member.png; sourceTree = "<group>"; };
 		5F0533E5159E86E40005FB21 /* exproposAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposAppDelegate.h; sourceTree = "<group>"; };
 		5F0533E6159E86E40005FB21 /* exproposAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposAppDelegate.m; sourceTree = "<group>"; };
@@ -739,12 +733,7 @@
 <<<<<<< HEAD
 				4263D29015B7B84E007A48AA /* zh-Hans */,
 =======
-<<<<<<< Updated upstream
-				42FD69F215AD582100356923 /* zh-Hans */,
-=======
-				42FD69E015AD534400356923 /* zh-Hans */,
->>>>>>> Stashed changes
->>>>>>> 47f3dec... 修正
+>>>>>>> c2d00d4... tijiaoxiugai
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -756,12 +745,8 @@
 <<<<<<< HEAD
 				4263D29115B7B84E007A48AA /* zh-Hans */,
 =======
-<<<<<<< Updated upstream
-				42FD69F315AD582100356923 /* zh-Hans */,
-=======
 				42FD69E115AD534400356923 /* zh-Hans */,
->>>>>>> Stashed changes
->>>>>>> 47f3dec... 修正
+>>>>>>> c2d00d4... tijiaoxiugai
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
