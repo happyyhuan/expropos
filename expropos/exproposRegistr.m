@@ -29,14 +29,14 @@
           email:(NSString *)email idCard:(NSString *)idCard comment:(NSString *)comment
 sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(NSString *)dueTime
 
-          birth:(NSString *)birthDate  level:(NSNumber *)level
+          birth:(NSString *)birthDate  memPetName:(NSString *)memPetName
 {
     
-    NSLog(@"shijian === %@",dueTime);
     //查找是否存在user用户
     NSFetchRequest *request = [ExproUser fetchRequest];
     NSPredicate *predicate = nil;
     NSMutableString *str = [[NSMutableString alloc]initWithString:@"(cellphone=%@)" ];
+    
     NSMutableArray *userparams = [[NSMutableArray alloc]initWithObjects:cellphone, nil];
     
     predicate = [NSPredicate predicateWithFormat:str argumentArray:userparams];
@@ -53,19 +53,20 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
         isExis=YES;
     }
     
- RKObjectMapping *signinMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    //RKManagedObjectMapping *signinMapping = [RKObjectMapping mappingForClass: [ExproMember class]];
+    
+    //RKObjectMapping *signinMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+//    RKManagedObjectMapping *signinMapping = [RKObjectMapping mappingForClass: [ExproMember class]];
     NSDictionary *params;
     if (isExis)
     {
+       NSLog(@"mempetName %@",memPetName);
        params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            user.name,@"pet_name",
-                                                          
+                            memPetName,@"pet_name",       
                             user.cellphone,@"cellphone",
                             @"1",@"role_id",
                              @"1",@"state",
                             user.sex.stringValue,@"sex",
-                            user.birthday,@"birthday",
+                            [self dateToString:user.birthday],@"birthday",
                             dueTime,@"due_time",
                             user.gid.stringValue,@"user_id",
                             @"0",@"privacy",
@@ -76,7 +77,7 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
     }
     else {
         params = [NSDictionary dictionaryWithObjectsAndKeys:
-                  name,@"pet_name",
+                  memPetName,@"pet_name",
                   cellphone,@"cellphone",
                   @"1",@"role_id",
                   @"1",@"state",
@@ -91,9 +92,22 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
                   nil];
 
     }
-        [self requestURL:@"/member" method:RKRequestMethodPOST params:params mapping:signinMapping];
+    [self requestURL:@"/member" method:RKRequestMethodPOST params:params mapping:nil];
     
 
     
+}
+
+
+-(NSString *)dateToString:(NSDate *)date
+{
+    //实例化一个NSDateFormatter对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式,这里可以设置成自己需要的格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    //用[NSDate date]可以获取系统当前时间
+    NSString *dateStr = [dateFormatter stringFromDate:date];
+    //输出格式为：2010-10-27    
+    return dateStr;
 }
 @end

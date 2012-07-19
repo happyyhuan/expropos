@@ -29,6 +29,7 @@
 @property (nonatomic) BOOL account;
 @property (nonatomic,strong) NSString *status;
 
+@property (nonatomic,strong) NSString *memPetName;
 @property (nonatomic,strong) NSString *savings;
 @property (nonatomic,strong) NSDate *createTime;
 @property (nonatomic,strong) NSDate *dueTime;

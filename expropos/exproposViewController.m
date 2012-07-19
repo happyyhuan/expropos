@@ -94,7 +94,8 @@
         NSArray *deals = [ExproUser objectsWithFetchRequest:request];
         NSLog(@"%i",deals.count);
         
-        [self.sign signin:username password:password];    }
+        [self.sign signin:username password:password];  
+    }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
                                                         message:NSLocalizedString(@"UsernameAndPassword", nil)
@@ -174,7 +175,7 @@
 - (void) signinFailed:(id)object {
     _userField.text = nil;
     _passwordField.text=nil;
-    NSLog(@"statuscode == %i",self.sign.statusCode);
+    //NSLog(@"statuscode == %i",self.sign.statusCode);
 }
 
 
@@ -188,10 +189,10 @@
         array = [self loadSinginUser];
     }
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-(array.count*50))/2, 300,700,70)];    
+    UIView *scrollView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-(array.count*50))/2, 300,700,70)];    
     
-    
-    for (int i = 0 ; i < array.count ; i++)
+    int count = array.count > 5 ? 5: array.count;
+    for (int i = 0 ; i < count ; i++)
     {
         ExproUser *user = [array objectAtIndex:i];
         if (user.signHistory)
@@ -233,8 +234,8 @@
     
     [self.view addSubview:scrollView];
     
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 70);
-    scrollView.contentOffset = CGPointMake(0, 0);
+//    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 70);
+//    scrollView.contentOffset = CGPointMake(0, 0);
     self.loginview.hidden=true;
     CGRect rect = [self.loginview frame]; 
     
@@ -288,15 +289,53 @@
 
 -(NSArray *)loadSinginUser
 {
-    NSFetchRequest *request = [ExproUser fetchRequest];
+//    NSFetchRequest *request = [ExproUser fetchRequest];
+//    NSPredicate *predicate = nil;
+//    
+//    request.predicate = predicate;
+//    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+//    NSLog(@"%i",deals.count);
+//    self.users = deals;
+//    return deals;
+    
+    
+    
+    RKObjectManager *manager = [RKObjectManager sharedManager];
+    
+    //查找是否存在user用户
+    NSFetchRequest *request = [ExproSignHistory fetchRequest];
     NSPredicate *predicate = nil;
+        
+    request.sortDescriptors = [[NSArray alloc]initWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"signintime" ascending:NO], nil];
     
     request.predicate = predicate;
-    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
-    NSLog(@"%i",deals.count);
-    self.users = deals;
-    return deals;
+    NSArray *deals = [ExproSignHistory objectsWithFetchRequest:request];
     
+    NSLog(@"%i",deals.count);
+    
+    NSMutableArray *userDeals = [[NSMutableArray alloc] initWithCapacity:0];
+    for (int i = 0 ; i < deals.count ; i++)
+    {
+        ExproSignHistory *history = [deals objectAtIndex:i];
+        ExproUser *user = history.user;
+        BOOL *isExis = NO;
+        for (int j = 0 ; j < userDeals.count ; j++)
+        {
+            ExproUser *exisUser = [userDeals objectAtIndex:j];
+            {
+                if (exisUser.gid.intValue == user.gid.intValue)
+                {
+                    isExis = YES;
+                }
+            }
+        }
+        if (!isExis)
+        {
+            [userDeals addObject:user];
+        }
+    }
+    self.users = userDeals;
+    return userDeals;
 }
 
 

@@ -14,5 +14,5 @@
           email:(NSString *)email idCard:(NSString *)idCard comment:(NSString *)comment
             sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(NSString *)dueTime
 
-          birth:(NSString *)birthDate  level:(NSNumber *)level;
+          birth:(NSString *)birthDate  memPetName:(NSString *)memPetName;
 @end

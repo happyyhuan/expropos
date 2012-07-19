@@ -110,17 +110,20 @@
         [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
         return;
     }
-    
-    
-    if( [self.viewController.privacyItem containsObject:[NSNumber numberWithInt:indexPath.row]] ){
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        [self.viewController.privacyItem removeObject:[NSNumber numberWithInt:indexPath.row]];
-    }else {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.viewController.privacyItem addObject:[NSNumber numberWithInt:indexPath.row]];
-        cell0.accessoryType = UITableViewCellAccessoryNone;
-    }
+    [self.viewController.privacyItem removeAllObjects];
+    [self.viewController.privacyItem addObject:[NSNumber numberWithInt:indexPath.row]];
+     cell0.accessoryType = UITableViewCellAccessoryNone;
+     cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//    if( [self.viewController.privacyItem containsObject:[NSNumber numberWithInt:indexPath.row]] ){
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//        [self.viewController.privacyItem removeObject:[NSNumber numberWithInt:indexPath.row]];
+//    }else {
+//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        [self.viewController.privacyItem addObject:[NSNumber numberWithInt:indexPath.row]];
+//        cell0.accessoryType = UITableViewCellAccessoryNone;
+//    }
     [self.viewController.tableView reloadData];
+    [self viewDidLoad];
 }
 
 
