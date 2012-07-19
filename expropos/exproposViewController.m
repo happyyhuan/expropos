@@ -260,8 +260,6 @@
 
 -(void)didLoginSuccess
 {
-    
-    
     exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     UISplitViewController *splitView = [self.storyboard instantiateViewControllerWithIdentifier:@"splitView"];
     appDelegate.window.rootViewController = splitView;
