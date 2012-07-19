@@ -551,7 +551,7 @@
     if(_deal == nil){
         _deal = [ExproDeal object];
     }
-    _deal.state = [NSNumber numberWithInt:_state];
+    _deal.state = [NSNumber numberWithInt:1];
     _deal.createTime = [[NSDate alloc]initWithTimeInterval:8*60*60 sinceDate:[NSDate date]];
     double sum = 0.0;
     for(ExproGoods *g in _mySelectedGoods){
@@ -560,7 +560,7 @@
     }
     _deal.cash = [NSNumber numberWithDouble:sum];
     _deal.payment = [NSNumber numberWithDouble:sum];
-    _deal.type = [NSNumber numberWithInt:1];
+    _deal.type = [NSNumber numberWithInt:_state];
     _deal.lid = [NSNumber numberWithInt:(dealGid+1)];
     [dic setValue:[NSNumber numberWithInt:(dealGid+1)] forKey:@"dealGid"];
     _deal.customer = _member;
