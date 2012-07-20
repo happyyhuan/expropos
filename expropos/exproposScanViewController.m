@@ -29,7 +29,7 @@
 
 	//set frame
 	UIView *barReaderView = [barReaderViewController view];
-    barReaderView.frame = CGRectMake(360+3 ,118, 351 ,562);//562
+    barReaderView.frame = CGRectMake(360+3 ,118, 350 ,562);//562
 	
 	//add overlay for barReaderView
 	ScannerOverlayView *overlay = [[ScannerOverlayView alloc] initWithFrame:[barReaderView bounds]];
@@ -95,7 +95,20 @@
     CGAffineTransform transform;
     CGRect frame = CGRectMake(0 ,0,351  ,562);
     switch (orientation) {
+        case UIDeviceOrientationFaceUp:
+            transform = CGAffineTransformMakeRotation(-90*M_PI/180);
             
+            break;
+        case UIDeviceOrientationPortrait:
+            transform = CGAffineTransformMakeRotation(-90*M_PI/180);
+            
+            break;
+
+        case UIDeviceOrientationPortraitUpsideDown:
+            transform = CGAffineTransformMakeRotation(-90*M_PI/180);
+            
+            break;
+
         case UIDeviceOrientationLandscapeLeft:
             transform = CGAffineTransformMakeRotation(-90*M_PI/180);
             
