@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JPStupidButton.h"
 #import "ExproMultipleTableView.h"
+
 @class JPStupidButton;
 @class ExproMultipleTableView;
 @class exproposMemberSelectedViewController;
@@ -21,9 +22,10 @@
 @class exproposDealOperate;
 @protocol ButtonClick;
 @class exproposGoodSelectedViewController;
+@class exproposScanViewController;
 
 @interface exproposShowDealOperateViewController : UIViewController <ExproMutableTableViewDataSource,ExproMutableTableViewDelegate,ButtonClick>
-
+@property (strong, nonatomic) exproposScanViewController *scan;
 @property (strong,nonatomic) IBOutlet UIView *leftView;
 @property (strong,nonatomic) IBOutlet UIView *rightView;
 @property (strong, nonatomic) IBOutlet UIView *shouldGetMoneyView;
@@ -50,8 +52,6 @@
 - (IBAction)stateChanged:(UISegmentedControl *)sender;
 
 
-
-
 @property (strong, nonatomic) NSMutableArray *mySelectedGoods;
 @property (strong, nonatomic) NSMutableDictionary *goodsAndAmount;
 @property (strong, nonatomic) ExproMember *member;
@@ -62,6 +62,9 @@
 @property (strong,nonatomic) exproposGoodSelectedViewController *goodsSelected;
 @property (strong, nonatomic)  UINavigationController *nav;
 @property (nonatomic) NSInteger state;
+
+
+
 -(void)reloadViews;
 -(void)finish;
 @end
