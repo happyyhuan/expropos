@@ -18,6 +18,7 @@
     CALayer         *baseLayer;
     CAGradientLayer *gradient;
     CGRect           orig_bounds;
+    BOOL             flag;
 }
 @property id<ButtonClick> buttonClickDelegate;
 
@@ -26,6 +27,7 @@
 extern int const JPStupidButtonPopMode;
 extern int const JPStupidButtonStickMode;
 
+- (void)animateUp;
 @end
 
 @protocol ButtonClick <NSObject>

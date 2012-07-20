@@ -25,12 +25,14 @@
 #import "exproposGoodSelectedViewController.h"
 #import "exproposNumKeyboard.h"
 #import "exproposPayViewController.h"
+#import "exproposScanViewController.h"
 
 @interface exproposShowDealOperateViewController ()
 
 @end
 
 @implementation exproposShowDealOperateViewController
+@synthesize scan = _scan;
 @synthesize leftView = _leftView;
 @synthesize rightView = _rightView;
 @synthesize shouldGetMoneyView = _shouldGetMoneyView;
@@ -109,8 +111,8 @@
     for(JPStupidButton *button in _buttons){
         button.buttonClickDelegate = self;
     }
-    _goodsAndAmount = [[NSMutableDictionary alloc]initWithCapacity:20];
-    
+    _goodsAndAmount = [[NSMutableDictionary alloc] initWithCapacity:20];
+    _mySelectedGoods = [[NSMutableArray alloc] initWithCapacity:20];
   
     [self addObserver:self forKeyPath:@"mySelectedGoods" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
    _nav = [self.storyboard instantiateViewControllerWithIdentifier:@"goodsSelected"];
@@ -122,7 +124,58 @@
     _allGoodsPayments.text = @"¥0";
     
     _state = 1;
+    
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+   
+    
+    UISwipeGestureRecognizer *recognizer;    
+    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];    
+    [recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft )];    
+    [[self keyBoardView] addGestureRecognizer:recognizer]; 
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    for (UISwipeGestureRecognizer *recognizer in [[self keyBoardView] gestureRecognizers]) {  
+        [[self keyBoardView] removeGestureRecognizer:recognizer];  
+    } 
+}
+
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer{   
+    for(JPStupidButton *button in _buttons){
+        [button animateUp];
+    } 
+
+    if(_scan == nil){
+        _scan = [[exproposScanViewController alloc] init];
+        [_rightView insertSubview:_scan.view atIndex:0];
+        _scan.showDeal = self;
+    }
+  
+    
+   
+    //开始动画 
+    [UIView beginAnimations:nil context:nil];  
+    //设定动画持续时间 
+    [UIView setAnimationDuration:0.5]; 
+    //动画的内容 
+    CGRect frame = _keyBoardView.frame;
+    CGRect frame2 = _scan.view.frame;
+    frame.origin.x -= 360; 
+    frame2.origin.x -= 360;
+    [_keyBoardView setFrame:frame]; 
+    [_scan.view setFrame:frame2];
+    //动画结束 
+    [UIView commitAnimations]; 
+    [_scan.barReaderViewController.readerView start];
+   
+    [UIApplication sharedApplication].statusBarHidden = NO;
+} 
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context 
 {
@@ -210,12 +263,24 @@
     [super viewDidUnload];
     _leftView = nil;
     _rightView = nil;
+    
+     
    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return  UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+   
+    [_scan didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    NSLog(@"self.view==%@",self.view);
+    NSLog(@"self.view==%@",self.leftView);
+    NSLog(@"self.view==%@",self.rightView);
+  
+    
 }
 
 

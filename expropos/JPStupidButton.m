@@ -42,6 +42,7 @@ int const JPStupidButtonStickMode = 2;
     if ((self = [super initWithCoder:aDecoder])) {
         [self setMode:JPStupidButtonPopMode];
         state = 0;
+        flag = YES;
         [self setupLayers];
     }
     return self;
@@ -128,9 +129,7 @@ int const JPStupidButtonStickMode = 2;
             state = 0;
             break;
     }
-    if([_buttonClickDelegate respondsToSelector:@selector(touch:)]){
-        [_buttonClickDelegate touch:self];
-    }
+    
     [self animateDown];    
 }
 
@@ -151,7 +150,18 @@ int const JPStupidButtonStickMode = 2;
         default:
             break;
     }
+    if(flag){
+        if([_buttonClickDelegate respondsToSelector:@selector(touch:)]){
+            [_buttonClickDelegate touch:self];
+        }
+    }
+    flag = YES;
     
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    flag = NO;
 }
 
 - (void)animateDown
