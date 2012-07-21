@@ -42,6 +42,7 @@ static NSString *gCookie = nil;
 @synthesize ok = _ok;
 @synthesize acceptParallelResults = _acceptParallelResults;
 @synthesize cookie;
+@synthesize _codeOptions;
 
 - (id)init {
     self = [super init];

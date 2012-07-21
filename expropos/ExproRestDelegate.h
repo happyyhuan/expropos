@@ -37,6 +37,7 @@
 //    NSString *_ok;
     BOOL _acceptParallelResults;
 }
+@property (nonatomic,retain) NSMutableArray *_codeOptions;
 @property (weak) id reserver;
 @property SEL succeedCallBack;
 @property SEL failedCallBack;

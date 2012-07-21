@@ -15,7 +15,6 @@
 #import "ExproSignHistory.h"
 
 
-
 #import "exproposAppDelegate.h"
 #import "exproposMainViewController.h"
 @interface exproposViewController ()
@@ -31,12 +30,23 @@
 @synthesize exprodatabase=_exprodatabase;
 @synthesize loginview=_loginview;
 
+@synthesize scrollview=_scrollview;
 @synthesize managedObjectModel;
 @synthesize managedObjectContext;
 @synthesize persistentStoreCoordinator;
 @synthesize applicationDocumentsDirectory;
 @synthesize users=_users;
 @synthesize phonelable;
+
+
+@synthesize tapGesture;
+@synthesize activeTextField;
+@synthesize minMoveUpDeltaY;
+@synthesize keyboardFrame;
+@synthesize isSwitchedTextField;
+@synthesize canUserSeeKeyboard;
+
+
 
 
 
@@ -150,37 +160,51 @@
     
     appDelegate.currentUser = signUser;
     [appDelegate.sync syncStore:[NSNumber numberWithInt:15]];
-    
-    //    NSFetchRequest *request = [ExproSignHistory fetchRequest];
-    //    NSPredicate *predicate = nil;
-    //    
-    //    request.predicate = predicate;
-    //    NSArray *deals = [ExproSignHistory objectsWithFetchRequest:request];
-    //    NSLog(@"%i",deals.count);
-    //    
-    //    for (ExproSignHistory *historys in deals)
-    //    {
-    //        NSLog(@"historys.gid%@",historys.gid);
-    //         NSLog(@"historys.user.gid%@",historys.user.gid);
-    //        NSLog(@"historys.user.cellphone%@",historys.user.cellphone);
-    //        NSLog(@"historys.user.sex%@",historys.user.sex);
-    //        NSLog(@"historys.user.name%@",historys.user.name);
-    //    }
-    
+
     
     
     [self didLoginSuccess];
 }
 
 - (void) signinFailed:(id)object {
-    _userField.text = nil;
-    _passwordField.text=nil;
-    //NSLog(@"statuscode == %i",self.sign.statusCode);
-}
+    
+    //查找是否存在user用户
+    NSFetchRequest *request = [ExproUser fetchRequest];
+    NSPredicate *predicate = nil;
+    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(cellphone=%@)" ];
+    
+    NSMutableArray *userparams = [[NSMutableArray alloc]initWithObjects:self.userField.text, nil];
+    
+    predicate = [NSPredicate predicateWithFormat:str argumentArray:userparams];
+    
+    NSLog(@"%@",predicate);
+    
+    request.predicate = predicate;
+    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+    ExproUser *user = nil;
+    BOOL isExis=NO;
+    NSLog(@"%i",deals.count);
+    if (deals.count)
+    {
+        user = (ExproUser *)[deals objectAtIndex:0];
+        isExis=YES;
+    }
+    NSLog(@"password%@",user.password);
+    NSLog(@"passwordfield%@",[password MD5]);
 
+    if ([user.password isEqualToString:self.passwordField.text])
+    {
+        NSLog(@"OK");
+    }
+    
+    [self signinSucceed:object];
+    _userField.text = nil;
+    _passwordField.text=nil;    
+}
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     
     NSArray *array = [self loadSinginUser];
@@ -233,15 +257,21 @@
     
     
     [self.view addSubview:scrollView];
-    
-//    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 70);
-//    scrollView.contentOffset = CGPointMake(0, 0);
     self.loginview.hidden=true;
     CGRect rect = [self.loginview frame]; 
     
-    rect.origin.x = 0.0f-rect.size.width; 
-    
+    rect.origin.x = 0.0f-rect.size.width;     
     [self.loginview setFrame:rect];
+    
+    self.userField.delegate = self;
+    self.passwordField.delegate = self;
+    self.orgField.delegate=self;
+    
+    minMoveUpDeltaY = 0;
+	keyboardFrame = CGRectZero;
+	isSwitchedTextField = NO;
+	canUserSeeKeyboard = NO;
+	[self registerKeyboardNotifications];
 }
 
 - (void)viewDidUnload
@@ -251,7 +281,163 @@
     [self setPhonelable:nil];
     [self setOrgField:nil];
     [self setOrglabel:nil];
-    [super viewDidUnload];}
+    [super viewDidUnload];
+    
+    activeTextField = nil;
+    [tapGesture removeTarget:self action:@selector(handleTap)];
+	[self.view removeGestureRecognizer:tapGesture];
+	tapGesture = nil;
+}
+
+
+
+
+
+#pragma mark - Custom Methods
+- (void)registerKeyboardNotifications {
+	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+	[notificationCenter addObserver:self selector:@selector(handleKeyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+	[notificationCenter addObserver:self selector:@selector(handleKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+}
+
+
+
+- (void)handleTap {
+	[activeTextField resignFirstResponder];
+	isSwitchedTextField = NO;
+}
+
+- (void)handleKeyboardDidHide:(NSNotification *)notification {
+	NSLog(@"\n----------------------------Did Hide----------------------------");
+	canUserSeeKeyboard = NO;
+}
+
+- (void)handleKeyboardDidShow:(NSNotification *)notification {
+	NSLog(@"\n----------------------------Did Show----------------------------");
+	canUserSeeKeyboard = YES;
+	
+	// 设置键盘出现时的矩形框
+	[self setKeyboardFrameByNSNotification:notification];
+}
+
+- (void)setKeyboardFrameByNSNotification:(NSNotification *)notification {
+	NSDictionary *userInfo = [notification userInfo];
+	NSValue *keyboardFrameEndValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+	CGRect keyboardEndFrame = [keyboardFrameEndValue CGRectValue];
+	NSLog(@"End Frame = %@", NSStringFromCGRect(keyboardEndFrame));
+	
+	keyboardFrame = keyboardEndFrame;
+    
+	BOOL isHiden = [self isKeyboardHideTextField:self.activeTextField];
+	if (isHiden == YES) {
+		isSwitchedTextField = YES;
+		[self moveUp];
+	}
+}
+
+- (BOOL)isKeyboardHideTextField:(UITextField *)textField {
+	/* 
+	 切换输入框或iOS 5的中英键盘时，先让整个视图回到原始位置，
+	 然后再考虑是否需要上移，如果需要上移，那么动画会出现闪烁效果，感觉不是太好。
+	 */
+	if (minMoveUpDeltaY > 0) {
+		[self moveDown];
+	}
+	minMoveUpDeltaY = 0;
+	
+	exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	CGRect textFieldOriginFrameOnWindow = [self.view convertRect:self.activeTextField.frame toView:appDelegate.window];
+    //	(UITextField在最初位置时的y) + (UITextField的height) - (键盘出现后的y) > 0
+    if (keyboardFrame.size.width < keyboardFrame.size.height) 
+    {
+        if (keyboardFrame.origin.x == 0)
+        {
+            minMoveUpDeltaY =  textFieldOriginFrameOnWindow.origin.x - keyboardFrame.size.width +60 ;
+
+        }
+        else {
+            
+            minMoveUpDeltaY = keyboardFrame.size.width - textFieldOriginFrameOnWindow.origin.x + 60;
+
+        }
+        
+        NSLog(@"重新计算之后minMoveUpDeltaY = %f", minMoveUpDeltaY);
+        if (minMoveUpDeltaY > 0) {
+            // minMoveUpDeltaY = keyboardFrame.origin.x - 44;
+            return YES;
+        }
+    }
+    else {
+        return NO;
+    }
+    
+    
+	return NO;
+}
+
+- (void)moveUp {
+	if (minMoveUpDeltaY > 0) {
+		NSLog(@"moveUp---->%f", minMoveUpDeltaY);
+		[UIView beginAnimations:@"MoveUp" context:nil];
+		[UIView setAnimationDuration:kKeyboardAnimationDuration];
+		CGRect f = self.view.frame;
+        if (keyboardFrame.size.width < keyboardFrame.size.height) 
+        {
+            if (keyboardFrame.origin.x == 0)
+            {
+                f.origin.x += minMoveUpDeltaY;
+            }
+            else
+            {
+                f.origin.x -= minMoveUpDeltaY;
+            }
+        }
+		self.scrollview.frame = f;
+		[UIView commitAnimations];
+	}
+}
+
+- (void)moveDown {
+	if (minMoveUpDeltaY > 0) {
+		NSLog(@"minMoveUpDeltaY---->%f", minMoveUpDeltaY);
+		[UIView beginAnimations:@"MoveDown" context:nil];
+		[UIView setAnimationDuration:kKeyboardAnimationDuration];
+		CGRect f = self.view.frame;
+        if (keyboardFrame.size.width < keyboardFrame.size.height) 
+        {
+            if (keyboardFrame.origin.x == 0)
+            {
+                f.origin.x -= minMoveUpDeltaY;
+            }
+            else
+            {
+                f.origin.x += minMoveUpDeltaY;
+            }
+        }
+		//f.origin.x -= minMoveUpDeltaY;
+		self.view.frame = f;
+		[UIView commitAnimations];
+	}
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+	self.activeTextField = textField;// 设置当前活动的UITextF.y    
+	if (isSwitchedTextField == YES && [self isKeyboardHideTextField:activeTextField] == YES) {
+		[self moveUp];
+	}
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+	[self moveDown];
+	minMoveUpDeltaY = 0;
+	self.activeTextField = nil;
+}
+
+
+
+
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -265,39 +451,8 @@
     appDelegate.window.rootViewController = splitView;
     
 }
-
-//-(void)saveTestDate
-//{
-//    RKObjectManager *manager = [RKObjectManager sharedManager];
-//        for(int i=0;i<5;i++){
-//        ExproMember *m = [ExproMember object];
-//        m.gid = [NSNumber numberWithInt:i];
-//        m.petName = [NSString stringWithFormat:@"petName %i",i];
-//        m.savings = [NSNumber numberWithInt:i];
-//        m.point = [NSNumber numberWithInt:i];
-//        ExproUser *user = [ExproUser object];
-//        user.cellphone = [NSString stringWithFormat:@"1876182900%i",i];
-//        user.name = @"陈纲";
-//        user.gid = [NSNumber numberWithInt:i];
-//        m.user= user;
-//        
-//        [manager.objectStore save:nil];
-//    }
-//}
-
 -(NSArray *)loadSinginUser
-{
-//    NSFetchRequest *request = [ExproUser fetchRequest];
-//    NSPredicate *predicate = nil;
-//    
-//    request.predicate = predicate;
-//    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
-//    NSLog(@"%i",deals.count);
-//    self.users = deals;
-//    return deals;
-    
-    
-    
+{    
     RKObjectManager *manager = [RKObjectManager sharedManager];
     
     //查找是否存在user用户
@@ -335,52 +490,6 @@
     self.users = userDeals;
     return userDeals;
 }
-
-
-- (void)keyboardWillShow:(NSNotification *)noti  
-{          
-    //键盘输入的界面调整          
-    //键盘的高度  
-    float height = 512.0;                  
-    CGRect frame = self.view.frame;          
-    frame.size = CGSizeMake(frame.size.width, frame.size.height - height);          
-    [UIView beginAnimations:@"Curl"context:nil];//动画开始            
-    [UIView setAnimationDuration:0.30];             
-    [UIView setAnimationDelegate:self];            
-    [self.view setFrame:frame];           
-    [UIView commitAnimations];           
-}  
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField   
-{          
-    // When the user presses return, take focus away from the text field so that the keyboard is dismissed.          
-    NSTimeInterval animationDuration = 0.30f;          
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];          
-    [UIView setAnimationDuration:animationDuration];          
-    CGRect rect = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);          
-    self.view.frame = rect;          
-    [UIView commitAnimations];          
-    [textField resignFirstResponder];  
-    return YES;          
-}  
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField  
-{          
-    CGRect frame = textField.frame;  
-    int offset = frame.origin.y + 32 - (self.view.frame.size.height - 216.0);//键盘高度216  
-    NSTimeInterval animationDuration = 0.30f;                  
-    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];                  
-    [UIView setAnimationDuration:animationDuration];  
-    float width = self.view.frame.size.width;                  
-    float height = self.view.frame.size.height;          
-    if(offset > 0)  
-    {  
-        CGRect rect = CGRectMake(0.0f, -offset,width,height);                  
-        self.view.frame = rect;          
-    }          
-    [UIView commitAnimations];                  
-}  
 
 
 @end

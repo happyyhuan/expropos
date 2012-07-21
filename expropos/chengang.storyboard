@@ -301,95 +301,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="6170" y="-2145"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="tUy-QE-d3S">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KuM-d2-0iU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="4AI-lV-JOF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="nj3-dg-qJf"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OPT-Ex-es1">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="C4N-kK-4d7" kind="relationship" relationship="rootViewController" id="23D-8h-PuL"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="8009" y="-582"/>
-        </scene>
-        <!--Expropos Good Selected View Controller - 商品选择-->
-        <scene sceneID="vUf-RX-EWx">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gcw-a5-fhU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="C4N-kK-4d7" customClass="exproposGoodSelectedViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="YI8-ta-2MJ">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="TQs-r3-pj7">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="showType" id="oad-Y8-xs7">
-                                <rect key="frame" x="0.0" y="78" width="768" height="45"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="45" y="1" width="678" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" textLabel="O3d-iP-ep1" detailTextLabel="UOv-rB-Ye6" style="IBUITableViewCellStyleValue1" id="vNK-eo-bU8">
-                                <rect key="frame" x="0.0" y="123" width="768" height="45"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="45" y="0.0" width="678" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O3d-iP-ep1">
-                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UOv-rB-Ye6">
-                                            <rect key="frame" x="624" y="11" width="44" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="C4N-kK-4d7" id="1sk-c8-1gh"/>
-                            <outlet property="delegate" destination="C4N-kK-4d7" id="vO8-sU-CLP"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="商品选择" id="Zj4-VQ-04Z">
-                        <barButtonItem key="rightBarButtonItem" title="刷新" id="eIl-0q-Rox">
-                            <connections>
-                                <action selector="update:" destination="C4N-kK-4d7" id="ryG-Ga-pNU"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="FlashButton" destination="eIl-0q-Rox" id="UZH-7m-tob"/>
-                        <outlet property="searchBar" destination="TQs-r3-pj7" id="3pT-6N-9ln"/>
-                    </connections>
-                </tableViewController>
-            </objects>
-            <point key="canvasLocation" x="9171" y="-574"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="syI-d2-VXY">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MCP-R5-U0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -427,7 +338,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1005" y="364"/>
+            <point key="canvasLocation" x="1029" y="308"/>
         </scene>
         <!--Expropos View Controller-->
         <scene sceneID="7Mc-2A-Jjm">
@@ -523,6 +434,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <connections>
+                            <outlet property="delegate" destination="8nt-Bl-MaS" id="g96-3c-t3t"/>
+                        </connections>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
@@ -531,6 +445,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="orglabel" destination="yJF-KN-FJn" id="E80-gy-Jda"/>
                         <outlet property="passwordField" destination="umN-W1-tff" id="ZO3-V9-gS1"/>
                         <outlet property="phonelable" destination="v40-j4-OFk" id="1LC-v9-4er"/>
+                        <outlet property="scrollview" destination="elx-jK-cmn" id="aCm-Ih-pPK"/>
                         <outlet property="userField" destination="JSn-6D-bba" id="d1U-C8-Dgh"/>
                     </connections>
                 </viewController>
@@ -557,7 +472,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" id="bo7-8C-egc"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="view" destination="emW-ze-JHy" id="iM9-WV-Zfq"/>
+                        <outlet property="tableView" destination="emW-ze-JHy" id="Uat-Fv-rsR"/>
+                        <outlet property="view" destination="emW-ze-JHy" id="aUv-kL-ijl"/>
                     </connections>
                 </viewController>
             </objects>
@@ -578,7 +494,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="3021" y="128"/>
+            <point key="canvasLocation" x="3037" y="256"/>
         </scene>
         <!--Expropos Deal Operate Menu View Controller-->
         <scene sceneID="r2j-Pf-K4L">
@@ -602,14 +518,1032 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1977" y="248"/>
+            <point key="canvasLocation" x="1961" y="328"/>
+        </scene>
+        <!--Expropos Pay View Controller-->
+        <scene sceneID="yRk-hm-fOz">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZO-Ni-yPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="payView" id="3JL-bP-KUs" customClass="exproposPayViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SAm-Nt-bmn">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="应收：  199" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="vHG-3z-hMT">
+                                <rect key="frame" x="27" y="35" width="404" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" red="1" green="0.042911237370000001" blue="0.1492543251" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="GKT-sT-I5Y">
+                                <rect key="frame" x="20" y="103" width="404" height="203"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="实收：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="XQz-ug-j2J">
+                                        <rect key="frame" x="28" y="13" width="62" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="OeD-Ws-kYa">
+                                        <rect key="frame" x="127" y="20" width="264" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="找零：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="RVG-GJ-YKB">
+                                        <rect key="frame" x="28" y="76" width="62" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="¥149.9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="DDg-c3-oHR">
+                                        <rect key="frame" x="201" y="72" width="178" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" red="1" green="0.05517235241" blue="0.16152174359999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="付款方式：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="k2d-9p-fkH">
+                                        <rect key="frame" x="28" y="143" width="95" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="9NS-9c-pOa">
+                                        <rect key="frame" x="141" y="140" width="250" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="现金"/>
+                                            <segment title="信用卡"/>
+                                            <segment title="存储卡"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="payTypeChanged:" destination="3JL-bP-KUs" eventType="valueChanged" id="UlK-Wa-u12"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="btY-8X-9WP">
+                                <rect key="frame" x="439" y="29" width="370" height="374"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1gv-Mn-lEw" customClass="JPStupidButton">
+                                        <rect key="frame" x="247" y="105" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="6">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HlQ-XS-rFO" customClass="JPStupidButton">
+                                        <rect key="frame" x="136" y="284" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="0">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rp9-TH-0Ib" customClass="JPStupidButton">
+                                        <rect key="frame" x="247" y="284" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                        <state key="normal" title=".">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gjh-Zj-yJI" customClass="JPStupidButton">
+                                        <rect key="frame" x="136" y="105" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="5">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="P64-0V-uq9" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="284" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                        <state key="normal" title="C">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eO0-hN-9hx" customClass="JPStupidButton">
+                                        <rect key="frame" x="247" y="10" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="9">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ix0-Oy-k5K" customClass="JPStupidButton">
+                                        <rect key="frame" x="136" y="194" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="2">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="reJ-Zt-R9L" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="10" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="7">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wCx-W4-Qjc" customClass="JPStupidButton">
+                                        <rect key="frame" x="247" y="194" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="3">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sT5-Ll-CIz" customClass="JPStupidButton">
+                                        <rect key="frame" x="136" y="10" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="8">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oJL-s1-nWK" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="194" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="1">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2vf-Rk-tFo" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="105" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="4">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dpf-29-iuD">
+                                <rect key="frame" x="61" y="359" width="278" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="确认收款">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="finish:" destination="3JL-bP-KUs" eventType="touchUpInside" id="rLt-LH-oHp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="getRealMoney" destination="GKT-sT-I5Y" id="u3i-eI-svH"/>
+                        <outlet property="haveGetMoney" destination="OeD-Ws-kYa" id="3gI-Go-9OC"/>
+                        <outlet property="keyboards" destination="btY-8X-9WP" id="66c-z6-o6l"/>
+                        <outlet property="mainView" destination="SAm-Nt-bmn" id="hgv-lm-4Tp"/>
+                        <outlet property="shouldPopMoney" destination="DDg-c3-oHR" id="3Rw-On-kUA"/>
+                        <outlet property="shouleGetMoney" destination="vHG-3z-hMT" id="Uso-RI-zQo"/>
+                        <outletCollection property="mykeyboards" destination="rp9-TH-0Ib" id="EG6-aB-wtL"/>
+                        <outletCollection property="mykeyboards" destination="HlQ-XS-rFO" id="n7v-fy-tvb"/>
+                        <outletCollection property="mykeyboards" destination="P64-0V-uq9" id="L2B-54-9x5"/>
+                        <outletCollection property="mykeyboards" destination="wCx-W4-Qjc" id="KMF-aN-R6W"/>
+                        <outletCollection property="mykeyboards" destination="Ix0-Oy-k5K" id="gaK-ZP-KZQ"/>
+                        <outletCollection property="mykeyboards" destination="oJL-s1-nWK" id="gSb-nI-6Oi"/>
+                        <outletCollection property="mykeyboards" destination="1gv-Mn-lEw" id="124-Pf-ZGv"/>
+                        <outletCollection property="mykeyboards" destination="Gjh-Zj-yJI" id="zig-PA-vBZ"/>
+                        <outletCollection property="mykeyboards" destination="2vf-Rk-tFo" id="2N0-xt-zzw"/>
+                        <outletCollection property="mykeyboards" destination="eO0-hN-9hx" id="7E3-Ny-Mdg"/>
+                        <outletCollection property="mykeyboards" destination="sT5-Ll-CIz" id="qhk-FS-Hnv"/>
+                        <outletCollection property="mykeyboards" destination="reJ-Zt-R9L" id="kil-Ty-j4U"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-935" y="2374"/>
+        </scene>
+        <!--Expropos Num Keyboard-->
+        <scene sceneID="RcM-mN-dqI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="trw-bv-eEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="numKeyboard" id="hdG-yj-HF6" customClass="exproposNumKeyboard" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7bl-AE-19K">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="Wib-o1-w2G">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="562"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="商品数量。。。。。" minimumFontSize="17" id="SQB-43-is0">
+                                        <rect key="frame" x="20" y="32" width="429" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="v79-5X-IEZ">
+                                        <rect key="frame" x="282" y="36" width="267" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                        <state key="normal" image="delete.png">
+                                            <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteOneGoodsCode:" destination="bKo-CB-H7q" eventType="touchUpInside" id="aqf-9F-fsQ"/>
+                                            <action selector="deleteOneGoodsNum:" destination="hdG-yj-HF6" eventType="touchUpInside" id="tmA-lR-70u"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RVb-fp-MVO" customClass="JPStupidButton">
+                                        <rect key="frame" x="183" y="96" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="8">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="emz-Ou-f2M" customClass="JPStupidButton">
+                                        <rect key="frame" x="346" y="96" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="9">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FTK-Xe-Edp" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="185" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="4">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aez-kL-GJj" customClass="JPStupidButton">
+                                        <rect key="frame" x="346" y="185" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="6">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="O5a-3D-fQ4" customClass="JPStupidButton">
+                                        <rect key="frame" x="183" y="279" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="2">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Onw-Cc-KkV" customClass="JPStupidButton">
+                                        <rect key="frame" x="346" y="279" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="3">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qkz-ON-ico" customClass="JPStupidButton">
+                                        <rect key="frame" x="183" y="365" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="0">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pxf-2n-f04" customClass="JPStupidButton">
+                                        <rect key="frame" x="346" y="365" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                        <state key="normal" title="确定">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cXr-Tx-O6H" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="96" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="7">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZVW-LV-Fbm" customClass="JPStupidButton">
+                                        <rect key="frame" x="183" y="185" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="5">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Aa1-rZ-4Sx" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="279" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="1">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bmv-Yb-Wny" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="365" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                        <state key="normal" title="取消">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="deleteOneNum" destination="v79-5X-IEZ" id="DTk-dQ-LG9"/>
+                        <outlet property="goodsNum" destination="SQB-43-is0" id="Wna-97-Ero"/>
+                        <outletCollection property="keys" destination="emz-Ou-f2M" id="Rl2-o1-7k4"/>
+                        <outletCollection property="keys" destination="RVb-fp-MVO" id="np0-Oh-StA"/>
+                        <outletCollection property="keys" destination="cXr-Tx-O6H" id="KLo-b0-ci2"/>
+                        <outletCollection property="keys" destination="aez-kL-GJj" id="LZB-kF-Va4"/>
+                        <outletCollection property="keys" destination="ZVW-LV-Fbm" id="QXW-Ei-UEH"/>
+                        <outletCollection property="keys" destination="FTK-Xe-Edp" id="Rla-B8-acY"/>
+                        <outletCollection property="keys" destination="Aa1-rZ-4Sx" id="y9g-Hf-ysZ"/>
+                        <outletCollection property="keys" destination="O5a-3D-fQ4" id="ChV-vv-XOM"/>
+                        <outletCollection property="keys" destination="Onw-Cc-KkV" id="yg4-O2-ixh"/>
+                        <outletCollection property="keys" destination="pxf-2n-f04" id="nCY-GA-gZd"/>
+                        <outletCollection property="keys" destination="qkz-ON-ico" id="ZgC-Rn-BnT"/>
+                        <outletCollection property="keys" destination="Bmv-Yb-Wny" id="Dxf-6c-aHN"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-2308" y="2324"/>
+        </scene>
+        <!--Expropos Show Deal Operate View Controller-->
+        <scene sceneID="Osd-tp-cNf">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jdX-2V-PX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="dealOperateVersion2" id="bKo-CB-H7q" customClass="exproposShowDealOperateViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="44y-cC-Ps3">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="u5I-bQ-ItR">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="返回主页面" id="tfd-ic-Sx5">
+                                        <connections>
+                                            <action selector="goBack:" destination="bKo-CB-H7q" id="gVw-Ri-EEu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" id="4GI-lK-73H">
+                                <rect key="frame" x="0.0" y="44" width="655" height="700"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="r32-yh-zTG">
+                                        <rect key="frame" x="5" y="8" width="389" height="108"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="应收：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="EnM-1S-g88">
+                                                <rect key="frame" x="20" y="60" width="79" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <color key="textColor" red="0.34425121019999999" green="0.6180050842" blue="0.67391304350000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="¥19999.9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="abg-Bq-CjM">
+                                                <rect key="frame" x="132" y="0.0" width="281" height="108"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" red="0.2056828708" green="0.062215851119999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="cg7-eN-2hM">
+                                        <rect key="frame" x="402" y="8" width="243" height="108"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="36" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="YaI-gt-a3W">
+                                                <rect key="frame" x="92" y="0.0" width="100" height="108"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" red="0.16495322060000001" green="0.030254968560000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="数量：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="IJ2-zZ-p32">
+                                                <rect key="frame" x="14" y="73" width="65" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <color key="textColor" red="0.15542561099999999" green="0.78526529069999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mCq-6R-XV5" customClass="ExproMultipleTableView">
+                                        <rect key="frame" x="5" y="124" width="640" height="566"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="ero-NB-ImF">
+                                <rect key="frame" x="653" y="44" width="371" height="700"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ui2-qx-6Ma">
+                                        <rect key="frame" x="10" y="11" width="351" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                        <state key="normal" title="       会员选择                                    ">
+                                            <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="memberSelected:" destination="bKo-CB-H7q" eventType="touchUpInside" id="fvt-rQ-Edb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="3wO-Al-Y0y">
+                                        <rect key="frame" x="325" y="11" width="29" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fxU-L4-A5T">
+                                        <rect key="frame" x="12" y="52" width="136" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="商品查询">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goodsSelected:" destination="bKo-CB-H7q" eventType="touchUpInside" id="Ff0-tf-yNF"/>
+                                        </connections>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="Htv-wa-b1t">
+                                        <rect key="frame" x="151" y="54" width="212" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="退货"/>
+                                            <segment title="销售"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="stateChanged:" destination="bKo-CB-H7q" eventType="valueChanged" id="zuT-Tq-mac"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <view contentMode="scaleToFill" id="McX-Lf-9bG">
+                                        <rect key="frame" x="12" y="118" width="351" height="562"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="商品编号。。。。。" minimumFontSize="17" id="GvT-WT-vtO">
+                                                <rect key="frame" x="6" y="28" width="339" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K0W-dV-cRJ">
+                                                <rect key="frame" x="296" y="32" width="49" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                                <state key="normal" title="7" image="delete.png">
+                                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deleteOneGoodsCode:" destination="bKo-CB-H7q" eventType="touchUpInside" id="e1f-eb-bCo"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="D1C-Yg-IXn" customClass="JPStupidButton">
+                                                <rect key="frame" x="124" y="110" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                                <state key="normal" title="8">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jFy-sc-mar" customClass="JPStupidButton">
+                                                <rect key="frame" x="242" y="110" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                                <state key="normal" title="9">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B2f-TY-QUM" customClass="JPStupidButton">
+                                                <rect key="frame" x="6" y="220" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                                <state key="normal" title="4">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ncj-6l-FIc" customClass="JPStupidButton">
+                                                <rect key="frame" x="242" y="220" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                                <state key="normal" title="6">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="koK-Of-g3A" customClass="JPStupidButton">
+                                                <rect key="frame" x="124" y="333" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                                <state key="normal" title="2">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KNK-vb-fz5" customClass="JPStupidButton">
+                                                <rect key="frame" x="242" y="333" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                                <state key="normal" title="3">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J5c-kR-qHT" customClass="JPStupidButton">
+                                                <rect key="frame" x="124" y="447" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                                <state key="normal" title="0">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PTg-VS-WCb" customClass="JPStupidButton">
+                                                <rect key="frame" x="242" y="447" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                                <state key="normal" title="确定">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="x29-Cx-qbq" customClass="JPStupidButton">
+                                                <rect key="frame" x="6" y="110" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                                <state key="normal" title="7">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hr7-tr-nUX" customClass="JPStupidButton">
+                                                <rect key="frame" x="124" y="220" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                                <state key="normal" title="5">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zhN-8n-uVB" customClass="JPStupidButton">
+                                                <rect key="frame" x="6" y="333" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                                <state key="normal" title="1">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="k3r-Az-GbI" customClass="JPStupidButton">
+                                                <rect key="frame" x="6" y="447" width="103" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                                <state key="normal" title="结算">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="allGoodsAmounts" destination="YaI-gt-a3W" id="Zf6-E9-Qzc"/>
+                        <outlet property="allGoodsPayments" destination="abg-Bq-CjM" id="Ymv-Sm-qEn"/>
+                        <outlet property="amountView" destination="cg7-eN-2hM" id="IyV-ov-FoJ"/>
+                        <outlet property="dealTableView" destination="mCq-6R-XV5" id="QMe-IY-uhZ"/>
+                        <outlet property="deleteButton" destination="K0W-dV-cRJ" id="UH4-ha-Y9u"/>
+                        <outlet property="goodsCode" destination="GvT-WT-vtO" id="KuP-0u-LQv"/>
+                        <outlet property="keyBoardView" destination="McX-Lf-9bG" id="okQ-zV-c1N"/>
+                        <outlet property="leftView" destination="4GI-lK-73H" id="PnR-EE-dgA"/>
+                        <outlet property="memberSelectedButton" destination="ui2-qx-6Ma" id="uA3-c6-CVr"/>
+                        <outlet property="rightView" destination="ero-NB-ImF" id="RbO-Yc-0Za"/>
+                        <outlet property="shouldGetMoneyView" destination="r32-yh-zTG" id="ePq-mS-7qy"/>
+                        <outletCollection property="buttons" destination="koK-Of-g3A" id="59q-uI-eiO"/>
+                        <outletCollection property="buttons" destination="PTg-VS-WCb" id="p1j-ni-3u8"/>
+                        <outletCollection property="buttons" destination="J5c-kR-qHT" id="Dso-P7-wvv"/>
+                        <outletCollection property="buttons" destination="k3r-Az-GbI" id="M4C-ka-3fb"/>
+                        <outletCollection property="buttons" destination="zhN-8n-uVB" id="pSd-CN-JOM"/>
+                        <outletCollection property="buttons" destination="KNK-vb-fz5" id="7kX-KE-O4N"/>
+                        <outletCollection property="buttons" destination="Ncj-6l-FIc" id="xMb-iX-5mW"/>
+                        <outletCollection property="buttons" destination="hr7-tr-nUX" id="aY1-bO-Bqr"/>
+                        <outletCollection property="buttons" destination="B2f-TY-QUM" id="YTX-dP-LHz"/>
+                        <outletCollection property="buttons" destination="x29-Cx-qbq" id="I6F-G1-SfF"/>
+                        <outletCollection property="buttons" destination="D1C-Yg-IXn" id="pB3-7m-Htg"/>
+                        <outletCollection property="buttons" destination="jFy-sc-mar" id="gFU-wN-vn1"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-904" y="1124"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="n0k-ki-o6r">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OYW-Xe-APm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="goodsSelected" id="8Jf-If-b4F" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Phr-ba-b7S"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zQc-Y7-8Ak">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bWy-0x-CeP" kind="relationship" relationship="rootViewController" id="zCv-10-upb"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="6065" y="-580"/>
+        </scene>
+        <!--Expropos Good Selected View Controller - 商品选择-->
+        <scene sceneID="0g8-xr-BbC">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6f0-iA-GVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="bWy-0x-CeP" customClass="exproposGoodSelectedViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="HyD-hV-Xvb">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="VZI-iC-UQ8">
+                            <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="showType" id="GaW-ug-k9E">
+                                <rect key="frame" x="0.0" y="78" width="768" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="45" y="1" width="678" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" textLabel="aih-DB-Ize" detailTextLabel="1n2-U2-9Pk" style="IBUITableViewCellStyleValue1" id="64Y-vA-FnD">
+                                <rect key="frame" x="0.0" y="123" width="768" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="45" y="0.0" width="678" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aih-DB-Ize">
+                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1n2-U2-9Pk">
+                                            <rect key="frame" x="624" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bWy-0x-CeP" id="HRd-LM-QZ4"/>
+                            <outlet property="delegate" destination="bWy-0x-CeP" id="ikT-Oa-0Sq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="商品选择" id="wvj-eG-Jt3">
+                        <barButtonItem key="rightBarButtonItem" title="刷新" id="9nk-Vm-HSr">
+                            <connections>
+                                <action selector="update:" destination="bWy-0x-CeP" id="WDv-A1-L4l"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="FlashButton" destination="9nk-Vm-HSr" id="b9a-9k-xfv"/>
+                        <outlet property="searchBar" destination="VZI-iC-UQ8" id="CeF-FG-OoE"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="7163" y="-574"/>
         </scene>
     </scenes>
     <resources>
         <image name="3.jpg" width="962" height="257"/>
         <image name="4.jpg" width="798" height="76"/>
+        <image name="delete.png" width="40" height="40"/>
         <image name="login_main.png" width="514" height="314"/>
     </resources>
+    <classes>
+        <class className="ExproMultipleTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExproMultipleTableView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="multipleDataSource"/>
+                <relationship kind="outlet" name="multipleDelegate"/>
+            </relationships>
+        </class>
+        <class className="JPStupidButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JPStupidButton.h"/>
+        </class>
+        <class className="exproposDateSelectedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDateSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="exproposDealSelectedViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDealSelectedViewController.h"/>
+        </class>
+        <class className="exproposGoodSelectedViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposGoodSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="FlashButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="exproposMainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="menu" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="menuTool" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="exproposMemberRegisterController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberRegisterController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="exproposMemberSelectedViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="update:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="freshButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="updateTime" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="exproposMenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMenuViewController.h"/>
+        </class>
+        <class className="exproposNumKeyboard" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposNumKeyboard.h"/>
+            <relationships>
+                <relationship kind="action" name="deleteOneGoodsNum:"/>
+                <relationship kind="outlet" name="deleteOneNum" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="goodsNum" candidateClass="UITextField"/>
+                <relationship kind="outletCollection" name="keys" candidateClass="JPStupidButton"/>
+            </relationships>
+        </class>
+        <class className="exproposPayViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposPayViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="finish:"/>
+                <relationship kind="action" name="payTypeChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="getRealMoney" candidateClass="UIView"/>
+                <relationship kind="outlet" name="haveGetMoney" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="keyboards" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="shouldPopMoney" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="shouleGetMoney" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="mykeyboards" candidateClass="JPStupidButton"/>
+            </relationships>
+        </class>
+        <class className="exproposShowDealOperateViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposShowDealOperateViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="deleteOneGoodsCode:"/>
+                <relationship kind="action" name="goBack:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="goodsSelected:"/>
+                <relationship kind="action" name="memberSelected:" candidateClass="UIButton"/>
+                <relationship kind="action" name="stateChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="allGoodsAmounts" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="allGoodsPayments" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="amountView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dealTableView" candidateClass="ExproMultipleTableView"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="goodsCode" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="keyBoardView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="leftView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="memberSelectedButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="shouldGetMoneyView" candidateClass="UIView"/>
+                <relationship kind="outletCollection" name="buttons" candidateClass="JPStupidButton"/>
+            </relationships>
+        </class>
+        <class className="exproposShowDealsSelectedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposShowDealsSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="ExproMultipleTableView"/>
+            </relationships>
+        </class>
+        <class className="exproposViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="loginview" candidateClass="UIView"/>
+                <relationship kind="outlet" name="orgField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="orglabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phonelable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollview" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="userField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
