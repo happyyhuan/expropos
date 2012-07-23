@@ -55,10 +55,6 @@
 
 }
 
-- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
-    [super request:request didLoadResponse:response];
-    NSLog(@"%@",response.statusCode);
-    
-}
+
 
 @end

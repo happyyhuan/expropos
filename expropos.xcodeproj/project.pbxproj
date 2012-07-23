@@ -158,8 +158,6 @@
 		427FE45A15A586F800492804 /* login_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_main.png; path = image/login_main.png; sourceTree = "<group>"; };
 		4280FAC515AE60BD00CB7712 /* exproposRegistr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposRegistr.h; sourceTree = "<group>"; };
 		4280FAC615AE60BD00CB7712 /* exproposRegistr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposRegistr.m; sourceTree = "<group>"; };
-		42B0CFDE15BA4EE9000F5401 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/cc/dev/expropos/expropos/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
-		42B0CFDF15BA4EE9000F5401 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/cc/dev/expropos/expropos/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		42BF9B0F15B408A70098286E /* exproposPrivacyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposPrivacyController.h; sourceTree = "<group>"; };
 		42BF9B1015B408A80098286E /* exproposPrivacyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposPrivacyController.m; sourceTree = "<group>"; };
 		42FD68D115ABCA0D00356923 /* login_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_ico.png; sourceTree = "<group>"; };
@@ -233,6 +231,8 @@
 		5F96FE4D15B82FAA00A8731B /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		5F96FE4F15B82FC500A8731B /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		5F983DDA15B8E632008662D8 /* scan.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = scan.wav; sourceTree = "<group>"; };
+		5F9860E915BD03E600B6A034 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/chenhaitao/Documents/expropos/expropos/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		5F9860EA15BD03E600B6A034 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/chenhaitao/Documents/expropos/expropos/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
 		5F99B4371591B3C400CCB896 /* exproposDealSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposDealSelectedViewController.h; sourceTree = "<group>"; };
 		5F99B4381591B3C400CCB896 /* exproposDealSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposDealSelectedViewController.m; sourceTree = "<group>"; };
 		5F9A8E3A1599B4870021FE68 /* ExproMultipleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproMultipleTableView.h; sourceTree = "<group>"; };
@@ -866,7 +866,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5FA51745159DB58300F9DE5B /* en */,
-				42B0CFDE15BA4EE9000F5401 /* zh-Hans */,
+				5F9860EA15BD03E600B6A034 /* zh-Hans */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -875,7 +875,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				914BB29D15746A6B009FFBAE /* en */,
-				42B0CFDF15BA4EE9000F5401 /* zh-Hans */,
+				5F9860E915BD03E600B6A034 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
