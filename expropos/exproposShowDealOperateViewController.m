@@ -276,11 +276,6 @@
 {
    
     [_scan didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    NSLog(@"self.view==%@",self.view);
-    NSLog(@"self.view==%@",self.leftView);
-    NSLog(@"self.view==%@",self.rightView);
-  
-    
 }
 
 

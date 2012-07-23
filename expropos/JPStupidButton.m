@@ -1,9 +1,9 @@
 //
 //  JPStupidButton.m
-//  AnimationPlay
+//  expropos
 //
-//  Created by James Pozdena on 5/9/11.
-//  Copyright 2011 James Pozdena. All rights reserved.
+//  Created by haitao chen on 12-7-17.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import "JPStupidButton.h"
