@@ -9,6 +9,7 @@
 #import "exproposMenuViewController.h"
 #import "exproposDealSelectedViewController.h"
 #import "exproposAppDelegate.h"
+#import "exproposShowDealOperateViewController.h"
 
 @interface exproposMenuViewController ()
 
@@ -122,32 +123,10 @@
     
     if([menu isEqualToString:@"消费"]){
         //如果是竖屏情况，将隐藏左侧菜单栏
-        NSLog(@"masdfsf:%@",_mainViewController.masterPopoverController);
-      // [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
-        
-        exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        appDelegate.window.rootViewController = _dealOperate;
-         
-    }
-   
-
-    
-    if([menu isEqualToString:@"会员开户"]){
-        for(UIViewController *contro in _controllers){
-            [contro.view removeFromSuperview];
-        }
-        [_controllers addObject:_memberRegister];
-        _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
-        _memberRegister.mainViewController = self.mainViewController;
-        
-        [self.mainViewController.view addSubview: _memberRegister.view];
-        [self.mainViewController.masterPopoverController dismissPopoverAnimated:YES];
-        
-//        
-//        _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
-//        //_memberRegister.viewController = self.mainViewController;
-//        
-//        [self.mainViewController.view insertSubview:_memberRegister.view atIndex:0];
+         [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
+        _dealOperate.myRootViewController = self.splitViewController;
+       [self.splitViewController presentModalViewController:_dealOperate animated:YES];
+           
     }   
 }
 

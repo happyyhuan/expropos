@@ -735,7 +735,7 @@
                                                     <action selector="deleteOneGoodsCode:" destination="eWk-Gl-AZZ" eventType="touchUpInside" id="gcn-fg-hok"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bkY-Qe-lJA" customClass="JPStupidButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bkY-Qe-lJA">
                                                 <rect key="frame" x="124" y="110" width="103" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
@@ -1391,119 +1391,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="delete.png" width="40" height="40"/>
         <image name="login_main.png" width="514" height="314"/>
     </resources>
-    <classes>
-        <class className="ExproMultipleTableView" superclassName="UITableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExproMultipleTableView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="multipleDataSource"/>
-                <relationship kind="outlet" name="multipleDelegate"/>
-            </relationships>
-        </class>
-        <class className="JPStupidButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/JPStupidButton.h"/>
-        </class>
-        <class className="exproposDateSelectedViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDateSelectedViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-            </relationships>
-        </class>
-        <class className="exproposDealSelectedViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDealSelectedViewController.h"/>
-        </class>
-        <class className="exproposGoodSelectedViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposGoodSelectedViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="FlashButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="exproposMainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMainViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logout:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="menu" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="menuTool" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="exproposMemberRegisterController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberRegisterController.h"/>
-        </class>
-        <class className="exproposMemberSelectedViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberSelectedViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="update:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="freshButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="updateTime" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="exproposMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMenuViewController.h"/>
-        </class>
-        <class className="exproposNumKeyboard" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposNumKeyboard.h"/>
-            <relationships>
-                <relationship kind="action" name="deleteOneGoodsNum:"/>
-                <relationship kind="outlet" name="deleteOneNum" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="goodsNum" candidateClass="UITextField"/>
-                <relationship kind="outletCollection" name="keys" candidateClass="JPStupidButton"/>
-            </relationships>
-        </class>
-        <class className="exproposPayViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposPayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="finish:"/>
-                <relationship kind="action" name="payTypeChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="getRealMoney" candidateClass="UIView"/>
-                <relationship kind="outlet" name="haveGetMoney" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="keyboards" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="shouldPopMoney" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="shouleGetMoney" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="mykeyboards" candidateClass="JPStupidButton"/>
-            </relationships>
-        </class>
-        <class className="exproposShowDealOperateViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposShowDealOperateViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="deleteOneGoodsCode:"/>
-                <relationship kind="action" name="goBack:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="goodsSelected:"/>
-                <relationship kind="action" name="memberSelected:" candidateClass="UIButton"/>
-                <relationship kind="action" name="stateChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="allGoodsAmounts" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="allGoodsPayments" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="amountView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="dealTableView" candidateClass="ExproMultipleTableView"/>
-                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="goodsCode" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="keyBoardView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="leftView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="memberSelectedButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="shouldGetMoneyView" candidateClass="UIView"/>
-                <relationship kind="outletCollection" name="buttons" candidateClass="JPStupidButton"/>
-            </relationships>
-        </class>
-        <class className="exproposShowDealsSelectedViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposShowDealsSelectedViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="ExproMultipleTableView"/>
-            </relationships>
-        </class>
-        <class className="exproposViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="loginview" candidateClass="UIView"/>
-                <relationship kind="outlet" name="orgField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="orglabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="phonelable" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="userField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -137,6 +137,7 @@
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer{ 
      UIView *superView = self.view.superview;
     UIView *mineView = [superView viewWithTag:1];
+    NSLog(@"%@",superView);
    
     //开始动画 
     [UIView beginAnimations:nil context:nil];  

@@ -36,6 +36,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *allGoodsAmounts;
 @property (strong, nonatomic) IBOutlet UILabel *allGoodsPayments;
 @property (strong, nonatomic) exproposDealOperate *operatingDeals;
+@property (strong, nonatomic) UISplitViewController *myRootViewController;
+
 
 - (IBAction)memberSelected:(UIButton *)sender;
 - (IBAction)goodsSelected:(id)sender;

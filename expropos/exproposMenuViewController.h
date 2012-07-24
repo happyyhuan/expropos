@@ -24,7 +24,7 @@
 //需要加入到主窗体的view的控制器数组
 @property (strong,nonatomic) NSMutableArray *controllers;
 //交易处理控制器
-@property (strong,nonatomic) exproposShowDealsSelectedViewController *dealOperate;
+@property (strong,nonatomic) exproposShowDealOperateViewController *dealOperate;
 
 @property (strong,nonatomic) exproposMemberRegisterController *memberRegister;
 @end
