@@ -353,10 +353,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <rect key="frame" x="135" y="412" width="512" height="278"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="login_main.png" id="RnN-aV-5ml">
-                                        <rect key="frame" x="-16" y="-12" width="565" height="302"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="umN-W1-tff">
                                         <rect key="frame" x="160" y="116" width="167" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -421,7 +417,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.96078437569999997" blue="0.68235296010000002" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" image="4.jpg" id="TUP-Cq-57c">
                                 <rect key="frame" x="0.0" y="0.0" width="1031" height="126"/>
@@ -1425,7 +1421,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="3.jpg" width="962" height="257"/>
         <image name="4.jpg" width="798" height="76"/>
         <image name="delete.png" width="40" height="40"/>
-        <image name="login_main.png" width="514" height="314"/>
     </resources>
     <classes>
         <class className="ExproMultipleTableView" superclassName="UITableView">

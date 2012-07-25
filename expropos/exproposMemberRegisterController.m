@@ -55,6 +55,7 @@
 @synthesize privacyItem=_privacyItem;
 @synthesize point=_point;
 @synthesize dateSel=_dateSel;
+@synthesize nextButton;
 
 
 @synthesize tapGesture;
@@ -215,7 +216,7 @@
 	if (minMoveUpDeltaY > 0) {
 		NSLog(@"moveUp---->%f", minMoveUpDeltaY);
 		[UIView beginAnimations:@"MoveUp" context:nil];
-		[UIView setAnimationDuration:kKeyboardAnimationDuration];
+		[UIView setAnimationDuration:keyboardAnimationDuration];
 		CGRect f = self.view.frame;
 		f.origin.y -= minMoveUpDeltaY;
 		self.view.frame = f;
@@ -227,7 +228,7 @@
 	if (minMoveUpDeltaY > 0) {
 		NSLog(@"minMoveUpDeltaY---->%f", minMoveUpDeltaY);
 		[UIView beginAnimations:@"MoveDown" context:nil];
-		[UIView setAnimationDuration:kKeyboardAnimationDuration];
+		[UIView setAnimationDuration:keyboardAnimationDuration];
 		CGRect f = self.view.frame;
 		f.origin.y += minMoveUpDeltaY;
 		self.view.frame = f;
@@ -250,19 +251,6 @@
 }
 
 
--(void)viewWillAppear:(BOOL)animated
-{
-    //    NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
-    //    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"注册" style: UIBarButtonItemStyleBordered   target:self action:@selector(registr:)];
-    //    int num = 0;
-    //    for(UIBarButtonItem *i in items){
-    //        if([i.title isEqualToString:@"菜单"]){
-    //            num = 1;
-    //        }
-    //    }
-    //    [items insertObject:item atIndex:num];
-    //    self.mainViewController.menuTool.items = items;
-}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -285,8 +273,12 @@
         NSString *warning = nil;
         
         if (self.name.length == 0 ) {
-            warning = NSLocalizedString(@"请输入姓", nil);
+            warning = NSLocalizedString(@"请输入姓名", nil);
         }
+        if (self.memPetName.length == 0 ) {
+            warning = NSLocalizedString(@"请输入商户会员昵称", nil);
+        }
+            
         if (warning) 
         {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
@@ -311,14 +303,35 @@
     }
     else if (404 == self.status.intValue)//关联用户到商户
     {
-        self.registr = [[exproposRegistr alloc]init];
-        _registr.reserver = self;
-        _registr.succeedCallBack = @selector(registrSucceed:);
-        [_registr registr:self.telphone name:self.name petName:self.petName email:self.email
-                   idCard:self.idCard comment:self.comment  sex:self.sex  
-                   saving:self.savings point:self.point dueTime:[self dateToString:self.dueTime]
-                    birth:[self dateToString:self.birth]
-               memPetName:self.memPetName];
+        NSString *warning = nil;
+        
+       
+        if (self.memPetName.length == 0 ) {
+            warning = NSLocalizedString(@"请输入商户会员昵称", nil);
+        }
+        
+        if (warning) 
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                            message:warning 
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        }
+        else {
+            self.registr = [[exproposRegistr alloc]init];
+            _registr.reserver = self;
+            _registr.succeedCallBack = @selector(registrSucceed:);
+            [_registr registr:self.telphone name:self.name petName:self.petName email:self.email
+                       idCard:self.idCard comment:self.comment  sex:self.sex  
+                       saving:self.savings point:self.point dueTime:[self dateToString:self.dueTime]
+                        birth:[self dateToString:self.birth]
+                   memPetName:self.memPetName];
+        }
+
+       
     }
 }
 
@@ -441,13 +454,18 @@
         [cell addSubview:telField];
         
         [telField setBackgroundColor:[UIColor whiteColor]];
-        cell.textLabel.text = NSLocalizedString(@"手机", nil);       
-        UIButton *myButton = [[UIButton alloc]initWithFrame:CGRectMake(600, 10, 50, 25)];
-        [myButton setTitle:@"下一步" forState:UIControlStateNormal]; 
-        [myButton setBackgroundColor:[UIColor grayColor]];
-        [myButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
-        [myButton setFont:[UIFont systemFontOfSize:12]];     
-        [cell addSubview:myButton];
+        cell.textLabel.text = NSLocalizedString(@"手机", nil);  
+        
+//        nextButton = [[UIButton alloc]initWithFrame:CGRectMake(600, 10, 50, 25)];
+//        [nextButton setTitle:@"下一步" forState:UIControlStateNormal]; 
+//        [nextButton setBackgroundColor:[UIColor grayColor]];
+//        [nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
+//        [nextButton setFont:[UIFont systemFontOfSize:12]]; 
+//        if (self.name.length == 0)
+//        { 
+//            [nextButton setHidden:NO];
+//        }
+//        [cell addSubview:nextButton];
         [telField setBackgroundColor:[UIColor whiteColor]];
         telField.borderStyle = UITextBorderStyleRoundedRect;
         telField.textAlignment = UITextAlignmentLeft;
@@ -480,7 +498,7 @@
                 
                 firstFieldField.delegate = self;
                 firstFieldField.keyboardType = UIKeyboardTypeDefault;
-                [firstFieldField addTarget:self action:@selector(saveFromFirstNameField:) forControlEvents:UIControlEventEditingChanged];
+                [firstFieldField addTarget:self action:@selector(saveFromFirstNameField:) forControlEvents:UIControlEventEditingDidEnd];
                 
             }
             if (indexPath.row == 1)
@@ -889,9 +907,54 @@
     }
 }
 
+-(void)nextAction
+{
+    self.telphone = self.telphone;
+    self.validate = [[exproposValidater alloc]init];
+    _validate.reserver = self;
+    _validate.succeedCallBack = @selector(validateSuccess:);
+    _validate.failedCallBack = @selector(validateFailer:);
+    
+    NSString *warning = nil;
+    if (!self.telphone || ![self.telphone length]) {
+        warning = NSLocalizedString(@"手机号码必须填写", nil);
+    }
+    
+    else if ([self.telphone length] != 11 ) {
+        warning = NSLocalizedString(@"手机号码输入有误", nil);
+    }
+    if (warning)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                        message:warning 
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                              otherButtonTitles:nil];
+        [alert show];
+    }    
+    else {
+        [_validate validate:self.telphone ];
+    }
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 -(void)saveFromFirstNameField:(UITextField *)firstFieldText
 {
     self.name = firstFieldText.text;
+//    if (self.name.length != 0)
+//    {
+//    [nextButton setHidden:TRUE];
+//    }
+//    else {
+//        [nextButton setHidden:NO];
+//    }
+//    [self.tableView reloadData];
 }
 -(void)saveFromLastNameField:(UITextField *)lastFieldText
 {
@@ -928,6 +991,31 @@
 
 -(void)saveFromTelField:(UITextField *)telText
 {
+    if (telText.text.length > 11)
+    {
+        NSString *warning = nil;
+        
+        warning = NSLocalizedString(@"手机号码输入有误", nil);
+        
+        if (warning)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                            message:warning 
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    if (telText.text.length == 11)
+    {
+        if (![self.telphone isEqualToString:telText.text])
+        {
+            [self.tableView reloadData];
+        }
+        self.telphone = telText.text;
+        [self nextAction];
+    }
     self.telphone = telText.text;
     
 }

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "exproposMainViewController.h"
-#define kKeyboardAnimationDuration (0.35f)
+#define keyboardAnimationDuration (0.35f)
+
 @interface exproposMemberRegisterController : UITableViewController<UITextFieldDelegate>
 
 {
@@ -18,6 +19,7 @@
 @property (nonatomic,strong) UIPopoverController *popover;
 @property (nonatomic,strong) UIViewController *viewController;
 @property (nonatomic,strong) IBOutlet UITableView *tableView;
+@property (nonatomic,strong) IBOutlet UIButton *nextButton;
 @property (nonatomic, strong) NSString *telphone;
 
 @property (nonatomic,strong) NSString *name;
@@ -51,6 +53,9 @@
 @property (nonatomic, assign) BOOL isSwitchedTextField;// 是不是已经从一个输入框切换到另一个输入框
 
 @property (nonatomic, assign) BOOL canUserSeeKeyboard;// 用户是否可以看到键盘
+
+
+
 
 - (void)handleTap;
 

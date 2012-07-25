@@ -13,6 +13,7 @@
 #import "ExproUser.h"
 #import "ExproMember.h"
 #import "ExproSignHistory.h"
+#import "JFBCrypt.h"
 
 
 #import "exproposAppDelegate.h"
@@ -46,10 +47,6 @@
 @synthesize isSwitchedTextField;
 @synthesize canUserSeeKeyboard;
 
-
-
-
-
 - (IBAction)showLoginView:(id)sender {
     
     UIButton *bu = (UIButton *)sender;
@@ -82,7 +79,7 @@
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut]; 
     [UIView setAnimationDuration:0.5]; 
     CGRect rect = [self.loginview frame]; 
-    rect.origin.x = (self.view.frame.size.width-rect.size.width)/2 ; 
+    rect.origin.x = (self.view.frame.size.height-rect.size.width)/2 ;  
     [self.loginview setFrame:rect]; 
     [UIView commitAnimations]; 
     self.loginview.hidden=false;
@@ -108,7 +105,7 @@
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
-                                                        message:NSLocalizedString(@"UsernameAndPassword", nil)
+                                                        message:NSLocalizedString(@"请输入用户名或密码", nil)
                                                        delegate:nil
                                               cancelButtonTitle:nil
                                               otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
@@ -160,46 +157,37 @@
     
     appDelegate.currentUser = signUser;
     [appDelegate.sync syncStore:[NSNumber numberWithInt:15]];
-
-    
-    
     [self didLoginSuccess];
 }
 
 - (void) signinFailed:(id)object {
     
-    //查找是否存在user用户
-    NSFetchRequest *request = [ExproUser fetchRequest];
-    NSPredicate *predicate = nil;
-    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(cellphone=%@)" ];
-    
-    NSMutableArray *userparams = [[NSMutableArray alloc]initWithObjects:self.userField.text, nil];
-    
-    predicate = [NSPredicate predicateWithFormat:str argumentArray:userparams];
-    
-    NSLog(@"%@",predicate);
-    
-    request.predicate = predicate;
-    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
-    ExproUser *user = nil;
-    BOOL isExis=NO;
-    NSLog(@"%i",deals.count);
-    if (deals.count)
+    if (self.sign.statusCode != 401)
     {
-        user = (ExproUser *)[deals objectAtIndex:0];
-        isExis=YES;
+        //查找是否存在user用户
+        NSFetchRequest *request = [ExproUser fetchRequest];
+        NSPredicate *predicate = nil;
+        NSMutableString *str = [[NSMutableString alloc]initWithString:@"(cellphone=%@)" ];
+        NSMutableArray *userparams = [[NSMutableArray alloc]initWithObjects:self.userField.text, nil];
+        predicate = [NSPredicate predicateWithFormat:str argumentArray:userparams];
+        request.predicate = predicate;
+        NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+        ExproUser *user = nil;
+        BOOL isExis=NO;
+        if (deals.count)
+        {
+            user = (ExproUser *)[deals objectAtIndex:0];
+            isExis=YES;
+        } 
+        NSString *salt = [user.password substringToIndex:29];
+        NSString *hashedPassword = [JFBCrypt hashPassword: password withSalt: salt];
+        if ([user.password isEqualToString:hashedPassword])
+        {
+            [self signinSucceed:object];
+            _userField.text = nil;
+            _passwordField.text=nil;  
+        }
     }
-    NSLog(@"password%@",user.password);
-    NSLog(@"passwordfield%@",[password MD5]);
-
-    if ([user.password isEqualToString:self.passwordField.text])
-    {
-        NSLog(@"OK");
-    }
-    
-    [self signinSucceed:object];
-    _userField.text = nil;
-    _passwordField.text=nil;    
 }
 
 - (void)viewDidLoad
@@ -289,18 +277,12 @@
 	tapGesture = nil;
 }
 
-
-
-
-
 #pragma mark - Custom Methods
 - (void)registerKeyboardNotifications {
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[notificationCenter addObserver:self selector:@selector(handleKeyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 	[notificationCenter addObserver:self selector:@selector(handleKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
 }
-
-
 
 - (void)handleTap {
 	[activeTextField resignFirstResponder];
@@ -310,6 +292,12 @@
 - (void)handleKeyboardDidHide:(NSNotification *)notification {
 	NSLog(@"\n----------------------------Did Hide----------------------------");
 	canUserSeeKeyboard = NO;
+    if (minMoveUpDeltaY != 0)
+    {
+        [self moveDown];
+        minMoveUpDeltaY = 0;
+        self.activeTextField = nil;
+    }
 }
 
 - (void)handleKeyboardDidShow:(NSNotification *)notification {
@@ -340,30 +328,31 @@
 	 切换输入框或iOS 5的中英键盘时，先让整个视图回到原始位置，
 	 然后再考虑是否需要上移，如果需要上移，那么动画会出现闪烁效果，感觉不是太好。
 	 */
-	if (minMoveUpDeltaY > 0) {
-		[self moveDown];
-	}
+    
+//    if (canUserSeeKeyboard)
+//    {
+//        return NO;
+//    }
+//	if (minMoveUpDeltaY > 0) {
+//		[self moveDown];
+//	}
 	minMoveUpDeltaY = 0;
 	
 	exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-	CGRect textFieldOriginFrameOnWindow = [self.view convertRect:self.activeTextField.frame toView:appDelegate.window];
+	CGRect textFieldOriginFrameOnWindow = [self.view convertRect:self.loginview.frame toView:appDelegate.window];
     //	(UITextField在最初位置时的y) + (UITextField的height) - (键盘出现后的y) > 0
     if (keyboardFrame.size.width < keyboardFrame.size.height) 
     {
         if (keyboardFrame.origin.x == 0)
         {
-            minMoveUpDeltaY =  textFieldOriginFrameOnWindow.origin.x - keyboardFrame.size.width +60 ;
+            minMoveUpDeltaY =  300 ;
 
         }
         else {
-            
-            minMoveUpDeltaY = keyboardFrame.size.width - textFieldOriginFrameOnWindow.origin.x + 60;
-
-        }
+            minMoveUpDeltaY = 300;        }
         
         NSLog(@"重新计算之后minMoveUpDeltaY = %f", minMoveUpDeltaY);
         if (minMoveUpDeltaY > 0) {
-            // minMoveUpDeltaY = keyboardFrame.origin.x - 44;
             return YES;
         }
     }
@@ -398,7 +387,7 @@
 }
 
 - (void)moveDown {
-	if (minMoveUpDeltaY > 0) {
+	if (minMoveUpDeltaY > 0 ) {
 		NSLog(@"minMoveUpDeltaY---->%f", minMoveUpDeltaY);
 		[UIView beginAnimations:@"MoveDown" context:nil];
 		[UIView setAnimationDuration:kKeyboardAnimationDuration];
@@ -407,7 +396,8 @@
         {
             if (keyboardFrame.origin.x == 0)
             {
-                f.origin.x -= minMoveUpDeltaY;
+                f.
+                origin.x -= minMoveUpDeltaY;
             }
             else
             {
@@ -422,26 +412,28 @@
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-	self.activeTextField = textField;// 设置当前活动的UITextF.y    
-	if (isSwitchedTextField == YES && [self isKeyboardHideTextField:activeTextField] == YES) {
-		[self moveUp];
-	}
+    if (!canUserSeeKeyboard)
+    {
+        self.activeTextField = textField;// 设置当前活动的UITextF.y    
+        if(  isSwitchedTextField == YES && [self isKeyboardHideTextField:activeTextField] == YES) {
+            //[self moveUp];
+        }
+    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-	[self moveDown];
-	minMoveUpDeltaY = 0;
-	self.activeTextField = nil;
+//    if (minMoveUpDeltaY != 0)
+//    {
+//        [self moveDown];
+//        minMoveUpDeltaY = 0;
+//        self.activeTextField = nil;
+//    }
 }
-
-
-
-
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    // Return YES for supported orientations
+    return ((interfaceOrientation ==UIDeviceOrientationLandscapeLeft)||(interfaceOrientation ==UIDeviceOrientationLandscapeRight));
 }
 
 -(void)didLoginSuccess

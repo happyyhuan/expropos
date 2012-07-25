@@ -49,6 +49,8 @@
 
 @property (nonatomic, assign) BOOL canUserSeeKeyboard;// 用户是否可以看到键盘
 
+@property (nonatomic, assign) BOOL isMove;// 是否已经上移
+
 - (void)handleTap;
 
 // 用于判断键盘是否遮住了UITextField，这里的遮住包括完全遮住及部分遮住
