@@ -29,7 +29,7 @@
 
 	//set frame
 	UIView *barReaderView = [barReaderViewController view];
-    barReaderView.frame = CGRectMake(360+3 ,118, 350 ,562);//562
+    barReaderView.frame = CGRectMake(360+3 ,118, 350 ,562);
 	
 	//add overlay for barReaderView
 	ScannerOverlayView *overlay = [[ScannerOverlayView alloc] initWithFrame:[barReaderView bounds]];
@@ -61,7 +61,6 @@
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    NSLog(@"xxxxx=%i",orientation);
     CGAffineTransform transform;
     CGRect frame = CGRectMake(0 ,0,351  ,562);
     switch (orientation) {
@@ -138,6 +137,7 @@
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer{ 
      UIView *superView = self.view.superview;
     UIView *mineView = [superView viewWithTag:1];
+    NSLog(@"%@",superView);
    
     //开始动画 
     [UIView beginAnimations:nil context:nil];  

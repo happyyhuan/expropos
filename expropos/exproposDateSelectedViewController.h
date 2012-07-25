@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface exproposDateSelectedViewController : UIViewController 
-@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;//时间选择器
 @property (strong,nonatomic) UIViewController *viewController;
-@property (nonatomic) BOOL isBegin;
+@property (nonatomic) BOOL isBegin;//用于判断为开始时间还是截止时间付值
 @end

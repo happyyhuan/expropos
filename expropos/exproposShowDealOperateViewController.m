@@ -56,19 +56,26 @@
 @synthesize nav = _nav;
 @synthesize operatingDeals = _operatingDeals;
 @synthesize state = _state;
+@synthesize myRootViewController = _myRootViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+       
     }
     return self;
 }
 
+-(void)awakeFromNib
+{
+   
+}
 - (void)viewDidLoad
 {
+    NSLog(@"begin viewDidLoad");
     [super viewDidLoad];
+    //为view上的各个子视图加边框
     _leftView.layer.cornerRadius = 10.0;
     _leftView.layer.masksToBounds = YES;
 	_leftView.layer.borderWidth = 3;
@@ -129,6 +136,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"begin viewWillAppear");
     [super viewWillAppear:animated];
    
     
@@ -136,6 +144,7 @@
     recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];    
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft )];    
     [[self keyBoardView] addGestureRecognizer:recognizer]; 
+    _keyBoardView.tag = 1;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -260,6 +269,7 @@
     [self setDeleteButton:nil];
     [self setAllGoodsAmounts:nil];
     [self setAllGoodsPayments:nil];
+    [self setMyRootViewController:nil];
     [super viewDidUnload];
     _leftView = nil;
     _rightView = nil;
@@ -270,17 +280,13 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    NSLog(@"shouldAutorotateToInterfaceOrientation");
     return  UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
    
     [_scan didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    NSLog(@"self.view==%@",self.view);
-    NSLog(@"self.view==%@",self.leftView);
-    NSLog(@"self.view==%@",self.rightView);
-  
-    
 }
 
 
@@ -496,9 +502,7 @@
 
 
 - (IBAction)goBack:(UIBarButtonItem *)sender {
-    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    UISplitViewController *splitView = [self.storyboard instantiateViewControllerWithIdentifier:@"splitView"];
-    appDelegate.window.rootViewController = splitView;
+    [_myRootViewController dismissModalViewControllerAnimated:YES];
 }
 
 

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "RestKit/RestKit.h"
-//#import <Restkit/Restkit.h>
 #import "exproposSignout.h"
 
 @interface exproposMainViewController : UIViewController <UISplitViewControllerDelegate,RKRequestDelegate>

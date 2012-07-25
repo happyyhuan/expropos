@@ -10,17 +10,21 @@
 #import "exproposMainViewController.h"
 #import "exproposShowDealsSelectedViewController.h"
 #import "exproposMemberRegisterController.h"
+#import "exproposShowDealOperateViewController.h"
 
 
-@class exproposDealOperateViewController;
 @interface exproposMenuViewController : UITableViewController 
+//主窗台控制器
 @property (strong,nonatomic) exproposMainViewController *mainViewController;
+//菜单内容数组：@"消费", @"充值", @"积分", @"交易查询", @"会员开户"
 @property (strong,nonatomic) NSArray *menus;
+//交易查询控制器
 @property (strong,nonatomic) exproposShowDealsSelectedViewController *showDeal;
-@property (strong,nonatomic) exproposDealOperateViewController *dealoperate;
+
+//需要加入到主窗体的view的控制器数组
 @property (strong,nonatomic) NSMutableArray *controllers;
-
-
+//交易处理控制器
+@property (strong,nonatomic) exproposShowDealOperateViewController *dealOperate;
 
 @property (strong,nonatomic) exproposMemberRegisterController *memberRegister;
 @end

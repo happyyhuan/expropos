@@ -9,6 +9,7 @@
 #import "exproposMenuViewController.h"
 #import "exproposDealSelectedViewController.h"
 #import "exproposAppDelegate.h"
+#import "exproposShowDealOperateViewController.h"
 
 @interface exproposMenuViewController ()
 
@@ -18,9 +19,9 @@
 @synthesize menus = _menus;
 @synthesize mainViewController = _mainViewController;
 @synthesize showDeal   =  _showDeal;
-@synthesize dealoperate = _dealoperate;
 @synthesize controllers = _controllers;
 @synthesize memberRegister = _memberRegister;
+@synthesize dealOperate = _dealOperate;
 
 - (void)awakeFromNib
 {
@@ -40,10 +41,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //初始化菜单数组显示的内容
     self.menus = [NSArray arrayWithObjects:@"消费", @"充值", @"积分", @"交易查询", @"会员开户", nil];
-
+    //初始化主窗体控制器
     self.mainViewController = [self.splitViewController.viewControllers lastObject];
+    //初始化交易查询控制器
     _showDeal = [self.storyboard instantiateViewControllerWithIdentifier:@"showDeals"];
+     //初始化交易处理控制器
+     _dealOperate = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperateVersion2"];
+    //初始化需要加入到主窗体的view的控制器数组
     _controllers = [[NSMutableArray alloc]initWithCapacity:20];
     
     _memberRegister = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
@@ -54,8 +60,8 @@
 {
     [super viewDidUnload];
     _showDeal = nil;
-    _dealoperate = nil;
     _controllers = nil;
+    _dealOperate = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -100,24 +106,28 @@
     int row = indexPath.row;
     NSString *menu = [self.menus objectAtIndex:row];
     if([menu isEqualToString:@"交易查询"]){
+        //当切换到交易查询view之前，需要将原来主窗体上的view移出
         for(UIViewController *contro in _controllers){
             [contro.view removeFromSuperview];
         }
         [_controllers addObject:_showDeal];
+        //设置交易查询view，在主窗体上显示的frame
         _showDeal.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
+        //将主窗体对象传递给交易查询控制器的属性对象
         _showDeal.mainViewController = self.mainViewController;
         
         [self.mainViewController.view addSubview: _showDeal.view];
+        //如果是竖屏情况，将隐藏左侧菜单栏
         [self.mainViewController.masterPopoverController dismissPopoverAnimated:YES];
     }
     
     if([menu isEqualToString:@"消费"]){
-        exproposShowDealsSelectedViewController *dealOperate = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperateVersion2"];
-        exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        appDelegate.window.rootViewController = dealOperate;
-    }
-   
-
+        //如果是竖屏情况，将隐藏左侧菜单栏
+         [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
+        _dealOperate.myRootViewController = self.splitViewController;
+       [self.splitViewController presentModalViewController:_dealOperate animated:YES];
+           
+    }   
     
     if([menu isEqualToString:@"会员开户"]){
         for(UIViewController *contro in _controllers){
@@ -130,11 +140,11 @@
         [self.mainViewController.view addSubview: _memberRegister.view];
         [self.mainViewController.masterPopoverController dismissPopoverAnimated:YES];
         
-//        
-//        _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
-//        //_memberRegister.viewController = self.mainViewController;
-//        
-//        [self.mainViewController.view insertSubview:_memberRegister.view atIndex:0];
+        //        
+        //        _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
+        //        //_memberRegister.viewController = self.mainViewController;
+        //        
+        //        [self.mainViewController.view insertSubview:_memberRegister.view atIndex:0];
     }   
 }
 

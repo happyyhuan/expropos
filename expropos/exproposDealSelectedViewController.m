@@ -52,10 +52,12 @@
     }
     return self;
 }
+//交易更新成功后执行该方法
 -(void)didUpDataSuccess
 {
     [self searchInLoacl];
     _showDeals.data = _deals;
+    // 设置动画翻页效果
     [UIView beginAnimations:@"View Flip" context:nil];
     [UIView setAnimationDuration:2];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -71,17 +73,20 @@
     
     [UIView commitAnimations];
     [_showDeals.tableView reloadData];
+    //查询条件过滤弹出框消失
     [self.myPopover dismissPopoverAnimated:YES];
 }
 
-
+//交易查询，先查询本地，然后查询远端服务器
 -(void)dealSelect
 {
     self.showDeals.dealNum = 0;
     self.showDeals.pageNum = 0;
     self.showDeals.scrollUpdateFlag = YES;
+    //本地查询
     [self searchInLoacl];
     
+    //本地查询未果，远端查询
     if([_deals count]==0){
         _update = [[exproposUpdateDeals alloc]init];
         _update.reserver = self;
@@ -89,7 +94,7 @@
         self.showDeals.pageNum = 1;
         [_update upDateDealStart:0 end:100 bt:self.beginDate et:self.endDate];
         
-    }else {
+    }else {//本地查询有结果
         _showDeals.data = _deals;
         [UIView beginAnimations:@"View Flip" context:nil];
         [UIView setAnimationDuration:2];
@@ -112,7 +117,7 @@
 }
 
 
-
+//安照查询条件进行本地查询
 -(void) searchInLoacl
 {
     NSFetchRequest *request = [ExproDeal fetchRequest];
@@ -176,7 +181,7 @@
      request.predicate = predicate;
     [_deals removeAllObjects];
     [_deals addObjectsFromArray:[ExproDeal objectsWithFetchRequest:request]];
-    //return _deals;
+    
 }
 
 
@@ -188,6 +193,7 @@
     self.navigationItem.rightBarButtonItem = rightItem;
     NSTimeInterval secondsPerDay = 24 * 60 * 60 - 60; 
     _beginDate = [[NSDate date] beginningOfDay];
+    //获取时间比真实时间少了8小时，所有手动加上8小时
     _beginDate = [[NSDate alloc]initWithTimeInterval:8*60*60 sinceDate:_beginDate];
     
     _endDate = [[NSDate alloc] initWithTimeInterval:secondsPerDay sinceDate:_beginDate];
@@ -389,16 +395,6 @@
 
 -(NSString *)dateToString:(NSDate*)date
 {
-    
-   /* //实例化一个NSDateFormatter对象
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //设定时间格式,这里可以设置成自己需要的格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    //用[NSDate date]可以获取系统当前时间
-    NSString *dateStr = [dateFormatter stringFromDate:date];
-    //输出格式为：2010-10-27
-    return dateStr;*/
-    NSLog(@"%@",[date description]);
     NSString *dateStr = [date description];
     dateStr = [dateStr substringToIndex:10];
     return dateStr;
@@ -454,7 +450,7 @@
 
 -(void)showOrderNumPopover:(UITableViewCell *)cell {
     //弹出窗口大小，如果屏幕画不下，会挤小的。这个值默认是320x1100
-    _popover.popoverContentSize = CGSizeMake(300, 400);
+    _popover.popoverContentSize = CGSizeMake(300, 200);
     //popoverRect的中心点是用来画箭头的，如果中心点如果出了屏幕，系统会优化到窗口边缘
     CGRect popoverRect = CGRectMake(cell.bounds.origin.x + cell.bounds.size.width - 100, cell.bounds.origin.y,27, 32);
     [_popover presentPopoverFromRect:popoverRect
