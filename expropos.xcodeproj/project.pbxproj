@@ -45,6 +45,7 @@
 		5F8C150915A5766200FA076D /* exproposDealOperate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C150815A5766200FA076D /* exproposDealOperate.m */; };
 		5F8DE18B15A13FFA00CBEB69 /* exproposSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE18A15A13FFA00CBEB69 /* exproposSign.m */; };
 		5F91790215A2D19600B8E100 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		5F94573B15C0EA2500BA4064 /* 123.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F94573A15C0EA2500BA4064 /* 123.jpg */; };
 		5F95C8E815A82C1F006AB1F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914BB29515746A6B009FFBAE /* Foundation.framework */; };
 		5F95E24415AAD4B20091144D /* descending.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F95E24315AAD4B20091144D /* descending.png */; };
 		5F95E24615AAD4B20091144D /* unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F95E24515AAD4B20091144D /* unselected.png */; };
@@ -209,6 +210,7 @@
 		5F8C150715A5766200FA076D /* exproposDealOperate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposDealOperate.h; sourceTree = "<group>"; };
 		5F8C150815A5766200FA076D /* exproposDealOperate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposDealOperate.m; sourceTree = "<group>"; };
 		5F8DE18A15A13FFA00CBEB69 /* exproposSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposSign.m; sourceTree = "<group>"; };
+		5F94573A15C0EA2500BA4064 /* 123.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 123.jpg; sourceTree = "<group>"; };
 		5F95E24315AAD4B20091144D /* descending.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = descending.png; sourceTree = "<group>"; };
 		5F95E24515AAD4B20091144D /* unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unselected.png; sourceTree = "<group>"; };
 		5F95E24715AAD4B20091144D /* TriangleSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TriangleSmall.png; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 		427FE46115A5870300492804 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				5F94573A15C0EA2500BA4064 /* 123.jpg */,
 				5FF8BA2415B52FAA005A0E1F /* delete.png */,
 				5F95E24715AAD4B20091144D /* TriangleSmall.png */,
 				5F95E24515AAD4B20091144D /* unselected.png */,
@@ -814,6 +817,7 @@
 				5F96FE4815B82D8D00A8731B /* zbar-samples.png in Resources */,
 				5F983DDB15B8E632008662D8 /* scan.wav in Resources */,
 				42B0D00115BCF31F000F5401 /* BCrypt-java-copyright.txt in Resources */,
+				5F94573B15C0EA2500BA4064 /* 123.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

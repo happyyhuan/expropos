@@ -57,6 +57,7 @@
 @synthesize operatingDeals = _operatingDeals;
 @synthesize state = _state;
 @synthesize myRootViewController = _myRootViewController;
+@synthesize topView = _topView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -76,6 +77,34 @@
     NSLog(@"begin viewDidLoad");
     [super viewDidLoad];
     //为view上的各个子视图加边框
+    _topView.layer.cornerRadius = 5.0;
+    _topView.layer.masksToBounds = YES;
+	_topView.layer.borderWidth = 3;
+    _topView.layer.borderColor = [[UIColor grayColor] CGColor];
+    UIImageView *toolBarBack = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1024, 60)];
+    toolBarBack.image = [UIImage imageNamed:@"3.jpg"];
+    UIImageView *logoImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150, 60)];
+    logoImage.image = [UIImage imageNamed:@"123.jpg"];
+    [toolBarBack addSubview:logoImage];
+    [_topView addSubview:toolBarBack];
+    
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(200, 0, 200, 300)];
+//    label.alpha = 0.8;
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont systemFontOfSize:24];
+    label.textColor = [UIColor blueColor];
+    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSArray *members = [ExproMember findAll];
+    for(ExproMember *member in members){
+        if(member.user.gid == appDelegate.currentUser.gid){
+            label.text =[NSString stringWithFormat:@"%@ ----- %@", member.store.name,member.user.name];
+        }
+    }
+    
+    [toolBarBack addSubview:label];
+    
     _leftView.layer.cornerRadius = 10.0;
     _leftView.layer.masksToBounds = YES;
 	_leftView.layer.borderWidth = 3;
@@ -138,7 +167,7 @@
 {
     NSLog(@"begin viewWillAppear");
     [super viewWillAppear:animated];
-   
+    NSLog(@"%@",_keyBoardView);
     
     UISwipeGestureRecognizer *recognizer;    
     recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];    
@@ -176,7 +205,7 @@
     CGRect frame = _keyBoardView.frame;
     CGRect frame2 = _scan.view.frame;
     frame.origin.x -= 360; 
-    frame2.origin.x -= 360;
+    frame2.origin.x -= 365;
     [_keyBoardView setFrame:frame]; 
     [_scan.view setFrame:frame2];
     //动画结束 
@@ -270,6 +299,7 @@
     [self setAllGoodsAmounts:nil];
     [self setAllGoodsPayments:nil];
     [self setMyRootViewController:nil];
+    [self setTopView:nil];
     [super viewDidUnload];
     _leftView = nil;
     _rightView = nil;
@@ -634,6 +664,7 @@
     _deal.lid = [NSNumber numberWithInt:(dealGid+1)];
     [dic setValue:[NSNumber numberWithInt:(dealGid+1)] forKey:@"dealGid"];
     _deal.customer = _member;
+    _deal.store = 
     _deal.customerID = _member.gid;
     
     int i=0;

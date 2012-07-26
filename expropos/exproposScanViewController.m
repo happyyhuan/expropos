@@ -29,7 +29,7 @@
 
 	//set frame
 	UIView *barReaderView = [barReaderViewController view];
-    barReaderView.frame = CGRectMake(360+3 ,118, 350 ,562);
+    barReaderView.frame = CGRectMake(365+3 ,171, 350 ,509);
 	
 	//add overlay for barReaderView
 	ScannerOverlayView *overlay = [[ScannerOverlayView alloc] initWithFrame:[barReaderView bounds]];
@@ -137,7 +137,6 @@
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer{ 
      UIView *superView = self.view.superview;
     UIView *mineView = [superView viewWithTag:1];
-    NSLog(@"%@",superView);
    
     //开始动画 
     [UIView beginAnimations:nil context:nil];  
@@ -147,12 +146,13 @@
     CGRect frame = mineView.frame;
     CGRect frame2 = self.view.frame;
     frame.origin.x += 360; 
-    frame2.origin.x += 360;
+    frame2.origin.x += 365;
     [mineView setFrame:frame]; 
     [self.view setFrame:frame2];
     //动画结束 
     [UIView commitAnimations]; 
     [barReaderViewController.readerView stop];
+    _showDeal.goodsCode.text = @"";
 }
 
 - (void)viewDidUnload{
@@ -236,6 +236,7 @@
     
 	NSLog(@"%@",sym.data);
     NSString *code = sym.data;
+    _showDeal.goodsCode.text = code;
     NSSet *set = _merchant.goods;
     ExproGoods *getGoods = nil;
     for(ExproGoods *goods in set){
