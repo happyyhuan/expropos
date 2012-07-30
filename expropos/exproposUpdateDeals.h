@@ -18,4 +18,5 @@
 
 -(void)upDateDealStart:(int)start end:(int)end bt:(NSDate*)bt et:(NSDate*)et;
 -(void)updateDeal;
+-(void)dealQueryByDealID:(NSString *)dealID;
 @end

@@ -134,13 +134,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView
           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     //手指滑动出现按钮
-    return UITableViewCellEditingStyleDelete;
+    if([_multipleDelegate respondsToSelector:@selector(multipleTableView:editingStyleForRowAtIndexPath:)]){
+        return [_multipleDelegate multipleTableView:tableView editingStyleForRowAtIndexPath:indexPath];
+    }
+    return UITableViewCellEditingStyleNone;
 }
 -(NSString *)tableView:(UITableView *)tableView
 titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     //设置按钮的名称
     return @"删除";
 }
+
+
 -(BOOL)tableView:(UITableView *)tableView
 canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
@@ -159,7 +164,6 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath {
         [_multipleDelegate multipleTableViewScrollViewDidScroll:scrollView];
     }
 }
-
 
 
 

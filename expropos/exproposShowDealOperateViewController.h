@@ -31,7 +31,6 @@
 @property (strong, nonatomic) IBOutlet UIView *shouldGetMoneyView;
 @property (strong, nonatomic) IBOutlet UIView *amountView;
 @property (strong, nonatomic) IBOutlet ExproMultipleTableView *dealTableView;
-@property (strong, nonatomic) IBOutlet UIButton *memberSelectedButton;
 @property (strong, nonatomic) IBOutlet UIView *keyBoardView;
 @property (strong, nonatomic) IBOutlet UILabel *allGoodsAmounts;
 @property (strong, nonatomic) IBOutlet UILabel *allGoodsPayments;
@@ -39,7 +38,14 @@
 @property (strong, nonatomic) UISplitViewController *myRootViewController;
 @property (strong, nonatomic) IBOutlet UIView *topView;
 
+@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
+@property (strong, nonatomic) IBOutlet UIButton *goodsComeBackButton;
 
+
+
+- (IBAction)memberCreate:(UIButton *)sender;
+- (IBAction)goodsCommeBack:(UIButton *)sender;
+- (IBAction)dealQueryByDealID:(UIButton *)sender;
 - (IBAction)memberSelected:(UIButton *)sender;
 - (IBAction)goodsSelected:(id)sender;
 
@@ -64,7 +70,7 @@
 @property (nonatomic) BOOL isPopover;
 @property (strong,nonatomic) exproposGoodSelectedViewController *goodsSelected;
 @property (strong, nonatomic)  UINavigationController *nav;
-@property (nonatomic) NSInteger state;
+@property (nonatomic) NSInteger type;
 
 
 

@@ -26,9 +26,15 @@
 #import "exproposNumKeyboard.h"
 #import "exproposPayViewController.h"
 #import "exproposScanViewController.h"
+#import "exproposMemberShowInfoViewController.h"
+#import "exproposMemberRegisterController.h"
+#import "exproposDealQueryViewController.h"
 
 @interface exproposShowDealOperateViewController ()
-
+@property (nonatomic,strong) UIImageView  *toolbarView;
+@property (nonatomic,strong) exproposMemberShowInfoViewController *showMemberInfo;
+@property (nonatomic,strong) exproposMemberRegisterController *memberRegister;
+@property (nonatomic,strong) exproposDealQueryViewController  *dealQuery;
 @end
 
 @implementation exproposShowDealOperateViewController
@@ -38,7 +44,6 @@
 @synthesize shouldGetMoneyView = _shouldGetMoneyView;
 @synthesize amountView = _amountView;
 @synthesize dealTableView = _dealTableView;
-@synthesize memberSelectedButton = _memberSelectedButton;
 @synthesize keyBoardView = _keyBoardView;
 @synthesize allGoodsAmounts = _allGoodsAmounts;
 @synthesize allGoodsPayments = _allGoodsPayments;
@@ -55,9 +60,15 @@
 @synthesize goodsSelected = _goodsSelected;
 @synthesize nav = _nav;
 @synthesize operatingDeals = _operatingDeals;
-@synthesize state = _state;
+@synthesize type = _type;
 @synthesize myRootViewController = _myRootViewController;
 @synthesize topView = _topView;
+@synthesize statusLabel = _statusLabel;
+@synthesize goodsComeBackButton = _goodsComeBackButton;
+@synthesize toolbarView = _toolbarView;
+@synthesize showMemberInfo = _showMemberInfo;
+@synthesize memberRegister = _memberRegister;
+@synthesize dealQuery = _dealQuery;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,29 +92,51 @@
     _topView.layer.masksToBounds = YES;
 	_topView.layer.borderWidth = 3;
     _topView.layer.borderColor = [[UIColor grayColor] CGColor];
-    UIImageView *toolBarBack = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1024, 60)];
-    toolBarBack.image = [UIImage imageNamed:@"3.jpg"];
+    
+    _toolbarView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1024, 60)];
+    _toolbarView.image = [UIImage imageNamed:@"3.jpg"];
     UIImageView *logoImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150, 60)];
     logoImage.image = [UIImage imageNamed:@"123.jpg"];
-    [toolBarBack addSubview:logoImage];
-    [_topView addSubview:toolBarBack];
+     [_toolbarView addSubview:logoImage];
+    [_topView addSubview:_toolbarView];
+    
+    UILabel *myLabel = [[UILabel alloc]initWithFrame:CGRectMake(200, 0, 300, 60)];
+   exproposAppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
+    NSFetchRequest *request = [ExproMember fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"user.gid == %@",appdelegate.currentUser.gid];
+    ExproMember *m = [[ExproMember objectsWithFetchRequest:request] objectAtIndex:0];
+    myLabel.text = [NSString stringWithFormat:@"%@:%@",m.store.name,m.petName];
+    myLabel.backgroundColor = [UIColor clearColor];
+    myLabel.font = [UIFont systemFontOfSize:24];
+    myLabel.textAlignment = UITextAlignmentCenter;
+    myLabel.textColor = [UIColor blueColor];
+    [_toolbarView addSubview:myLabel];
+        
+    UIButton *myButton = [[UIButton alloc] init];
+    myButton.frame = CGRectMake(800, 10,  40, 40);
+    [myButton setBackgroundImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
+    [myButton addTarget:self action:@selector(moreMeberInfo:) forControlEvents:UIControlEventTouchUpInside];
+    myButton.hidden = YES;
+    myButton.tag = 119;
+    NSLog(@"myButton==%@",myButton);
+    [_topView addSubview:myButton];
     
     
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(200, 0, 200, 300)];
-//    label.alpha = 0.8;
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont systemFontOfSize:24];
-    label.textColor = [UIColor blueColor];
-    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    UIButton *goBack = [[UIButton alloc] init];
+    goBack.frame = CGRectMake(980, 10,  40, 40);
+    [goBack setBackgroundImage:[UIImage imageNamed:@"close@2x.png"] forState:UIControlStateNormal];
+    [goBack addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+    [_topView addSubview:goBack];
+     
     
-    NSArray *members = [ExproMember findAll];
-    for(ExproMember *member in members){
-        if(member.user.gid == appDelegate.currentUser.gid){
-            label.text =[NSString stringWithFormat:@"%@ ----- %@", member.store.name,member.user.name];
-        }
-    }
-    
-    [toolBarBack addSubview:label];
+    UILabel *myLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(600, 0, 300, 60)];
+    myLabel2.text = @"";
+    myLabel2.textColor = [UIColor blueColor];
+    myLabel2.font = [UIFont systemFontOfSize:15];
+    myLabel2.backgroundColor = [UIColor clearColor];
+    myLabel2.hidden = YES;
+    myLabel2.tag = 1;
+    [_toolbarView addSubview:myLabel2];
     
     _leftView.layer.cornerRadius = 10.0;
     _leftView.layer.masksToBounds = YES;
@@ -125,21 +158,23 @@
     _amountView.layer.borderWidth = 3;
     _amountView.layer.borderColor = [[UIColor whiteColor] CGColor];
     
-    _dealTableView.layer.cornerRadius = 10;
+    _dealTableView.layer.cornerRadius = 5;
     _dealTableView.layer.masksToBounds = YES;
     _dealTableView.layer.borderWidth = 3;
     _dealTableView.layer.borderColor = [[UIColor whiteColor] CGColor];
     
-    _memberSelectedButton.layer.cornerRadius = 10;
-    _memberSelectedButton.layer.masksToBounds = YES;
-    _memberSelectedButton.layer.borderWidth = 3;
-    _memberSelectedButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     
     _keyBoardView.layer.cornerRadius = 10;
     _keyBoardView.layer.masksToBounds = YES;
     _keyBoardView.layer.borderWidth = 3;
     _keyBoardView.layer.borderColor = [[UIColor whiteColor] CGColor];
 
+    _statusLabel.layer.cornerRadius = 5;
+    _statusLabel.layer.masksToBounds = YES;
+    _statusLabel.layer.borderWidth = 3;
+    _statusLabel.backgroundColor = [UIColor whiteColor];
+    _statusLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
+    
     
     _dealTableView.multipleDelegate = self;
     _dealTableView.multipleDataSource = self;
@@ -159,8 +194,44 @@
     _allGoodsAmounts.text = @"0";
     _allGoodsPayments.text = @"¥0";
     
-    _state = 1;
+    _type = 1;
     
+}
+-(void)moreMeberInfo:(id)sender
+{
+    if(!_showMemberInfo){
+        _showMemberInfo = [[exproposMemberShowInfoViewController alloc]init];
+    }
+    
+    _showMemberInfo.member = _member;
+    _showMemberInfo.modalPresentationStyle = UIModalPresentationFormSheet;
+    _showMemberInfo.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
+    [self presentModalViewController:_showMemberInfo animated:YES];
+    _showMemberInfo.view.superview.frame = CGRectMake(100,100, 680, 500);
+
+   
+    
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+    CGRect frame = CGRectMake(0, 0, 60, 60);
+    frame.origin.x = _showMemberInfo.view.frame.origin.x - 22;
+    frame.origin.y = _showMemberInfo.view.frame.origin.y -22;
+    button.frame = frame;
+    button.layer.shadowColor = [[UIColor blackColor] CGColor];
+    button.layer.shadowOffset = CGSizeMake(0,4);
+    button.layer.shadowOpacity = 0.3;
+    [button addTarget:self action:@selector(closeModalWindow:) forControlEvents:UIControlEventTouchDown];
+    [_showMemberInfo.view.superview addSubview:button];
+    
+    NSLog(@"%@",_showMemberInfo.parentViewController);
+   
+}
+
+
+-(void)closeModalWindow:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -290,7 +361,6 @@
     [self setShouldGetMoneyView:nil];
     [self setAmountView:nil];
     [self setDealTableView:nil];
-    [self setMemberSelectedButton:nil];
     [self setKeyBoardView:nil];
     
     [self setButtons:nil];
@@ -300,6 +370,8 @@
     [self setAllGoodsPayments:nil];
     [self setMyRootViewController:nil];
     [self setTopView:nil];
+    [self setStatusLabel:nil];
+    [self setGoodsComeBackButton:nil];
     [super viewDidUnload];
     _leftView = nil;
     _rightView = nil;
@@ -492,6 +564,85 @@
     return 44;
 }
 
+-(UITableViewCellEditingStyle)multipleTableView:(ExproMultipleTableView *)tableView
+                  editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+
+- (IBAction)memberCreate:(UIButton *)sender {
+    if(!_memberRegister){
+        _memberRegister = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
+    }
+    _memberRegister.modalPresentationStyle = UIModalPresentationFormSheet;
+    _memberRegister.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
+    [self presentModalViewController:_memberRegister animated:YES];
+    _memberRegister.view.superview.frame = CGRectMake(100,100, 680, 500);
+    
+    
+    
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+    CGRect frame = CGRectMake(0, 0, 60, 60);
+    frame.origin.x = _memberRegister.view.frame.origin.x - 22;
+    frame.origin.y = _memberRegister.view.frame.origin.y -22;
+    button.frame = frame;
+    button.layer.shadowColor = [[UIColor blackColor] CGColor];
+    button.layer.shadowOffset = CGSizeMake(0,4);
+    button.layer.shadowOpacity = 0.3;
+    [button addTarget:self action:@selector(closeModalWindow:) forControlEvents:UIControlEventTouchDown];
+    [_memberRegister.view.superview addSubview:button];
+    
+}
+
+- (IBAction)goodsCommeBack:(UIButton *)sender {
+    if(_mySelectedGoods.count>0){
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"友情提醒" message:@"本次交易还未处理完成，不支持此操作" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
+    if(_type ==1){
+        _statusLabel.text = @"   当前状态：商品退货";
+        _statusLabel.layer.borderColor = [[UIColor redColor]CGColor];
+        _statusLabel.textColor = [UIColor redColor];
+        _type =0;
+        [_goodsComeBackButton setTitle:@"商品销售" forState:UIControlStateNormal];
+    }else {
+        _statusLabel.text = @"   当前状态：商品销售";
+        _statusLabel.layer.borderColor = [[UIColor whiteColor]CGColor];
+        _statusLabel.textColor = [UIColor blackColor];
+        _type =1;
+       [_goodsComeBackButton setTitle:@"商品退货" forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)dealQueryByDealID:(UIButton *)sender {
+    if(!_dealQuery){
+        _dealQuery = [self.storyboard instantiateViewControllerWithIdentifier:@"dealQueryByDealID"];
+    }
+    _dealQuery.modalPresentationStyle = UIModalPresentationFormSheet;
+    _dealQuery.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
+    [self presentModalViewController:_dealQuery animated:YES];
+    _dealQuery.view.superview.frame = CGRectMake(60,100, 880, 450);
+
+
+
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+    CGRect frame = CGRectMake(0, 0, 60, 60);
+    frame.origin.x = _dealQuery.view.frame.origin.x - 22;
+    frame.origin.y = _dealQuery.view.frame.origin.y -22;
+    button.frame = frame;
+    button.layer.shadowColor = [[UIColor blackColor] CGColor];
+    button.layer.shadowOffset = CGSizeMake(0,4);
+    button.layer.shadowOpacity = 0.3;
+    [button addTarget:self action:@selector(closeModalWindow:) forControlEvents:UIControlEventTouchDown];
+    [_dealQuery.view.superview addSubview:button];
+}
+
 - (IBAction)memberSelected:(UIButton *)sender {
     UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"memberSelect"];
     _popover = [[UIPopoverController alloc] initWithContentViewController:nav];
@@ -555,16 +706,7 @@
     }
 }
 
-- (IBAction)stateChanged:(UISegmentedControl *)sender {
-    int index = sender.selectedSegmentIndex;
-    if(_mySelectedGoods.count!=0){
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"交易未完成，不能切换操作" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-        [alertView show];
-        sender.selectedSegmentIndex = 1-index;
-    }else {
-        _state = index;
-    }
-}
+
 
 -(void)amoutBegin:(id)sender
 {    
@@ -608,14 +750,27 @@
         allAmount +=amount;
         sumMoney += goods.price.doubleValue *amount;
     }
+    if(_type == 0){
+        sumMoney = -sumMoney;
+    }
     _allGoodsPayments.text = [NSString stringWithFormat:@"%g",sumMoney];
     _allGoodsAmounts.text = [NSString stringWithFormat:@"%i",allAmount];
     
     
     if(_member!= nil){
-        _memberSelectedButton.titleLabel.text =[NSString stringWithFormat:@" 会员:%@  %@",_member.user.cellphone,_member.user.petName];
+       
+        
+        UILabel *myLabel = (UILabel *)[_toolbarView viewWithTag:1];
+        myLabel.hidden = NO;
+        myLabel.text = [NSString stringWithFormat:@"会员：%@:%@",_member.user.cellphone, _member.petName];
+        
+        UIButton *button = (UIButton*) [_topView viewWithTag:119];
+        button.hidden = NO;
     }else {
-        _memberSelectedButton.titleLabel.text = @"请选择会员:";
+        UILabel *myLabel = (UILabel *)[_toolbarView viewWithTag:1];
+        myLabel.hidden = YES;
+        UIButton *button = (UIButton*) [_topView viewWithTag:119];
+        button.hidden = YES;
     }
 }
 
@@ -660,11 +815,10 @@
     }
     _deal.cash = [NSNumber numberWithDouble:sum];
     _deal.payment = [NSNumber numberWithDouble:sum];
-    _deal.type = [NSNumber numberWithInt:_state];
+    _deal.type = [NSNumber numberWithInt:_type];
     _deal.lid = [NSNumber numberWithInt:(dealGid+1)];
     [dic setValue:[NSNumber numberWithInt:(dealGid+1)] forKey:@"dealGid"];
     _deal.customer = _member;
-    _deal.store = 
     _deal.customerID = _member.gid;
     
     int i=0;

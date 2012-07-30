@@ -433,7 +433,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return ((interfaceOrientation ==UIDeviceOrientationLandscapeLeft)||(interfaceOrientation ==UIDeviceOrientationLandscapeRight));
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 -(void)didLoginSuccess

@@ -370,6 +370,8 @@ dispatch_release(downloadQueue);
     }
 }
 
+
+
 -(void)multipleTableViewScrollViewDidScroll:(UIScrollView *)scrollView
 {
     NSLog(@"%g*%g",scrollView.bounds.size.width,scrollView.bounds.size.height);
@@ -445,5 +447,6 @@ dispatch_release(downloadQueue);
     [_updateIcon stopAnimating];
     [self.tableView reloadData];
 }
+
 
 @end

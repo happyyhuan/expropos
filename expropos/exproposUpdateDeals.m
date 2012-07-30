@@ -44,5 +44,10 @@
     
 }
 
+-(void)dealQueryByDealID:(NSString *)dealID
+{
+    NSString *url = [NSString stringWithFormat:@"/deals/%i",dealID.intValue];
+    [self requestURL:url method:RKRequestMethodGET params:nil mapping:nil];
+}
 
 @end

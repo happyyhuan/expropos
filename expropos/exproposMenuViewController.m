@@ -126,7 +126,7 @@
          [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
         _dealOperate.myRootViewController = self.splitViewController;
        [self.splitViewController presentModalViewController:_dealOperate animated:YES];
-           
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }   
     
     if([menu isEqualToString:@"会员开户"]){
