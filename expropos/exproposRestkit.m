@@ -33,6 +33,7 @@
 
 + (void) objectMapWithManager:(RKObjectManager *)objectManager 
 {
+      RKManagedObjectMapping* goodsMapping = [RKManagedObjectMapping mappingForClass:[ExproGoods class] inManagedObjectStore:objectManager.objectStore];
     // Update date format so that we can parse Twitter dates properly
 	// Wed Sep 29 15:31:08 +0000 2010
 //    [RKObjectMapping addDefaultDateFormatterForString:@"E d MMM y HH:mm:ss Z" inTimeZone:nil];
@@ -62,13 +63,7 @@
     [goodsTypeMapping connectRelationship:@"parent" withObjectForPrimaryKeyAttribute:@"parentID"];
     [objectManager.mappingProvider setMapping:goodsTypeMapping forKeyPath:@"goods_type"];
     
-    RKManagedObjectMapping* goodsMapping = [RKManagedObjectMapping mappingForClass:[ExproGoods class] inManagedObjectStore:objectManager.objectStore];
-    goodsMapping.primaryKeyAttribute = @"gid";
-    [goodsMapping mapKeyPathsToAttributes:@"_id", @"gid", @"create_time", @"createTime", @"type_id", @"typeID", nil];
-    [goodsMapping mapAttributes:@"name", @"state", @"code", @"price", @"comment", nil];
-    [goodsMapping hasOne:@"type" withMapping:goodsTypeMapping];
-    [goodsMapping connectRelationship:@"type" withObjectForPrimaryKeyAttribute:@"typeID"];
-    [objectManager.mappingProvider setMapping:goodsMapping forKeyPath:@"goods"];
+   
 
 
 
@@ -124,7 +119,7 @@
     [merchantMapping mapAttributes:@"state", @"type", @"phone", nil];
     [merchantMapping mapKeyPath:@"store" toRelationship:@"stores" withMapping:storeMapping];
     [merchantMapping mapKeyPath:@"member" toRelationship:@"members" withMapping:memberMapping];
-    [merchantMapping mapKeyPath:@"goods" toRelationship:@"goods" withMapping:goodsMapping];
+ //   [merchantMapping mapKeyPath:@"goods" toRelationship:@"goods" withMapping:goodsMapping];
     [objectManager.mappingProvider setMapping:merchantMapping forKeyPath:@"sync_merchant"];
 
     
@@ -141,8 +136,6 @@
     [objectManager.mappingProvider setMapping:dealItemMapping forKeyPath:@"deal_item"];
     //    [dealItemMapping mapKeyPath:@"dealID" toRelationship:@"deal" withMapping:dealMapping serialize:NO];
     
-    
-    
 
     RKManagedObjectMapping *dealMapping = [RKManagedObjectMapping mappingForClass:[ExproDeal class] inManagedObjectStore:objectManager.objectStore];
     dealMapping.primaryKeyAttribute = @"gid";
@@ -158,7 +151,16 @@
     [dealMapping mapKeyPath:@"deal_item" toRelationship:@"items" withMapping:dealItemMapping serialize:NO];
     [objectManager.mappingProvider setMapping:dealMapping forKeyPath:@"deal"];
         
-    
+  
+    goodsMapping.primaryKeyAttribute = @"gid";
+    [goodsMapping mapKeyPathsToAttributes:@"_id", @"gid", @"create_time", @"createTime", @"type_id", @"typeID", nil];
+    [goodsMapping mapAttributes:@"name", @"state", @"code", @"price", @"comment", nil];
+   // [goodsMapping mapKeyPath:@"merchantgoods" toRelationship:@"merchants" withMapping:merchantMapping serialize:NO];
+    [goodsMapping mapKeyPath:@"merchant" toRelationship:@"merchants" withMapping:merchantMapping serialize:NO];
+
+     [goodsMapping hasOne:@"type" withMapping:goodsTypeMapping];
+     [goodsMapping connectRelationship:@"type" withObjectForPrimaryKeyAttribute:@"typeID"];
+     [objectManager.mappingProvider setMapping:goodsMapping forKeyPath:@"goods"];
     
     RKManagedObjectMapping *callbackDealItemMapping = [RKManagedObjectMapping mappingForClass:[ExproDealItem class] inManagedObjectStore:objectManager.objectStore];
     callbackDealItemMapping.primaryKeyAttribute = @"lid";

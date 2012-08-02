@@ -257,8 +257,8 @@
         }
     }
     
-
-
+    
+    
     if([self.viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
         exproposShowDealOperateViewController *dealOperate = (exproposShowDealOperateViewController *)self.viewController;
         
