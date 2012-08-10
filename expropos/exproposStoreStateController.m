@@ -6,11 +6,12 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "exproposPrivacyController.h"
+#import "exproposStoreStateController.h"
 
 
 
-@implementation exproposPrivacyController
+@implementation exproposStoreStateController
+
 @synthesize viewController = _viewController;
 @synthesize levelItem = _levelItem;
 
@@ -26,8 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _levelItem = [NSArray arrayWithObjects:@"不开放",@"基本信息开放",@"完全开放", nil];
-    self.navigationItem.title = @"选择资料开放权限";
+    _levelItem = [NSArray arrayWithObjects:@"正常",@"封闭",@"公开",@"不公开", nil];
+    self.navigationItem.title = @"选择门店状态";
     UITableView* tableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     self.tableView = tableview;
     self.contentSizeForViewInPopover = CGSizeMake(300, 550);
@@ -112,17 +113,9 @@
     }
     [self.viewController.privacyItem removeAllObjects];
     [self.viewController.privacyItem addObject:[NSNumber numberWithInt:indexPath.row]];
-     cell0.accessoryType = UITableViewCellAccessoryNone;
-     cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//    if( [self.viewController.privacyItem containsObject:[NSNumber numberWithInt:indexPath.row]] ){
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-//        [self.viewController.privacyItem removeObject:[NSNumber numberWithInt:indexPath.row]];
-//    }else {
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//        [self.viewController.privacyItem addObject:[NSNumber numberWithInt:indexPath.row]];
-//        cell0.accessoryType = UITableViewCellAccessoryNone;
-//    }
-    [self.viewController.tableView reloadData];
+    cell0.accessoryType = UITableViewCellAccessoryNone;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+       [self.viewController.tableView reloadData];
     [self viewDidLoad];
 }
 

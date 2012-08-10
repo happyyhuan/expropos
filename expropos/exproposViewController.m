@@ -116,7 +116,18 @@
 - (void) signinSucceed:(id)object {
     
     NSDictionary *user = (NSDictionary *)object;
-    NSLog(@"signin user:%@, sex:%@", [user objectForKey:@"name"], [user objectForKey:@"sex"]);   
+    
+    NSDictionary *role = (NSDictionary *)[user objectForKey:@"role"];
+    
+    NSLog(@"signin user:%@, roleId:%@", [user objectForKey:@"name"], [user objectForKey:@"role"]);   
+    NSLog(@"signin roleid:%@", [role objectForKey:@"gid"]);   
+
+    NSString *roleid = [role objectForKey:@"gid"]; 
+     NSLog(@"signin roleid:%@", roleid);
+    
+    
+    
+    
     exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
     
     //登录成功后保存登录用户历史信息
@@ -156,8 +167,9 @@
     [manager.objectStore save:nil];
     
     appDelegate.currentUser = signUser;
+    
     [appDelegate.sync syncStore:[NSNumber numberWithInt:15]];
-    [self didLoginSuccess];
+    [self didLoginSuccess:roleid];
 }
 
 - (void) signinFailed:(id)object {
@@ -180,6 +192,7 @@
             isExis=YES;
         } 
         NSString *salt = [user.password substringToIndex:29];
+        NSLog(@"%@",user.password);
         NSString *hashedPassword = [JFBCrypt hashPassword: password withSalt: salt];
         if ([user.password isEqualToString:hashedPassword])
         {
@@ -188,6 +201,8 @@
             _passwordField.text=nil;  
         }
     }
+    [self signinSucceed:object];
+
 }
 
 - (void)viewDidLoad
@@ -338,8 +353,8 @@
 //	}
 	minMoveUpDeltaY = 0;
 	
-	exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-	CGRect textFieldOriginFrameOnWindow = [self.view convertRect:self.loginview.frame toView:appDelegate.window];
+	//exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	//CGRect textFieldOriginFrameOnWindow = [self.view convertRect:self.loginview.frame toView:appDelegate.window];
     //	(UITextField在最初位置时的y) + (UITextField的height) - (键盘出现后的y) > 0
     if (keyboardFrame.size.width < keyboardFrame.size.height) 
     {
@@ -349,9 +364,10 @@
 
         }
         else {
-            minMoveUpDeltaY = 300;        }
+            minMoveUpDeltaY = 300;       
+        }
         
-        NSLog(@"重新计算之后minMoveUpDeltaY = %f", minMoveUpDeltaY);
+        
         if (minMoveUpDeltaY > 0) {
             return YES;
         }
@@ -433,19 +449,26 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return ((interfaceOrientation ==UIDeviceOrientationLandscapeLeft)||(interfaceOrientation ==UIDeviceOrientationLandscapeRight));
 }
 
--(void)didLoginSuccess
+-(void)didLoginSuccess:(NSString *)roleId
 {
-    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    UISplitViewController *splitView = [self.storyboard instantiateViewControllerWithIdentifier:@"splitView"];
-    appDelegate.window.rootViewController = splitView;
     
+    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    if ([roleId intValue] == 2)
+    {
+        UIViewController  *dealView = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperateVersion2"];
+          appDelegate.window.rootViewController = dealView;                     
+    }
+    else {
+         UISplitViewController *splitView = [self.storyboard instantiateViewControllerWithIdentifier:@"splitView"];
+         appDelegate.window.rootViewController = splitView;
+    }    
 }
 -(NSArray *)loadSinginUser
 {    
-    RKObjectManager *manager = [RKObjectManager sharedManager];
+    //RKObjectManager *manager = [RKObjectManager sharedManager];
     
     //查找是否存在user用户
     NSFetchRequest *request = [ExproSignHistory fetchRequest];

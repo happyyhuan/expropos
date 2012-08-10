@@ -15,7 +15,9 @@
 - (id)init {
     self = [super init];
     if (self) {
+        [self addCode:200 info:NSLocalizedString(@"modifyOK", nil) alert:NO succeed:YES];
         [self addCode:201 info:NSLocalizedString(@"registerOK", nil) alert:NO succeed:YES];
+        [self addCode:202 info:NSLocalizedString(@"deleteOK", nil) alert:NO succeed:YES];
         [self addCode:400 info:NSLocalizedString(@"badRequset", nil) alert:YES succeed:NO];
         [self addCode:404 info:NSLocalizedString(@"notAcceptable", nil) alert:YES succeed:NO];
         self.succeedTitle = NSLocalizedString(@"LoginSucceed", nil);
@@ -24,6 +26,8 @@
     }
     return self;
 }
+
+
 
 - (void)registr:(NSString *)cellphone name:(NSString *)name petName:(NSString *)petName 
           email:(NSString *)email idCard:(NSString *)idCard comment:(NSString *)comment
@@ -52,10 +56,7 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
         user = (ExproUser *)[deals objectAtIndex:0];
         isExis=YES;
     }
-    
-    
-    //RKObjectMapping *signinMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-//    RKManagedObjectMapping *signinMapping = [RKObjectMapping mappingForClass: [ExproMember class]];
+
     NSDictionary *params;
     if (isExis)
     {
@@ -92,11 +93,73 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
                   nil];
 
     }
-    [self requestURL:@"/member" method:RKRequestMethodPOST params:params mapping:nil];
-    
-
-    
+    [self requestURL:@"/member" method:RKRequestMethodPOST params:params mapping:nil];    
 }
+
+
+- (void)modify:(NSString *)memId cellPhone:(NSString *)cellphone name:(NSString *)name petName:(NSString *)petName 
+         email:(NSString *)email idCard:(NSString *)idCard comment:(NSString *)comment
+           sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(NSDate *)dueTime
+         birth:(NSString *)birthDate  memPetName:(NSString *)memPetName
+{
+    //查找是否存在会员用户
+    NSFetchRequest *request = [ExproMember fetchRequest];
+    NSPredicate *predicate = nil;
+    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(gid=%@)" ];
+    
+    NSMutableArray *userparams = [[NSMutableArray alloc]initWithObjects:memId, nil];
+    
+    predicate = [NSPredicate predicateWithFormat:str argumentArray:userparams];
+    
+    NSLog(@"%@",predicate);
+    
+    request.predicate = predicate;
+    NSArray *deals = [ExproMember objectsWithFetchRequest:request];
+    ExproMember *member = nil;
+    BOOL isExis=NO;
+    if (deals.count)
+    {
+        member = (ExproMember *)[deals objectAtIndex:0];
+        isExis=YES;
+    }
+    member.petName = memPetName;
+    member.dueTime = dueTime;
+    member.point = [NSNumber numberWithDouble:[point doubleValue]];
+    member.savings = [NSNumber numberWithDouble:[savings doubleValue]];
+    member.comment = comment;
+    [[RKObjectManager sharedManager].objectStore save:nil];
+    
+    NSDictionary *params;
+    if (isExis)
+    {
+        NSLog(@"mempetName %@",memPetName);
+        NSLog(@"privacy%@",predicate);
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                  member.gid,@"_id",
+                  memPetName,@"pet_name",       
+                  member.user.cellphone,@"cellphone",
+                  @"1",@"role_id",
+                  @"1",@"state",
+                  member.user.sex.stringValue,@"sex",
+                  [self dateToString:member.user.birthday],@"birthday",
+                  [self dateToString:dueTime],@"due_time",
+                  member.user.gid.stringValue,@"user_id",
+                  @"0",@"privacy",
+                  point,@"point",
+                  savings,@"savings",
+                  comment,@"comment",
+                  nil];
+    }
+    [self requestURL:@"/member" method:RKRequestMethodPUT params:params mapping:nil];    
+}
+
+- (void)delete:(NSString *)memId
+{
+     //NSString *url = [NSString stringWithFormat:@"/store/%i",storeId];
+       NSString *url = [NSString stringWithFormat:@"/member/%i",memId];
+      [self requestURL:url method:RKRequestMethodDELETE params:nil mapping:nil];  
+}
+
 
 
 -(NSString *)dateToString:(NSDate *)date

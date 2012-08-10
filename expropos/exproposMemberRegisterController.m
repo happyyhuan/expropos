@@ -36,6 +36,8 @@
 @synthesize birth =_birth;
 @synthesize petName= _petName;
 @synthesize telphone =_telphone;
+@synthesize registerButton = _registerButton;
+@synthesize cancelButton = _cancelButton;
 @synthesize levelItem=_levelItem;
 @synthesize idCard =_idCard;
 @synthesize email =_email;
@@ -46,8 +48,9 @@
 @synthesize registr =_registr;
 @synthesize validate=_validate;
 @synthesize status=_status;
-@synthesize tableView=_tableView;
+@synthesize tableView = _tableView;
 
+@synthesize exproMember =_exproMember;
 @synthesize memPetName=_memPetName;
 @synthesize savings=_savings;
 @synthesize createTime=_createTime;
@@ -64,7 +67,7 @@
 @synthesize keyboardFrame;
 @synthesize isSwitchedTextField;
 @synthesize canUserSeeKeyboard;
-
+BOOL isModify = NO;
 
 
 
@@ -82,40 +85,57 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _telphone = @"";
-    _name = @"";
-    _petName = @"";
-    _idCard =@"";
-    _email = @"";
-    _comment =@"";
-    _levelItem = [[NSMutableArray alloc] initWithCapacity:20];
-    _birth = [NSDate date];
-    _savings=@"";
-    _createTime =[NSDate date];
-    _dueTime = [NSDate date];
-    _privacyItem = [[NSMutableArray alloc] initWithCapacity:20];
-    _dateSel = @"";
-    _sex =@"0";
-    _memPetName=@"";
+    if ([self exproMember])
+    {
+        isModify = YES;
+        //[self registerButton].titleLabel.text = @"修改";
+        [self.registerButton setTitle:@"修改" forState:UIControlStateNormal];
+        self.telphone = self.exproMember.user.cellphone;
+        self.point = self.exproMember.point.stringValue;
+        self.savings = self.exproMember.savings.stringValue;
+        self.dueTime = self.exproMember.dueTime;
+        self.memPetName = self.exproMember.petName;
+        
+        [self.privacyItem removeAllObjects];  
+
+    }
+    else {
+         isModify = NO;
+        _telphone = @"";
+        _name = @"";
+        _petName = @"";
+        _idCard =@"";
+        _email = @"";
+        _comment =@"";
+        _levelItem = [[NSMutableArray alloc] initWithCapacity:20];
+        _birth = [NSDate date];
+        _savings=@"";
+        _createTime =[NSDate date];
+        _dueTime = [NSDate date];
+        _privacyItem = [[NSMutableArray alloc] initWithCapacity:20];
+        _dateSel = @"";
+        _sex =@"0";
+        _memPetName=@"";
+
+    }
     
+    
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
     minMoveUpDeltaY = 0;
 	keyboardFrame = CGRectZero;
 	isSwitchedTextField = NO;
 	canUserSeeKeyboard = NO;
 	[self registerKeyboardNotifications];
-    
-    // 点击屏幕中输入框之外的地方，可隐藏键盘
-//	tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
-//	[self.view addGestureRecognizer:tapGesture];
-    
-    
-    
-	// Do any additional setup after loading the view.
 }
 
 
 - (void)viewDidUnload
 {
+    isModify = NO;
+    [self setRegisterButton:nil];
+    [self setCancelButton:nil];
+    [self setTableView:nil];
     [super viewDidUnload];
     _telphone = nil;
     _name = nil;
@@ -138,6 +158,99 @@
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[notificationCenter addObserver:self selector:@selector(handleKeyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 	[notificationCenter addObserver:self selector:@selector(handleKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+}
+
+- (IBAction)cancelAction:(id)sender {
+     [self.viewController dismissModalViewControllerAnimated:YES];
+}
+
+
+
+- (IBAction)registerAction:(id)sender {
+    if (!isModify)
+    {
+        if (200 == self.status.intValue)
+        {
+            NSString *warning = nil;
+        
+            if (self.name.length == 0 ) {
+                warning = NSLocalizedString(@"请输入姓名", nil);
+            }
+            if (self.memPetName.length == 0 ) {
+                warning = NSLocalizedString(@"请输入商户会员昵称", nil);
+            }
+        
+            if (warning) 
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                            message:warning 
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                                  otherButtonTitles:nil];
+                [alert show];
+            
+            }
+            else
+            {
+                self.registr = [[exproposRegistr alloc]init];
+                _registr.reserver = self;
+                _registr.succeedCallBack = @selector(registrSucceed:);            
+                [_registr registr:self.telphone name:self.name petName:self.petName email:self.email
+                       idCard:self.idCard comment:self.comment  sex:self.sex  
+                       saving:self.savings point:self.point dueTime:[self dateToString:self.dueTime]
+                        birth:[self dateToString:self.birth]
+                   memPetName:self.memPetName];
+            }
+        }
+        else if (202 == self.status.intValue)//关联用户到商户
+        {
+            NSString *warning = nil;
+        
+        
+            if (self.memPetName.length == 0 ) {
+                warning = NSLocalizedString(@"请输入商户会员昵称", nil);
+            }
+        
+            if (warning) 
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                            message:warning 
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                                  otherButtonTitles:nil];
+                [alert show];
+            }
+            else 
+            {
+                self.registr = [[exproposRegistr alloc]init];
+                _registr.reserver = self;
+                _registr.succeedCallBack = @selector(registrSucceed:);
+                
+                [_registr registr:self.telphone name:self.name petName:self.petName email:self.email
+                       idCard:self.idCard comment:self.comment  sex:self.sex  
+                       saving:self.savings point:self.point dueTime:[self dateToString:self.dueTime]
+                        birth:[self dateToString:self.birth]
+                   memPetName:self.memPetName];
+            }
+        }
+    }
+    else {  //保存修改的信息
+        self.registr = [[exproposRegistr alloc]init];
+        _registr.reserver = self;
+        _registr.succeedCallBack = @selector(modifySucceed:);
+         _registr.failedCallBack = @selector(modifyFailed:);
+        
+        NSLog(@"MEMBER ID ,%i",self.exproMember.gid.intValue);
+        NSLog(@"MEMBER ID ,%@",self.exproMember.gid.stringValue);
+        [_registr modify:self.exproMember.gid.stringValue cellPhone:self.telphone name:self.name petName:self.petName email:self.email
+                   idCard:self.idCard comment:self.comment  sex:self.sex  
+                   saving:self.savings point:self.point dueTime:self.dueTime
+                    birth:[self dateToString:self.birth]
+               memPetName:self.memPetName];
+        
+        
+        //[self.viewController dismissModalViewControllerAnimated:YES];
+    }
 }
 
 
@@ -268,7 +381,7 @@
 
 -(void)registr:(UIBarButtonItem *)sender
 {
-    if (202 == self.status.intValue)
+    if (200 == self.status.intValue)
     {
         NSString *warning = nil;
         
@@ -301,7 +414,7 @@
                    memPetName:self.memPetName];
         }
     }
-    else if (404 == self.status.intValue)//关联用户到商户
+    else if (202 == self.status.intValue)//关联用户到商户
     {
         NSString *warning = nil;
         
@@ -330,66 +443,7 @@
                         birth:[self dateToString:self.birth]
                    memPetName:self.memPetName];
         }
-
-       
     }
-}
-
-- (void) registrSucceed:(id)object {
-    
-    //    ExproMember *member = object;
-    //    int64_t gid = member.gid.unsignedLongLongValue;
-    //    NSLog(@"id:%qu ", member.gid.unsignedLongLongValue);
-    //    
-    //    if (gid) {
-    //        ExproMember *result = [ExproMember objectWithPredicate:[NSPredicate predicateWithFormat:@"gid=%qu",gid]];
-    //        if (result) {
-    //            NSLog(@"%@",result.petName);
-    //            ExproUser *user = result.user;
-    //            if (user) {
-    //                NSLog(@"%@",user.cellphone);
-    //            }
-    //            else {
-    //                NSLog(@"No user");
-    //            }
-    //        }
-    //        else {
-    //            NSLog(@"not found");
-    //        }
-    // 
-    //    }
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
-                                                    message:@"用户注册成功" 
-                                                   delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                          otherButtonTitles:nil];
-    
-    [alert show];    
-    self.telphone = nil;
-    self.name = nil;
-    self.petName = nil;
-    self.email = nil;
-    self.idCard = nil;
-    self.comment =nil;
-    self.savings =nil;
-    self.point =nil;
-    self.dueTime=[NSDate date];
-    self.birth=[NSDate date];
-    self.privacyItem=nil;
-    self.memPetName = nil;
-    [self.tableView reloadData];
-    
-    //[super viewWillDisappear:animated];
-    NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
-    NSMutableArray *removeItems = [NSMutableArray arrayWithCapacity:10];
-    for(UIBarButtonItem *item in items){
-        if([item.title isEqualToString:@"注册"]){
-            [removeItems addObject: item]; 
-        }   
-    }
-    [items removeObjectsInArray:removeItems];
-    self.mainViewController.menuTool.items = items;
 }
 
 
@@ -403,11 +457,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (202 == self.status.intValue )
+    if (200 == self.status.intValue )
     {
         return  3 ;
     }
-    else if (404 == self.status.intValue || 405 == self.status.intValue){
+    else if (202 == self.status.intValue || 406 == self.status.intValue || isModify){
         return 2;
     }
     else {
@@ -418,7 +472,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    if (202 == self.status.intValue)
+    if (200 == self.status.intValue)
     {
         if(section == 0){
             return 1;
@@ -445,27 +499,16 @@
     static NSString *CellIdentifier = @"cellIndentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    //if(cell == nil){
     cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-    //}
-    if(indexPath.section ==0 && indexPath.row == 0){
+    
+    if(indexPath.section == 0 && indexPath.row == 0){
         
         UITextField *telField = [[UITextField alloc]initWithFrame:CGRectMake(300, 10, 200, 25)];
         [cell addSubview:telField];
         
         [telField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"手机", nil);  
-        
-//        nextButton = [[UIButton alloc]initWithFrame:CGRectMake(600, 10, 50, 25)];
-//        [nextButton setTitle:@"下一步" forState:UIControlStateNormal]; 
-//        [nextButton setBackgroundColor:[UIColor grayColor]];
-//        [nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
-//        [nextButton setFont:[UIFont systemFontOfSize:12]]; 
-//        if (self.name.length == 0)
-//        { 
-//            [nextButton setHidden:NO];
-//        }
-//        [cell addSubview:nextButton];
+
         [telField setBackgroundColor:[UIColor whiteColor]];
         telField.borderStyle = UITextBorderStyleRoundedRect;
         telField.textAlignment = UITextAlignmentLeft;
@@ -477,8 +520,7 @@
     }
     else if( indexPath.section == 1 )
     {
-        
-        if (202 == self.status.intValue)
+        if (200 == self.status.intValue)
         {
             if (indexPath.row == 0)
             {
@@ -518,7 +560,6 @@
                 petFieldField.delegate = self;
                 petFieldField.keyboardType = UIKeyboardTypeDefault;
                 [petFieldField addTarget:self action:@selector(saveFromLastNameField:) forControlEvents:UIControlEventEditingChanged];
-                
             }
             if (indexPath.row == 2)
             {
@@ -527,8 +568,7 @@
                     cell.detailTextLabel.text = @"今天";
                 }else {
                     cell.detailTextLabel.text = [self dateToString:self.birth];
-                }    
-                
+                } 
             }
             if (indexPath.row == 3)
             {
@@ -655,12 +695,22 @@
                 if(self.privacyItem.count == 0){
                     cell.detailTextLabel.text= @"公开";
                 }else {
-                    NSMutableString *message = [[NSMutableString alloc]init];
-                    NSArray *dealItemTitles = [NSArray arrayWithObjects:@"完全开放",@"基本信息开放",@"不开放", nil];
-                    for(NSNumber *i in self.privacyItem){
-                        [message appendFormat:@"%@,",[dealItemTitles objectAtIndex:i.intValue]];
+                    //                    NSMutableString *message = [[NSMutableString alloc]init];
+                    //NSArray *dealItemTitles = [NSArray arrayWithObjects:@"完全开放",@"基本信息开放",, nil];
+                    //0：不开放，1：基本信息开放，8:完全开放。
+                    
+                    if ([@"0"  isEqualToString:[self.privacyItem objectAtIndex:0]]){
+                        cell.detailTextLabel.text = @"不开放";
                     }
-                    cell.detailTextLabel.text = [message substringToIndex:(message.length-1)];
+                    else if([@"1"  isEqualToString:[self.privacyItem objectAtIndex:0]])
+                    {
+                        cell.detailTextLabel.text = @"基本信息开放";
+                    }
+                    else
+                    {
+                        cell.detailTextLabel.text = @"完全开放";
+                    }
+
                 }
             }
             else if (indexPath.row == 4)
@@ -732,12 +782,22 @@
             if(self.privacyItem.count == 0){
                 cell.detailTextLabel.text= @"公开";
             }else {
-                NSMutableString *message = [[NSMutableString alloc]init];
-                NSArray *dealItemTitles = [NSArray arrayWithObjects:@"完全开放",@"基本信息开放",@"不开放", nil];
-                for(NSNumber *i in self.privacyItem){
-                    [message appendFormat:@"%@,",[dealItemTitles objectAtIndex:i.intValue]];
+                //NSMutableString *message = [[NSMutableString alloc]init];
+                //NSArray *dealItemTitles = [NSArray arrayWithObjects:@"完全开放",@"基本信息开放",, nil];
+                //0：不开放，1：基本信息开放，8:完全开放。
+                
+                if ([@"0"  isEqualToString:[self.privacyItem objectAtIndex:0]]){
+                    cell.detailTextLabel.text = @"不开放";
                 }
-                cell.detailTextLabel.text = [message substringToIndex:(message.length-1)];
+                else if([@"1"  isEqualToString:[self.privacyItem objectAtIndex:0]])
+                {
+                    cell.detailTextLabel.text = @"基本信息开放";
+                }
+                else
+                {
+                    cell.detailTextLabel.text = @"完全开放";
+                }
+
             }
         }
         else if (indexPath.row == 4)
@@ -761,7 +821,7 @@
 {
     UIViewController *controller = nil;
     
-    if (202 == self.status.intValue)
+    if (200 == self.status.intValue)
     {
         if(indexPath.section == 1 && indexPath.row ==2){
             controller = [self.storyboard instantiateViewControllerWithIdentifier:@"dateSelect"];
@@ -877,10 +937,12 @@
     return dateStr;
 }
 
--(void)nextAction:(UIButton *)sender
+
+
+-(void)nextAction
 {
-    self.telphone = self.telphone;
     self.validate = [[exproposValidater alloc]init];
+    _validate.registerController = self;
     _validate.reserver = self;
     _validate.succeedCallBack = @selector(validateSuccess:);
     _validate.failedCallBack = @selector(validateFailer:);
@@ -907,34 +969,39 @@
     }
 }
 
--(void)nextAction
+-(void)modifyInfo:(NSString *)cellPhone
 {
-    self.telphone = self.telphone;
-    self.validate = [[exproposValidater alloc]init];
-    _validate.reserver = self;
-    _validate.succeedCallBack = @selector(validateSuccess:);
-    _validate.failedCallBack = @selector(validateFailer:);
-    
-    NSString *warning = nil;
-    if (!self.telphone || ![self.telphone length]) {
-        warning = NSLocalizedString(@"手机号码必须填写", nil);
-    }
-    
-    else if ([self.telphone length] != 11 ) {
-        warning = NSLocalizedString(@"手机号码输入有误", nil);
-    }
-    if (warning)
+    isModify = TRUE;
+    NSFetchRequest *request = [ExproUser fetchRequest];
+    NSPredicate *predicate = nil;
+    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(cellphone=%@)" ];
+    NSMutableArray *userparams = [[NSMutableArray alloc]initWithObjects:cellPhone, nil];
+    predicate = [NSPredicate predicateWithFormat:str argumentArray:userparams];
+    request.predicate = predicate;
+    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+    ExproUser *user = nil;
+    BOOL isExis=NO;
+    if (deals.count)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
-                                                        message:warning 
-                                                       delegate:nil
-                                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                              otherButtonTitles:nil];
-        [alert show];
-    }    
-    else {
-        [_validate validate:self.telphone ];
+        user = (ExproUser *)[deals objectAtIndex:0];
+        isExis=YES;
     }
+    ExproMember *member = nil;
+    NSArray *members = [ExproMember findAll];
+    for(ExproMember *memberi in members){
+        if(memberi.user.gid.intValue == user.gid.intValue){
+            member = memberi;
+        }
+    }
+    
+    self.point = member.point.stringValue;
+    self.savings = member.savings.stringValue;
+    self.dueTime = member.dueTime;
+    self.memPetName = member.petName;
+    [self.privacyItem removeAllObjects];  
+    
+    [self.privacyItem addObject:member.privacy];
+    [self.tableView reloadData];
 }
 
 
@@ -947,14 +1014,6 @@
 -(void)saveFromFirstNameField:(UITextField *)firstFieldText
 {
     self.name = firstFieldText.text;
-//    if (self.name.length != 0)
-//    {
-//    [nextButton setHidden:TRUE];
-//    }
-//    else {
-//        [nextButton setHidden:NO];
-//    }
-//    [self.tableView reloadData];
 }
 -(void)saveFromLastNameField:(UITextField *)lastFieldText
 {
@@ -1022,13 +1081,46 @@
 
 -(void)validateSuccess:(id)object
 {
-    NSDictionary *user = (NSDictionary *)object;
-    NSLog(@"%@",user);
-    NSLog(@"signin user:%@", [user objectForKey:@"status"]);    
-    self.status = [user objectForKey:@"status"];
-    if (405 == self.status.intValue)
-    {
+    NSLog(@"self.status == %@",self.status);
+   
+        self.point = @"";
+        self.savings =@"";
+        self.dueTime=[NSDate date];
+        self.memPetName=@"";
+        [self.privacyItem removeAllObjects];
+        [self.tableView reloadData];
+        self.createTime=[NSDate date];
         
+        NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
+        
+        
+        NSMutableArray *removeItems = [NSMutableArray arrayWithCapacity:10];
+        for(UIBarButtonItem *item in items){
+            if([item.title isEqualToString:@"注册"]){
+                [removeItems addObject: item]; 
+            }   
+        }
+        [items removeObjectsInArray:removeItems];
+        
+        
+        UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"注册" style: UIBarButtonItemStyleBordered   target:self action:@selector(registr:)];
+        int num = 0;
+        for(UIBarButtonItem *i in items){
+            if([i.title isEqualToString:@"菜单"]){
+                num = 1;
+            }
+        }
+        [items insertObject:item atIndex:num];
+        self.mainViewController.menuTool.items = items;
+  
+    
+}
+
+-(void)validateFailer:(id)object
+{
+   NSLog(@"self.status == %@",self.status);
+    if (406 == self.status.intValue)
+    {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
                                                         message:@"该用户已经是商户会员" 
                                                        delegate:nil
@@ -1067,6 +1159,8 @@
         self.dueTime = member.dueTime;
         self.memPetName = member.petName;
         [self.privacyItem removeAllObjects];  
+        //NSLog(@"member.privacy%i",member.privacy);
+
         [self.privacyItem addObject:member.privacy];
         [self.tableView reloadData];
         
@@ -1080,43 +1174,68 @@
         [items removeObjectsInArray:removeItems];
         self.mainViewController.menuTool.items = items;
     }
-    else {
-        self.point = @"";
-        self.savings =@"";
-        self.dueTime=[NSDate date];
-        self.memPetName=@"";
-        [self.privacyItem removeAllObjects];
-        [self.tableView reloadData];
-        self.createTime=[NSDate date];
-        
-        NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
-        
-        
-        NSMutableArray *removeItems = [NSMutableArray arrayWithCapacity:10];
-        for(UIBarButtonItem *item in items){
-            if([item.title isEqualToString:@"注册"]){
-                [removeItems addObject: item]; 
-            }   
-        }
-        [items removeObjectsInArray:removeItems];
-        
-        
-        UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"注册" style: UIBarButtonItemStyleBordered   target:self action:@selector(registr:)];
-        int num = 0;
-        for(UIBarButtonItem *i in items){
-            if([i.title isEqualToString:@"菜单"]){
-                num = 1;
-            }
-        }
-        [items insertObject:item atIndex:num];
-        self.mainViewController.menuTool.items = items;
-    }
-    
 }
 
--(void)validateFailer:(id)object
-{
-    NSLog(@"FAIL");
+
+- (void) modifySucceed:(id)object {
+    ExproMember *member = (ExproMember *)object;
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                    message:@"用户信息修改成功" 
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                          otherButtonTitles:nil];
+    
+    [alert show]; 
+    //关闭对话框
+    [self.viewController dismissModalViewControllerAnimated:YES];
+}
+
+- (void) modifyFailed:(id)object {
+    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+//                                                    message:@"用户信息修改成功" 
+//                                                   delegate:nil
+//                                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
+//                                          otherButtonTitles:nil];
+//    
+//    [alert show]; 
+
+}
+
+
+- (void) registrSucceed:(id)object {
+    
+    if (!isModify)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                        message:@"用户注册成功" 
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                              otherButtonTitles:nil];
+        [alert show];    
+        self.telphone = nil;
+        self.name = nil;
+        self.petName = nil;
+        self.email = nil;
+        self.idCard = nil;
+        self.comment =nil;
+        self.savings =nil;
+        self.point =nil;
+        self.dueTime=[NSDate date];
+        self.birth=[NSDate date];
+        self.privacyItem=nil;
+        self.memPetName = nil;
+        [self.tableView reloadData];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                        message:@"用户信息修改成功" 
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                              otherButtonTitles:nil];
+        
+        [alert show]; 
+    }
 }
 
 

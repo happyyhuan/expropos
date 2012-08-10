@@ -11,7 +11,8 @@
 #import "exproposShowDealsSelectedViewController.h"
 #import "exproposMemberRegisterController.h"
 #import "exproposShowDealOperateViewController.h"
-#import "exproposGoodsManagerViewController.h"
+#import "exproposStoreViewController.h"
+#import "memberManagerViewController.h"
 
 
 @interface exproposMenuViewController : UITableViewController 
@@ -26,8 +27,13 @@
 @property (strong,nonatomic) NSMutableArray *controllers;
 //交易处理控制器
 @property (strong,nonatomic) exproposShowDealOperateViewController *dealOperate;
-//会员注册
+
+@property (strong,nonatomic) exproposStoreViewController *storeControll;
+
+
 @property (strong,nonatomic) exproposMemberRegisterController *memberRegister;
-//商品管理
-@property (strong,nonatomic) exproposGoodsManagerViewController *goodsManager;
+
+@property (strong,nonatomic) memberManagerViewController *memberManagerControll;
+
+
 @end

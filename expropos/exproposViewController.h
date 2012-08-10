@@ -49,7 +49,7 @@
 
 @property (nonatomic, assign) BOOL canUserSeeKeyboard;// 用户是否可以看到键盘
 
-@property (nonatomic, assign) BOOL isMove;// 是否已经上移
+//@property (nonatomic, assign) BOOL isMove;// 是否已经上移
 
 - (void)handleTap;
 

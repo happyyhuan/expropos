@@ -8,19 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "exproposMainViewController.h"
+#import "ExproMember.h"
 #define keyboardAnimationDuration (0.35f)
 
-@interface exproposMemberRegisterController : UITableViewController<UITextFieldDelegate>
-
+@interface exproposMemberRegisterController : UIViewController<UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate>
 {
 
 }
 @property (strong,nonatomic )exproposMainViewController *mainViewController;
 @property (nonatomic,strong) UIPopoverController *popover;
 @property (nonatomic,strong) UIViewController *viewController;
-@property (nonatomic,strong) IBOutlet UITableView *tableView;
+
 @property (nonatomic,strong) IBOutlet UIButton *nextButton;
 @property (nonatomic, strong) NSString *telphone;
+@property (strong, nonatomic) IBOutlet UIButton *registerButton;
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+
+
 
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic, strong) NSString *petName;
@@ -32,6 +36,7 @@
 @property (nonatomic,strong) NSString *sex;
 @property (nonatomic) BOOL account;
 @property (nonatomic,strong) NSString *status;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic,strong) NSString *memPetName;
 @property (nonatomic,strong) NSString *savings;
@@ -54,6 +59,8 @@
 
 @property (nonatomic, assign) BOOL canUserSeeKeyboard;// 用户是否可以看到键盘
 
+@property (nonatomic,strong)  ExproMember *exproMember;
+
 
 
 
@@ -66,7 +73,10 @@
 
 // 用于注册键盘通知，可以从通知中获取键盘的矩形框
 - (void)registerKeyboardNotifications;
+- (IBAction)cancelAction:(id)sender;
+- (IBAction)registerAction:(id)sender;
 
+-(void)modifyInfo:(NSString *)cellPhone;
 - (void)handleKeyboardDidHide:(NSNotification *)notification;
 - (void)handleKeyboardDidShow:(NSNotification *)notification;
 

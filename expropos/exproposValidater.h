@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ExproRestDelegate.h"
+#import "exproposMemberRegisterController.h"
 
 @interface exproposValidater : ExproRestDelegate
 
+@property (strong, nonatomic) exproposMemberRegisterController  *registerController;
 -(void)validate:(NSString *)telText;
+
 @end

@@ -22,13 +22,15 @@
 @synthesize controllers = _controllers;
 @synthesize memberRegister = _memberRegister;
 @synthesize dealOperate = _dealOperate;
-@synthesize goodsManager = _goodsManager;
+@synthesize storeControll =_storeControll;
+@synthesize memberManagerControll =_memberManagerControll;
 
 - (void)awakeFromNib
 {
     self.clearsSelectionOnViewWillAppear = NO;
     [super awakeFromNib];
 }
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -43,7 +45,7 @@
 {
     [super viewDidLoad];
     //初始化菜单数组显示的内容
-    self.menus = [NSArray arrayWithObjects:@"消费", @"商品管理", @"积分", @"交易查询", @"会员开户", nil];
+    self.menus = [NSArray arrayWithObjects:@"门店管理", @"会员管理", @"积分", @"交易查询", @"会员开户", nil];
     //初始化主窗体控制器
     self.mainViewController = [self.splitViewController.viewControllers lastObject];
     //初始化交易查询控制器
@@ -55,7 +57,9 @@
     
     _memberRegister = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
     
-    _goodsManager = [self.storyboard instantiateViewControllerWithIdentifier:@"goodsManager"];
+       _storeControll = [self.storyboard instantiateViewControllerWithIdentifier:@"storeManager"];
+    _memberManagerControll = [self.storyboard instantiateViewControllerWithIdentifier:@"memberManager"];
+    
 }
 
 - (void)viewDidUnload
@@ -123,20 +127,12 @@
         [self.mainViewController.masterPopoverController dismissPopoverAnimated:YES];
     }
     
-    if([menu isEqualToString:@"消费"]){
+    if([menu isEqualToString:@"门店管理"]){
         //如果是竖屏情况，将隐藏左侧菜单栏
          [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
-        _dealOperate.myRootViewController = self.splitViewController;
-       [self.splitViewController presentModalViewController:_dealOperate animated:YES];
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }   
-    
-    if([menu isEqualToString:@"商品管理"]){
-        //如果是竖屏情况，将隐藏左侧菜单栏
-        [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
-        _goodsManager.myRootViewController = self.splitViewController;
-        [self.splitViewController presentModalViewController:_goodsManager animated:YES];
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        _storeControll.myRootViewController = self.splitViewController;
+       [self.splitViewController presentModalViewController:_storeControll animated:YES];
+           
     }   
     
     if([menu isEqualToString:@"会员开户"]){
@@ -146,15 +142,18 @@
         [_controllers addObject:_memberRegister];
         _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
         _memberRegister.mainViewController = self.mainViewController;
-        
         [self.mainViewController.view addSubview: _memberRegister.view];
-        [self.mainViewController.masterPopoverController dismissPopoverAnimated:YES];
         
-        //        
-        //        _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
-        //        //_memberRegister.viewController = self.mainViewController;
-        //        
-        //        [self.mainViewController.view insertSubview:_memberRegister.view atIndex:0];
+        //        [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
+        //        _memberManagerControll.myRootViewController = self.mainViewController;
+        //        [self.splitViewController presentModalViewController:_memberManagerControll animated:YES];
+    }
+    
+    if([menu isEqualToString:@"会员管理"]){
+ 
+        [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
+        _memberManagerControll.myRootViewController = self.mainViewController;
+        [self.splitViewController presentModalViewController:_memberManagerControll animated:YES];
     }   
 }
 
