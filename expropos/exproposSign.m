@@ -54,16 +54,20 @@
 
 - (void) signin:(NSString *)cellphone password:(NSString *)password 
 {
+    //RKObjectManager *objectManager = [RKObjectManager sharedManager];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:cellphone,@"cellphone",password,@"password",@"1",@"org", nil];
+    
+    
+    RKManagedObjectMapping* roleMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+   
+    [roleMapping mapKeyPathsToAttributes:@"_id", @"gid",nil];
+    
+    //[objectManager.mappingProvider setMapping:roleMapping forKeyPath:@"role"];
     
     RKObjectMapping *signinMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
     [signinMapping mapKeyPathsToAttributes:@"_id", @"gid", @"name", @"name", @"sex", @"sex", nil];
+    [signinMapping mapKeyPath:@"role" toRelationship:@"role" withMapping:roleMapping];  
     [self requestURL:@"/signin" method:RKRequestMethodPOST params:params mapping:signinMapping];
 
-//    NSFetchRequest *request = [ExproUser fetchRequest];
-//    NSPredicate *predicate = nil;
-//    request.predicate = predicate;
-//    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
-//    NSLog(@"%i",deals.count);
 }
 @end

@@ -13,6 +13,7 @@
 #import "exproposShowDealOperateViewController.h"
 #import "exproposStoreViewController.h"
 #import "memberManagerViewController.h"
+#import "exproposGoodsManagerViewController.h"
 
 
 @interface exproposMenuViewController : UITableViewController 
@@ -34,6 +35,6 @@
 @property (strong,nonatomic) exproposMemberRegisterController *memberRegister;
 
 @property (strong,nonatomic) memberManagerViewController *memberManagerControll;
-
+@property (strong,nonatomic) exproposGoodsManagerViewController *goodsManager;
 
 @end

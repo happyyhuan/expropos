@@ -14,6 +14,7 @@
 #import "ExproMember.h"
 #import "ExproSignHistory.h"
 #import "JFBCrypt.h"
+#import "ExproRole.h"
 
 
 #import "exproposAppDelegate.h"
@@ -125,8 +126,7 @@
     NSString *roleid = [role objectForKey:@"gid"]; 
      NSLog(@"signin roleid:%@", roleid);
     
-    
-    
+
     
     exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
     

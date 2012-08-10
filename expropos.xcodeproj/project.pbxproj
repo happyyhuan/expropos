@@ -53,12 +53,12 @@
 		5F87996B15D4F03100CACF07 /* exproposMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F87996A15D4F03100CACF07 /* exproposMenuViewController.m */; };
 		5F87997115D4F0C500CACF07 /* memberManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F87997015D4F0C500CACF07 /* memberManagerViewController.m */; };
 		5F87997415D4F2A700CACF07 /* exproposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F87997315D4F2A700CACF07 /* exproposViewController.m */; };
+		5F8799D215D4FDE400CACF07 /* exproposSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8799D115D4FDE400CACF07 /* exproposSign.m */; };
 		5F88E16B159962DF00058E1C /* exproposShowDealsSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F88E16A159962DE00058E1C /* exproposShowDealsSelectedViewController.m */; };
 		5F8BA3381592FF9700AD0025 /* exproposDealItemSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BA3371592FF9600AD0025 /* exproposDealItemSelectedViewController.m */; };
 		5F8BA33B1593179F00AD0025 /* exproposStoreSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BA33A1593179E00AD0025 /* exproposStoreSelectedViewController.m */; };
 		5F8BA33E159320A400AD0025 /* exproposPayTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BA33D159320A400AD0025 /* exproposPayTypeViewController.m */; };
 		5F8C150915A5766200FA076D /* exproposDealOperate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C150815A5766200FA076D /* exproposDealOperate.m */; };
-		5F8DE18B15A13FFA00CBEB69 /* exproposSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE18A15A13FFA00CBEB69 /* exproposSign.m */; };
 		5F91790215A2D19600B8E100 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		5F93417D15D0A840005E089D /* exproposAddMemberSavingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F93417C15D0A840005E089D /* exproposAddMemberSavingListViewController.m */; };
 		5F93418115D0B2C8005E089D /* comeback.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F93418015D0B2C8005E089D /* comeback.png */; };
@@ -247,6 +247,8 @@
 		5F87997015D4F0C500CACF07 /* memberManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = memberManagerViewController.m; sourceTree = "<group>"; };
 		5F87997215D4F29900CACF07 /* exproposViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposViewController.h; sourceTree = "<group>"; };
 		5F87997315D4F2A700CACF07 /* exproposViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposViewController.m; sourceTree = "<group>"; };
+		5F8799D015D4FDE400CACF07 /* exproposSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposSign.h; sourceTree = "<group>"; };
+		5F8799D115D4FDE400CACF07 /* exproposSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposSign.m; sourceTree = "<group>"; };
 		5F88E169159962DE00058E1C /* exproposShowDealsSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposShowDealsSelectedViewController.h; sourceTree = "<group>"; };
 		5F88E16A159962DE00058E1C /* exproposShowDealsSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposShowDealsSelectedViewController.m; sourceTree = "<group>"; };
 		5F8BA3361592FF9600AD0025 /* exproposDealItemSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposDealItemSelectedViewController.h; sourceTree = "<group>"; };
@@ -257,7 +259,6 @@
 		5F8BA33D159320A400AD0025 /* exproposPayTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposPayTypeViewController.m; sourceTree = "<group>"; };
 		5F8C150715A5766200FA076D /* exproposDealOperate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposDealOperate.h; sourceTree = "<group>"; };
 		5F8C150815A5766200FA076D /* exproposDealOperate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposDealOperate.m; sourceTree = "<group>"; };
-		5F8DE18A15A13FFA00CBEB69 /* exproposSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposSign.m; sourceTree = "<group>"; };
 		5F93417B15D0A840005E089D /* exproposAddMemberSavingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposAddMemberSavingListViewController.h; sourceTree = "<group>"; };
 		5F93417C15D0A840005E089D /* exproposAddMemberSavingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposAddMemberSavingListViewController.m; sourceTree = "<group>"; };
 		5F93418015D0B2C8005E089D /* comeback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comeback.png; sourceTree = "<group>"; };
@@ -383,7 +384,6 @@
 		918FEB8015A4493F00334CB5 /* ExproRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproRoute.m; sourceTree = "<group>"; };
 		918FEB8815A4493F00334CB5 /* ExproRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproRole.h; sourceTree = "<group>"; };
 		918FEB8915A4493F00334CB5 /* ExproRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproRole.m; sourceTree = "<group>"; };
-		9191D92C15A2CB2F00064C32 /* exproposSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposSign.h; sourceTree = "<group>"; };
 		9191D92D15A2CB5A00064C32 /* exproposSyncModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposSyncModel.h; sourceTree = "<group>"; };
 		9191D92E15A2CB5A00064C32 /* exproposSyncModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposSyncModel.m; sourceTree = "<group>"; };
 		9191D92F15A2CB5A00064C32 /* exproposSysLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposSysLoad.h; sourceTree = "<group>"; };
@@ -803,6 +803,8 @@
 		9187C5131589E1D200AF5776 /* Restkit */ = {
 			isa = PBXGroup;
 			children = (
+				5F8799D015D4FDE400CACF07 /* exproposSign.h */,
+				5F8799D115D4FDE400CACF07 /* exproposSign.m */,
 				5F87996115D4ED6400CACF07 /* exproposValidater.h */,
 				5F87996215D4ED6400CACF07 /* exproposValidater.m */,
 				5F87995E15D4ED2300CACF07 /* exproposRegistr.h */,
@@ -817,8 +819,6 @@
 				9191D92E15A2CB5A00064C32 /* exproposSyncModel.m */,
 				9191D92F15A2CB5A00064C32 /* exproposSysLoad.h */,
 				9191D93015A2CB5A00064C32 /* exproposSysLoad.m */,
-				9191D92C15A2CB2F00064C32 /* exproposSign.h */,
-				5F8DE18A15A13FFA00CBEB69 /* exproposSign.m */,
 				5FE99493159423020017D351 /* exproposUpdateDeals.h */,
 				5FE99494159423020017D351 /* exproposUpdateDeals.m */,
 				5F053412159EE7000005FB21 /* exproposSignout.h */,
@@ -999,7 +999,6 @@
 				5F0533E7159E86E50005FB21 /* exproposAppDelegate.m in Sources */,
 				5F0533EA159E86F90005FB21 /* expropos.xcdatamodeld in Sources */,
 				5F053414159EE7000005FB21 /* exproposSignout.m in Sources */,
-				5F8DE18B15A13FFA00CBEB69 /* exproposSign.m in Sources */,
 				5FADDD4115A1AC640049FDA2 /* exproposDateSelectedViewController.m in Sources */,
 				9191D93115A2CB5A00064C32 /* exproposSyncModel.m in Sources */,
 				9191D93215A2CB5A00064C32 /* exproposSysLoad.m in Sources */,
@@ -1046,6 +1045,7 @@
 				5F87996B15D4F03100CACF07 /* exproposMenuViewController.m in Sources */,
 				5F87997115D4F0C500CACF07 /* memberManagerViewController.m in Sources */,
 				5F87997415D4F2A700CACF07 /* exproposViewController.m in Sources */,
+				5F8799D215D4FDE400CACF07 /* exproposSign.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

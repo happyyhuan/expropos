@@ -24,7 +24,7 @@
 @synthesize dealOperate = _dealOperate;
 @synthesize storeControll =_storeControll;
 @synthesize memberManagerControll =_memberManagerControll;
-
+@synthesize goodsManager = _goodsManager;
 - (void)awakeFromNib
 {
     self.clearsSelectionOnViewWillAppear = NO;
@@ -45,7 +45,7 @@
 {
     [super viewDidLoad];
     //初始化菜单数组显示的内容
-    self.menus = [NSArray arrayWithObjects:@"门店管理", @"会员管理", @"积分", @"交易查询", @"会员开户", nil];
+    self.menus = [NSArray arrayWithObjects:@"门店管理", @"会员管理", @"商品管理", @"交易查询", @"会员开户", nil];
     //初始化主窗体控制器
     self.mainViewController = [self.splitViewController.viewControllers lastObject];
     //初始化交易查询控制器
@@ -60,6 +60,7 @@
        _storeControll = [self.storyboard instantiateViewControllerWithIdentifier:@"storeManager"];
     _memberManagerControll = [self.storyboard instantiateViewControllerWithIdentifier:@"memberManager"];
     
+     _goodsManager = [self.storyboard instantiateViewControllerWithIdentifier:@"goodsManager"];
 }
 
 - (void)viewDidUnload
@@ -154,7 +155,15 @@
         [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
         _memberManagerControll.myRootViewController = self.mainViewController;
         [self.splitViewController presentModalViewController:_memberManagerControll animated:YES];
-    }   
+    }  
+    
+    if([menu isEqualToString:@"商品管理"]){
+        //如果是竖屏情况，将隐藏左侧菜单栏
+        [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
+        _goodsManager.myRootViewController = self.splitViewController;
+        [self.splitViewController presentModalViewController:_goodsManager animated:YES];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    } 
 }
 
 
