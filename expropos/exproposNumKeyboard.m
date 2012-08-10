@@ -10,6 +10,8 @@
 #import "JPStupidButton.h"
 #import "exproposShowDealOperateViewController.h"
 #import "ExproGoods.h"
+#import "ExproDeal.h"
+#import "ExproDealItem.h"
 
 @interface exproposNumKeyboard ()
 
@@ -57,6 +59,21 @@
     if([button.titleLabel.text isEqualToString:@"确定"]){
         if(  [_viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
             exproposShowDealOperateViewController *showDealOperate = (exproposShowDealOperateViewController*)_viewController;
+            if(showDealOperate.repeal){
+                ExproDealItem *dealItem = nil;
+                for(ExproDealItem *item in  showDealOperate.repeal.items){
+                    if(item.goods.gid.intValue == _goods.gid.intValue){
+                        dealItem = item;
+                    }
+                }
+                
+                if(_goodsNum.text.intValue > dealItem.num.intValue){
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message: @"退货数量不能大于购买数量 " delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    [alertView show];
+                    return;
+                }
+            }
+            
            int num = _goodsNum.text.intValue;
             [showDealOperate.goodsAndAmount setObject:[NSNumber numberWithInt:num] forKey:_goods.gid];
             [showDealOperate reloadViews];

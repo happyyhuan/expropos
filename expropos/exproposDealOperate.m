@@ -25,16 +25,41 @@
 
 -(void)createDeal:(ExproDeal *)deal
 {
-   // {"deal":{"lid":123, "_id":322, "deal_item":[{"lid":234, "_id":23,"dealer_id":34}]}}
+   
     
-        
-   //  [[RKObjectManager sharedManager].mappingProvider setMapping:getDealMapping forKeyPath:@"deal"];
-        
-    [self requestsURL:@"/deals" method:RKRequestMethodPOST object:deal
-             mapping:nil
+    RKObjectMapping *callbackMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [callbackMapping mapKeyPathsToAttributes:@"_id", @"gid",  nil];
+       
+    self.acceptParallelResults = NO;
+    [self requestURL:@"/deal" method:RKRequestMethodPOST object:deal
+             mapping:callbackMapping 
             serialMapping:[[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[ExproDeal class]]];
+    
+    
+}
+-(void)createAddmemberSavingDeal:(NSDictionary *)dic
+{
+    
+    
+    RKObjectMapping *callbackMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [callbackMapping mapKeyPathsToAttributes:@"_id", @"gid",  nil];
+    
+    self.acceptParallelResults = NO;
+
+    [self requestURL:@"/deal" method:RKRequestMethodPOST params:dic mapping:callbackMapping];
     
 }
 
+-(void)createGoodsComeBackDeal:(ExproDeal *)deal
+{
+    
+    RKObjectMapping *callbackMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [callbackMapping mapKeyPathsToAttributes:@"_id", @"gid",  nil];
+    
+    self.acceptParallelResults = NO;
+    [self requestURL:@"/deal/repeal" method:RKRequestMethodPOST object:deal
+             mapping:callbackMapping 
+       serialMapping:[[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[ExproDeal class]]];
+}
 
 @end

@@ -69,4 +69,5 @@
 
 - (void)requestsURL:(NSString *)aURL method:(RKRequestMethod)aMethod object:(id)aObject mapping:(RKObjectMapping *)aMapping serialMapping:(RKObjectMapping *)aSerialMapping ;
 
+- (void)requestURLs:(NSString *)aURL method:(RKRequestMethod)aMethod object:(id)aObject mapping:(RKObjectMapping *)aMapping serialMapping:(RKObjectMapping *)aSerialMapping ;
 @end

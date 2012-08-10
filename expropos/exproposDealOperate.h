@@ -13,4 +13,6 @@
 @interface exproposDealOperate :  ExproRestDelegate 
 
 -(void)createDeal:(ExproDeal *)deal;
+-(void)createGoodsComeBackDeal:(ExproDeal *)deal;
+-(void)createAddmemberSavingDeal:(NSDictionary *)dic;
 @end

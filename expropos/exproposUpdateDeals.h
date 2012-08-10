@@ -19,4 +19,7 @@
 -(void)upDateDealStart:(int)start end:(int)end bt:(NSDate*)bt et:(NSDate*)et;
 -(void)updateDeal;
 -(void)dealQueryByDealID:(NSString *)dealID;
+//bt=时间起点&et=截至时间&customer_id=23&type=2
+-(void)queryDealAmountByCutomerID:(NSNumber  *)customer_id type:(NSNumber *)type beginTime:(NSDate*)bt endTime:(NSDate*)et;
+-(void)queryDealByCustomerID:(NSNumber *)customer_id start:(int)start limit:(int)limit type:(int)type bt:(NSDate*)bt et:(NSDate *)et;
 @end

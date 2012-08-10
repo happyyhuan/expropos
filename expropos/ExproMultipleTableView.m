@@ -135,12 +135,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     //手指滑动出现按钮
     if([_multipleDelegate respondsToSelector:@selector(multipleTableView:editingStyleForRowAtIndexPath:)]){
-        return [_multipleDelegate multipleTableView:tableView editingStyleForRowAtIndexPath:indexPath];
+        return [_multipleDelegate multipleTableView:(ExproMultipleTableView*)tableView editingStyleForRowAtIndexPath:indexPath];
     }
     return UITableViewCellEditingStyleNone;
 }
 -(NSString *)tableView:(UITableView *)tableView
 titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if([_multipleDelegate respondsToSelector:@selector(multipleTableView :titleForDeleteConfirmationButtonForRowAtIndexPath:)]){
+        return [_multipleDelegate multipleTableView:(ExproMultipleTableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:indexPath];
+    }
     //设置按钮的名称
     return @"删除";
 }
@@ -165,6 +168,14 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if([_multipleDelegate respondsToSelector:@selector(multipleTableViewScrollViewDidEndDragging:willDecelerate:)]){
+        [_multipleDelegate multipleTableViewScrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    }
+
+}
 
 
 @end

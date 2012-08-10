@@ -78,6 +78,7 @@ dispatch_queue_t downloadQueue = dispatch_queue_create("deals downloader", NULL)
 dispatch_async(downloadQueue, ^{
     _updateDeals.reserver = self;
     _updateDeals.succeedCallBack =  @selector(updateSuccess);
+    _updateDeals.failedCallBack =  @selector(updatefail);
     if(_pageNum == 0){
         _pageNum=1;
     }
@@ -103,6 +104,21 @@ dispatch_release(downloadQueue);
             exproposDealSelectedViewController *s =(exproposDealSelectedViewController*)  [_dealSelect.viewControllers objectAtIndex:0];
             [s searchInLoacl];
             [self.tableView reloadData];
+}
+
+-(void)updateFail
+{
+    NSMutableArray *items = [[NSMutableArray alloc]initWithArray:[self.mainViewController.menuTool.items mutableCopy]];
+    NSMutableArray *removeItems = [NSMutableArray arrayWithCapacity:2];
+    for(UIBarButtonItem *item in items){
+        if(item == _spinnerIteam){
+            [removeItems addObject: item];
+        }
+    }
+    [items removeObjectsInArray:removeItems];
+    [items insertObject:_updateItem atIndex:items.count-1];
+    self.mainViewController.menuTool.items = items;
+    _spinnerIteam = nil;
 }
 
 -(void)viewWillDisappear:(BOOL)animated

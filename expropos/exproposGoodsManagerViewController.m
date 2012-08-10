@@ -510,7 +510,7 @@
     NSString *currentDateStr = [dateFormatter stringFromDate:now];
     
     if(!(self.myGoodsName&&self.myGoodsState&&self.myGoodsCode&&self.myGoodsPrice&&self.myGoodsComment&&self.myGoodsType)){
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请善商品信息" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请完善商品信息" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
         return;
     }
@@ -632,6 +632,11 @@
 
 -(void)updateGoods:(id)sender
 {
+    if (!self.selectedGoods) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请完善商品信息" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
     if(!self.goodsManager){
         self.goodsManager = [[exproposGoodsManager alloc]init];
     }
@@ -1000,6 +1005,9 @@
 }
 
 - (IBAction)deleteGoods:(UIButton *)sender {
+    if (self.selectedGoods == nil) {
+        return;
+    }
     if(!_goodsManager){
         self.goodsManager = [[exproposGoodsManager alloc]init];
     }

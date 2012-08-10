@@ -181,6 +181,7 @@ static NSString *gCookie = nil;
     [self safePerformSelector:_succeedCallBack withObject:object];
 }
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
+    
     if (_acceptParallelResults) {
         [self succeed4Parallel:objects];
         //add by gbo for 204 status code
@@ -218,6 +219,47 @@ static NSString *gCookie = nil;
 }
 
 
+
+- (void)requestURL:(NSString *)aURL method:(RKRequestMethod)aMethod object:(id)aObject mapping:(RKObjectMapping *)aMapping serialMapping:(RKObjectMapping *)aSerialMapping {
+    [self canceled];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:aURL usingBlock:^(RKObjectLoader *loader) {
+        loader.method = aMethod;
+        if (aSerialMapping) {
+            loader.serializationMapping = aSerialMapping;
+        }
+        loader.serializationMIMEType = @"application/json";
+        loader.sourceObject = aObject;
+        loader.delegate = self;
+        if (aMapping) {
+            loader.objectMapping = aMapping;
+        }
+        if (self.cookie) {
+            [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
+        }
+       self.request = loader;
+        
+       
+    }];
+}
+
+- (void)requestsURL:(NSString *)aURL method:(RKRequestMethod)aMethod object:(id)aObject mapping:(RKObjectMapping *)aMapping serialMapping:(RKObjectMapping *)aSerialMapping {
+    [self canceled];
+    RKObjectLoader *loader = [[RKObjectManager sharedManager] loaderForObject:aObject method:RKRequestMethodPOST];
+    loader.delegate = self;
+    loader.serializationMIMEType = @"application/json";
+    if (self.cookie) {
+        [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
+    }
+    if (aSerialMapping) {
+        loader.serializationMapping = aSerialMapping;
+    }
+    if (aMapping) {
+        loader.objectMapping = aMapping;
+    }
+    [loader send];
+    
+}
+
 - (void)requestURLs:(NSString *)aURL method:(RKRequestMethod)aMethod object:(id)aObject mapping:(RKObjectMapping *)aMapping serialMapping:(RKObjectMapping *)aSerialMapping {
     [self canceled];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -238,22 +280,9 @@ static NSString *gCookie = nil;
         }];
     });
 }
-- (void)requestsURL:(NSString *)aURL method:(RKRequestMethod)aMethod object:(id)aObject mapping:(RKObjectMapping *)aMapping serialMapping:(RKObjectMapping *)aSerialMapping {
-    [self canceled];
-    RKObjectLoader *loader = [[RKObjectManager sharedManager] loaderForObject:aObject method:RKRequestMethodPOST];
-    loader.delegate = self;
-    if (self.cookie) {
-        [loader.URLRequest addValue:self.cookie forHTTPHeaderField:@"Cookie"];
-    }
-    if (aSerialMapping) {
-        loader.serializationMapping = aSerialMapping;
-    }
-    if (aMapping) {
-        loader.objectMapping = aMapping;
-    }
-    [loader send];
-     
-}
+
+
+
 
 
 

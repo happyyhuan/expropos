@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ExproDeal" representedClassName="ExproDeal" syncable="YES">
         <attribute name="cash" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -10,12 +10,14 @@
         <attribute name="payment" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="payType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="point" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="repealID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="storeID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="customer" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="purchases" inverseEntity="ExproMember" syncable="YES"/>
         <relationship name="dealer" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproMember" inverseName="sales" inverseEntity="ExproMember" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExproDealItem" inverseName="deal" inverseEntity="ExproDealItem" syncable="YES"/>
+        <relationship name="repeal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproDeal" inverseName="repeal" inverseEntity="ExproDeal" syncable="YES"/>
         <relationship name="store" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproStore" inverseName="deals" inverseEntity="ExproStore" syncable="YES"/>
     </entity>
     <entity name="ExproDealItem" representedClassName="ExproDealItem" syncable="YES">
@@ -65,6 +67,7 @@
         <attribute name="point" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="privacy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="roleID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="savingDueTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="savings" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -171,11 +174,11 @@
         <relationship name="warrant" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExproWarehouseWarrant" inverseName="items" inverseEntity="ExproWarehouseWarrant" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ExproDeal" positionX="160" positionY="192" width="128" height="285"/>
+        <element name="ExproDeal" positionX="160" positionY="192" width="128" height="315"/>
         <element name="ExproDealItem" positionX="160" positionY="192" width="128" height="135"/>
         <element name="ExproGoods" positionX="340" positionY="-63" width="128" height="210"/>
         <element name="ExproGoodsType" positionX="243" positionY="153" width="128" height="180"/>
-        <element name="ExproMember" positionX="-218" positionY="357" width="128" height="330"/>
+        <element name="ExproMember" positionX="-218" positionY="357" width="128" height="345"/>
         <element name="ExproMerchant" positionX="-423" positionY="513" width="128" height="210"/>
         <element name="ExproRole" positionX="-180" positionY="27" width="128" height="135"/>
         <element name="ExproRoute" positionX="-486" positionY="192" width="128" height="135"/>

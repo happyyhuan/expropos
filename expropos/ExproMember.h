@@ -2,8 +2,8 @@
 //  ExproMember.h
 //  expropos
 //
-//  Created by ep3 on 12-7-4.
-//  Copyright (c) 2012年 expro. All rights reserved.
+//  Created by haitao chen on 12-8-9.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,14 +17,15 @@
 @property (nonatomic, retain) NSNumber * createTime;
 @property (nonatomic, retain) NSDate * dueTime;
 @property (nonatomic, retain) NSNumber * gid;
+@property (nonatomic, retain) NSNumber * orgID;
 @property (nonatomic, retain) NSString * petName;
 @property (nonatomic, retain) NSNumber * point;
 @property (nonatomic, retain) NSNumber * privacy;
+@property (nonatomic, retain) NSNumber * roleID;
 @property (nonatomic, retain) NSNumber * savings;
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSNumber * userID;
-@property (nonatomic, retain) NSNumber * orgID;
-@property (nonatomic, retain) NSNumber * roleID;
+@property (nonatomic, retain) NSDate * savingDueTime;
 @property (nonatomic, retain) ExproMerchant *org;
 @property (nonatomic, retain) NSSet *purchases;
 @property (nonatomic, retain) ExproRole *role;

@@ -42,7 +42,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *goodsComeBackButton;
 
 
-
+- (IBAction)addMemberSaving:(UIButton *)sender;
 - (IBAction)memberCreate:(UIButton *)sender;
 - (IBAction)goodsCommeBack:(UIButton *)sender;
 - (IBAction)dealQueryByDealID:(UIButton *)sender;
@@ -71,7 +71,7 @@
 @property (strong,nonatomic) exproposGoodSelectedViewController *goodsSelected;
 @property (strong, nonatomic)  UINavigationController *nav;
 @property (nonatomic) NSInteger type;
-
+@property (nonatomic,strong) ExproDeal *repeal;
 
 
 -(void)reloadViews;

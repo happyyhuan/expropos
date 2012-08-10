@@ -29,12 +29,16 @@
 #import "exproposMemberShowInfoViewController.h"
 #import "exproposMemberRegisterController.h"
 #import "exproposDealQueryViewController.h"
+#import "exproposAddMemberSavingViewController.h"
+#import "exproposGoodsComeBackViewController.h"
 
 @interface exproposShowDealOperateViewController ()
 @property (nonatomic,strong) UIImageView  *toolbarView;
 @property (nonatomic,strong) exproposMemberShowInfoViewController *showMemberInfo;
 @property (nonatomic,strong) exproposMemberRegisterController *memberRegister;
 @property (nonatomic,strong) exproposDealQueryViewController  *dealQuery;
+@property (nonatomic,strong) exproposAddMemberSavingViewController *addMemberSaving;
+@property (nonatomic,strong) exproposGoodsComeBackViewController *goodsComeBack;
 @end
 
 @implementation exproposShowDealOperateViewController
@@ -69,6 +73,9 @@
 @synthesize showMemberInfo = _showMemberInfo;
 @synthesize memberRegister = _memberRegister;
 @synthesize dealQuery = _dealQuery;
+@synthesize addMemberSaving = _addMemberSaving;
+@synthesize goodsComeBack = _goodsComeBack;
+@synthesize repeal = _repeal;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -196,6 +203,8 @@
     
     _type = 1;
     
+    
+    
 }
 -(void)moreMeberInfo:(id)sender
 {
@@ -232,6 +241,7 @@
 -(void)closeModalWindow:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -458,9 +468,6 @@
         {
             UITextField *amount = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, _width, _height)];
             amount.tag = goods.gid.intValue;
-//            [amount addTarget:self action:@selector(amoutChanged:) forControlEvents:UIControlEventEditingChanged];
-//            
-//            [amount addTarget:self action:@selector(amoutEnd:) forControlEvents:UIControlEventEditingDidEndOnExit];
             [amount addTarget:self action:@selector(amoutBegin:) forControlEvents:UIControlEventEditingDidBegin];
              amount.tag = indexPath.row;
            
@@ -571,6 +578,38 @@
 }
 
 
+- (IBAction)addMemberSaving:(UIButton *)sender {
+    if(!_member){
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示 " message:@"请先选择会员，谢谢！" delegate:self cancelButtonTitle:@"确定 " otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
+    
+    if(!_addMemberSaving){
+        _addMemberSaving = [self.storyboard instantiateViewControllerWithIdentifier:@"addMemberSaving"];
+    }
+    if(_addMemberSaving.member.gid.intValue != _member.gid.intValue){
+        _addMemberSaving.member = _member;
+    }
+    _addMemberSaving.modalPresentationStyle = UIModalPresentationFormSheet;
+    _addMemberSaving.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentModalViewController:_addMemberSaving animated:YES];
+    _addMemberSaving.view.superview.frame = CGRectMake(100, 100, 710,440);
+    
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+    CGRect frame = CGRectMake(0, 0, 44, 44);
+    frame.origin.x = _addMemberSaving.view.frame.origin.x - 16;
+    frame.origin.y = _addMemberSaving.view.frame.origin.y -16;
+    button.frame = frame;
+    button.layer.shadowColor = [[UIColor blackColor] CGColor];
+    button.layer.shadowOffset = CGSizeMake(0,4);
+    button.layer.shadowOpacity = 0.3;
+    [button addTarget:self action:@selector(closeModalWindow:) forControlEvents:UIControlEventTouchDown];
+    [_addMemberSaving.view.superview addSubview:button];
+}
+
 - (IBAction)memberCreate:(UIButton *)sender {
     if(!_memberRegister){
         _memberRegister = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
@@ -609,7 +648,30 @@
         _statusLabel.textColor = [UIColor redColor];
         _type =0;
         [_goodsComeBackButton setTitle:@"商品销售" forState:UIControlStateNormal];
+        
+        if(!_goodsComeBack){
+            _goodsComeBack = [self.storyboard instantiateViewControllerWithIdentifier:@"goodsComeBack"];
+        }
+        _goodsComeBack.showDealOperate = self;
+        _goodsComeBack.modalPresentationStyle = UIModalPresentationFormSheet;
+        _goodsComeBack.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
+        [self presentModalViewController:_goodsComeBack animated:YES];
+        _goodsComeBack.view.superview.frame = CGRectMake(60,100, 880, 450);
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+        CGRect frame = CGRectMake(0, 0, 60, 60);
+        frame.origin.x = _goodsComeBack.view.frame.origin.x - 22;
+        frame.origin.y = _goodsComeBack.view.frame.origin.y -22;
+        button.frame = frame;
+        button.layer.shadowColor = [[UIColor blackColor] CGColor];
+        button.layer.shadowOffset = CGSizeMake(0,4);
+        button.layer.shadowOpacity = 0.3;
+        [button addTarget:self action:@selector(closeModalWindow:) forControlEvents:UIControlEventTouchDown];
+        [_goodsComeBack.view.superview addSubview:button];
+        
     }else {
+          self.repeal = nil;
         _statusLabel.text = @"   当前状态：商品销售";
         _statusLabel.layer.borderColor = [[UIColor whiteColor]CGColor];
         _statusLabel.textColor = [UIColor blackColor];
@@ -721,9 +783,14 @@
      UITableViewCell *cell = [self.dealTableView cellForRowAtIndexPath:indexPath];
      CGRect rect = CGRectMake(cell.frame.origin.x+_width, cell.frame.origin.y, _width2, cell.frame.size.height);
      
-     exproposNumKeyboard *keyboard = [self.storyboard instantiateViewControllerWithIdentifier:@"numKeyboard"];   
+     exproposNumKeyboard *keyboard = [self.storyboard instantiateViewControllerWithIdentifier:@"numKeyboard"];  
+    if(!_popover){
+        _popover = [[UIPopoverController alloc] initWithContentViewController:keyboard];
+    }else {
+         _popover.contentViewController = keyboard;
+    }
      _popover.popoverContentSize=CGSizeMake(470, 480);   
-     _popover.contentViewController = keyboard;
+    
      [_popover presentPopoverFromRect:rect inView:self.dealTableView  permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES]; 
     
     keyboard.viewController = self;
@@ -777,32 +844,7 @@
 -(void)finish
 {
     NSLog(@"finish.......");
-    int dealGid = 0;
-    int dealItemGid = 0;
-    RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    //获取应用程序沙盒的Documents目录  
-    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);  
-    NSString *plistPath1 = [paths objectAtIndex:0];  
-    
-    //得到完整的文件名  
-    NSString *filename=[plistPath1 stringByAppendingPathComponent:@"gids.plist"];  
-    
-    
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithContentsOfFile:filename];  
-    if(dic == nil){
-        dic = [[NSMutableDictionary alloc]initWithCapacity:20];
-    }
-    if(dic.count <=0 ){
-        [ dic setObject:[NSNumber numberWithInt:0] forKey:@"dealGid"];
         
-    }else {
-        dealGid = [[dic valueForKey:@"dealGid"] intValue];
-        dealItemGid = [[dic valueForKey:@"dealItemGid"] intValue];
-    }
-    
-    
-    
-    
     if(_deal == nil){
         _deal = [ExproDeal object];
     }
@@ -816,8 +858,8 @@
     _deal.cash = [NSNumber numberWithDouble:sum];
     _deal.payment = [NSNumber numberWithDouble:sum];
     _deal.type = [NSNumber numberWithInt:_type];
-    _deal.lid = [NSNumber numberWithInt:(dealGid+1)];
-    [dic setValue:[NSNumber numberWithInt:(dealGid+1)] forKey:@"dealGid"];
+    
+   
     _deal.customer = _member;
     _deal.customerID = _member.gid;
     
@@ -826,13 +868,11 @@
         
         int amout = [[_goodsAndAmount objectForKey:g.gid] intValue];
         ExproDealItem *dealItem = [ExproDealItem object];
-        dealItem.lid = [NSNumber numberWithInt:(dealItemGid+1)];
         dealItem.deal = _deal;
         dealItem.goods = g;
         dealItem.num = [NSNumber numberWithInt:amout];
         dealItem.closingCost = g.price;
         dealItem.totalCost = [NSNumber numberWithDouble:(g.price.doubleValue * amout)];
-        [dic setValue:[NSNumber numberWithInt:(dealItemGid+i+1)] forKey:@"dealItemGid"];
         i++;
     }
     
@@ -846,24 +886,42 @@
         }
     }
     
-    [dic writeToFile:filename atomically:YES];  
-    
-    [objectManager.objectStore save:nil];
     
     
     _operatingDeals = [[exproposDealOperate alloc]init];
     _operatingDeals.reserver = self;
     _operatingDeals.succeedCallBack = @selector(createDealSuccess:);
     _operatingDeals.failedCallBack = @selector(createDealfail);
-    [_operatingDeals createDeal:_deal];
     
+    if(_type == 0){
+        _deal.repeal = self.repeal;
+        [_operatingDeals createGoodsComeBackDeal:_deal];
+    }else {
+         [_operatingDeals createDeal:_deal];
+    }
     
-
 }
 
 -(void)createDealSuccess:(id)object
 {
+    
     NSLog(@"success");
+    NSLog(@"%@",object);
+    NSMutableDictionary *dic = (NSMutableDictionary*)object;
+    NSString *gid  = [dic objectForKey:@"gid"];
+    
+    _deal.gid = [NSNumber numberWithInt:gid.intValue];
+    [[RKObjectManager sharedManager].objectStore save:nil];
+    
+    if(_type == 0){
+        self.repeal = nil;
+        _statusLabel.text = @"   当前状态：商品销售";
+        _statusLabel.layer.borderColor = [[UIColor whiteColor]CGColor];
+        _statusLabel.textColor = [UIColor blackColor];
+        _type =1;
+        [_goodsComeBackButton setTitle:@"商品退货" forState:UIControlStateNormal];
+    }
+    
     [self cancels];
 }
 

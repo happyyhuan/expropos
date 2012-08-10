@@ -46,8 +46,37 @@
 
 -(void)dealQueryByDealID:(NSString *)dealID
 {
-    NSString *url = [NSString stringWithFormat:@"/deals/%i",dealID.intValue];
+    NSString *url = [NSString stringWithFormat:@"/deal/%i",dealID.intValue];
     [self requestURL:url method:RKRequestMethodGET params:nil mapping:nil];
 }
 
+
+-(void)queryDealAmountByCutomerID:(NSNumber  *)customer_id type:(NSNumber *)type beginTime:(NSDate*)bt endTime:(NSDate*)et
+{
+    self.acceptParallelResults = NO;
+    NSString  *url = [NSString stringWithFormat:@"/deal/count?bt=%@&et=%@&customer_id=%i&type=%i",[self dateToString:bt ],[self dateToString:et],customer_id.intValue,type.intValue];
+    RKObjectMapping *callBackMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [callBackMapping mapKeyPath:@"count" toAttribute:@"count"];
+    [self requestURL:url method:RKRequestMethodGET params:nil  mapping:callBackMapping];
+}
+
+-(NSString *)dateToString:(NSDate*)date
+{
+    //实例化一个NSDateFormatter对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式,这里可以设置成自己需要的格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    //用[NSDate date]可以获取系统当前时间
+    NSString *currentDateStr = [dateFormatter stringFromDate:date];
+    //输出格式为：2010-10-27 10:22:13
+    return currentDateStr;
+}
+
+
+-(void)queryDealByCustomerID:(NSNumber *)customer_id start:(int)start limit:(int)limit type:(int)type bt:(NSDate*)bt et:(NSDate *)et
+{
+    self.acceptParallelResults = YES;
+    NSString  *url = [NSString stringWithFormat:@"/deals?bt=%@&et=%@&customer_id=%i&type=%i&start=%i&limit=%i&sidx=create_time&sord=desc",[self dateToString:bt ],[self dateToString:et],customer_id.intValue,type,start,limit];
+      [self requestURL:url method:RKRequestMethodGET params:nil  mapping:nil];
+}
 @end

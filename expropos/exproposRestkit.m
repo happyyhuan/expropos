@@ -28,7 +28,7 @@
 + (void) router:(RKObjectRouter *)router 
 {
     [router routeClass:[ExproMerchant class] toResourcePath:@"/sync/merchant/:gid" forMethod:RKRequestMethodGET];
-    [router routeClass:[ExproDeal class] toResourcePath:@"/deals" forMethod:RKRequestMethodPOST];
+    [router routeClass:[ExproDeal class] toResourcePath:@"/deal" forMethod:RKRequestMethodPOST];
 }
 
 + (void) objectMapWithManager:(RKObjectManager *)objectManager 
@@ -119,50 +119,53 @@
     [merchantMapping mapAttributes:@"state", @"type", @"phone", nil];
     [merchantMapping mapKeyPath:@"store" toRelationship:@"stores" withMapping:storeMapping];
     [merchantMapping mapKeyPath:@"member" toRelationship:@"members" withMapping:memberMapping];
- //   [merchantMapping mapKeyPath:@"goods" toRelationship:@"goods" withMapping:goodsMapping];
+   [merchantMapping mapKeyPath:@"goods" toRelationship:@"goods" withMapping:goodsMapping];
     [objectManager.mappingProvider setMapping:merchantMapping forKeyPath:@"sync_merchant"];
 
     
     
     RKManagedObjectMapping *dealItemMapping = [RKManagedObjectMapping mappingForClass:[ExproDealItem class] inManagedObjectStore:objectManager.objectStore];
     dealItemMapping.primaryKeyAttribute = @"gid";
-    [dealItemMapping mapKeyPathsToAttributes:@"_id",@"gid",@"closing_cost",@"closingCost",@"total_cost",@"totalCost", @"lid",@"lid",
+    [dealItemMapping mapKeyPathsToAttributes:@"_id",@"gid",@"closing_cost",@"closingCost",@"total_cost",@"totalCost", 
      @"deal_id",@"dealID",@"goods_id",@"goodsID",nil];
     [dealItemMapping mapAttributes:@"num", nil];
 //    [dealItemMapping connectRelationship:@"deal" withObjectForPrimaryKeyAttribute:@"dealID"];
     [dealItemMapping connectRelationship:@"goods" withObjectForPrimaryKeyAttribute:@"goodsID"];
   //  [dealItemMapping mapKeyPath:@"dealID" toRelationship:@"deal" withMapping:dealMapping];
     [dealItemMapping mapKeyPath:@"goodsID" toRelationship:@"goods" withMapping:goodsMapping  serialize:NO];        
-    [objectManager.mappingProvider setMapping:dealItemMapping forKeyPath:@"deal_item"];
+    [objectManager.mappingProvider setMapping:dealItemMapping forKeyPath:@"deal_items"];
     //    [dealItemMapping mapKeyPath:@"dealID" toRelationship:@"deal" withMapping:dealMapping serialize:NO];
     
 
     RKManagedObjectMapping *dealMapping = [RKManagedObjectMapping mappingForClass:[ExproDeal class] inManagedObjectStore:objectManager.objectStore];
     dealMapping.primaryKeyAttribute = @"gid";
-    [dealMapping mapKeyPathsToAttributes:@"_id",@"gid",@"store_id",@"storeID",@"dealer_id",@"dealerID",@"customer_id",@"customerID",@"type",@"type",@"state",@"state",@"payment",@"payment",@"lid",@"lid",
-    @"cash",@"cash",@"point",@"point",@"pay_type",@"payType",@"create_time",@"createTime",nil];
+    [dealMapping mapKeyPathsToAttributes:@"_id",@"gid",@"store_id",@"storeID",@"dealer_id",@"dealerID",@"customer_id",@"customerID",@"repeal_id",@"repealID",@"type",@"type",@"state",@"state",@"payment",@"payment",@"cash",@"cash",@"point",@"point",@"pay_type",@"payType",@"create_time",@"createTime",nil];
     [dealMapping connectRelationship:@"store" withObjectForPrimaryKeyAttribute:@"storeID"];
     [dealMapping mapKeyPath:@"storeID" toRelationship:@"store" withMapping:storeMapping serialize:NO];
+    
+    [dealMapping connectRelationship:@"repeal" withObjectForPrimaryKeyAttribute:@"repealID"];
+    [dealMapping mapKeyPath:@"repealID" toRelationship:@"repeal" withMapping:dealMapping serialize:NO];
+    
     [dealMapping connectRelationship:@"dealer" withObjectForPrimaryKeyAttribute:@"dealerID"];
     [dealMapping mapKeyPath:@"dealerID" toRelationship:@"dealer" withMapping:memberMapping serialize:NO];
     [dealMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"customerID"];
     [dealMapping mapKeyPath:@"customer" toRelationship:@"customer" withMapping:memberMapping serialize:NO];
   //  dealMapping mapRelationship:@"customer" withMapping:memberMapping
-    [dealMapping mapKeyPath:@"deal_item" toRelationship:@"items" withMapping:dealItemMapping serialize:NO];
+    [dealMapping mapKeyPath:@"deal_items" toRelationship:@"items" withMapping:dealItemMapping serialize:NO];
     [objectManager.mappingProvider setMapping:dealMapping forKeyPath:@"deal"];
+    [objectManager.mappingProvider setMapping:dealMapping forKeyPath:@"deals"];
         
   
     goodsMapping.primaryKeyAttribute = @"gid";
     [goodsMapping mapKeyPathsToAttributes:@"_id", @"gid", @"create_time", @"createTime", @"type_id", @"typeID", nil];
     [goodsMapping mapAttributes:@"name", @"state", @"code", @"price", @"comment", nil];
-   // [goodsMapping mapKeyPath:@"merchantgoods" toRelationship:@"merchants" withMapping:merchantMapping serialize:NO];
     [goodsMapping mapKeyPath:@"merchant" toRelationship:@"merchants" withMapping:merchantMapping serialize:NO];
 
      [goodsMapping hasOne:@"type" withMapping:goodsTypeMapping];
      [goodsMapping connectRelationship:@"type" withObjectForPrimaryKeyAttribute:@"typeID"];
      [objectManager.mappingProvider setMapping:goodsMapping forKeyPath:@"goods"];
     
-    RKManagedObjectMapping *callbackDealItemMapping = [RKManagedObjectMapping mappingForClass:[ExproDealItem class] inManagedObjectStore:objectManager.objectStore];
+   /* RKManagedObjectMapping *callbackDealItemMapping = [RKManagedObjectMapping mappingForClass:[ExproDealItem class] inManagedObjectStore:objectManager.objectStore];
     callbackDealItemMapping.primaryKeyAttribute = @"lid";
     [callbackDealItemMapping mapKeyPathsToAttributes:@"_id",@"gid",@"closing_cost",@"closingCost",@"total_cost",@"totalCost", @"lid",@"lid",@"deal_id",@"dealID",@"goods_id",@"goodsID",nil];
     [callbackDealItemMapping mapAttributes:@"num", nil];
@@ -189,15 +192,14 @@
    // [callbackDealItemMapping mapKeyPath:@"dealID" toRelationship:@"cbdeal" withMapping:callbackdealMapping serialize:NO];
     
    // [memberMapping connectRelationship:@"customer" withObjectForPrimaryKeyAttribute:@"gid"];
-    [objectManager.mappingProvider setMapping:callbackdealMapping forKeyPath:@"cbdeal"];
+    [objectManager.mappingProvider setMapping:callbackdealMapping forKeyPath:@"cbdeal"];*/
     
-    RKObjectMapping *serializationDealMapping2 = [dealItemMapping inverseMapping];
-    [serializationDealMapping2 removeMappingForKeyPath:@"gid"];
-    [serializationDealMapping2 removeMappingForKeyPath:@"goodsID"];
-    [serializationDealMapping2 mapKeyPathsToAttributes:@"goods.gid",@"goods_id", nil];
-    [serializationDealMapping2 removeMappingForKeyPath:@"dealID"];
-   // [serializationDealMapping2 mapKeyPathsToAttributes:@"deal.gid",@"deal_id", nil];
-    [objectManager.mappingProvider setSerializationMapping:serializationDealMapping2 forClass:[ExproDealItem class]];
+    RKObjectMapping *serializationDealItemMapping = [dealItemMapping inverseMapping];
+    [serializationDealItemMapping removeMappingForKeyPath:@"gid"];
+    [serializationDealItemMapping removeMappingForKeyPath:@"goodsID"];
+    [serializationDealItemMapping mapKeyPathsToAttributes:@"goods.gid",@"goods_id", nil];
+    [serializationDealItemMapping removeMappingForKeyPath:@"dealID"];
+    [objectManager.mappingProvider setSerializationMapping:serializationDealItemMapping forClass:[ExproDealItem class]];
     
     
     RKObjectMapping *serializationDealMapping = [dealMapping inverseMapping];
@@ -205,13 +207,15 @@
     [serializationDealMapping removeMappingForKeyPath:@"dealerID"];
     [serializationDealMapping mapKeyPathsToAttributes:@"dealer.gid", @"dealer_id", nil];
     
+    [serializationDealMapping removeMappingForKeyPath:@"repealID"];
+    [serializationDealMapping mapKeyPathsToAttributes:@"repeal.gid", @"repeal_id", nil];
+    
     [serializationDealMapping removeMappingForKeyPath:@"customerID"];
    [serializationDealMapping mapKeyPathsToAttributes:@"customer.gid",@"customer_id", nil];
     
     [serializationDealMapping removeMappingForKeyPath:@"storeID"];
     [serializationDealMapping mapKeyPathsToAttributes:@"store.gid",@"store_id", nil];
-    [serializationDealMapping mapKeyPath:@"items" toRelationship:@"deal_item" withMapping:serializationDealMapping2];
-    
+    [serializationDealMapping mapKeyPath:@"items" toRelationship:@"deal_items" withMapping:serializationDealItemMapping];
     [serializationDealMapping removeMappingForKeyPath:@"gid"];
     
       

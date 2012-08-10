@@ -2,14 +2,14 @@
 //  ExproDeal.h
 //  expropos
 //
-//  Created by ep3 on 12-7-4.
-//  Copyright (c) 2012年 expro. All rights reserved.
+//  Created by haitao chen on 12-8-9.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ExproDealItem, ExproMember, ExproStore;
+@class ExproDeal, ExproDealItem, ExproMember, ExproStore;
 
 @interface ExproDeal : NSManagedObject
 
@@ -22,12 +22,14 @@
 @property (nonatomic, retain) NSNumber * payment;
 @property (nonatomic, retain) NSNumber * payType;
 @property (nonatomic, retain) NSNumber * point;
+@property (nonatomic, retain) NSNumber * repealID;
 @property (nonatomic, retain) NSNumber * state;
 @property (nonatomic, retain) NSNumber * storeID;
 @property (nonatomic, retain) NSNumber * type;
 @property (nonatomic, retain) ExproMember *customer;
 @property (nonatomic, retain) ExproMember *dealer;
 @property (nonatomic, retain) NSSet *items;
+@property (nonatomic, retain) ExproDeal *repeal;
 @property (nonatomic, retain) ExproStore *store;
 @end
 

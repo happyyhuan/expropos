@@ -9,6 +9,8 @@
 #import "exproposDateSelectedViewController.h"
 #import "exproposDealSelectedViewController.h"
 #import "exproposMemberRegisterController.h"
+#import "exproposAddMemberSavingListViewController.h"
+#import "exproposAddMemberSavingViewController.h"
 
 @interface exproposDateSelectedViewController ()
 
@@ -36,15 +38,32 @@
         }
         [dealSelect.tableView reloadData];
     }
-    else
-    {
-    exproposDealSelectedViewController *dealSelect = (exproposDealSelectedViewController *)self.viewController;
-    if(self.isBegin){
-        dealSelect.beginDate = self.datePicker.date;
-    }else {
-        dealSelect.endDate = self.datePicker.date;
+    if( [self.viewController isKindOfClass:[exproposAddMemberSavingListViewController class]]){
+         exproposAddMemberSavingListViewController *addMemberSavingList = (exproposAddMemberSavingListViewController *)self.viewController;
+        if(self.isBegin){
+            addMemberSavingList.beginTime = self.datePicker.date;
+           
+        }else {
+            addMemberSavingList.endTime = self.datePicker.date;
+           
+        }
     }
-    [dealSelect.tableView reloadData];
+    if( [self.viewController isKindOfClass:[exproposAddMemberSavingViewController class]]){
+        exproposAddMemberSavingViewController *addMemberSaving = (exproposAddMemberSavingViewController *)self.viewController;
+        addMemberSaving.member.savingDueTime = self.datePicker.date;
+        [addMemberSaving.tableView reloadData];
+    }
+   if( [self.viewController isKindOfClass:[exproposDealSelectedViewController class]])
+    {
+        exproposDealSelectedViewController *dealSelect = (exproposDealSelectedViewController *)self.viewController;
+        if(self.isBegin){
+            dealSelect.beginDate = self.datePicker.date;
+        
+        }else {
+        dealSelect.endDate = self.datePicker.date;
+        
+        }
+        [dealSelect.tableView reloadData];
     }
     [super viewWillDisappear:animated];
     

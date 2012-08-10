@@ -10,6 +10,6 @@
 #import "ExproRestDelegate.h"
 
 @interface exproposSign : ExproRestDelegate
-@property (nonatomic) NSInteger *statusCode;
+@property (nonatomic) NSInteger statusCode;
 - (void) signin:(NSString *)cellphone password:(NSString *)password;
 @end

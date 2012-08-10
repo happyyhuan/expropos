@@ -2,8 +2,8 @@
 //  ExproMember.m
 //  expropos
 //
-//  Created by ep3 on 12-7-4.
-//  Copyright (c) 2012年 expro. All rights reserved.
+//  Created by haitao chen on 12-8-9.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import "ExproMember.h"
@@ -21,14 +21,15 @@
 @dynamic createTime;
 @dynamic dueTime;
 @dynamic gid;
+@dynamic orgID;
 @dynamic petName;
 @dynamic point;
 @dynamic privacy;
+@dynamic roleID;
 @dynamic savings;
 @dynamic state;
 @dynamic userID;
-@dynamic orgID;
-@dynamic roleID;
+@dynamic savingDueTime;
 @dynamic org;
 @dynamic purchases;
 @dynamic role;

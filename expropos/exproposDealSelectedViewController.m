@@ -395,9 +395,14 @@
 
 -(NSString *)dateToString:(NSDate*)date
 {
-    NSString *dateStr = [date description];
-    dateStr = [dateStr substringToIndex:10];
-    return dateStr;
+    //实例化一个NSDateFormatter对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式,这里可以设置成自己需要的格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    //用[NSDate date]可以获取系统当前时间
+    NSString *currentDateStr = [dateFormatter stringFromDate:date];
+    //输出格式为：2010-10-27 10:22:13
+    return currentDateStr;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

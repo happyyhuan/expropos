@@ -596,6 +596,231 @@
             </objects>
             <point key="canvasLocation" x="-3234" y="204"/>
         </scene>
+        <!--Expropos Add Member Saving View Controller-->
+        <scene sceneID="pl4-xM-rav">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EKU-HP-t7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="addMemberSaving" id="xxZ-6E-X4R" customClass="exproposAddMemberSavingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EaV-oN-Fn8">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="VFn-32-t0J">
+                                <rect key="frame" x="6" y="8" width="300" height="423"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2wN-SN-DIE">
+                                        <rect key="frame" x="0.0" y="34" width="300" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="3qu-Ww-Ngi">
+                                <rect key="frame" x="314" y="8" width="386" height="423"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bpi-0o-t5d">
+                                        <rect key="frame" x="197" y="9" width="267" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                        <state key="normal" image="delete.png">
+                                            <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteOneGoodsCode:" destination="eWk-Gl-AZZ" eventType="touchUpInside" id="5UK-dY-GXx"/>
+                                            <action selector="deleteOneGoodsNum:" destination="2d1-0u-Zpg" eventType="touchUpInside" id="AV9-6e-FJv"/>
+                                            <action selector="deleteOneNum:" destination="xxZ-6E-X4R" eventType="touchUpInside" id="bgz-pm-4dt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tkb-x0-Igi" customClass="JPStupidButton">
+                                        <rect key="frame" x="137" y="68" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="8">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CEI-gN-R9b" customClass="JPStupidButton">
+                                        <rect key="frame" x="265" y="68" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="9">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Oui-p3-PlB" customClass="JPStupidButton">
+                                        <rect key="frame" x="9" y="157" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="4">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MNO-HB-5Eu" customClass="JPStupidButton">
+                                        <rect key="frame" x="265" y="159" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="6">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Xn-n3-LMe" customClass="JPStupidButton">
+                                        <rect key="frame" x="137" y="247" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="2">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KFX-Ke-lXh" customClass="JPStupidButton">
+                                        <rect key="frame" x="265" y="247" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="3">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ypF-12-mdr" customClass="JPStupidButton">
+                                        <rect key="frame" x="137" y="325" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="0">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VXC-jO-AY5" customClass="JPStupidButton">
+                                        <rect key="frame" x="265" y="328" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                        <state key="normal" title="确定">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Ir-5m-PDb" customClass="JPStupidButton">
+                                        <rect key="frame" x="9" y="68" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="7">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dfg-Qq-CI5" customClass="JPStupidButton">
+                                        <rect key="frame" x="137" y="157" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="5">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XiY-pD-hAo" customClass="JPStupidButton">
+                                        <rect key="frame" x="9" y="241" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="1">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7MY-yM-LFn" customClass="JPStupidButton">
+                                        <rect key="frame" x="9" y="325" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                        <state key="normal" title=".">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="商户储值" minimumFontSize="17" id="XcJ-QC-UhY">
+                                        <rect key="frame" x="5" y="7" width="366" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="memberSaving" destination="XcJ-QC-UhY" id="Lce-gk-TdM"/>
+                        <outlet property="rightView" destination="3qu-Ww-Ngi" id="aXB-cP-s9o"/>
+                        <outlet property="tableView" destination="VFn-32-t0J" id="0gy-dV-BXH"/>
+                        <outletCollection property="keys" destination="3Ir-5m-PDb" id="iil-fM-Mff"/>
+                        <outletCollection property="keys" destination="tkb-x0-Igi" id="icf-Ds-ooU"/>
+                        <outletCollection property="keys" destination="CEI-gN-R9b" id="n9Z-UX-nE4"/>
+                        <outletCollection property="keys" destination="MNO-HB-5Eu" id="hPD-az-CuR"/>
+                        <outletCollection property="keys" destination="dfg-Qq-CI5" id="oVo-KB-DBr"/>
+                        <outletCollection property="keys" destination="Oui-p3-PlB" id="sDe-bH-VW3"/>
+                        <outletCollection property="keys" destination="XiY-pD-hAo" id="CMk-us-rPU"/>
+                        <outletCollection property="keys" destination="3Xn-n3-LMe" id="VOg-zP-6bq"/>
+                        <outletCollection property="keys" destination="KFX-Ke-lXh" id="Cbg-Uo-Dvf"/>
+                        <outletCollection property="keys" destination="ypF-12-mdr" id="Mpy-vA-2YG"/>
+                        <outletCollection property="keys" destination="VXC-jO-AY5" id="Xvl-ML-IRb"/>
+                        <outletCollection property="keys" destination="7MY-yM-LFn" id="eld-ep-Rkr"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-3154" y="1516"/>
+        </scene>
         <!--Expropos Num Keyboard-->
         <scene sceneID="dim-Mc-hoe">
             <objects>
@@ -799,7 +1024,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2540" y="1756"/>
+            <point key="canvasLocation" x="-2004" y="1632"/>
         </scene>
         <!--Expropos Show Deal Operate View Controller-->
         <scene sceneID="gYc-bb-zs9">
@@ -1088,6 +1313,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addMemberSaving:" destination="eWk-Gl-AZZ" eventType="touchUpInside" id="dkL-Hi-GgJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UgD-Pk-exF">
                                         <rect key="frame" x="127" y="4" width="108" height="46"/>
@@ -1748,6 +1976,230 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="3153" y="-2890"/>
         </scene>
+        <!--Expropos Goods Come Back View Controller-->
+        <scene sceneID="rjU-qo-SnO">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w1e-b5-IhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="goodsComeBack" id="yQs-vi-biy" customClass="exproposGoodsComeBackViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DK7-WG-8kI">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="  交易编号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="eQ5-yV-DX3">
+                                <rect key="frame" x="7" y="30" width="470" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="cKS-rQ-kfG">
+                                <rect key="frame" x="485" y="30" width="370" height="410"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="s9L-52-pGJ" customClass="JPStupidButton">
+                                        <rect key="frame" x="247" y="113" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="6">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1bB-Jk-tg6" customClass="JPStupidButton">
+                                        <rect key="frame" x="134" y="320" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="0">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touch:" destination="yQs-vi-biy" eventType="touchUpInside" id="4Vt-GA-ihE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wDz-WN-8Hq" customClass="JPStupidButton">
+                                        <rect key="frame" x="247" y="320" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                        <state key="normal" title="确定">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touch:" destination="yQs-vi-biy" eventType="touchUpInside" id="tHh-c6-9pm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IEZ-Tv-7br" customClass="JPStupidButton">
+                                        <rect key="frame" x="136" y="113" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="5">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aDC-X2-3o2" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="320" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                        <state key="normal" title="C">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touch:" destination="yQs-vi-biy" eventType="touchUpInside" id="lyx-in-VEL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FyW-xg-o4v" customClass="JPStupidButton">
+                                        <rect key="frame" x="247" y="10" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="9">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="euK-tZ-LMX" customClass="JPStupidButton">
+                                        <rect key="frame" x="136" y="217" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="2">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T5G-bN-pQQ" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="10" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="7">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oWY-3n-LOc" customClass="JPStupidButton">
+                                        <rect key="frame" x="247" y="217" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="3">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vbI-e9-wB9" customClass="JPStupidButton">
+                                        <rect key="frame" x="136" y="10" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="8">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mWH-Y7-OXl" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="217" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="1">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gdy-7f-djJ" customClass="JPStupidButton">
+                                        <rect key="frame" x="20" y="113" width="103" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                                        <state key="normal" title="4">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" id="iMk-4Q-XUh">
+                                <rect key="frame" x="114" y="41" width="333" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="交易基本信息" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="LDw-Po-5kw">
+                                <rect key="frame" x="7" y="95" width="470" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pmp-Ig-MeU" customClass="ExproMultipleTableView">
+                                <rect key="frame" x="7" y="183" width="470" height="257"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="dealID" destination="iMk-4Q-XUh" id="VsH-jz-XNJ"/>
+                        <outlet property="dealIDLabel" destination="eQ5-yV-DX3" id="iaY-2v-ynP"/>
+                        <outlet property="dealInfo" destination="LDw-Po-5kw" id="2vD-cp-Yqk"/>
+                        <outlet property="dealItemTable" destination="pmp-Ig-MeU" id="cDS-Th-zz4"/>
+                        <outlet property="keys" destination="cKS-rQ-kfG" id="tmy-s6-gCK"/>
+                        <outletCollection property="buttons" destination="Gdy-7f-djJ" id="nji-of-zBS"/>
+                        <outletCollection property="buttons" destination="mWH-Y7-OXl" id="tbu-BY-4sp"/>
+                        <outletCollection property="buttons" destination="vbI-e9-wB9" id="jwt-3l-2SN"/>
+                        <outletCollection property="buttons" destination="oWY-3n-LOc" id="2rI-Ps-Amy"/>
+                        <outletCollection property="buttons" destination="T5G-bN-pQQ" id="DBZ-d3-mxJ"/>
+                        <outletCollection property="buttons" destination="euK-tZ-LMX" id="NNL-eP-SrD"/>
+                        <outletCollection property="buttons" destination="FyW-xg-o4v" id="SDF-hI-BgJ"/>
+                        <outletCollection property="buttons" destination="aDC-X2-3o2" id="Un5-pG-tS1"/>
+                        <outletCollection property="buttons" destination="IEZ-Tv-7br" id="CId-W4-eUd"/>
+                        <outletCollection property="buttons" destination="wDz-WN-8Hq" id="goB-tJ-i4X"/>
+                        <outletCollection property="buttons" destination="1bB-Jk-tg6" id="4eh-mT-J2z"/>
+                        <outletCollection property="buttons" destination="s9L-52-pGJ" id="huw-VA-r9D"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="190" y="1876"/>
+        </scene>
     </scenes>
     <resources>
         <image name="2.jpg" width="965" height="253"/>
@@ -1767,6 +2219,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="JPStupidButton" superclassName="UIButton">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/JPStupidButton.h"/>
+        </class>
+        <class className="exproposAddMemberSavingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposAddMemberSavingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="deleteOneNum:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="memberSaving" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rightView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outletCollection" name="keys" candidateClass="JPStupidButton"/>
+            </relationships>
         </class>
         <class className="exproposDateSelectedViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDateSelectedViewController.h"/>
@@ -1793,6 +2255,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="outlet" name="FlashButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="exproposGoodsComeBackViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposGoodsComeBackViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dealID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dealIDLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dealInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dealItemTable" candidateClass="ExproMultipleTableView"/>
+                <relationship kind="outlet" name="keys" candidateClass="UIView"/>
+                <relationship kind="outletCollection" name="buttons" candidateClass="JPStupidButton"/>
             </relationships>
         </class>
         <class className="exproposGoodsManagerViewController" superclassName="UIViewController">
@@ -1864,6 +2337,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="exproposShowDealOperateViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposShowDealOperateViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addMemberSaving:" candidateClass="UIButton"/>
                 <relationship kind="action" name="dealQueryByDealID:" candidateClass="UIButton"/>
                 <relationship kind="action" name="deleteOneGoodsCode:"/>
                 <relationship kind="action" name="goBack:" candidateClass="UIBarButtonItem"/>

@@ -48,4 +48,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 -(void)multipleTableView:(ExproMultipleTableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
 -(void)multipleTableViewScrollViewDidScroll:(UIScrollView *)scrollView;
+
+- (void)multipleTableViewScrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+-(NSString *)multipleTableView:(ExproMultipleTableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end

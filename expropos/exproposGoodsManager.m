@@ -27,21 +27,13 @@
 
 -(void)addGoods:(NSDictionary *)goodsInfo
 {
-    /*
-     {
-     "name":"iphone4s",
-     "type_id":"2",
-     "state":"1",
-     "price":"11.00"
-     }
-     */
+  
     NSLog(@"%@",goodsInfo);
     [self requestURL:@"/goods" method:RKRequestMethodPOST params:goodsInfo mapping:nil];
 
 }
 -(void)updateGoods:(ExproGoods*)goods;
 {
-    NSString *url = [NSString stringWithFormat:@"/goods/%i",goods.gid.intValue];
     //实例化一个NSDateFormatter对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //设定时间格式,这里可以设置成自己需要的格式
