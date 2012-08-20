@@ -1,19 +1,18 @@
 //
-//  exproposPrivacyController.m
+//  exproposRoleSelectViewControllerViewController.m
 //  expropos
 //
-//  Created by chen on 12-7-16.
+//  Created by chen on 12-8-15.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "exproposPrivacyController.h"
+#import "exproposRoleSelectViewController.h"
+#import "ExproRole.h"
 
+@implementation exproposRoleSelectViewController
 
-
-@implementation exproposPrivacyController
 @synthesize viewController = _viewController;
 @synthesize levelItem = _levelItem;
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -26,19 +25,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _levelItem = [NSArray arrayWithObjects:@"不开放",@"基本信息开放",@"完全开放", nil];
+    NSArray *roles = [ExproRole findAll];
+    NSMutableArray *names = [[NSMutableArray alloc] initWithCapacity:1];
+    for (int i =0;i<roles.count;i++)
+    {
+        ExproRole *role = [roles objectAtIndex:i];                
+        [names addObject:role.name];
+    }
+    [self setLevelItem:names];
+    //_levelItem = [NSArray arrayWithObjects:@"不开放",@"基本信息开放",@"完全开放", nil];
     self.navigationItem.title = @"选择资料开放权限";
     UITableView* tableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     self.tableView = tableview;
     self.contentSizeForViewInPopover = CGSizeMake(300, 550);
-   
+    
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     self.levelItem = nil;
-  }
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -97,7 +104,7 @@
     UITableViewCell *cell0 = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if(indexPath.section == 0){
-        [self.viewController.privacyItem removeAllObjects];
+        //[self.viewController.privacyItem removeAllObjects];
         cell0.accessoryType = UITableViewCellAccessoryCheckmark;
         [self.tableView reloadData];
         [self.viewController.tableView reloadData];
@@ -106,8 +113,8 @@
     }
     [self.viewController.privacyItem removeAllObjects];
     [self.viewController.privacyItem addObject:[NSNumber numberWithInt:indexPath.row]];
-     cell0.accessoryType = UITableViewCellAccessoryNone;
-     cell.accessoryType = UITableViewCellAccessoryCheckmark;    [self.viewController.tableView reloadData];
+    cell0.accessoryType = UITableViewCellAccessoryNone;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;    [self.viewController.tableView reloadData];
     [self viewDidLoad];
 }
 

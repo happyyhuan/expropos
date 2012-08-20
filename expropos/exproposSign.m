@@ -52,10 +52,10 @@
     NSLog(@"signin user:%@, sex:%@", [user objectForKey:@"name"], [user objectForKey:@"sex"]);    
 }
 
-- (void) signin:(NSString *)cellphone password:(NSString *)password 
+- (void) signin:(NSString *)cellphone password:(NSString *)password stroeId:(NSString *)orgId 
 {
     //RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:cellphone,@"cellphone",password,@"password",@"1",@"org", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:cellphone,@"cellphone",password,@"password",orgId,@"org", nil];
     
     
     RKManagedObjectMapping* roleMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];

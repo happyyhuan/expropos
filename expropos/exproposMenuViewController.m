@@ -11,6 +11,7 @@
 #import "exproposAppDelegate.h"
 #import "exproposShowDealOperateViewController.h"
 
+
 @interface exproposMenuViewController ()
 
 @end
@@ -25,6 +26,7 @@
 @synthesize storeControll =_storeControll;
 @synthesize memberManagerControll =_memberManagerControll;
 @synthesize goodsManager = _goodsManager;
+@synthesize ployeeControl =_ployeeControl;
 - (void)awakeFromNib
 {
     self.clearsSelectionOnViewWillAppear = NO;
@@ -45,7 +47,7 @@
 {
     [super viewDidLoad];
     //初始化菜单数组显示的内容
-    self.menus = [NSArray arrayWithObjects:@"门店管理", @"会员管理", @"商品管理", @"交易查询", @"会员开户", nil];
+    self.menus = [NSArray arrayWithObjects:@"门店管理", @"会员管理", @"商品管理", @"交易查询", @"员工管理", nil];
     //初始化主窗体控制器
     self.mainViewController = [self.splitViewController.viewControllers lastObject];
     //初始化交易查询控制器
@@ -61,6 +63,8 @@
     _memberManagerControll = [self.storyboard instantiateViewControllerWithIdentifier:@"memberManager"];
     
      _goodsManager = [self.storyboard instantiateViewControllerWithIdentifier:@"goodsManager"];
+    
+    _ployeeControl = [self.storyboard instantiateViewControllerWithIdentifier:@"ployeeManager"];
 }
 
 - (void)viewDidUnload
@@ -136,18 +140,23 @@
            
     }   
     
-    if([menu isEqualToString:@"会员开户"]){
-        for(UIViewController *contro in _controllers){
-            [contro.view removeFromSuperview];
-        }
-        [_controllers addObject:_memberRegister];
-        _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
-        _memberRegister.mainViewController = self.mainViewController;
-        [self.mainViewController.view addSubview: _memberRegister.view];
+    if([menu isEqualToString:@"员工管理"]){
+//        for(UIViewController *contro in _controllers){
+//            [contro.view removeFromSuperview];
+//        }
+//        [_controllers addObject:_memberRegister];
+//        _memberRegister.view.frame = CGRectMake(0, 44, self.mainViewController.view.bounds.size.width, self.mainViewController.view.bounds.size.height);
+//        _memberRegister.mainViewController = self.mainViewController;
+//        [self.mainViewController.view addSubview: _memberRegister.view];
         
         //        [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
         //        _memberManagerControll.myRootViewController = self.mainViewController;
         //        [self.splitViewController presentModalViewController:_memberManagerControll animated:YES];
+        
+        [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
+        _ployeeControl.myRootViewController = self.mainViewController;
+        [self.splitViewController presentModalViewController:_ployeeControl animated:YES];
+
     }
     
     if([menu isEqualToString:@"会员管理"]){

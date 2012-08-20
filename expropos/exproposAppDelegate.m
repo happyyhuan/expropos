@@ -23,6 +23,7 @@
 @synthesize currentUser = _currentUser;
 @synthesize sysload=_sysload;
 @synthesize sync = _sync;
+@synthesize currentOrgid=_currentOrgid;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

@@ -66,7 +66,23 @@
         {
             if (user.gid.intValue == bu.tag)
             {
+                //查找是否存在user用户
+                NSFetchRequest *request = [ExproSignHistory fetchRequest];
+                NSPredicate *predicate = nil;
+                NSMutableString *str = [[NSMutableString alloc]initWithString:@"(gid=%@)" ];
+                NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:user.gid.stringValue, nil];
+                
+                predicate = [NSPredicate predicateWithFormat:str argumentArray:params];
+                
+                NSLog(@"%@",predicate);
+                
+                request.predicate = predicate;
+                NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+                ExproSignHistory *history = [deals objectAtIndex:0];
+                
+                
                 _userField.text = user.cellphone;
+                self.orgField.text = history.orgId;
                 self.userField.hidden= true;
                 self.phonelable.hidden=true;
                 self.orgField.hidden=true;
@@ -89,6 +105,9 @@
 - (IBAction)login:(id)sender {    
     password = _passwordField.text;
     username= _userField.text;
+    orgId = self.orgField.text;
+    NSLog(@"ORGID === %@",orgId);
+    
     if (username && [username length] && password && [password length]) {
         self.sign = [[exproposSign alloc]init];
         _sign.reserver = self;
@@ -101,8 +120,7 @@
         request.predicate = predicate;
         NSArray *deals = [ExproUser objectsWithFetchRequest:request];
         NSLog(@"%i",deals.count);
-        
-        [self.sign signin:username password:password];  
+        [self.sign signin:username password:password stroeId:orgId]; 
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
@@ -125,10 +143,9 @@
 
     NSString *roleid = [role objectForKey:@"gid"]; 
      NSLog(@"signin roleid:%@", roleid);
-    
-
-    
+        
     exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
+    appDelegate.currentOrgid = self.orgField.text;
     
     //登录成功后保存登录用户历史信息
     RKObjectManager *manager = [RKObjectManager sharedManager];
@@ -159,11 +176,13 @@
         signUser.name = [user objectForKey:@"name"];
         signUser.gid = [user objectForKey:@"gid"];
     }
+    
     ExproSignHistory * signHistory = [ExproSignHistory object];
     signHistory.gid = [user objectForKey:@"gid"];
     NSDate *now = [NSDate date];
     signHistory.signintime = now;
     signHistory.user = signUser;
+    signHistory.orgId = self.orgField.text;
     [manager.objectStore save:nil];
     
     appDelegate.currentUser = signUser;
@@ -192,7 +211,6 @@
             isExis=YES;
         } 
         NSString *salt = [user.password substringToIndex:29];
-        NSLog(@"%@",user.password);
         NSString *hashedPassword = [JFBCrypt hashPassword: password withSalt: salt];
         if ([user.password isEqualToString:hashedPassword])
         {
@@ -224,6 +242,8 @@
         ExproUser *user = [array objectAtIndex:i];
         if (user.signHistory)
         {
+            
+            
             CGRect frame = CGRectMake(50*i, 5, 50, 40);
             
             UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
@@ -486,6 +506,7 @@
     {
         ExproSignHistory *history = [deals objectAtIndex:i];
         ExproUser *user = history.user;
+        
         BOOL *isExis = NO;
         for (int j = 0 ; j < userDeals.count ; j++)
         {

@@ -63,10 +63,6 @@
     [goodsTypeMapping connectRelationship:@"parent" withObjectForPrimaryKeyAttribute:@"parentID"];
     [objectManager.mappingProvider setMapping:goodsTypeMapping forKeyPath:@"goods_type"];
     
-   
-
-
-
     RKManagedObjectMapping* userMapping = [RKManagedObjectMapping mappingForClass:[ExproUser class] inManagedObjectStore:objectManager.objectStore];
     userMapping.primaryKeyAttribute = @"gid";
     [userMapping mapKeyPathsToAttributes:@"_id", @"gid", @"pet_name", @"petName", @"create_time", @"createTime", nil];
@@ -75,7 +71,7 @@
     
     RKManagedObjectMapping* memberMapping = [RKManagedObjectMapping mappingForClass:[ExproMember class] inManagedObjectStore:objectManager.objectStore];
     memberMapping.primaryKeyAttribute = @"gid";
-    [memberMapping mapKeyPathsToAttributes:@"_id", @"gid", @"pet_name", @"petName", @"create_time", @"createTime", @"due_time", @"dueTime", @"role_id", @"roleID", nil];
+    [memberMapping mapKeyPathsToAttributes:@"_id", @"gid",@"org_id",@"orgID", @"pet_name", @"petName", @"create_time", @"createTime", @"due_time", @"dueTime", @"role_id", @"roleID", nil];
     [memberMapping mapAttributes:@"state", @"privacy", @"point", @"savings", @"comment", nil];
     [memberMapping mapRelationship:@"user" withMapping:userMapping];
     [memberMapping mapRelationship:@"role" withMapping:roleMapping];

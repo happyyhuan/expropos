@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JPStupidButton.h"
 #import "ExproMultipleTableView.h"
+#import "exproposSignout.h"
 
 @class JPStupidButton;
 @class ExproMultipleTableView;
@@ -40,6 +41,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 @property (strong, nonatomic) IBOutlet UIButton *goodsComeBackButton;
+@property (strong, nonatomic) exproposSignout *signout;
 
 
 - (IBAction)addMemberSaving:(UIButton *)sender;

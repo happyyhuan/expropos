@@ -15,6 +15,7 @@
 #import "ExproMember.h"
 #import "ExproUser.h"
 #import "exproposRegistr.h"
+#import "exproposAppDelegate.h"
 
 @interface memberManagerViewController ()
 @property (nonatomic, strong) exproposRegistr * exproStoreDel;
@@ -61,7 +62,26 @@ int selected =0;
 {
     
     [super viewDidLoad];
-    _allStore = [NSMutableArray arrayWithArray:[ExproMember findAll]];
+    //查找所以属于该商户的会员
+    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    NSString *orgId = appDelegate.currentOrgid ;
+    _allStore = [[NSMutableArray alloc]initWithCapacity:1];
+    
+    NSArray *allMemebers = [NSMutableArray arrayWithArray:[ExproMember findAll]];
+    
+    
+    for (int i = 0 ; i < allMemebers.count;i++)
+    {
+        ExproMember *mem = [allMemebers objectAtIndex:i];
+        
+        if ([mem.orgID.stringValue isEqualToString:orgId])
+        {
+            [_allStore addObject:mem];
+        }
+    }
+    allMemebers = nil;
+    NSLog(@"%i == ",_allStore.count);
+    
     NSMutableArray *deletes = [[NSMutableArray alloc]initWithCapacity:1];
     _memberItems = [[NSMutableArray alloc]initWithCapacity:1];
            for (int i=0; i < self.allStore.count;i++)
@@ -72,9 +92,10 @@ int selected =0;
                 [deletes addObject:member];
             }
         }    
-    [self.allStore removeObjectsInArray:deletes];    
-    _memberItems = [[NSMutableArray alloc]initWithCapacity:1];    
-    for (int i=0 ; i < 6;i++)
+    [self.allStore removeObjectsInArray:deletes];  
+    
+    _memberItems = [[NSMutableArray alloc]initWithCapacity:1];  
+       for (int i=0 ; i < 6;i++)
     {
         if (i < _allStore.count)
         {
@@ -85,36 +106,38 @@ int selected =0;
             current = _allStore.count;
         }
     }
-    
-    //---初始化时候显示默认第一条数据的信息
-    ExproMember *member = [self.memberItems objectAtIndex:0];
-    
-    [self.telphone setText: member.user.cellphone];
-//    [self.point setText:member.point];
-//    [self.saving setText:member.savings];
-//    [self.dueTime setText:member.dueTime];
-    
-    //隐私权限：0：不开放，1：基本信息开放，8:完全开放。
-    if (member.privacy.integerValue == 8)
+    if(self.memberItems.count !=0)
     {
-        [self.privacy setText:@"完全开放"];
+        //---初始化时候显示默认第一条数据的信息
+        ExproMember *member = [self.memberItems objectAtIndex:0];
+        
+        [self.telphone setText: member.user.cellphone];
+        //    [self.point setText:member.point];
+        //    [self.saving setText:member.savings];
+        //    [self.dueTime setText:member.dueTime];
+        
+        //隐私权限：0：不开放，1：基本信息开放，8:完全开放。
+        if (member.privacy.integerValue == 8)
+        {
+            [self.privacy setText:@"完全开放"];
+        }
+        else if(member.privacy.integerValue == 0){
+            [self.privacy setText:@"不开放"];
+        }
+        else {
+            [self.privacy setText:@"基本信息开放"];
+        }
+        
+        [self.nameInfo setText: member.petName];
+        
+        //----end
+
     }
-    else if(member.privacy.integerValue == 0){
-         [self.privacy setText:@"不开放"];
-    }
-    else {
-         [self.privacy setText:@"基本信息开放"];
-    }
-    
-    [self.nameInfo setText: member.petName];
-    
-    
-    
-    
-    //----end
-    
-    _storesTabelView.layer.cornerRadius = 5.0;
-    _storesTabelView.layer.masksToBounds = YES;
+
+//     _storesTabelView.bounces = NO;
+//    _storesTabelView.showsVerticalScrollIndicator = YES;  
+//    _storesTabelView.layer.cornerRadius = 5.0;
+//    _storesTabelView.layer.masksToBounds = YES;
     _storesTabelView.layer.borderWidth = 3;
     _storesTabelView.layer.borderColor = [[UIColor grayColor] CGColor];
     _memberRegister = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
@@ -180,8 +203,7 @@ int selected =0;
 
 -(void)searchWithNameOrId:(NSString *)nameOrId
 {
-    current = 0 ;
-    _allStore = [NSMutableArray arrayWithArray:[ExproMember findAll]];
+    current = 0 ;       
     NSMutableArray *deletes = [[NSMutableArray alloc]initWithCapacity:1];
     _memberItems = [[NSMutableArray alloc]initWithCapacity:1];
     if (nameOrId.length != 0)
@@ -215,6 +237,23 @@ int selected =0;
     
     [self.storesTabelView reloadData];
 }
+
+- (void)scrollToTop:(BOOL)animated {  
+    [self.storesTabelView setContentOffset:CGPointMake(0,0) animated:animated];  
+}  
+
+- (void)scrollToBottom:(BOOL)animated {  
+    NSUInteger sectionCount = [self.storesTabelView numberOfSections];  
+    if (sectionCount) {  
+        NSUInteger rowCount = [self.storesTabelView numberOfRowsInSection:0];  
+        if (rowCount) {  
+            NSUInteger ii[2] = {0, rowCount-1};  
+            NSIndexPath* indexPath = [NSIndexPath indexPathWithIndexes:ii length:2];  
+            [self.storesTabelView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom  
+                                animated:animated];  
+        }  
+    }  
+}  
 
 #pragma mark -
 #pragma mark UISearchDelegate Methods

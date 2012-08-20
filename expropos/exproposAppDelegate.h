@@ -18,5 +18,6 @@
 @property (strong) ExproUser * currentUser;
 @property (strong) exproposSysLoad * sysload;
 @property (strong) exproposSyncModel * sync;
+@property (nonatomic,strong) NSString *currentOrgid;
 
 @end
