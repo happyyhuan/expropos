@@ -127,7 +127,6 @@
     [myButton addTarget:self action:@selector(moreMeberInfo:) forControlEvents:UIControlEventTouchUpInside];
     myButton.hidden = YES;
     myButton.tag = 119;
-    NSLog(@"myButton==%@",myButton);
     [_topView addSubview:myButton];
     
     
@@ -762,8 +761,6 @@
     appDelegate.window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
     
 }
-
-
 
 
 -(void)finishGoodsSelected

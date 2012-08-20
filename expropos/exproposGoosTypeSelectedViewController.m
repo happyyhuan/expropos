@@ -45,7 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    self.tableView = [self.tableView initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _selectedRow = -1;
 	[self loaddata];
     
@@ -144,13 +144,7 @@
             }
            
             UIButton *button = (UIButton *)[cell viewWithTag:t.gid.intValue];
-            NSLog(@"button==%@",button);
             [button setBackgroundImage:image  forState:UIControlStateNormal];
-          
-            
-            
-     
-   
     
     return cell;
     

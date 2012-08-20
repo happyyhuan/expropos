@@ -479,7 +479,8 @@
     if ([roleId intValue] == 2)
     {
         UIViewController  *dealView = [self.storyboard instantiateViewControllerWithIdentifier:@"dealOperateVersion2"];
-          appDelegate.window.rootViewController = dealView;                     
+          appDelegate.window.rootViewController = dealView; 
+         
     }
     else {
          UISplitViewController *splitView = [self.storyboard instantiateViewControllerWithIdentifier:@"splitView"];

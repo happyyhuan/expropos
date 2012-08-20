@@ -372,6 +372,7 @@
     if([keyPath isEqualToString:@"myGoodsType"]){
         UILabel *label =(UILabel*)[_addView viewWithTag:116];
         label.text = [NSString stringWithFormat:@"商品类型：     %@",_myGoodsType ?  _myGoodsType.name:@""];
+        
     }
     
     if([keyPath isEqualToString:@"myGoodsName"]){
@@ -439,6 +440,7 @@
     }else if(uf.text.length == 0){
         return;
     }else{
+        uf.text = [uf.text substringToIndex:uf.text.length-1];
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入数字"  delegate:nil cancelButtonTitle:@"正确" otherButtonTitles:nil, nil];
         [alertView show];
     }
@@ -455,6 +457,7 @@
     }else if(uf.text.length == 0){
         return;
     }else{
+         uf.text = [uf.text substringToIndex:uf.text.length-1];
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入数字"  delegate:nil cancelButtonTitle:@"正确" otherButtonTitles:nil, nil];
         [alertView show];
     }
@@ -527,7 +530,7 @@
     goods.comment = self.myGoodsComment;
     goods.createTime = now;
     goods.gid =[ NSNumber numberWithInt:-111];
-    NSSet *set = [NSSet setWithObject:self.merchant];
+    NSSet *set = [[NSSet alloc] initWithObjects:self.merchant, nil];
     goods.merchants = set;
     [objectManager.objectStore save:nil];
   
@@ -546,7 +549,6 @@
 
 -(void)addGoodsSuccess:(id)obj;
 {
-    NSLog(@"addGoodsSuccess");
     self.myGoodsState =@"1";
     self.myGoodsCode = @"";
     self.myGoodsName = @"";
@@ -572,6 +574,9 @@
     
     [self loaddata];
     [self.leftView reloadData];
+    
+    self.goodsType.goodsType = nil;
+    [self.goodsType.tableView reloadData];
 }
 
 -(void)addGoodsFail
@@ -614,7 +619,9 @@
     }else if(uf.text.length == 0){
         return;
     }else{
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入数字"  delegate:nil cancelButtonTitle:@"正确" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入数字"  delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        uf.text = [uf.text substringToIndex:uf.text.length-1];
+        uf.text = @"";
         [alertView show];
     }
    
@@ -716,7 +723,7 @@
     
     NSArray *members = [ExproMember findAll];
     for(ExproMember *member in members){
-        if(member.user.gid == appDelegate.currentUser.gid){
+        if(member.user.gid.intValue == appDelegate.currentUser.gid.intValue){
             self.merchant = [member org];
         }
     }
@@ -727,7 +734,8 @@
     self.allDatas = [[NSArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];
     
     
-    self.datas = [_allDatas mutableCopy];
+    //self.datas = [_allDatas mutableCopy];
+   self.datas = [[NSMutableArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];
 }
 
 
@@ -802,7 +810,7 @@
         CellIdentifier = @"searchCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if(cell == nil){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                           reuseIdentifier:CellIdentifier];
         }
         ExproGoods *g = [self.searchData objectAtIndex:indexPath.row];
@@ -856,12 +864,10 @@
         NSMutableArray *InGoods = [[NSMutableArray alloc] initWithCapacity:20];
          
         for(ExproGoods *g in self.merchant.goods){
-            NSLog(@"%i===%i",g.type.gid.intValue,t.gid.intValue);
             if(g.type.gid.intValue == t.gid.intValue){
                 [InGoods addObject:g];
             }
         }
-        NSLog(@"InGOodscount ==%i",InGoods.count);
         
         for(ExproGoodsType *t in set){
             NSInteger index = [self.datas indexOfObjectIdenticalTo:t];
