@@ -31,6 +31,7 @@
 #import "exproposDealQueryViewController.h"
 #import "exproposAddMemberSavingViewController.h"
 #import "exproposGoodsComeBackViewController.h"
+#import "exproposSignout.h"
 
 @interface exproposShowDealOperateViewController ()
 @property (nonatomic,strong) UIImageView  *toolbarView;
@@ -76,6 +77,7 @@
 @synthesize addMemberSaving = _addMemberSaving;
 @synthesize goodsComeBack = _goodsComeBack;
 @synthesize repeal = _repeal;
+@synthesize signout =_signout;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -745,8 +747,22 @@
 
 
 - (IBAction)goBack:(UIBarButtonItem *)sender {
-    [_myRootViewController dismissModalViewControllerAnimated:YES];
+    _signout = [[exproposSignout alloc]init];
+
+    _signout.reserver = self;
+    _signout.succeedCallBack = @selector(didSignout);
+    _signout.contrller = self;
+    [_signout signout];
+    //[_myRootViewController dismissModalViewControllerAnimated:YES];
 }
+
+-(void)didSignout
+{
+    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
+    
+}
+
 
 
 

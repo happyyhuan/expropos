@@ -1,0 +1,176 @@
+//
+//  ployeeRegistr.m
+//  expropos
+//
+//  Created by chen on 12-8-15.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//
+
+#import "ployeeRegistr.h"
+#import "ExproMember.h"
+#import "ExproUser.h"
+
+@implementation ployeeRegistr
+- (id)init {
+    self = [super init];
+    if (self) {
+        [self addCode:200 info:NSLocalizedString(@"modifyOK", nil) alert:NO succeed:YES];
+        [self addCode:201 info:NSLocalizedString(@"registerOK", nil) alert:NO succeed:YES];
+        [self addCode:202 info:NSLocalizedString(@"deleteOK", nil) alert:NO succeed:YES];
+        [self addCode:400 info:NSLocalizedString(@"badRequset", nil) alert:YES succeed:NO];
+        [self addCode:404 info:NSLocalizedString(@"notAcceptable", nil) alert:YES succeed:NO];
+        self.succeedTitle = NSLocalizedString(@"LoginSucceed", nil);
+        self.errorTitle = NSLocalizedString(@"LoginFailed", nil);
+        self.reserver = self;
+    }
+    return self;
+}
+
+
+
+- (void)registr:(NSString *)cellphone name:(NSString *)name petName:(NSString *)petName storeId:(NSString *)storeId
+          email:(NSString *)email idCard:(NSString *)idCard comment:(NSString *)comment
+            sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(NSString *)dueTime
+
+          birth:(NSString *)birthDate  memPetName:(NSString *)memPetName
+          role:(NSMutableArray *)roles
+{
+    
+    //查找是否存在user用户
+    NSFetchRequest *request = [ExproUser fetchRequest];
+    NSPredicate *predicate = nil;
+    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(cellphone=%@)" ];
+    
+    NSMutableArray *userparams = [[NSMutableArray alloc]initWithObjects:cellphone, nil];
+    
+    predicate = [NSPredicate predicateWithFormat:str argumentArray:userparams];
+    
+    NSLog(@"%@",predicate);
+    
+    request.predicate = predicate;
+    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+    ExproUser *user = nil;
+    BOOL isExis=NO;
+    if (deals.count)
+    {
+        user = (ExproUser *)[deals objectAtIndex:0];
+        isExis=YES;
+    }
+    NSString *roleStr = [roles objectAtIndex:0];
+    
+    
+    NSDictionary *params;
+    if (isExis)
+    {
+        NSLog(@"mempetName %@",memPetName);
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                  memPetName,@"pet_name",       
+                  user.cellphone,@"cellphone",
+                  storeId, @"store_id",
+                  roleStr,@"role_id",
+                  @"1",@"state",
+                  user.sex.stringValue,@"sex",
+                  [self dateToString:user.birthday],@"birthday",
+                  dueTime,@"due_time",
+                  user.gid.stringValue,@"user_id",
+                  @"0",@"privacy",
+                  point,@"point",
+                  savings,@"savings",
+                  comment,@"comment",
+                  nil];
+    }
+    else {
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                  memPetName,@"pet_name",
+                  cellphone,@"cellphone",
+                  roleStr,@"role_id",
+                  storeId, @"store_id",
+                  @"1",@"state",
+                  sex,@"sex",
+                  birthDate,@"birthday",
+                  dueTime,@"due_time",
+                  @"",@"user_id",
+                  @"0",@"privacy",
+                  point,@"point",
+                  savings,@"savings",
+                  comment,@"comment",
+                  nil];
+        
+    }
+    [self requestURL:@"/stuff" method:RKRequestMethodPOST params:params mapping:nil];    
+}
+
+
+- (void)modify:(NSString *)memId cellPhone:(NSString *)cellphone storeId:(NSString *)storeId petName:(NSString *)petName  email:(NSString *)email idCard:(NSString *)idCard comment:(NSString *)comment
+         sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(NSDate *)dueTime
+         birth:(NSString *)birthDate  memPetName:(NSString *)memPetName role:(NSMutableArray *)roles;
+{
+    //查找是否存在会员用户
+    NSFetchRequest *request = [ExproMember fetchRequest];
+    NSPredicate *predicate = nil;
+    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(gid=%@)" ];
+    NSMutableArray *userparams = [[NSMutableArray alloc]initWithObjects:memId, nil];
+    predicate = [NSPredicate predicateWithFormat:str argumentArray:userparams];
+    NSLog(@"%@",predicate);
+    request.predicate = predicate;
+    NSArray *deals = [ExproMember objectsWithFetchRequest:request];
+    ExproMember *member = nil;
+    BOOL isExis=NO;
+    if (deals.count)
+    {
+        member = (ExproMember *)[deals objectAtIndex:0];
+        isExis=YES;
+    }
+    member.petName = memPetName;
+    member.dueTime = dueTime;
+    member.point = [NSNumber numberWithDouble:[point doubleValue]];
+    member.savings = [NSNumber numberWithDouble:[savings doubleValue]];
+    member.comment = comment;
+    member.roleID = [roles objectAtIndex:0];
+    [[RKObjectManager sharedManager].objectStore save:nil];
+    
+    NSString *roleStr = [roles objectAtIndex:0];
+    NSDictionary *params;
+    if (isExis)
+    {
+        params = [NSDictionary dictionaryWithObjectsAndKeys:
+                  member.gid,@"_id",
+                  memPetName,@"pet_name",  
+                  storeId, @"store_id",
+                  member.user.cellphone,@"cellphone",
+                  roleStr,@"role_id",
+                  @"1",@"state",
+                  member.user.sex.stringValue,@"sex",
+                  [self dateToString:member.user.birthday],@"birthday",
+                  [self dateToString:dueTime],@"due_time",
+                  member.user.gid.stringValue,@"user_id",
+                  @"0",@"privacy",
+                  point,@"point",
+                  savings,@"savings",
+                  comment,@"comment",
+                  nil];
+    }
+    [self requestURL:@"/staff" method:RKRequestMethodPUT params:params mapping:nil];    
+}
+
+- (void)delete:(NSString *)memId
+{
+    //NSString *url = [NSString stringWithFormat:@"/store/%i",storeId];
+    NSString *url = [NSString stringWithFormat:@"/member/%i",memId];
+    [self requestURL:url method:RKRequestMethodDELETE params:nil mapping:nil];  
+}
+
+
+
+-(NSString *)dateToString:(NSDate *)date
+{
+    //实例化一个NSDateFormatter对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式,这里可以设置成自己需要的格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    //用[NSDate date]可以获取系统当前时间
+    NSString *dateStr = [dateFormatter stringFromDate:date];
+    //输出格式为：2010-10-27    
+    return dateStr;
+}
+@end

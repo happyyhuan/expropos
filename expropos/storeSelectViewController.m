@@ -1,19 +1,25 @@
 //
-//  exproposPrivacyController.m
+//  storeSelectViewController.m
 //  expropos
 //
-//  Created by chen on 12-7-16.
+//  Created by chen on 12-8-15.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "exproposPrivacyController.h"
+#import "storeSelectViewController.h"
+#import "ExproStore.h"
+#import "exproposAppDelegate.h"
+#import "ExproMerchant.h"
 
+@interface storeSelectViewController ()
 
+@end
 
-@implementation exproposPrivacyController
+@implementation storeSelectViewController
+
 @synthesize viewController = _viewController;
-@synthesize levelItem = _levelItem;
-
+@synthesize storeItem = _storeItem;
+@synthesize allStoreItem =_allStoreItem;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -26,19 +32,46 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _levelItem = [NSArray arrayWithObjects:@"不开放",@"基本信息开放",@"完全开放", nil];
-    self.navigationItem.title = @"选择资料开放权限";
+    exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSString *orgId = appDelegate.currentOrgid ;
+    
+    //查找当前商户信息
+    NSFetchRequest *request = [ExproMerchant fetchRequest];
+    NSPredicate *predicate = nil;
+    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(gid=%@)" ];
+    NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:orgId, nil];
+//    request.sortDescriptors = [[NSArray alloc]initWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"signintime" ascending:NO], nil];
+
+    predicate = [NSPredicate predicateWithFormat:str argumentArray:params];
+    NSLog(@"%@",predicate);
+    request.predicate = predicate;
+    NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
+    
+    
+    NSMutableArray *names = [[NSMutableArray alloc] initWithCapacity:1];
+    for (int i =0;i<merchants.count;i++)
+    {
+        ExproMerchant *merchant = [merchants objectAtIndex:i];  
+        NSSet *stores = merchant.stores;
+        for(ExproStore *item in stores){
+            NSLog(@"%@",item.name);
+            [names addObject:item.name]; 
+        }
+    }
+    [self setStoreItem:names];
+   
+    self.navigationItem.title = @"选择门店";
     UITableView* tableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     self.tableView = tableview;
     self.contentSizeForViewInPopover = CGSizeMake(300, 550);
-   
+    
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    self.levelItem = nil;
-  }
+    self.storeItem = nil;
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -58,7 +91,7 @@
     if(section ==0 ){
         return 1;
     }else {
-        return [self.levelItem count];
+        return [self.storeItem count];
     }
     
 }
@@ -71,16 +104,14 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     if(indexPath.section == 0){
-        cell.textLabel.text = @"权限开放";
-        if(self.viewController.privacyItem.count == 0){
+        cell.textLabel.text = @"请选择门店";
+        if(self.viewController.storeSelItem.count == 0){
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         return cell;
-    }
-    
-    
-    cell.textLabel.text = [self.levelItem objectAtIndex:indexPath.row];
-    if([self.viewController.privacyItem containsObject:[NSNumber numberWithInt:indexPath.row]]){
+    }    
+    cell.textLabel.text = [self.storeItem objectAtIndex:indexPath.row];
+    if([self.viewController.storeSelItem containsObject:[self.storeItem objectAtIndex:indexPath.row]]){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -97,17 +128,16 @@
     UITableViewCell *cell0 = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if(indexPath.section == 0){
-        [self.viewController.privacyItem removeAllObjects];
         cell0.accessoryType = UITableViewCellAccessoryCheckmark;
         [self.tableView reloadData];
         [self.viewController.tableView reloadData];
         [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
         return;
     }
-    [self.viewController.privacyItem removeAllObjects];
-    [self.viewController.privacyItem addObject:[NSNumber numberWithInt:indexPath.row]];
-     cell0.accessoryType = UITableViewCellAccessoryNone;
-     cell.accessoryType = UITableViewCellAccessoryCheckmark;    [self.viewController.tableView reloadData];
+    [self.viewController.storeSelItem removeAllObjects];
+    [self.viewController.storeSelItem addObject:[self.storeItem objectAtIndex:indexPath.row]];
+    cell0.accessoryType = UITableViewCellAccessoryNone;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;    [self.viewController.tableView reloadData];
     [self viewDidLoad];
 }
 

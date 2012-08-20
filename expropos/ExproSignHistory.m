@@ -2,7 +2,7 @@
 //  ExproSignHistory.m
 //  expropos
 //
-//  Created by chen on 12-7-5.
+//  Created by chen on 12-8-16.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 
 @dynamic gid;
 @dynamic signintime;
+@dynamic orgId;
 @dynamic user;
 
 @end

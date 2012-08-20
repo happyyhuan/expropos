@@ -11,5 +11,5 @@
 
 @interface exproposSign : ExproRestDelegate
 @property (nonatomic) NSInteger *statusCode;
-- (void) signin:(NSString *)cellphone password:(NSString *)password;
+- (void) signin:(NSString *)cellphone password:(NSString *)password stroeId:(NSString *)orgId;
 @end

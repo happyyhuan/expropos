@@ -14,6 +14,7 @@
 {
     NSString *username;
     NSString *password;
+    NSString *orgId;
     UIView *refreshHeaderView;
     exproposMainViewController *mainViewController;
 }

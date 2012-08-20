@@ -11,6 +11,8 @@
 #import "RestKit/RestKit.h"
 #import "RestKit/CoreData.h"
 #import "expropoStoreEditViewController.h"
+#import "ExproMerchant.h"
+#import "exproposAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface exproposStoreViewController ()
@@ -58,9 +60,28 @@ int selectIndex =0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    _allStore = [NSMutableArray arrayWithArray:[ExproStore findAll]];
+       //查找该商户的所有门店
+    exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSString *orgId = appDelegate.currentOrgid ;
+    NSFetchRequest *request = [ExproMerchant fetchRequest];
+    NSPredicate *predicate = nil;
+    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(gid=%@)" ];
+    NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:orgId, nil];
+    predicate = [NSPredicate predicateWithFormat:str argumentArray:params];
+    NSLog(@"%@",predicate);
+    request.predicate = predicate;
+    NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
     
+    
+   _allStore = [[NSMutableArray alloc] initWithCapacity:1];
+    for (int i =0;i<merchants.count;i++)
+    {
+        ExproMerchant *merchant = [merchants objectAtIndex:i];  
+        NSSet *stores = merchant.stores;
+        for(ExproStore *item in stores){
+            [_allStore addObject:item]; 
+        }
+    }
  
     _storeItems = [[NSMutableArray alloc]initWithCapacity:1];
     for (int i=0 ; i < 6;i++)
@@ -151,7 +172,29 @@ int selectIndex =0;
 -(void)searchWithNameOrId:(NSString *)nameOrId
 {
     currentIndex = 0 ;
-    _allStore = [NSMutableArray arrayWithArray:[ExproStore findAll]];
+    //查找该商户的所有门店
+    exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSString *orgId = appDelegate.currentOrgid ;
+    NSFetchRequest *request = [ExproMerchant fetchRequest];
+    NSPredicate *predicate = nil;
+    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(gid=%@)" ];
+    NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:orgId, nil];
+    predicate = [NSPredicate predicateWithFormat:str argumentArray:params];
+    NSLog(@"%@",predicate);
+    request.predicate = predicate;
+    NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
+    
+    
+    _allStore = [[NSMutableArray alloc] initWithCapacity:1];
+    for (int i =0;i<merchants.count;i++)
+    {
+        ExproMerchant *merchant = [merchants objectAtIndex:i];  
+        NSSet *stores = merchant.stores;
+        for(ExproStore *item in stores){
+            [_allStore addObject:item]; 
+        }
+    }
+    
     NSMutableArray *deletes = [[NSMutableArray alloc]initWithCapacity:1];
     _storeItems = [[NSMutableArray alloc]initWithCapacity:1];
     if (nameOrId.length != 0)

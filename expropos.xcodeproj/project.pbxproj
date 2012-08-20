@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4277CFCE15DB9BEE0029FEEF /* storeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4277CFCD15DB9BEE0029FEEF /* storeSelectViewController.m */; };
+		4277CFD115DC8B9E0029FEEF /* ExproSignHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4277CFD015DC8B9E0029FEEF /* ExproSignHistory.m */; };
+		4277CFD415DCE5420029FEEF /* ExproStaff.m in Sources */ = {isa = PBXBuildFile; fileRef = 4277CFD315DCE5420029FEEF /* ExproStaff.m */; };
+		4279967215DA275000243834 /* exproposPloyeeManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4279967115DA275000243834 /* exproposPloyeeManagerViewController.m */; };
+		4279967515DA3CF300243834 /* ployeeRegistrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4279967415DA3CF300243834 /* ployeeRegistrViewController.m */; };
+		4279967815DB441200243834 /* ployeeRegistr.m in Sources */ = {isa = PBXBuildFile; fileRef = 4279967715DB441200243834 /* ployeeRegistr.m */; };
+		4279967B15DB529500243834 /* exproposRoleSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4279967A15DB529500243834 /* exproposRoleSelectViewController.m */; };
 		427FE45B15A586F800492804 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45515A586F800492804 /* 1.jpg */; };
 		427FE45C15A586F800492804 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45615A586F800492804 /* 2.jpg */; };
 		427FE45D15A586F800492804 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45715A586F800492804 /* 3.jpg */; };
@@ -122,7 +129,6 @@
 		9187C5121589E1AF00AF5776 /* ExproRestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */; };
 		918848601588448C0028B1AE /* exproposRestkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188485F1588448C0028B1AE /* exproposRestkit.m */; };
 		918CDDEA15A54CC800002D25 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 918CDDE915A54CC800002D25 /* Settings.bundle */; };
-		918CDE5C15A58A5100002D25 /* ExproSignHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 918CDE5B15A58A5100002D25 /* ExproSignHistory.m */; };
 		918FEB6C15A4493E00334CB5 /* ExproGoodsType.m in Sources */ = {isa = PBXBuildFile; fileRef = 918FEB6B15A4493E00334CB5 /* ExproGoodsType.m */; };
 		918FEB6F15A4493E00334CB5 /* ExproMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = 918FEB6E15A4493E00334CB5 /* ExproMerchant.m */; };
 		918FEB7515A4493F00334CB5 /* ExproDealItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 918FEB7415A4493F00334CB5 /* ExproDealItem.m */; };
@@ -180,6 +186,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4277CFCC15DB9BEE0029FEEF /* storeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = storeSelectViewController.h; sourceTree = "<group>"; };
+		4277CFCD15DB9BEE0029FEEF /* storeSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = storeSelectViewController.m; sourceTree = "<group>"; };
+		4277CFCF15DC8B9E0029FEEF /* ExproSignHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproSignHistory.h; sourceTree = "<group>"; };
+		4277CFD015DC8B9E0029FEEF /* ExproSignHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproSignHistory.m; sourceTree = "<group>"; };
+		4277CFD215DCE5420029FEEF /* ExproStaff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproStaff.h; sourceTree = "<group>"; };
+		4277CFD315DCE5420029FEEF /* ExproStaff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproStaff.m; sourceTree = "<group>"; };
+		4279967015DA275000243834 /* exproposPloyeeManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposPloyeeManagerViewController.h; sourceTree = "<group>"; };
+		4279967115DA275000243834 /* exproposPloyeeManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposPloyeeManagerViewController.m; sourceTree = "<group>"; };
+		4279967315DA3CF300243834 /* ployeeRegistrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ployeeRegistrViewController.h; sourceTree = "<group>"; };
+		4279967415DA3CF300243834 /* ployeeRegistrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ployeeRegistrViewController.m; sourceTree = "<group>"; };
+		4279967615DB441200243834 /* ployeeRegistr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ployeeRegistr.h; sourceTree = "<group>"; };
+		4279967715DB441200243834 /* ployeeRegistr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ployeeRegistr.m; sourceTree = "<group>"; };
+		4279967915DB529500243834 /* exproposRoleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposRoleSelectViewController.h; sourceTree = "<group>"; };
+		4279967A15DB529500243834 /* exproposRoleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposRoleSelectViewController.m; sourceTree = "<group>"; };
 		427FE45515A586F800492804 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1.jpg; path = image/1.jpg; sourceTree = "<group>"; };
 		427FE45615A586F800492804 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2.jpg; path = image/2.jpg; sourceTree = "<group>"; };
 		427FE45715A586F800492804 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 3.jpg; path = image/3.jpg; sourceTree = "<group>"; };
@@ -205,8 +225,6 @@
 		5F1AC72315C6887F00FC275C /* exproposGoodsManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposGoodsManagerViewController.h; sourceTree = "<group>"; };
 		5F1AC72415C6887F00FC275C /* exproposGoodsManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposGoodsManagerViewController.m; sourceTree = "<group>"; };
 		5F4C39E2158B39650029F86D /* exproposMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMainViewController.m; sourceTree = "<group>"; };
-		5F52115115E22CAD009E55F9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/chenhaitao/Documents/expropos/expropos/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
-		5F52115215E22CAD009E55F9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/chenhaitao/Documents/expropos/expropos/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
 		5F5D0AD315CA2B470074A06F /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		5F5D0AD715CA2C8F0074A06F /* checkout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkout.png; sourceTree = "<group>"; };
 		5F5D0AD915CA2D8C0074A06F /* ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok.png; sourceTree = "<group>"; };
@@ -326,6 +344,8 @@
 		5FBB2C0A15C1342000C9F470 /* exproposMemberShowInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMemberShowInfoViewController.h; sourceTree = "<group>"; };
 		5FBB2C0B15C1342000C9F470 /* exproposMemberShowInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposMemberShowInfoViewController.m; sourceTree = "<group>"; };
 		5FBB2C1115C13F5F00C9F470 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		5FD1759515E230E000387CC0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/chenhaitao/Documents/expropos/expropos/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		5FD1759615E230E000387CC0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/chenhaitao/Documents/expropos/expropos/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
 		5FE6FB1415C8B7E3009CEAF1 /* exproposGoodsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposGoodsManager.h; sourceTree = "<group>"; };
 		5FE6FB1515C8B7E3009CEAF1 /* exproposGoodsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposGoodsManager.m; sourceTree = "<group>"; };
 		5FE99493159423020017D351 /* exproposUpdateDeals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposUpdateDeals.h; sourceTree = "<group>"; };
@@ -370,8 +390,6 @@
 		9188485E1588448C0028B1AE /* exproposRestkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposRestkit.h; sourceTree = "<group>"; };
 		9188485F1588448C0028B1AE /* exproposRestkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposRestkit.m; sourceTree = "<group>"; };
 		918CDDE915A54CC800002D25 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		918CDE5A15A58A5100002D25 /* ExproSignHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproSignHistory.h; sourceTree = "<group>"; };
-		918CDE5B15A58A5100002D25 /* ExproSignHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproSignHistory.m; sourceTree = "<group>"; };
 		918FEB6A15A4493E00334CB5 /* ExproGoodsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproGoodsType.h; sourceTree = "<group>"; };
 		918FEB6B15A4493E00334CB5 /* ExproGoodsType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproGoodsType.m; sourceTree = "<group>"; };
 		918FEB6D15A4493E00334CB5 /* ExproMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproMerchant.h; sourceTree = "<group>"; };
@@ -420,6 +438,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4279966F15DA270400243834 /* ployeeManager */ = {
+			isa = PBXGroup;
+			children = (
+				4279967015DA275000243834 /* exproposPloyeeManagerViewController.h */,
+				4279967115DA275000243834 /* exproposPloyeeManagerViewController.m */,
+				4279967315DA3CF300243834 /* ployeeRegistrViewController.h */,
+				4279967415DA3CF300243834 /* ployeeRegistrViewController.m */,
+				4279967915DB529500243834 /* exproposRoleSelectViewController.h */,
+				4279967A15DB529500243834 /* exproposRoleSelectViewController.m */,
+				4277CFCC15DB9BEE0029FEEF /* storeSelectViewController.h */,
+				4277CFCD15DB9BEE0029FEEF /* storeSelectViewController.m */,
+			);
+			name = ployeeManager;
+			sourceTree = "<group>";
+		};
 		427FE46115A5870300492804 /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,8 +515,6 @@
 		5F0533D2159E86930005FB21 /* ModelData */ = {
 			isa = PBXGroup;
 			children = (
-				918CDE5A15A58A5100002D25 /* ExproSignHistory.h */,
-				918CDE5B15A58A5100002D25 /* ExproSignHistory.m */,
 				918FEB8815A4493F00334CB5 /* ExproRole.h */,
 				918FEB8915A4493F00334CB5 /* ExproRole.m */,
 				918FEB7F15A4493F00334CB5 /* ExproRoute.h */,
@@ -501,6 +532,10 @@
 				5FA0BC4515D39C84008ED7AB /* ExproMember.h */,
 				5FA0BC4615D39C84008ED7AB /* ExproMember.m */,
 				5F0533E8159E86F90005FB21 /* expropos.xcdatamodeld */,
+				4277CFD215DCE5420029FEEF /* ExproStaff.h */,
+				4277CFD315DCE5420029FEEF /* ExproStaff.m */,
+				4277CFCF15DC8B9E0029FEEF /* ExproSignHistory.h */,
+				4277CFD015DC8B9E0029FEEF /* ExproSignHistory.m */,
 				916BA73515A5B0C1007D39EA /* ExproWarehouseWarrantItem.h */,
 				916BA73615A5B0C1007D39EA /* ExproWarehouseWarrantItem.m */,
 				916BA73215A5A7CF007D39EA /* ExproStore.h */,
@@ -743,6 +778,7 @@
 		914BB29915746A6B009FFBAE /* expropos */ = {
 			isa = PBXGroup;
 			children = (
+				4279966F15DA270400243834 /* ployeeManager */,
 				5F87997315D4F2A700CACF07 /* exproposViewController.m */,
 				5F87997215D4F29900CACF07 /* exproposViewController.h */,
 				5F87996915D4F03000CACF07 /* exproposMenuViewController.h */,
@@ -827,6 +863,8 @@
 				5F8C150815A5766200FA076D /* exproposDealOperate.m */,
 				5FE6FB1415C8B7E3009CEAF1 /* exproposGoodsManager.h */,
 				5FE6FB1515C8B7E3009CEAF1 /* exproposGoodsManager.m */,
+				4279967615DB441200243834 /* ployeeRegistr.h */,
+				4279967715DB441200243834 /* ployeeRegistr.m */,
 			);
 			name = Restkit;
 			sourceTree = "<group>";
@@ -1009,7 +1047,6 @@
 				918FEB8115A4493F00334CB5 /* ExproRoute.m in Sources */,
 				918FEB8A15A4493F00334CB5 /* ExproRole.m in Sources */,
 				91BB360F15A53B54007547B7 /* ExproGoods.m in Sources */,
-				918CDE5C15A58A5100002D25 /* ExproSignHistory.m in Sources */,
 				916BA72E15A5A638007D39EA /* ExproWarehouse.m in Sources */,
 				916BA73115A5A638007D39EA /* ExproWarehouseWarrant.m in Sources */,
 				916BA73415A5A7D0007D39EA /* ExproStore.m in Sources */,
@@ -1046,6 +1083,13 @@
 				5F87997115D4F0C500CACF07 /* memberManagerViewController.m in Sources */,
 				5F87997415D4F2A700CACF07 /* exproposViewController.m in Sources */,
 				5F8799D215D4FDE400CACF07 /* exproposSign.m in Sources */,
+				4279967215DA275000243834 /* exproposPloyeeManagerViewController.m in Sources */,
+				4279967515DA3CF300243834 /* ployeeRegistrViewController.m in Sources */,
+				4279967815DB441200243834 /* ployeeRegistr.m in Sources */,
+				4279967B15DB529500243834 /* exproposRoleSelectViewController.m in Sources */,
+				4277CFCE15DB9BEE0029FEEF /* storeSelectViewController.m in Sources */,
+				4277CFD115DC8B9E0029FEEF /* ExproSignHistory.m in Sources */,
+				4277CFD415DCE5420029FEEF /* ExproStaff.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1064,7 +1108,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5FA51745159DB58300F9DE5B /* en */,
-				5F52115215E22CAD009E55F9 /* zh-Hans */,
+				5FD1759615E230E000387CC0 /* zh-Hans */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -1073,7 +1117,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				914BB29D15746A6B009FFBAE /* en */,
-				5F52115115E22CAD009E55F9 /* zh-Hans */,
+				5FD1759515E230E000387CC0 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
