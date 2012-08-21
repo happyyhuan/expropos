@@ -8,11 +8,11 @@
 
 #import "exproposDealItemSelectedViewController.h"
 
-@interface exproposDealItemSelectedViewController ()
+@interface exproposDealTypeSelectedViewController ()
 
 @end
 
-@implementation exproposDealItemSelectedViewController
+@implementation exproposDealTypeSelectedViewController
 @synthesize viewController = _viewController;
 @synthesize dealItems = _dealItems;
 

@@ -432,9 +432,9 @@
         }
         
         if(indexPath.row == 1){
-            exproposDealItemSelectedViewController *dealItemSelect = [[exproposDealItemSelectedViewController alloc]init];
-            dealItemSelect.viewController = self;
-            [self.navigationController pushViewController:dealItemSelect animated:YES];
+            exproposDealTypeSelectedViewController *dealTypeSelect = [[exproposDealTypeSelectedViewController alloc]init];
+            dealTypeSelect.viewController = self;
+            [self.navigationController pushViewController:dealTypeSelect animated:YES];
         }
         
         if(indexPath.row == 2){

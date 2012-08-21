@@ -1,5 +1,5 @@
 //
-//  exproposDealItemSelectedViewController.h
+//  exproposDealTypeSelectedViewController.h
 //  expropos
 //
 //  Created by haitao chen on 12-6-21.
@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "exproposDealSelectedViewController.h"
 
-//exproposDealItemSelectedViewController为交易类型查询控制条件
-@interface exproposDealItemSelectedViewController : UITableViewController
+//exproposDealTypeSelectedViewController为交易类型查询控制条件
+@interface exproposDealTypeSelectedViewController : UITableViewController
 @property (nonatomic,strong) exproposDealSelectedViewController *viewController;
 @property (nonatomic,strong) NSArray *dealItems;
 @end
