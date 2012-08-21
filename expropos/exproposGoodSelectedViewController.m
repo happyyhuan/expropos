@@ -91,7 +91,7 @@
 
     NSArray *members = [ExproMember findAll];
     for(ExproMember *member in members){
-        if(member.user.gid == appDelegate.currentUser.gid){
+        if(member.user.gid.intValue == appDelegate.currentUser.gid.intValue){
             self.merchant = member.org;
         }
     }
@@ -284,7 +284,7 @@
         NSSet *set = t.leaves;
         NSMutableArray *InGoods = [[NSMutableArray alloc] initWithCapacity:20];
         for(ExproGoods *g in self.merchant.goods){
-            if(g.type.gid == t.gid){
+            if(g.type.gid.intValue == t.gid.intValue){
                 [InGoods addObject:g];
             }
         }
@@ -349,7 +349,7 @@
        
         NSMutableArray *theGoddsInT = [[NSMutableArray alloc]initWithCapacity:20];
         for(ExproGoods *g in self.merchant.goods){
-            if(g.type.gid == t.gid){
+            if(g.type.gid.intValue == t.gid.intValue){
                 [theGoddsInT addObject:g];
             }
         }

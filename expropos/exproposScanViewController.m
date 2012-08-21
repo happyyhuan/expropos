@@ -220,9 +220,6 @@
 - (void)  imagePickerController: (UIImagePickerController*) picker didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
 
-	
-    //UIImage *image = [info objectForKey: UIImagePickerControllerOriginalImage];
-	
     id <NSFastEnumeration> results = [info objectForKey: ZBarReaderControllerResults];
     ZBarSymbol *sym = nil;
     for(sym in results)

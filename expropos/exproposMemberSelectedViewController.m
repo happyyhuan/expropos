@@ -70,7 +70,7 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:100];
     for(ExproRole *role in roles){
-        if([role.name isEqualToString:@"商户业主"]||[role.name isEqualToString:@"收银员"]){
+        if([role.name isEqualToString:@"商户业主"]||[role.name isEqualToString:@"收银员"]||[role.name isEqualToString:@"店长"]){
             continue;
         }
         

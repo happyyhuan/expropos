@@ -166,7 +166,12 @@
     
     UILabel *gid = [[UILabel alloc]initWithFrame:CGRectMake(20, 20+60, 580, 30)];
     gid.tag = 101;
-    gid.text = [NSString stringWithFormat:@"编号：                        %i",(_selectedGoods!=nil) ? ( _selectedGoods.gid.intValue):0];
+    if(_selectedGoods){
+        gid.text = [NSString stringWithFormat:@"编号：                        %i", _selectedGoods.gid.intValue];
+    }else {
+        gid.text = [NSString stringWithFormat:@"编号：                        "];
+    }
+    
     [_showView addSubview:gid];
     
     UILabel *code = [[UILabel alloc]initWithFrame:CGRectMake(20,60+60,  580, 30)];
@@ -732,10 +737,8 @@
     NSFetchRequest *request2 = [ExproGoodsType fetchRequest];
     request2.predicate = [NSPredicate predicateWithFormat:@"parent = %@", nil];
     self.allDatas = [[NSArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];
-    
-    
-    //self.datas = [_allDatas mutableCopy];
-   self.datas = [[NSMutableArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];
+    self.datas = [_allDatas mutableCopy];
+  
 }
 
 
@@ -929,7 +932,7 @@
         
         NSMutableArray *theGoddsInT = [[NSMutableArray alloc]initWithCapacity:20];
         for(ExproGoods *g in self.merchant.goods){
-            if(g.type.gid == t.gid){
+            if(g.type.gid.intValue == t.gid.intValue){
                 [theGoddsInT addObject:g];
             }
         }

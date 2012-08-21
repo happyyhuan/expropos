@@ -259,11 +259,11 @@ dispatch_release(downloadQueue);
             UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _width, 44)];
           NSArray *types =  [NSArray arrayWithObjects:@"消费撤",@"消费",@"充值",@"充值撤销",@"积分增加",@"积分消费",@"积分撤销",@"退货退款",@"抽奖",@"手工调整", nil];
             name.text = [types objectAtIndex:[deal type].intValue];
-            if(segment%2==0){
-                name.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                name.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                name.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                name.backgroundColor = [UIColor lightGrayColor];
+//            }
             name.font = [UIFont systemFontOfSize:12];
             return name;
         }
@@ -274,11 +274,11 @@ dispatch_release(downloadQueue);
             double menoys = 0.0;
             menoys =  deal.payment.doubleValue;
             menoy.text = [NSString stringWithFormat:@"%g",menoys];
-            if(segment%2==0){
-                menoy.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                menoy.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                menoy.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                menoy.backgroundColor = [UIColor lightGrayColor];
+//            }
             menoy.font = [UIFont systemFontOfSize:12];
             return menoy;
         }
@@ -294,11 +294,11 @@ dispatch_release(downloadQueue);
             NSString *createDateStr = [dateFormatter stringFromDate:deal.createTime];
             //输出格式为：2010-10-27
             time.text = createDateStr;
-            if(segment%2==0){
-                time.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                time.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                time.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                time.backgroundColor = [UIColor lightGrayColor];
+//            }
             time.font = [UIFont systemFontOfSize:12];
             return time;
         }
@@ -309,11 +309,11 @@ dispatch_release(downloadQueue);
             UILabel *payTypeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _width, 44)];
             NSString *payType = [payTypes objectAtIndex:deal.payType.intValue];
             payTypeLabel.text = payType;
-            if(segment%2==0){
-                payTypeLabel.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                payTypeLabel.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                payTypeLabel.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                payTypeLabel.backgroundColor = [UIColor lightGrayColor];
+//            }
             payTypeLabel.font = [UIFont systemFontOfSize:12];
             return payTypeLabel;
         }
@@ -322,11 +322,11 @@ dispatch_release(downloadQueue);
         {
              UILabel *customer = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _width, 44)];
             customer.text = [deal.customer petName];
-            if(segment%2==0){
-                customer.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                customer.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                customer.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                customer.backgroundColor = [UIColor lightGrayColor];
+//            }
             customer.font = [UIFont systemFontOfSize:12];
             return customer;
         }
@@ -335,11 +335,11 @@ dispatch_release(downloadQueue);
         {
             UILabel *store = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _width, 44)];
             store.text = deal.store.name;
-            if(segment%2==0){
-                store.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                store.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                store.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                store.backgroundColor = [UIColor lightGrayColor];
+//            }
             store.font = [UIFont systemFontOfSize:12];
             return store;
         }
@@ -347,11 +347,11 @@ dispatch_release(downloadQueue);
         {
              UILabel *comment = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _width, 44)];
             comment.text = @"";
-            if(segment%2==0){
-                comment.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                comment.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                comment.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                comment.backgroundColor = [UIColor lightGrayColor];
+//            }
             comment.font = [UIFont systemFontOfSize:12];
             return comment;
         }
@@ -377,14 +377,14 @@ dispatch_release(downloadQueue);
 {
     return [UIColor grayColor];
 }
-- (UIColor *)multipleTableView:(ExproMultipleTableView *)tableView backgroundColorSegment:(NSInteger)segment
-{
-    if(segment%2==0){
-        return [UIColor colorWithWhite:0.75 alpha:1];
-    }else {
-        return [UIColor lightGrayColor];
-    }
-}
+//- (UIColor *)multipleTableView:(ExproMultipleTableView *)tableView backgroundColorSegment:(NSInteger)segment
+//{
+//    if(segment%2==0){
+//        return [UIColor colorWithWhite:0.75 alpha:1];
+//    }else {
+//        return [UIColor lightGrayColor];
+//    }
+//}
 
 
 

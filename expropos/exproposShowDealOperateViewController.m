@@ -34,11 +34,17 @@
 #import "exproposSignout.h"
 
 @interface exproposShowDealOperateViewController ()
+//显示在顶视图上的工具栏视图
 @property (nonatomic,strong) UIImageView  *toolbarView;
+//用于显示会员基本信息的界面视图
 @property (nonatomic,strong) exproposMemberShowInfoViewController *showMemberInfo;
+//会员开户的控制器对象
 @property (nonatomic,strong) exproposMemberRegisterController *memberRegister;
+//交易查询的控制器对象
 @property (nonatomic,strong) exproposDealQueryViewController  *dealQuery;
+//会员充值的控制器对象
 @property (nonatomic,strong) exproposAddMemberSavingViewController *addMemberSaving;
+//商品退货的控制器对象
 @property (nonatomic,strong) exproposGoodsComeBackViewController *goodsComeBack;
 @end
 
@@ -66,7 +72,6 @@
 @synthesize nav = _nav;
 @synthesize operatingDeals = _operatingDeals;
 @synthesize type = _type;
-@synthesize myRootViewController = _myRootViewController;
 @synthesize topView = _topView;
 @synthesize statusLabel = _statusLabel;
 @synthesize goodsComeBackButton = _goodsComeBackButton;
@@ -79,6 +84,7 @@
 @synthesize repeal = _repeal;
 @synthesize signout =_signout;
 
+//这个方法是在controller的类在IB中创建,但是通过Xcode实例化controller的时候用的
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -88,13 +94,10 @@
     return self;
 }
 
--(void)awakeFromNib
-{
-   
-}
+
 - (void)viewDidLoad
 {
-    NSLog(@"begin viewDidLoad");
+   
     [super viewDidLoad];
     //为view上的各个子视图加边框
     _topView.layer.cornerRadius = 5.0;
@@ -109,6 +112,7 @@
      [_toolbarView addSubview:logoImage];
     [_topView addSubview:_toolbarView];
     
+    //显示销售人员的基本信息
     UILabel *myLabel = [[UILabel alloc]initWithFrame:CGRectMake(200, 0, 300, 60)];
    exproposAppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
     NSFetchRequest *request = [ExproMember fetchRequest];
@@ -121,6 +125,7 @@
     myLabel.textColor = [UIColor blueColor];
     [_toolbarView addSubview:myLabel];
         
+    //交易会员的基本信息扩展按钮
     UIButton *myButton = [[UIButton alloc] init];
     myButton.frame = CGRectMake(800, 10,  40, 40);
     [myButton setBackgroundImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
@@ -129,14 +134,14 @@
     myButton.tag = 119;
     [_topView addSubview:myButton];
     
-    
+    //退出按钮
     UIButton *goBack = [[UIButton alloc] init];
     goBack.frame = CGRectMake(980, 10,  40, 40);
     [goBack setBackgroundImage:[UIImage imageNamed:@"close@2x.png"] forState:UIControlStateNormal];
     [goBack addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
     [_topView addSubview:goBack];
      
-    
+    //选中交易会员的基本信息
     UILabel *myLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(600, 0, 300, 60)];
     myLabel2.text = @"";
     myLabel2.textColor = [UIColor blueColor];
@@ -192,7 +197,8 @@
     }
     _goodsAndAmount = [[NSMutableDictionary alloc] initWithCapacity:20];
     _mySelectedGoods = [[NSMutableArray alloc] initWithCapacity:20];
-  
+    
+   //为mySelectedGoods实现kvo编程方式
     [self addObserver:self forKeyPath:@"mySelectedGoods" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
    _nav = [self.storyboard instantiateViewControllerWithIdentifier:@"goodsSelected"];
     _goodsSelected = (exproposGoodSelectedViewController *)[_nav.viewControllers objectAtIndex:0];
@@ -207,6 +213,7 @@
     
     
 }
+//弹出选中会员的基本详细信息
 -(void)moreMeberInfo:(id)sender
 {
     if(!_showMemberInfo){
@@ -221,7 +228,7 @@
 
    
     
-    
+    //弹出视图的左上角关闭按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
     CGRect frame = CGRectMake(0, 0, 60, 60);
@@ -234,11 +241,10 @@
     [button addTarget:self action:@selector(closeModalWindow:) forControlEvents:UIControlEventTouchDown];
     [_showMemberInfo.view.superview addSubview:button];
     
-    NSLog(@"%@",_showMemberInfo.parentViewController);
    
 }
 
-
+//关闭弹出框
 -(void)closeModalWindow:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
@@ -247,10 +253,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"begin viewWillAppear");
     [super viewWillAppear:animated];
-    NSLog(@"%@",_keyBoardView);
-    
+   
+    //为右下角的键盘视图添加手指滑动手势识别
     UISwipeGestureRecognizer *recognizer;    
     recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];    
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft )];    
@@ -261,11 +266,13 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    //为右下角的键盘视图删除手指滑动手势识别
     for (UISwipeGestureRecognizer *recognizer in [[self keyBoardView] gestureRecognizers]) {  
         [[self keyBoardView] removeGestureRecognizer:recognizer];  
     } 
 }
 
+//处理识别手势的响应方法
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer{   
     for(JPStupidButton *button in _buttons){
         [button animateUp];
@@ -297,6 +304,7 @@
     [UIApplication sharedApplication].statusBarHidden = NO;
 } 
 
+//kvo响应方法
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context 
 {
     if([keyPath isEqualToString:@"mySelectedGoods"]){
@@ -304,6 +312,7 @@
     }
 }
 
+//键盘点击事件响应处理的代理方法
 -(void)touch:(id)sender
 {
     UIButton *button = (UIButton*)sender;
@@ -368,18 +377,16 @@
 
 - (void)viewDidUnload
 {
-     [self removeObserver:self forKeyPath:@"mySelectedGoods"];
+    [self removeObserver:self forKeyPath:@"mySelectedGoods"];
     [self setShouldGetMoneyView:nil];
     [self setAmountView:nil];
     [self setDealTableView:nil];
     [self setKeyBoardView:nil];
-    
     [self setButtons:nil];
     [self setGoodsCode:nil];
     [self setDeleteButton:nil];
     [self setAllGoodsAmounts:nil];
     [self setAllGoodsPayments:nil];
-    [self setMyRootViewController:nil];
     [self setTopView:nil];
     [self setStatusLabel:nil];
     [self setGoodsComeBackButton:nil];
@@ -393,12 +400,12 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    NSLog(@"shouldAutorotateToInterfaceOrientation");
     return  UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
+
+//屏幕转动结束后触发
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-   
     [_scan didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
@@ -456,11 +463,11 @@
         {
             UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _width, _height)];
             name.text = [NSString stringWithFormat:@"  %@", goods.name];
-            if(segment%2==0){
-                name.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                name.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                name.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                name.backgroundColor = [UIColor lightGrayColor];
+//            }
             name.font = [UIFont systemFontOfSize:12];
             return name;
         }
@@ -475,11 +482,11 @@
             int amounts = [[_goodsAndAmount objectForKey:goods.gid] intValue];
             
             amount.text = [NSString stringWithFormat:@"%i",amounts];
-            if(segment%2==0){
-                amount.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                amount.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                amount.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                amount.backgroundColor = [UIColor lightGrayColor];
+//            }
             amount.font = [UIFont systemFontOfSize:12];
             return amount;
         }
@@ -489,11 +496,11 @@
             UILabel *price = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _width, _height)];
             
             price.text = [NSString stringWithFormat:@"%g", goods.price.doubleValue];
-            if(segment%2==0){
-                price.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                price.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                price.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                price.backgroundColor = [UIColor lightGrayColor];
+//            }
             price.font = [UIFont systemFontOfSize:12];
             return price;
         }
@@ -505,11 +512,11 @@
             int amounts = [[_goodsAndAmount objectForKey:goods.gid] intValue];
             double subtotals = goods.price.doubleValue * amounts;
             subtotal.text = [NSString stringWithFormat:@"%g",subtotals];
-            if(segment%2==0){
-                subtotal.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                subtotal.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                subtotal.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                subtotal.backgroundColor = [UIColor lightGrayColor];
+//            }
             subtotal.font = [UIFont systemFontOfSize:12];
             return subtotal;
         }
@@ -518,11 +525,11 @@
         {
             UILabel *pointer = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _width, _height)];
             pointer.text = @"";
-            if(segment%2==0){
-                pointer.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
-            }else {
-                pointer.backgroundColor = [UIColor lightGrayColor];
-            }
+//            if(segment%2==0){
+//                pointer.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
+//            }else {
+//                pointer.backgroundColor = [UIColor lightGrayColor];
+//            }
             pointer.font = [UIFont systemFontOfSize:12];
             return pointer;
         }
@@ -543,14 +550,14 @@
 {
     return [UIColor grayColor];
 }
-- (UIColor *)multipleTableView:(ExproMultipleTableView *)tableView backgroundColorSegment:(NSInteger)segment
-{
-    if(segment%2==0){
-        return [UIColor colorWithWhite:0.75 alpha:1];
-    }else {
-        return [UIColor lightGrayColor];
-    }
-}
+//- (UIColor *)multipleTableView:(ExproMultipleTableView *)tableView backgroundColorSegment:(NSInteger)segment
+//{
+//    if(segment%2==0){
+//        return [UIColor colorWithWhite:0.75 alpha:1];
+//    }else {
+//        return [UIColor lightGrayColor];
+//    }
+//}
 - (CGFloat)multipleTableView:(ExproMultipleTableView *)tableView heightForCellAtIndexPath:(NSIndexPath *)indexPath
 {
     return 44;
@@ -618,10 +625,8 @@
     _memberRegister.modalPresentationStyle = UIModalPresentationFormSheet;
     _memberRegister.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
     [self presentModalViewController:_memberRegister animated:YES];
-    _memberRegister.view.superview.frame = CGRectMake(100,100, 680, 500);
-    
-    
-    
+    _memberRegister.view.superview.frame = CGRectMake(100,100, 700, 500);
+
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
@@ -745,14 +750,13 @@
 
 
 
-- (IBAction)goBack:(UIBarButtonItem *)sender {
+- (void)goBack:(id)sender {
     _signout = [[exproposSignout alloc]init];
 
     _signout.reserver = self;
     _signout.succeedCallBack = @selector(didSignout);
     _signout.contrller = self;
     [_signout signout];
-    //[_myRootViewController dismissModalViewControllerAnimated:YES];
 }
 
 -(void)didSignout
@@ -908,6 +912,11 @@
     
     if(_type == 0){
         _deal.repeal = self.repeal;
+        if(!_deal.repeal){
+            UIAlertView *alertView = [[UIAlertView alloc]  initWithTitle:@"提示" message:@"缺少退货交易的原订单号！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alertView show];
+            return;
+        }
         [_operatingDeals createGoodsComeBackDeal:_deal];
     }else {
          [_operatingDeals createDeal:_deal];
@@ -917,8 +926,6 @@
 
 -(void)createDealSuccess:(id)object
 {
-    
-    NSLog(@"success");
     NSLog(@"%@",object);
     NSMutableDictionary *dic = (NSMutableDictionary*)object;
     NSString *gid  = [dic objectForKey:@"gid"];

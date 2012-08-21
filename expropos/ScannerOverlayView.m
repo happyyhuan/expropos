@@ -29,7 +29,7 @@
 	
     UILabel *label =
 	[[UILabel alloc] initWithFrame: CGRectInset([infoView bounds], 8, 8)];
-    label.text = @"对准ISBN条形码,避免晃动";
+    label.text = @"对准条形码,避免晃动";
     label.textAlignment = UITextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
