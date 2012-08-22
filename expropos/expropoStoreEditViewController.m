@@ -144,18 +144,18 @@
     }
     else if(indexPath.row == 2)
     {
-        UITextField *storeNoticeField = [[UITextField alloc]initWithFrame:CGRectMake(300, 10, 200, 25)];
+        UITextView *storeNoticeField = [[UITextView alloc]initWithFrame:CGRectMake(300, 10, 200, 25)];
         [cell addSubview:storeNoticeField];
         [storeNoticeField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"门店公告", nil);  
         [storeNoticeField setBackgroundColor:[UIColor whiteColor]];
-        storeNoticeField.borderStyle = UITextBorderStyleRoundedRect;
+//        storeNoticeField.borderStyle = UITextBorderStyleRoundedRect;
         storeNoticeField.textAlignment = UITextAlignmentLeft;
         storeNoticeField.text = self.storeNotice;
         storeNoticeField.tag = 1;
         storeNoticeField.delegate = self;
         storeNoticeField.keyboardType = UIKeyboardTypeNumberPad;
-        [storeNoticeField addTarget:self action:@selector(saveNoticeField:) forControlEvents:UIControlEventEditingChanged];
+//        [storeNoticeField addTarget:self action:@selector(saveNoticeField:) forControlEvents:UIControlEventEditingChanged];
     }
     else if(indexPath.row == 3)
     {

@@ -11,7 +11,7 @@
 #import "exproposStoreViewController.h"
 #import "exproposStoreEdit.h"
 
-@interface expropoStoreEditViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface expropoStoreEditViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *confirmButton;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UIView *toolView;

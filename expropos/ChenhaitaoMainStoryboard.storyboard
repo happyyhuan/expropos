@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="ZIc-CK-YbL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="ZIc-CK-YbL">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -2237,8 +2237,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="vhQ-TN-sXP">
-                                        <rect key="frame" x="175" y="53" width="298" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" id="vhQ-TN-sXP">
+                                        <rect key="frame" x="181" y="53" width="305" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2385,7 +2385,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="searchBar" destination="WMf-qJ-uy6" id="erj-NN-vcD"/>
                         <outlet property="storeAddress" destination="qfo-oH-u4B" id="uNK-4a-r9g"/>
                         <outlet property="storeComment" destination="ps2-sD-3Fi" id="tko-0o-uOe"/>
-                        <outlet property="storeDetailView" destination="yfN-c1-mtJ" id="POM-gt-nOM"/>
+                        <outlet property="storeDetailView" destination="yfN-c1-mtJ" id="mG0-Nt-d5J"/>
                         <outlet property="storeNO" destination="FHZ-5k-KbQ" id="0yZ-L6-CHX"/>
                         <outlet property="storeNotice" destination="vhQ-TN-sXP" id="RTQ-nI-Gxg"/>
                         <outlet property="storeState" destination="HdE-K8-w5Q" id="5bA-sy-t3e"/>
@@ -2668,8 +2668,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="queryView" destination="sLY-4Q-txc" id="vER-83-Sdm"/>
                         <outlet property="saving" destination="e6Y-EN-EF6" id="25u-63-XfQ"/>
                         <outlet property="searchBar" destination="3cO-fV-fHg" id="yEL-tb-hoU"/>
-                        <outlet property="storeDetailView" destination="5rk-Sf-vvK" id="TOs-2R-vUO"/>
-                        <outlet property="storesTabelView" destination="GpM-d5-0ge" id="phy-6S-jI8"/>
                         <outlet property="telphone" destination="d4E-vx-vjr" id="hqV-9d-YTA"/>
                     </connections>
                 </viewController>
@@ -3172,12 +3170,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="addMemberSaving:" candidateClass="UIButton"/>
                 <relationship kind="action" name="dealQueryByDealID:" candidateClass="UIButton"/>
                 <relationship kind="action" name="deleteOneGoodsCode:"/>
-                <relationship kind="action" name="goBack:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="goodsCommeBack:" candidateClass="UIButton"/>
                 <relationship kind="action" name="goodsSelected:"/>
                 <relationship kind="action" name="memberCreate:" candidateClass="UIButton"/>
                 <relationship kind="action" name="memberSelected:" candidateClass="UIButton"/>
-                <relationship kind="action" name="stateChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="allGoodsAmounts" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="allGoodsPayments" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="amountView" candidateClass="UIView"/>
