@@ -10,10 +10,10 @@
 
 @interface exproposStoreEdit : ExproRestDelegate
 @property (nonatomic) NSInteger *statusCode;
--(void)storeAdd:(NSString *)storeName merchant:(NSString *)merchant_id warehouse_name:(NSString *)warehouse_name state:(NSString *)state inventar:(NSString *)inventar_num district:(NSString *) district_code address:(NSString *)address transit:(NSString *)transit_info  map:(NSString *)map_info
+-(void)storeAdd:(NSString *)storeName merchant:(NSString *)merchant_id  state:(NSString *)state inventar:(NSString *)inventar_num district:(NSString *) district_code address:(NSString *)address transit:(NSString *)transit_info  map:(NSString *)map_info
          notice:(NSString *)notice  comment:(NSString *)comment; 
 
--(void)storeEdit:(NSString *)storeName merchant:(NSString *)merchant_id warehouse_name:(NSString *)warehouse_name state:(NSString *)state inventar:(NSString *)inventar_num district:(NSString *) district_code address:(NSString *)address transit:(NSString *)transit_info  map:(NSString *)map_info
+-(void)storeEdit:(NSString *)storeName merchant:(NSString *)merchant_id  state:(NSString *)state inventar:(NSString *)inventar_num district:(NSString *) district_code address:(NSString *)address transit:(NSString *)transit_info  map:(NSString *)map_info
           notice:(NSString *)notice  comment:(NSString *)comment storeId:(NSString *)storeId; 
 -(void)storeDelete:(NSInteger *)storeId;
 @end

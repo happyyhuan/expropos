@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _levelItem = [NSArray arrayWithObjects:@"正常",@"封闭",@"公开",@"不公开", nil];
+    _levelItem = [NSArray arrayWithObjects:@"封闭",@"正常",@"公开",@"不公开", nil];
     self.navigationItem.title = @"选择门店状态";
     UITableView* tableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     self.tableView = tableview;

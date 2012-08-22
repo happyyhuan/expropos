@@ -24,6 +24,7 @@
 @property (nonatomic,strong) NSString *storeTransit;
 @property (nonatomic,strong) NSString *storeComment;
 @property (nonatomic,strong) NSString *storeNotice;
+@property (nonatomic,strong) NSString *storeState;
 
 @property (nonatomic,strong) NSMutableArray *privacyItem;
 @property (nonatomic,strong) UIPopoverController *popover;

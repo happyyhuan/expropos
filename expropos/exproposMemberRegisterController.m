@@ -80,8 +80,6 @@ BOOL isModify = NO;
     return self;
 }
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

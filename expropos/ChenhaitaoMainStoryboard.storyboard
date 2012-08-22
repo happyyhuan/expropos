@@ -1273,7 +1273,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lDH-Il-tj0">
-                                        <rect key="frame" x="313" y="121" width="32" height="32"/>
+                                        <rect key="frame" x="300" y="110" width="49" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                         <state key="normal" title="7" image="delete.png">
@@ -2182,10 +2182,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" sectionIndexMinimumDisplayRowCount="5" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="aL2-Tn-L8q">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" sectionIndexMinimumDisplayRowCount="5" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="aL2-Tn-L8q">
                                 <rect key="frame" x="0.0" y="146" width="304" height="650"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="separatorColor" red="0.98823535439999999" green="0.97647064920000004" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <sections/>
                                 <connections>
@@ -2475,10 +2475,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" sectionIndexMinimumDisplayRowCount="5" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="GpM-d5-0ge">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" sectionIndexMinimumDisplayRowCount="5" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="GpM-d5-0ge">
                                 <rect key="frame" x="0.0" y="146" width="304" height="650"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="separatorColor" red="0.98823535439999999" green="0.97647064920000004" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <sections/>
                                 <connections>
@@ -2659,6 +2659,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="bannerView" destination="M8b-o3-hJ1" id="KW2-mC-kp4"/>
                         <outlet property="delButton" destination="ABV-4l-Crv" id="IXJ-IC-pL1"/>
                         <outlet property="dueTime" destination="HMd-s1-ZeC" id="ukG-oe-e5g"/>
+                        <outlet property="memberDetailView" destination="5rk-Sf-vvK" id="S2F-dY-9IR"/>
+                        <outlet property="memberTabelView" destination="GpM-d5-0ge" id="Imd-w0-8WZ"/>
                         <outlet property="modifyButton" destination="PSK-rR-pcC" id="klh-Ws-OFw"/>
                         <outlet property="nameInfo" destination="wrv-sp-1vu" id="rr2-un-UtC"/>
                         <outlet property="point" destination="nOG-Ed-lKE" id="jUW-ym-bm1"/>
@@ -2741,10 +2743,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" sectionIndexMinimumDisplayRowCount="5" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="Z7U-cG-3bV">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" sectionIndexMinimumDisplayRowCount="5" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Z7U-cG-3bV">
                                 <rect key="frame" x="0.0" y="146" width="304" height="650"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="separatorColor" red="0.98823535439999999" green="0.97647064920000004" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <sections/>
                                 <connections>
@@ -3170,10 +3172,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="addMemberSaving:" candidateClass="UIButton"/>
                 <relationship kind="action" name="dealQueryByDealID:" candidateClass="UIButton"/>
                 <relationship kind="action" name="deleteOneGoodsCode:"/>
+                <relationship kind="action" name="goBack:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="goodsCommeBack:" candidateClass="UIButton"/>
                 <relationship kind="action" name="goodsSelected:"/>
                 <relationship kind="action" name="memberCreate:" candidateClass="UIButton"/>
                 <relationship kind="action" name="memberSelected:" candidateClass="UIButton"/>
+                <relationship kind="action" name="stateChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="allGoodsAmounts" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="allGoodsPayments" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="amountView" candidateClass="UIView"/>
@@ -3245,6 +3249,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="bannerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="delButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dueTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="memberDetailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="memberTabelView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="modifyButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nameInfo" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="point" candidateClass="UILabel"/>
@@ -3252,8 +3258,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="queryView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="saving" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="storeDetailView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="storesTabelView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="telphone" candidateClass="UILabel"/>
             </relationships>
         </class>
