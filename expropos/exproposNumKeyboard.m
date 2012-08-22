@@ -74,6 +74,8 @@
                 }
             }
             
+            
+            
            int num = _goodsNum.text.intValue;
             [showDealOperate.goodsAndAmount setObject:[NSNumber numberWithInt:num] forKey:_goods.gid];
             [showDealOperate reloadViews];

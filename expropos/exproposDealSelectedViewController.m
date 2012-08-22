@@ -76,7 +76,10 @@
     //查询条件过滤弹出框消失
     [self.myPopover dismissPopoverAnimated:YES];
 }
-
+-(void)didUpDataFail
+{
+    NSLog(@"didUpDataFail");
+}
 //交易查询，先查询本地，然后查询远端服务器
 -(void)dealSelect
 {
@@ -91,6 +94,7 @@
         _update = [[exproposUpdateDeals alloc]init];
         _update.reserver = self;
         _update.succeedCallBack = @selector(didUpDataSuccess);
+        _update.failedCallBack = @selector(didUpDataSuccess);
         self.showDeals.pageNum = 1;
         [_update upDateDealStart:0 end:100 bt:self.beginDate et:self.endDate];
         
