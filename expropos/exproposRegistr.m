@@ -153,7 +153,7 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
     [self requestURL:@"/member" method:RKRequestMethodPUT params:params mapping:nil];    
 }
 
-- (void)delete:(NSString *)memId
+- (void)delete:(NSInteger)memId
 {
      //NSString *url = [NSString stringWithFormat:@"/store/%i",storeId];
        NSString *url = [NSString stringWithFormat:@"/member/%i",memId];

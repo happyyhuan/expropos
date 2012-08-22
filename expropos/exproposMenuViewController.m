@@ -155,7 +155,7 @@
         //        [self.splitViewController presentModalViewController:_memberManagerControll animated:YES];
         
         [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
-        _ployeeControl.myRootViewController = self.mainViewController;
+        _ployeeControl.myRootViewController = self.mainViewController.splitViewController;
         [self.splitViewController presentModalViewController:_ployeeControl animated:YES];
 
     }
@@ -163,7 +163,7 @@
     if([menu isEqualToString:@"会员管理"]){
  
         [_mainViewController.masterPopoverController dismissPopoverAnimated:YES];
-        _memberManagerControll.myRootViewController = self.mainViewController;
+        _memberManagerControll.myRootViewController = self.mainViewController.splitViewController;
         [self.splitViewController presentModalViewController:_memberManagerControll animated:YES];
     }  
     
