@@ -25,5 +25,5 @@
 
          birth:(NSString *)birthDate  memPetName:(NSString *)memPetName;
 
-- (void)delete:(NSString *)memId;
+- (void)delete:(NSInteger)memId;
 @end

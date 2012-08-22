@@ -18,6 +18,8 @@
 
 @interface memberManagerViewController ()
 @property (nonatomic, strong) exproposRegistr * exproStoreDel;
+@property (nonatomic, strong) NSMutableArray *mySearchResetData;
+@property (nonatomic, strong) ExproMember *deleteMember;
 @end
 
 @implementation memberManagerViewController
@@ -37,13 +39,16 @@
 @synthesize allMember=_allMember;
 @synthesize memberRegister=_memberRegister;
 @synthesize mainViewControll = _mainViewControll;
-@synthesize exproStoreDel = _exproStoreDel;
+@synthesize memberOpe = _memberOpe;
+@synthesize deleteMember = _deleteMember;
 
 @synthesize telphone =_telphone;
 @synthesize privacy = _privacye;
 @synthesize saving=_saving;
 @synthesize dueTime = _dueTime;
 @synthesize point = _point;
+
+@synthesize mySearchResetData = _mySearchResetData;
 
 int current = 0;
 int selected =0;
@@ -60,10 +65,11 @@ int selected =0;
 {
     
     [super viewDidLoad];
+    _memberItems = [[NSMutableArray alloc]initWithCapacity:1];
     //查找所以属于该商户的会员
     exproposAppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     NSString *orgId = appDelegate.currentOrgid ;
-    _allMember = [[NSMutableArray alloc]initWithCapacity:1];
+    _allMember = [[NSMutableArray alloc]initWithCapacity:20];
     
     NSArray *allMemebers = [NSMutableArray arrayWithArray:[ExproMember findAll]];
     
@@ -77,6 +83,7 @@ int selected =0;
             [_allMember addObject:mem];
         }
     }
+    _mySearchResetData = [_allMember mutableCopy];
     allMemebers = nil;
     NSLog(@"%i == ",_allMember.count);
     
@@ -108,7 +115,7 @@ int selected =0;
     {
         //---初始化时候显示默认第一条数据的信息
         ExproMember *member = [self.allMember objectAtIndex:0];
-        
+        _deleteMember = member;
         [self.telphone setText: member.user.cellphone];
         //    [self.point setText:member.point];
         //    [self.saving setText:member.savings];
@@ -142,8 +149,8 @@ int selected =0;
     //self.mainViewControll = [self.myRootViewController.viewControllers lastObject];
     self.searchBar.delegate = self;
 	// Do any additional setup after loading the view.
-    if (!_exproStoreDel) {
-        _exproStoreDel = [[exproposRegistr alloc]init];
+    if (!_memberOpe) {
+        _memberOpe = [[exproposRegistr alloc]init];
     }
 }
 
@@ -200,11 +207,16 @@ int selected =0;
 
 #pragma mark -
 
+-(void)rest
+{
+    _allMember = [_mySearchResetData mutableCopy];
+}
+
 -(void)searchWithNameOrId:(NSString *)nameOrId
 {
+    [self rest];
     current = 0 ;       
     NSMutableArray *deletes = [[NSMutableArray alloc]initWithCapacity:1];
-    _memberItems = [[NSMutableArray alloc]initWithCapacity:1];
     if (nameOrId.length != 0)
     {
         for (int i=0; i < _allMember.count;i++)
@@ -368,10 +380,10 @@ int selected =0;
 //        [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
 //        return; 
     //} 
-    
+   
     _currentMemberId = indexPath.row;
     ExproMember *member = [self.allMember objectAtIndex:indexPath.row];
-    
+    _deleteMember = member;
     [self.telphone setText: member.user.cellphone];
     
     
@@ -504,11 +516,11 @@ int selected =0;
 
 - (IBAction)delMember:(id)sender {
 //    exproposRegistr *exproStoreDel = [[exproposRegistr alloc]init];
-    _exproStoreDel.reserver = self;
-    _exproStoreDel.succeedCallBack = @selector(deleteSucceed:);
-    _exproStoreDel.failedCallBack = @selector(deleteFailed:);
-    ExproMember *member = [self.memberItems objectAtIndex:_currentMemberId]; 
-    [_exproStoreDel delete:member.gid.stringValue]; 
+    _memberOpe.reserver = self;
+    _memberOpe.succeedCallBack = @selector(deleteSucceed:);
+    _memberOpe.failedCallBack = @selector(deleteFailed:);
+  //  ExproMember *member = [self.memberItems objectAtIndex:_currentMemberId]; 
+    [_memberOpe delete:_deleteMember.gid.intValue]; 
 
 }
 @end

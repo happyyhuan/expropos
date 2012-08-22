@@ -386,10 +386,7 @@
         [tmpdata addObject:g];
     }
     self.searchData = [tmpdata mutableCopy];
-  /*  //test
-    self.searchData = [[ExproGoods findAll] mutableCopy];
-    
-    //test end*/
+  
 }
 
 -(void)searchWithNameOrId:(NSString *)nameOrId

@@ -10,6 +10,7 @@
 #import "exproposMainViewController.h"
 #import "ExproMultipleTableView.h"
 #import "exproposMemberRegisterController.h"
+#import "exproposRegistr.h"
 
 @interface memberManagerViewController : UIViewController 
 @property (strong, nonatomic) IBOutlet UITableView *memberTabelView;
@@ -39,7 +40,7 @@
 @property (strong,nonatomic) exproposMemberRegisterController *memberRegister;
 
 @property (strong,nonatomic) exproposMainViewController *mainViewControll;
-
+@property (strong,nonatomic) exproposRegistr *memberOpe;
 
 
 - (IBAction)addMember:(id)sender;

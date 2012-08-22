@@ -2476,7 +2476,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" sectionIndexMinimumDisplayRowCount="5" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="GpM-d5-0ge">
-                                <rect key="frame" x="0.0" y="146" width="304" height="650"/>
+                                <rect key="frame" x="0.0" y="146" width="304" height="597"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="separatorColor" red="0.98823535439999999" green="0.97647064920000004" blue="1" alpha="1" colorSpace="deviceRGB"/>
@@ -2668,8 +2668,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="queryView" destination="sLY-4Q-txc" id="vER-83-Sdm"/>
                         <outlet property="saving" destination="e6Y-EN-EF6" id="25u-63-XfQ"/>
                         <outlet property="searchBar" destination="3cO-fV-fHg" id="yEL-tb-hoU"/>
-                        <outlet property="storeDetailView" destination="5rk-Sf-vvK" id="TOs-2R-vUO"/>
-                        <outlet property="storesTabelView" destination="GpM-d5-0ge" id="phy-6S-jI8"/>
                         <outlet property="telphone" destination="d4E-vx-vjr" id="hqV-9d-YTA"/>
                     </connections>
                 </viewController>
@@ -3172,12 +3170,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="addMemberSaving:" candidateClass="UIButton"/>
                 <relationship kind="action" name="dealQueryByDealID:" candidateClass="UIButton"/>
                 <relationship kind="action" name="deleteOneGoodsCode:"/>
-                <relationship kind="action" name="goBack:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="goodsCommeBack:" candidateClass="UIButton"/>
                 <relationship kind="action" name="goodsSelected:"/>
                 <relationship kind="action" name="memberCreate:" candidateClass="UIButton"/>
                 <relationship kind="action" name="memberSelected:" candidateClass="UIButton"/>
-                <relationship kind="action" name="stateChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="allGoodsAmounts" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="allGoodsPayments" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="amountView" candidateClass="UIView"/>
