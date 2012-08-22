@@ -12,6 +12,7 @@
 #import "ExproMerchant.h"
 #import "ExproWarehouse.h"
 #import "exproposAppDelegate.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface expropoStoreEditViewController ()
@@ -106,6 +107,42 @@
     return 7;
 }
 
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 5)
+    {
+        return 70.0;
+    }
+    else {
+        return 40.0;
+    }
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.tag == 2)
+    {
+        self.storeNotice = textView.text;
+    }
+    else if(textView.tag == 3)
+        {
+        self.storeAddress = textView.text;
+        }
+    
+    else if(textView.tag == 4)
+        {
+            self.storeTransit = textView.text;
+
+        }
+    
+    else if(textView.tag == 5)
+        {
+            self.storeComment = textView.text;
+        }
+    
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cellIndentifier";
@@ -144,63 +181,84 @@
     }
     else if(indexPath.row == 2)
     {
-        UITextView *storeNoticeField = [[UITextView alloc]initWithFrame:CGRectMake(300, 10, 200, 25)];
+        UITextView *storeNoticeField = [[UITextView alloc]initWithFrame:CGRectMake(100, 10, 400, 50)];
         [cell addSubview:storeNoticeField];
         [storeNoticeField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"门店公告", nil);  
         [storeNoticeField setBackgroundColor:[UIColor whiteColor]];
 //        storeNoticeField.borderStyle = UITextBorderStyleRoundedRect;
+        [storeNoticeField.layer setBorderColor: [[UIColor grayColor] CGColor]];      
+        [storeNoticeField.layer setBorderWidth: 1.0];      
+        [storeNoticeField.layer setCornerRadius:8.0f];      
+        [storeNoticeField.layer setMasksToBounds:YES];
+        [storeNoticeField setFont:[UIFont systemFontOfSize:17]];
         storeNoticeField.textAlignment = UITextAlignmentLeft;
         storeNoticeField.text = self.storeNotice;
-        storeNoticeField.tag = 1;
+        storeNoticeField.tag = 2;
         storeNoticeField.delegate = self;
         storeNoticeField.keyboardType = UIKeyboardTypeNumberPad;
 //        [storeNoticeField addTarget:self action:@selector(saveNoticeField:) forControlEvents:UIControlEventEditingChanged];
     }
     else if(indexPath.row == 3)
     {
-        UITextField *addressField = [[UITextField alloc]initWithFrame:CGRectMake(300, 10, 200, 25)];
+        UITextView *addressField = [[UITextView alloc]initWithFrame:CGRectMake(100, 10, 400, 50)];
         [cell addSubview:addressField];
         [addressField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"详细地址", nil);  
         [addressField setBackgroundColor:[UIColor whiteColor]];
-        addressField.borderStyle = UITextBorderStyleRoundedRect;
+        //addressField.borderStyle = UITextBorderStyleRoundedRect;
+        [addressField.layer setBorderColor: [[UIColor grayColor] CGColor]];      
+        [addressField.layer setBorderWidth: 1.0];      
+        [addressField.layer setCornerRadius:8.0f];      
+        [addressField.layer setMasksToBounds:YES];
+        [addressField setFont:[UIFont systemFontOfSize:17]];
         addressField.textAlignment = UITextAlignmentLeft;
         addressField.text = self.storeAddress;
-        addressField.tag = 1;
+        addressField.tag = 3;
         addressField.delegate = self;
         addressField.keyboardType = UIKeyboardTypeNumberPad;
-        [addressField addTarget:self action:@selector(saveAddressField:) forControlEvents:UIControlEventEditingChanged];
+//        [addressField addTarget:self action:@selector(saveAddressField:) forControlEvents:UIControlEventEditingChanged];
     }
     else if(indexPath.row == 4)
     {
-        UITextField *transitField = [[UITextField alloc]initWithFrame:CGRectMake(100, 10, 200, 25)];
+        UITextView *transitField = [[UITextView alloc]initWithFrame:CGRectMake(100, 10, 400, 50)];
         [cell addSubview:transitField];
         [transitField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"公交说明", nil);  
         [transitField setBackgroundColor:[UIColor whiteColor]];
-        transitField.borderStyle = UITextBorderStyleRoundedRect;
+        //transitField.borderStyle = UITextBorderStyleRoundedRect;
+        [transitField.layer setBorderColor: [[UIColor grayColor] CGColor]];      
+        [transitField.layer setBorderWidth: 1.0];      
+        [transitField.layer setCornerRadius:8.0f];      
+        [transitField.layer setMasksToBounds:YES];
+        [transitField setFont:[UIFont systemFontOfSize:17]];
         transitField.textAlignment = UITextAlignmentLeft;
         transitField.text = self.storeTransit;
-        transitField.tag = 1;
+        transitField.tag = 4;
         transitField.delegate = self;
         transitField.keyboardType = UIKeyboardTypeNumberPad;
-        [transitField addTarget:self action:@selector(saveTransitField:) forControlEvents:UIControlEventEditingChanged];
+//        [transitField addTarget:self action:@selector(saveTransitField:) forControlEvents:UIControlEventEditingChanged];
     }
     else if(indexPath.row == 5)
     {
-        UITextField *commentField = [[UITextField alloc]initWithFrame:CGRectMake(100, 10, 200, 25)];
+        UITextView *commentField = [[UITextView alloc]initWithFrame:CGRectMake(100, 10, 400, 50)];
         [cell addSubview:commentField];
         [commentField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"备注信息", nil);  
         [commentField setBackgroundColor:[UIColor whiteColor]];
-        commentField.borderStyle = UITextBorderStyleRoundedRect;
+        //commentField.borderStyle = UITextBorderStyleRoundedRect;
+        
+        [commentField.layer setBorderColor: [[UIColor grayColor] CGColor]];      
+        [commentField.layer setBorderWidth: 1.0];      
+        [commentField.layer setCornerRadius:8.0f];      
+        [commentField.layer setMasksToBounds:YES];
+        [commentField setFont:[UIFont systemFontOfSize:17]];
         commentField.textAlignment = UITextAlignmentLeft;
         commentField.text = self.storeComment;
-        commentField.tag = 1;
+        commentField.tag = 5;
         commentField.delegate = self;
         commentField.keyboardType = UIKeyboardTypeNumberPad;
-        [commentField addTarget:self action:@selector(saveCommentField:) forControlEvents:UIControlEventEditingChanged];
+//        [commentField addTarget:self action:@selector(saveCommentField:) forControlEvents:UIControlEventEditingChanged];
     }
     else if (indexPath.row == 6)
     {
@@ -273,9 +331,19 @@
 -(void)EditSucceed:(id)sender 
 {
     ExproStore *newStore = (ExproStore *)sender;
-       
+    
+    
     if (self.exproStore)      //更新本地门店信息
      {
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                         message:@"门店信息修改成功" 
+                                                        delegate:nil
+                                               cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                               otherButtonTitles:nil];
+         
+         [alert show]; 
+
+         
          self.exproStore.name = self.storeName;
          self.exproStore.notice = self.storeNotice;
          self.exproStore.address = self.storeAddress;
@@ -287,14 +355,38 @@
      }
      else {                    //新增门店信息
         
-               
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+                                                         message:@"门店信息添加成功" 
+                                                        delegate:nil
+                                               cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                               otherButtonTitles:nil];
+         
+         [alert show]; 
                  newStore.name = self.storeName;
                  newStore.notice = self.storeNotice;
                  newStore.address = self.storeAddress;
                  newStore.comment = self.storeComment;
                  newStore.transitInfo = self.storeTransit;
                  newStore.lastModified = [NSDate new];
-                 newStore.inventarNum = self.storeNo;          
+                 newStore.inventarNum = self.storeNo; 
+         
+         exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
+         NSString *orgId = appDelegate.currentOrgid ;
+         NSFetchRequest *request = [ExproMerchant fetchRequest];
+         NSPredicate *predicate = nil;
+         NSMutableString *str = [[NSMutableString alloc]initWithString:@"(gid=%@)" ];
+         NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:orgId, nil];
+         predicate = [NSPredicate predicateWithFormat:str argumentArray:params];
+         NSLog(@"%@",predicate);
+         request.predicate = predicate;
+         NSArray *merchants = [ExproMerchant objectsWithFetchRequest:request];
+         
+         NSLog(@"%i",merchants.count);
+         for (int i =0;i<merchants.count;i++)
+         {
+             ExproMerchant *merchant = [merchants objectAtIndex:i];  
+             newStore.merchant = merchant;
+         }        
      }    
     [[RKObjectManager sharedManager].objectStore save:nil];
     [self.storeView dismissModalViewControllerAnimated:YES];
@@ -315,10 +407,10 @@
         
         if (self.exproStore)
         {
-            [self.exproStoreEdit storeEdit:self.storeName merchant:orgId  state:self.storeState inventar:@"" district:@"ccc" address:self.storeAddress transit:self.storeTransit map:@"bbb" notice:self.storeNotice comment:self.storeComment storeId:self.exproStore.gid];
+            [self.exproStoreEdit storeEdit:self.storeName merchant:orgId  state:self.storeState inventar:self.storeNo district:@"ccc" address:self.storeAddress transit:self.storeTransit map:@"bbb" notice:self.storeNotice comment:self.storeComment storeId:self.exproStore.gid];
         }
         else {
-            [self.exproStoreEdit storeAdd:self.storeName merchant:orgId  state:self.storeState inventar:@"" district:@"ccc" address:self.storeAddress transit:self.storeTransit map:@"bbb" notice:self.storeNotice comment:self.storeComment]; 
+            [self.exproStoreEdit storeAdd:self.storeName merchant:orgId  state:self.storeState inventar:self.storeNo district:@"ccc" address:self.storeAddress transit:self.storeTransit map:@"bbb" notice:self.storeNotice comment:self.storeComment]; 
         }
          
     }

@@ -34,19 +34,19 @@
     [_alertView show];
 }
 
-- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
-    
-    if (response.statusCode == 201)
-    {
-        self.statusCode = response.statusCode;
-        self.errorTitle = NSLocalizedString(@"Warning", nil);        UIAlertView *_alertView = [[UIAlertView alloc] initWithTitle:@"OK"
-                                                             message:@"OK"
-                                                            delegate:nil
-                                                   cancelButtonTitle:@"OK"
-                                                   otherButtonTitles:nil];
-        [_alertView show];
-    }
-}
+//- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
+//    
+//    if (response.statusCode == 201)
+//    {
+//        self.statusCode = response.statusCode;
+//        self.errorTitle = NSLocalizedString(@"Warning", nil);        UIAlertView *_alertView = [[UIAlertView alloc] initWithTitle:@"OK"
+//                                                             message:@"OK"
+//                                                            delegate:nil
+//                                                   cancelButtonTitle:@"OK"
+//                                                   otherButtonTitles:nil];
+//        [_alertView show];
+//    }
+//}
 
 -(void)storeAdd:(NSString *)storeName merchant:(NSString *)merchant_id  state:(NSString *)state inventar:(NSString *)inventar_num district:(NSString *) district_code address:(NSString *)address transit:(NSString *)transit_info  map:(NSString *)map_info
     notice:(NSString *)notice  comment:(NSString *)comment 
@@ -54,8 +54,8 @@
 
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"1", @"merchant_id",
-                            storeName, @"name", @"1", @"state",
-                            @"0123abc", @"inventar_num", @"086-025-2211100", @"district_code",
+                            storeName, @"name", state, @"state",
+                            inventar_num, @"inventar_num", district_code, @"district_code",
                            address, @"address", transit_info, @"transit_info",map_info, @"map_info",
                            notice, @"notice", comment, @"comment", nil];   
     [self requestURL:@"/store" method:RKRequestMethodPOST params:params mapping:nil];
@@ -69,7 +69,7 @@
                            storeId.stringValue,@"_id",
                            @"1", @"merchant_id",
                            storeName, @"name",state, @"state",
-                           @"0123abc", @"inventar_num", @"086-025-2211100", @"district_code",
+                           inventar_num, @"inventar_num", district_code, @"district_code",
                            address, @"address",transit_info, @"transit_info",@"3333", @"map_info",
                            notice, @"notice", comment, @"comment", nil];     
     

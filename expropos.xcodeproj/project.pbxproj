@@ -194,6 +194,8 @@
 		4277CFD015DC8B9E0029FEEF /* ExproSignHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproSignHistory.m; sourceTree = "<group>"; };
 		4277CFD215DCE5420029FEEF /* ExproStaff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproStaff.h; sourceTree = "<group>"; };
 		4277CFD315DCE5420029FEEF /* ExproStaff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproStaff.m; sourceTree = "<group>"; };
+		4277D07715E4B8240029FEEF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/cc/dev/expropos/expropos/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		4277D07815E4B8240029FEEF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/cc/dev/expropos/expropos/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
 		4279967015DA275000243834 /* exproposPloyeeManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposPloyeeManagerViewController.h; sourceTree = "<group>"; };
 		4279967115DA275000243834 /* exproposPloyeeManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposPloyeeManagerViewController.m; sourceTree = "<group>"; };
 		4279967315DA3CF300243834 /* ployeeRegistrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ployeeRegistrViewController.h; sourceTree = "<group>"; };
@@ -1108,7 +1110,11 @@
 			isa = PBXVariantGroup;
 			children = (
 				5FA51745159DB58300F9DE5B /* en */,
+<<<<<<< HEAD
 				4276F48915E4D89500CA57A2 /* zh-Hans */,
+=======
+				4277D07815E4B8240029FEEF /* zh-Hans */,
+>>>>>>> 51d2fd0... debug
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -1117,7 +1123,11 @@
 			isa = PBXVariantGroup;
 			children = (
 				914BB29D15746A6B009FFBAE /* en */,
+<<<<<<< HEAD
 				4276F48815E4D89500CA57A2 /* zh-Hans */,
+=======
+				4277D07715E4B8240029FEEF /* zh-Hans */,
+>>>>>>> 51d2fd0... debug
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

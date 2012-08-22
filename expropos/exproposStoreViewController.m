@@ -82,6 +82,7 @@ int selectIndex =0;
             [_allStore addObject:item]; 
         }
     }
+    
  
 //    _storeItems = [[NSMutableArray alloc]initWithCapacity:1];
 //    for (int i=0 ; i < 6;i++)
@@ -102,11 +103,16 @@ int selectIndex =0;
         ExproStore *store = [self.allStore objectAtIndex:0];
         self.currentStoreId = 0;
         [self.nameInfo setText: store.name];
-        [self.storeNO setText: store.districtCode];
+        [self.storeNO setText: store.inventarNum];
         [self.storeAddress setText:store.address];
         [self.storeComment setText:store.comment];
         [self.storeNotice setText:store.notice];
         [self.storeTrainInfo setText:store.transitInfo];
+            [self.storeAddress setEditable:NO];
+        [self.storeComment setEditable:NO];
+        [self.storeNotice setEditable:NO];
+        [self.storeTrainInfo setEditable:NO];
+        
         //门店状态选择：1-正常状态说明此门店正常营业；0-封闭状态说明门店可能暂时停业整修等。2-公开：门店可以被其他商户及公众立刻可见。3-不公开：门店不可以被其他商户及公众可见（等待现实中的新店开业后再公开，或者等待新店相关系统配置工作完成后再公开。）
         if(store.state.integerValue == 1)
         {
@@ -115,6 +121,7 @@ int selectIndex =0;
         else {
             [self.storeState setText:@"暂时停业"];
         }
+       
         //----end
     }
     _storesTabelView.layer.cornerRadius = 5.0;
@@ -356,11 +363,15 @@ int selectIndex =0;
         ExproStore *store = [self.allStore objectAtIndex:indexPath.row];
          self.currentStoreId = [NSNumber numberWithInt:indexPath.row];
         [self.nameInfo setText: store.name];
-        [self.storeNO setText: store.districtCode];
+        [self.storeNO setText: store.inventarNum];
         [self.storeAddress setText:store.address];
         [self.storeComment setText:store.comment];
         [self.storeNotice setText:store.notice];
         [self.storeTrainInfo setText:store.transitInfo]; 
+        [self.storeAddress setEditable:NO];
+        [self.storeComment setEditable:NO];
+        [self.storeNotice setEditable:NO];
+        [self.storeTrainInfo setEditable:NO];
         if(store.state.integerValue == 1)
         {
             [self.storeState setText:@"正常营业"];
@@ -414,11 +425,15 @@ int selectIndex =0;
     
     ExproStore *store = [self.storeItems objectAtIndex:selButton.tag];
     [self.nameInfo setText: store.name];
-    [self.storeNO setText: store.districtCode];
+    [self.storeNO setText: store.inventarNum];
     [self.storeAddress setText:store.address];
     [self.storeComment setText:store.comment];
     [self.storeNotice setText:store.notice];
     [self.storeTrainInfo setText:store.transitInfo];
+    [self.storeAddress setEditable:NO];
+    [self.storeComment setEditable:NO];
+    [self.storeNotice setEditable:NO];
+    [self.storeTrainInfo setEditable:NO];
 //    门店状态选择：1-正常状态说明此门店正常营业；0-封闭状态说明门店可能暂时停业整修等。2-公开：门店可以被其他商户及公众立刻可见。3-不公开：门店不可以被其他商户及公众可见（等待现实中的新店开业后再公开，或者等待新店相关系统配置工作完成后再公开。）
     if(store.state.integerValue == 1)
     {
