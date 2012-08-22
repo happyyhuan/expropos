@@ -12,13 +12,13 @@
 #import "exproposMemberRegisterController.h"
 
 @interface memberManagerViewController : UIViewController 
-@property (strong, nonatomic) IBOutlet UITableView *storesTabelView;
-@property (strong, nonatomic) IBOutlet UIView *storeDetailView;
+@property (strong, nonatomic) IBOutlet UITableView *memberTabelView;
+@property (strong, nonatomic) IBOutlet UIView *memberDetailView;
 @property (strong, nonatomic) IBOutlet UIView *bannerView;
 @property (strong, nonatomic) IBOutlet UIView *queryView;
 
 @property (nonatomic,strong) NSMutableArray *memberItems;
-@property (nonatomic,strong)  NSMutableArray *allStore;
+@property (nonatomic,strong)  NSMutableArray *allMember;
 
 
 

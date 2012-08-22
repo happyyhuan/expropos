@@ -10,7 +10,6 @@
 #import "ExproStore.h"
 #import "RestKit/RestKit.h"
 #import "RestKit/CoreData.h"
-#import "expropoStoreEditViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ExproMember.h"
 #import "ExproUser.h"
@@ -23,9 +22,8 @@
 
 @implementation memberManagerViewController
 @synthesize searchBar = _searchBar;
-
-@synthesize storesTabelView=_storesTabelView;
-@synthesize storeDetailView=_storeDetailView;
+@synthesize memberTabelView = _memberTabelView;
+@synthesize memberDetailView=_memberDetailView;
 @synthesize bannerView=_bannerView;
 @synthesize queryView=_queryView;
 @synthesize memberItems = _memberItems;
@@ -36,7 +34,7 @@
 @synthesize backButton = _backButton;
 @synthesize delButton = _delButton;
 @synthesize currentMemberId=_currentMemberId;
-@synthesize allStore=_allStore;
+@synthesize allMember=_allMember;
 @synthesize memberRegister=_memberRegister;
 @synthesize mainViewControll = _mainViewControll;
 @synthesize exproStoreDel = _exproStoreDel;
@@ -65,7 +63,7 @@ int selected =0;
     //查找所以属于该商户的会员
     exproposAppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     NSString *orgId = appDelegate.currentOrgid ;
-    _allStore = [[NSMutableArray alloc]initWithCapacity:1];
+    _allMember = [[NSMutableArray alloc]initWithCapacity:1];
     
     NSArray *allMemebers = [NSMutableArray arrayWithArray:[ExproMember findAll]];
     
@@ -76,40 +74,40 @@ int selected =0;
         
         if ([mem.orgID.stringValue isEqualToString:orgId])
         {
-            [_allStore addObject:mem];
+            [_allMember addObject:mem];
         }
     }
     allMemebers = nil;
-    NSLog(@"%i == ",_allStore.count);
+    NSLog(@"%i == ",_allMember.count);
     
-    NSMutableArray *deletes = [[NSMutableArray alloc]initWithCapacity:1];
-    _memberItems = [[NSMutableArray alloc]initWithCapacity:1];
-           for (int i=0; i < self.allStore.count;i++)
-        {
-            ExproMember *member = [self.allStore objectAtIndex:i];
-            if (!member.petName)
-            {
-                [deletes addObject:member];
-            }
-        }    
-    [self.allStore removeObjectsInArray:deletes];  
+//    NSMutableArray *deletes = [[NSMutableArray alloc]initWithCapacity:1];
+//    _memberItems = [[NSMutableArray alloc]initWithCapacity:1];
+//           for (int i=0; i < self.allStore.count;i++)
+//        {
+//            ExproMember *member = [self.allStore objectAtIndex:i];
+//            if (!member.petName)
+//            {
+//                [deletes addObject:member];
+//            }
+//        }    
+//    [self.allStore removeObjectsInArray:deletes];  
     
-    _memberItems = [[NSMutableArray alloc]initWithCapacity:1];  
-       for (int i=0 ; i < 6;i++)
-    {
-        if (i < _allStore.count)
-        {
-            [self.memberItems addObject: [_allStore objectAtIndex:i]];
-            current = 6;      
-        }
-        else {
-            current = _allStore.count;
-        }
-    }
-    if(self.memberItems.count !=0)
+//    _memberItems = [[NSMutableArray alloc]initWithCapacity:1];  
+//       for (int i=0 ; i < 6;i++)
+//    {
+//        if (i < _allStore.count)
+//        {
+//            [self.memberItems addObject: [_allStore objectAtIndex:i]];
+//            current = 6;      
+//        }
+//        else {
+//            current = _allStore.count;
+//        }
+//    }
+    if(self.allMember.count !=0)
     {
         //---初始化时候显示默认第一条数据的信息
-        ExproMember *member = [self.memberItems objectAtIndex:0];
+        ExproMember *member = [self.allMember objectAtIndex:0];
         
         [self.telphone setText: member.user.cellphone];
         //    [self.point setText:member.point];
@@ -138,8 +136,8 @@ int selected =0;
 //    _storesTabelView.showsVerticalScrollIndicator = YES;  
 //    _storesTabelView.layer.cornerRadius = 5.0;
 //    _storesTabelView.layer.masksToBounds = YES;
-    _storesTabelView.layer.borderWidth = 3;
-    _storesTabelView.layer.borderColor = [[UIColor grayColor] CGColor];
+//    memberTabelView.layer.borderWidth = 3;
+//    _memberTabelView.layer.borderColor = [[UIColor grayColor] CGColor];
     _memberRegister = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
     //self.mainViewControll = [self.myRootViewController.viewControllers lastObject];
     self.searchBar.delegate = self;
@@ -151,8 +149,8 @@ int selected =0;
 
 - (void)viewDidUnload
 {
-    [self setStoresTabelView:nil];
-    [self setStoreDetailView:nil];
+    [self setMemberTabelView:nil];
+    [self setMemberDetailView:nil];
     [self setBannerView:nil];
     [self setQueryView:nil];
     [self setNameInfo:nil];
@@ -183,21 +181,22 @@ int selected =0;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int count = [self.memberItems count];
-    if (count < [self.allStore count])
-    {
-        return count+1;  
-    }
-    else
-    {
-        return count;
-    }
+//    int count = [self.memberItems count];
+//    if (count < [self.allStore count])
+//    {
+//        return count+1;  
+//    }
+//    else
+//    {
+//        return count;
+//    }
+    return _allMember.count;
 }
 
--(float) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100.0;
-    
-}
+//-(float) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 100.0;
+//    
+//}
 
 #pragma mark -
 
@@ -208,9 +207,9 @@ int selected =0;
     _memberItems = [[NSMutableArray alloc]initWithCapacity:1];
     if (nameOrId.length != 0)
     {
-        for (int i=0; i < self.allStore.count;i++)
+        for (int i=0; i < _allMember.count;i++)
         {
-            ExproMember *member = [self.allStore objectAtIndex:i];
+            ExproMember *member = [_allMember objectAtIndex:i];
             if([member.petName rangeOfString:nameOrId ].location == NSNotFound)
             {
                 [deletes addObject:member];
@@ -222,34 +221,34 @@ int selected =0;
         }
     }
     
-    [self.allStore removeObjectsInArray:deletes];
-    for (int i=0 ; i < 6;i++)
-    {
-        if (i < _allStore.count)
-        {
-            [self.memberItems addObject: [_allStore objectAtIndex:i]];
-            current = 6;      
-        }
-        else {
-            current = _allStore.count;
-        }
-    }
+    [_allMember removeObjectsInArray:deletes];
+//    for (int i=0 ; i < 6;i++)
+//    {
+//        if (i < _allStore.count)
+//        {
+//            [self.memberItems addObject: [_allStore objectAtIndex:i]];
+//            current = 6;      
+//        }
+//        else {
+//            current = _allStore.count;
+//        }
+//    }
     
-    [self.storesTabelView reloadData];
+    [self.memberTabelView reloadData];
 }
 
 - (void)scrollToTop:(BOOL)animated {  
-    [self.storesTabelView setContentOffset:CGPointMake(0,0) animated:animated];  
+    [self.memberTabelView setContentOffset:CGPointMake(0,0) animated:animated];  
 }  
 
 - (void)scrollToBottom:(BOOL)animated {  
-    NSUInteger sectionCount = [self.storesTabelView numberOfSections];  
+    NSUInteger sectionCount = [self.memberTabelView numberOfSections];  
     if (sectionCount) {  
-        NSUInteger rowCount = [self.storesTabelView numberOfRowsInSection:0];  
+        NSUInteger rowCount = [self.memberTabelView numberOfRowsInSection:0];  
         if (rowCount) {  
             NSUInteger ii[2] = {0, rowCount-1};  
             NSIndexPath* indexPath = [NSIndexPath indexPathWithIndexes:ii length:2];  
-            [self.storesTabelView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom  
+            [self.memberTabelView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom  
                                 animated:animated];  
         }  
     }  
@@ -264,7 +263,7 @@ int selected =0;
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar
 {
-    [self.storesTabelView reloadData];
+    [self.memberTabelView reloadData];
     [self.searchBar resignFirstResponder];
 }
 
@@ -274,99 +273,123 @@ int selected =0;
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell  = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    if([indexPath row] == ([self.memberItems count])) { 
-        //创建loadMoreCell 
-        if ([indexPath row] > 5)
-        {
-            CGRect frame = cell.bounds;
-            frame.size.height = 40;
-            cell.frame = frame;
-            
-            
-            UILabel *myLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 304, 50)];
-            [myLable setText:@"查看更多..."];
-            myLable.backgroundColor = [UIColor clearColor ];
-            myLable.textColor = [UIColor blackColor];
-            
-            myLable.font = [UIFont systemFontOfSize: 15];
-            
-            myLable.textAlignment = UITextAlignmentCenter;
-            
-            myLable.layer.cornerRadius = 5.0;
-            myLable.layer.masksToBounds = YES;
-            myLable.layer.borderWidth = 3;
-            myLable.layer.borderColor = [[UIColor grayColor] CGColor];
-            myLable.tag = indexPath.row;
-            myLable.backgroundColor = [ UIColor clearColor];
-            
-            [cell addSubview:myLable]; 
-            
-        }
-    }else { 
-        
-        
-        CGRect frame = cell.bounds;
-        
-        frame.size.height = 100;
-        frame.size.width = frame.size.width-80;
-        frame.origin.x = frame.origin.x + 80;
-        UILabel *myLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 100)];
-        [myLable setText:[NSString stringWithFormat:@"%i",indexPath.row]];
-        myLable.backgroundColor = [UIColor clearColor ];
-        myLable.textColor = [UIColor redColor];
-        
-        myLable.font = [UIFont systemFontOfSize: 15];
-        
-        myLable.textAlignment = UITextAlignmentCenter;
-        
-        myLable.layer.cornerRadius = 5.0;
-        myLable.layer.masksToBounds = YES;
-        myLable.layer.borderWidth = 3;
-        myLable.layer.borderColor = [[UIColor grayColor] CGColor];
-        myLable.tag = indexPath.row;
-        
-        UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
-        myButton.frame = frame;
-        ExproMember *member = [self.memberItems objectAtIndex:indexPath.row];
-        myButton.titleLabel.text =member.petName;
-        
-        if (selected == indexPath.row)
-        {
-            myButton.backgroundColor = [UIColor yellowColor];
-            myLable.backgroundColor = [UIColor yellowColor];
-        }
-        else {
-            myButton.backgroundColor = [UIColor grayColor];
-            myLable.backgroundColor = [UIColor grayColor];
-        }
-        
-        [myButton setTitle:member.petName forState:UIControlStateNormal];
-        
-        [myButton addTarget:self action:@selector(showDetail:) forControlEvents:UIControlEventTouchUpInside];
-        myButton.tag = indexPath.row;
-        myButton.layer.cornerRadius = 5.0;
-        myButton.layer.masksToBounds = YES;
-        myButton.layer.borderWidth = 3;
-        myButton.layer.borderColor = [[UIColor grayColor] CGColor];        
-        [cell addSubview:myButton];
-        [cell addSubview:myLable];
-        
-        
-    } 
+//    if([indexPath row] == ([self.memberItems count])) { 
+//        //创建loadMoreCell 
+//        if ([indexPath row] > 5)
+//        {
+//            CGRect frame = cell.bounds;
+//            frame.size.height = 40;
+//            cell.frame = frame;
+//            
+//            
+//            UILabel *myLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 304, 50)];
+//            [myLable setText:@"查看更多..."];
+//            myLable.backgroundColor = [UIColor clearColor ];
+//            myLable.textColor = [UIColor blackColor];
+//            
+//            myLable.font = [UIFont systemFontOfSize: 15];
+//            
+//            myLable.textAlignment = UITextAlignmentCenter;
+//            
+//            myLable.layer.cornerRadius = 5.0;
+//            myLable.layer.masksToBounds = YES;
+//            myLable.layer.borderWidth = 3;
+//            myLable.layer.borderColor = [[UIColor grayColor] CGColor];
+//            myLable.tag = indexPath.row;
+//            myLable.backgroundColor = [ UIColor clearColor];
+//            
+//            [cell addSubview:myLable]; 
+//            
+//        }
+//    }else { 
+//        
+//        
+//        CGRect frame = cell.bounds;
+//        
+//        frame.size.height = 100;
+//        frame.size.width = frame.size.width-80;
+//        frame.origin.x = frame.origin.x + 80;
+//        UILabel *myLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 100)];
+//        [myLable setText:[NSString stringWithFormat:@"%i",indexPath.row]];
+//        myLable.backgroundColor = [UIColor clearColor ];
+//        myLable.textColor = [UIColor redColor];
+//        
+//        myLable.font = [UIFont systemFontOfSize: 15];
+//        
+//        myLable.textAlignment = UITextAlignmentCenter;
+//        
+//        myLable.layer.cornerRadius = 5.0;
+//        myLable.layer.masksToBounds = YES;
+//        myLable.layer.borderWidth = 3;
+//        myLable.layer.borderColor = [[UIColor grayColor] CGColor];
+//        myLable.tag = indexPath.row;
+//        
+//        UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
+//        myButton.frame = frame;
+//        ExproMember *member = [self.memberItems objectAtIndex:indexPath.row];
+//        myButton.titleLabel.text =member.petName;
+//        
+//        if (selected == indexPath.row)
+//        {
+//            myButton.backgroundColor = [UIColor yellowColor];
+//            myLable.backgroundColor = [UIColor yellowColor];
+//        }
+//        else {
+//            myButton.backgroundColor = [UIColor grayColor];
+//            myLable.backgroundColor = [UIColor grayColor];
+//        }
+//        
+//        [myButton setTitle:member.petName forState:UIControlStateNormal];
+//        
+//        [myButton addTarget:self action:@selector(showDetail:) forControlEvents:UIControlEventTouchUpInside];
+//        myButton.tag = indexPath.row;
+//        myButton.layer.cornerRadius = 5.0;
+//        myButton.layer.masksToBounds = YES;
+//        myButton.layer.borderWidth = 3;
+//        myButton.layer.borderColor = [[UIColor grayColor] CGColor];        
+//        [cell addSubview:myButton];
+//        [cell addSubview:myLable];
+//        
+//        
+//    } 
     
+    ExproMember *member = [self.allMember objectAtIndex:indexPath.row];
+    cell.textLabel.text = member.petName;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if([indexPath row] == ([self.memberItems count])) { 
-        UITableViewCell *loadMoreCell=[tableView cellForRowAtIndexPath:indexPath]; 
-        loadMoreCell.textLabel.text=@"loading more …"; 
-        [self performSelectorInBackground:@selector(loadMore) withObject:nil]; 
-        [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
-        return; 
-    } 
+    //if([indexPath row] == ([self.memberItems count])) { 
+//        UITableViewCell *loadMoreCell=[tableView cellForRowAtIndexPath:indexPath]; 
+//        loadMoreCell.textLabel.text=@"loading more …"; 
+//        [self performSelectorInBackground:@selector(showDetail:) withObject:nil]; 
+//        [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
+//        return; 
+    //} 
+    
+    _currentMemberId = indexPath.row;
+    ExproMember *member = [self.allMember objectAtIndex:indexPath.row];
+    
+    [self.telphone setText: member.user.cellphone];
+    
+    
+    //隐私权限：0：不开放，1：基本信息开放，8:完全开放。
+    if (member.privacy.integerValue == 8)
+    {
+        [self.privacy setText:@"完全开放"];
+    }
+    else if(member.privacy.integerValue == 0){
+        [self.privacy setText:@"不开放"];
+    }
+    else {
+        [self.privacy setText:@"基本信息开放"];
+    }
+    
+    [self.nameInfo setText: member.petName];
+    [self.memberTabelView reloadData];
+
 } 
 
 
@@ -374,19 +397,19 @@ int selected =0;
 { 
     NSMutableArray *more; 
     more=[[NSMutableArray alloc] initWithCapacity:0]; 
-    NSLog(@"loadMore%i",[self.allStore count]);
-    if (current < [self.allStore count])
+    NSLog(@"loadMore%i",[self.allMember count]);
+    if (current < [self.allMember count])
     {
         for (int i=current; i<6+current; i++) { 
-            if (i < [self.allStore count])
+            if (i < [self.allMember count])
             {
-                [more addObject:[ self.allStore objectAtIndex:i]];    
+                [more addObject:[ self.allMember objectAtIndex:i]];    
             }
         } 
         current +=6;
         //加载你的数据 
         [self performSelectorOnMainThread:@selector(appendTableWith:) withObject:more waitUntilDone:NO]; 
-        [self.storesTabelView reloadData];
+        [self.memberTabelView reloadData];
     }
 } 
 
@@ -425,7 +448,7 @@ int selected =0;
     }
 
     [self.nameInfo setText: member.petName];
-    [self.storesTabelView reloadData];
+    [self.memberTabelView reloadData];
 }
 
 
@@ -444,7 +467,7 @@ int selected =0;
     exproposMemberRegisterController *pay = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
     
     pay.viewController = self;
-    ExproMember *member = [self.memberItems objectAtIndex:_currentMemberId];  
+    ExproMember *member = [self.allMember objectAtIndex:_currentMemberId];  
     pay.exproMember = member;
     pay.modalPresentationStyle = UIModalPresentationFormSheet;
     pay.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
@@ -461,11 +484,11 @@ int selected =0;
 {
     ExproMember *member = (ExproMember *)sender;
     [member deleteEntity];
-    ExproMember *oldmember = [self.memberItems objectAtIndex:_currentMemberId]; 
+    ExproMember *oldmember = [self.allMember objectAtIndex:_currentMemberId]; 
     [oldmember deleteEntity];
     [[RKObjectManager sharedManager].objectStore save:nil];
     [self viewDidLoad];
-    [self.storesTabelView reloadData];
+    [self.memberTabelView reloadData];
 }
 
 -(void)deleteFailed:(id)sender

@@ -32,7 +32,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *modifyButton;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UIButton *delButton;
-@property (nonatomic) NSInteger *currentStoreId;
+@property (nonatomic) NSNumber *currentStoreId;
 
 
 

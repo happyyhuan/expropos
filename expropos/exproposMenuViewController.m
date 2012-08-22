@@ -47,7 +47,8 @@
 {
     [super viewDidLoad];
     //初始化菜单数组显示的内容
-    self.menus = [NSArray arrayWithObjects:@"门店管理", @"会员管理", @"商品管理", @"交易查询", @"员工管理", nil];
+    self.menus = [NSArray arrayWithObjects:@"门店管理", @"会员管理", @"商品管理", @"交易查询",// @"员工管理", nil];
+                  nil];
     //初始化主窗体控制器
     self.mainViewController = [self.splitViewController.viewControllers lastObject];
     //初始化交易查询控制器

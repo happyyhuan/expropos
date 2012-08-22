@@ -61,6 +61,15 @@
         self.orgField.hidden=false;
         self.orgField.text=nil;
     }
+    else if(bu.tag == -1)
+    {
+        _userField.text = @"12345678901";
+        self.orgField.text = @"1";
+        self.userField.hidden= true;
+        self.phonelable.hidden=true;
+        self.orgField.hidden=true;
+        self.orglabel.hidden=true;
+    }
     else {
         for (ExproUser *user in _users)
         {
@@ -106,8 +115,7 @@
     password = _passwordField.text;
     username= _userField.text;
     orgId = self.orgField.text;
-    NSLog(@"ORGID === %@",orgId);
-    
+        
     if (username && [username length] && password && [password length]) {
         self.sign = [[exproposSign alloc]init];
         _sign.reserver = self;
@@ -218,8 +226,9 @@
             _userField.text = nil;
             _passwordField.text=nil;  
         }
+        [self signinSucceed:object];
     }
-    [self signinSucceed:object];
+    
 
 }
 
@@ -269,6 +278,7 @@
     [myButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
     [myButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
     myButton.tag = 0;
+    
     CGRect labelframe = CGRectMake(50*array.count+10, 40, 50, 30);
     UILabel *mylabel = [UILabel new];
     mylabel.frame = labelframe;
@@ -277,6 +287,38 @@
     [mylabel setFont:[UIFont systemFontOfSize:12]];
     [scrollView addSubview:myButton];
     [scrollView addSubview:mylabel];
+    
+    
+    CGRect syyframe = CGRectMake(50*array.count+50, 5, 50, 40);
+    UIButton *syyButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    syyButton.frame = syyframe;
+    [syyButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
+    [syyButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
+    syyButton.tag = -1;
+    
+    CGRect syylabelframe = CGRectMake(50*array.count+10+50, 40, 50, 30);
+    UILabel *syylabel = [UILabel new];
+    syylabel.frame = syylabelframe;
+    [syylabel setText:@"收银员"];
+    [syylabel setBackgroundColor:self.view.backgroundColor];
+    [syylabel setFont:[UIFont systemFontOfSize:12]];
+    [scrollView addSubview:syyButton];
+    [scrollView addSubview:syylabel];
+    
+    CGRect xgframe = CGRectMake(50*array.count+100, 5, 50, 40);
+    UIButton *xgButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    xgButton.frame = xgframe;
+    [xgButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
+    [xgButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
+    xgButton.tag = -2;    
+    CGRect xglabelframe = CGRectMake(50*array.count+10+100, 40, 50, 30);
+    UILabel *xglabel = [UILabel new];
+    xglabel.frame = xglabelframe;
+    [xglabel setText:@"管理员"];
+    [xglabel setBackgroundColor:self.view.backgroundColor];
+    [xglabel setFont:[UIFont systemFontOfSize:12]];
+    [scrollView addSubview:xgButton];
+    [scrollView addSubview:xglabel];
     
     
     [self.view addSubview:scrollView];

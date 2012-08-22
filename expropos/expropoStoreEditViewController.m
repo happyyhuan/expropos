@@ -11,6 +11,9 @@
 #import "exproposStoreEdit.h"
 #import "ExproMerchant.h"
 #import "ExproWarehouse.h"
+#import "exproposAppDelegate.h"
+
+
 @interface expropoStoreEditViewController ()
 
 @end
@@ -28,12 +31,14 @@
 @synthesize storeTransit=_storeTransit;
 @synthesize storeAddress =_storeAddress;
 @synthesize storeComment =_storeComment;
+@synthesize storeState=_storeState;
 
 @synthesize privacyItem=_privacyItem;
 @synthesize popover=_popover;
 @synthesize exproStore =_exproStore;
 @synthesize storeView=_storeView; 
 @synthesize exproStoreEdit=_exproStoreEdit;
+
 
 
 
@@ -50,6 +55,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _privacyItem = [[NSMutableArray alloc] initWithCapacity:20];
+
     if (self.exproStore)
     {
         editLabel.text = @"编辑门店";
@@ -58,6 +65,8 @@
         self.storeNotice = self.exproStore.notice;
         self.storeAddress = self.exproStore.address;
         self.storeComment = self.exproStore.comment;
+        NSLog(@"state==%i",self.exproStore.state.intValue);
+        [self.privacyItem addObject:self.exproStore.state];
     }
     else {
         editLabel.text = @"添加门店";
@@ -66,8 +75,7 @@
         self.storeAddress = nil;
         self.storeComment = nil;
     }
-    _privacyItem = [[NSMutableArray alloc] initWithCapacity:20];
-	// Do any additional setup after loading the view.
+    	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
@@ -202,7 +210,7 @@
             cell.detailTextLabel.text= @"公开";
         }else {
             NSMutableString *message = [[NSMutableString alloc]init];
-            NSArray *stateItemTitles = [NSArray arrayWithObjects:@"正常",@"封闭",@"公开",@"不公开", nil];
+            NSArray *stateItemTitles = [NSArray arrayWithObjects:@"封闭",@"正常",@"公开",@"不公开", nil];
             for(NSNumber *i in self.privacyItem){
                 [message appendFormat:@"%@,",[stateItemTitles objectAtIndex:i.intValue]];
             }
@@ -265,9 +273,7 @@
 -(void)EditSucceed:(id)sender 
 {
     ExproStore *newStore = (ExproStore *)sender;
-    NSLog(@"signin user:%@", newStore.gid);
-    NSLog(@"signin met:%@", newStore.warehouse.gid);
-    
+       
     if (self.exproStore)      //更新本地门店信息
      {
          self.exproStore.name = self.storeName;
@@ -276,7 +282,8 @@
          self.exproStore.comment = self.storeComment;
          self.exproStore.transitInfo = self.storeTransit;
          self.exproStore.lastModified = [NSDate new];
-         self.exproStore.inventarNum = self.storeNo;        
+         self.exproStore.inventarNum = self.storeNo;    
+         self.exproStore.state = [NSNumber numberWithInteger:self.storeState.intValue];
      }
      else {                    //新增门店信息
         
@@ -288,10 +295,7 @@
                  newStore.transitInfo = self.storeTransit;
                  newStore.lastModified = [NSDate new];
                  newStore.inventarNum = self.storeNo;          
-     }
-    
-    
-    
+     }    
     [[RKObjectManager sharedManager].objectStore save:nil];
     [self.storeView dismissModalViewControllerAnimated:YES];
     [self.storeView viewDidLoad];
@@ -306,12 +310,15 @@
         _exproStoreEdit.succeedCallBack = @selector(EditSucceed:);
         _exproStoreEdit.failedCallBack = @selector(EditFailed:);
         
+        exproposAppDelegate *appDelegate =[[UIApplication sharedApplication]delegate];
+        NSString *orgId = appDelegate.currentOrgid ;
+        
         if (self.exproStore)
         {
-            [self.exproStoreEdit storeEdit:self.storeName merchant:self.storeNo warehouse_name:@"aaa" state:@"1" inventar:@"" district:@"ccc" address:self.storeAddress transit:self.storeTransit map:@"bbb" notice:self.storeNotice comment:self.storeComment storeId:self.exproStore.gid];
+            [self.exproStoreEdit storeEdit:self.storeName merchant:orgId  state:self.storeState inventar:@"" district:@"ccc" address:self.storeAddress transit:self.storeTransit map:@"bbb" notice:self.storeNotice comment:self.storeComment storeId:self.exproStore.gid];
         }
         else {
-            [self.exproStoreEdit storeAdd:self.storeName merchant:self.storeNo warehouse_name:@"aaa" state:@"1" inventar:@"" district:@"ccc" address:self.storeAddress transit:self.storeTransit map:@"bbb" notice:self.storeNotice comment:self.storeComment]; 
+            [self.exproStoreEdit storeAdd:self.storeName merchant:orgId  state:self.storeState inventar:@"" district:@"ccc" address:self.storeAddress transit:self.storeTransit map:@"bbb" notice:self.storeNotice comment:self.storeComment]; 
         }
          
     }

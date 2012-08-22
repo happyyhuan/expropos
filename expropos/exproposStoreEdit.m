@@ -39,9 +39,7 @@
     if (response.statusCode == 201)
     {
         self.statusCode = response.statusCode;
-        self.errorTitle = NSLocalizedString(@"Warning", nil);
-//        [self alert:self.errorTitle warning:NSLocalizedString(@"用户名或密码输入错误", nil)];
-        UIAlertView *_alertView = [[UIAlertView alloc] initWithTitle:@"OK"
+        self.errorTitle = NSLocalizedString(@"Warning", nil);        UIAlertView *_alertView = [[UIAlertView alloc] initWithTitle:@"OK"
                                                              message:@"OK"
                                                             delegate:nil
                                                    cancelButtonTitle:@"OK"
@@ -50,7 +48,7 @@
     }
 }
 
--(void)storeAdd:(NSString *)storeName merchant:(NSString *)merchant_id warehouse_name:(NSString *)warehouse_name state:(NSString *)state inventar:(NSString *)inventar_num district:(NSString *) district_code address:(NSString *)address transit:(NSString *)transit_info  map:(NSString *)map_info
+-(void)storeAdd:(NSString *)storeName merchant:(NSString *)merchant_id  state:(NSString *)state inventar:(NSString *)inventar_num district:(NSString *) district_code address:(NSString *)address transit:(NSString *)transit_info  map:(NSString *)map_info
     notice:(NSString *)notice  comment:(NSString *)comment 
 {
 
@@ -64,7 +62,7 @@
     
 }
 
--(void)storeEdit:(NSString *)storeName merchant:(NSString *)merchant_id warehouse_name:(NSString *)warehouse_name state:(NSString *)state inventar:(NSString *)inventar_num district:(NSString *) district_code address:(NSString *)address transit:(NSString *)transit_info  map:(NSString *)map_info
+-(void)storeEdit:(NSString *)storeName merchant:(NSString *)merchant_id  state:(NSString *)state inventar:(NSString *)inventar_num district:(NSString *) district_code address:(NSString *)address transit:(NSString *)transit_info  map:(NSString *)map_info
           notice:(NSString *)notice  comment:(NSString *)comment storeId:(NSNumber *)storeId
 {          
    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
