@@ -20,6 +20,15 @@
 		427FE45E15A586F800492804 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45815A586F800492804 /* 4.jpg */; };
 		427FE45F15A586F800492804 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45915A586F800492804 /* head.jpg */; };
 		427FE46015A586F800492804 /* login_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 427FE45A15A586F800492804 /* login_main.png */; };
+		42A08AC115E5D4A50030650C /* bodyBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A08AC015E5D4A50030650C /* bodyBg.png */; };
+		42A08AC315E5D97E0030650C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A08AC215E5D97E0030650C /* logo.png */; };
+		42A08AC515E5DD4D0030650C /* submitBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A08AC415E5DD4D0030650C /* submitBg.png */; };
+		42A08ACA15E5E33F0030650C /* dj_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A08AC615E5E33F0030650C /* dj_photo.png */; };
+		42A08ACB15E5E33F0030650C /* dz_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A08AC715E5E33F0030650C /* dz_photo.png */; };
+		42A08ACC15E5E33F0030650C /* photoBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A08AC815E5E33F0030650C /* photoBg.png */; };
+		42A08ACD15E5E33F0030650C /* syy_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A08AC915E5E33F0030650C /* syy_photo.png */; };
+		42A08AD015E602210030650C /* MyButton.h in Sources */ = {isa = PBXBuildFile; fileRef = 42A08ACE15E600E60030650C /* MyButton.h */; };
+		42A08AD115E602310030650C /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A08ACF15E600E70030650C /* MyButton.m */; };
 		42B0D00115BCF31F000F5401 /* BCrypt-java-copyright.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42B0D00015BCF31F000F5401 /* BCrypt-java-copyright.txt */; };
 		42B0D00215BCF626000F5401 /* JFBCrypt.h in Sources */ = {isa = PBXBuildFile; fileRef = 42B0CFFB15BCF315000F5401 /* JFBCrypt.h */; };
 		42B0D00315BCF626000F5401 /* BCrypt-java-copyright.txt in Sources */ = {isa = PBXBuildFile; fileRef = 42B0D00015BCF31F000F5401 /* BCrypt-java-copyright.txt */; };
@@ -208,6 +217,15 @@
 		427FE45815A586F800492804 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 4.jpg; path = image/4.jpg; sourceTree = "<group>"; };
 		427FE45915A586F800492804 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = head.jpg; path = image/head.jpg; sourceTree = "<group>"; };
 		427FE45A15A586F800492804 /* login_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_main.png; path = image/login_main.png; sourceTree = "<group>"; };
+		42A08AC015E5D4A50030650C /* bodyBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bodyBg.png; sourceTree = "<group>"; };
+		42A08AC215E5D97E0030650C /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		42A08AC415E5DD4D0030650C /* submitBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submitBg.png; sourceTree = "<group>"; };
+		42A08AC615E5E33F0030650C /* dj_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dj_photo.png; sourceTree = "<group>"; };
+		42A08AC715E5E33F0030650C /* dz_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dz_photo.png; sourceTree = "<group>"; };
+		42A08AC815E5E33F0030650C /* photoBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photoBg.png; sourceTree = "<group>"; };
+		42A08AC915E5E33F0030650C /* syy_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = syy_photo.png; sourceTree = "<group>"; };
+		42A08ACE15E600E60030650C /* MyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
+		42A08ACF15E600E70030650C /* MyButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
 		42B0CFFB15BCF315000F5401 /* JFBCrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFBCrypt.h; sourceTree = "<group>"; };
 		42B0CFFC15BCF315000F5401 /* JFBCrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFBCrypt.m; sourceTree = "<group>"; };
 		42B0CFFD15BCF315000F5401 /* JFGC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFGC.h; sourceTree = "<group>"; };
@@ -458,6 +476,7 @@
 			children = (
 				5F93418215D0B5F2005E089D /* background-paper.png */,
 				5F93418015D0B2C8005E089D /* comeback.png */,
+				42A08AC015E5D4A50030650C /* bodyBg.png */,
 				5F5D0AE115CA415D0074A06F /* deleteGoods.png */,
 				5F5D0ADF15CA31C40074A06F /* updates.png */,
 				5F5D0ADD15CA306B0074A06F /* choose.png */,
@@ -466,17 +485,23 @@
 				5F5D0AD315CA2B470074A06F /* box.png */,
 				5F95650115C22481002678BF /* close@2x.png */,
 				5FBB2C1115C13F5F00C9F470 /* close.png */,
+				42A08AC215E5D97E0030650C /* logo.png */,
 				5F61A81915C12B0A00176DB6 /* next.png */,
 				5F94573A15C0EA2500BA4064 /* 123.jpg */,
 				5FF8BA2415B52FAA005A0E1F /* delete.png */,
 				5F95E24715AAD4B20091144D /* TriangleSmall.png */,
 				5F95E24515AAD4B20091144D /* unselected.png */,
+				42A08AC415E5DD4D0030650C /* submitBg.png */,
 				5F95E24315AAD4B20091144D /* descending.png */,
 				427FE45515A586F800492804 /* 1.jpg */,
 				427FE45615A586F800492804 /* 2.jpg */,
 				42FD68D115ABCA0D00356923 /* login_ico.png */,
 				427FE45715A586F800492804 /* 3.jpg */,
 				427FE45815A586F800492804 /* 4.jpg */,
+				42A08AC615E5E33F0030650C /* dj_photo.png */,
+				42A08AC715E5E33F0030650C /* dz_photo.png */,
+				42A08AC815E5E33F0030650C /* photoBg.png */,
+				42A08AC915E5E33F0030650C /* syy_photo.png */,
 				427FE45915A586F800492804 /* head.jpg */,
 				427FE45A15A586F800492804 /* login_main.png */,
 				5F03F22115A2943100F8362D /* member.png */,
@@ -780,6 +805,8 @@
 			children = (
 				4279966F15DA270400243834 /* ployeeManager */,
 				5F87997315D4F2A700CACF07 /* exproposViewController.m */,
+				42A08ACE15E600E60030650C /* MyButton.h */,
+				42A08ACF15E600E70030650C /* MyButton.m */,
 				5F87997215D4F29900CACF07 /* exproposViewController.h */,
 				5F87996915D4F03000CACF07 /* exproposMenuViewController.h */,
 				5F87996A15D4F03100CACF07 /* exproposMenuViewController.m */,
@@ -1002,6 +1029,13 @@
 				5F93418115D0B2C8005E089D /* comeback.png in Resources */,
 				5F93418315D0B5F2005E089D /* background-paper.png in Resources */,
 				5F87996515D4EDB400CACF07 /* chengang.storyboard in Resources */,
+				42A08AC115E5D4A50030650C /* bodyBg.png in Resources */,
+				42A08AC315E5D97E0030650C /* logo.png in Resources */,
+				42A08AC515E5DD4D0030650C /* submitBg.png in Resources */,
+				42A08ACA15E5E33F0030650C /* dj_photo.png in Resources */,
+				42A08ACB15E5E33F0030650C /* dz_photo.png in Resources */,
+				42A08ACC15E5E33F0030650C /* photoBg.png in Resources */,
+				42A08ACD15E5E33F0030650C /* syy_photo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1012,6 +1046,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42A08AD115E602310030650C /* MyButton.m in Sources */,
+				42A08AD015E602210030650C /* MyButton.h in Sources */,
 				42B0D00215BCF626000F5401 /* JFBCrypt.h in Sources */,
 				42B0D00315BCF626000F5401 /* BCrypt-java-copyright.txt in Sources */,
 				42B0D00415BCF626000F5401 /* JFBCrypt.m in Sources */,

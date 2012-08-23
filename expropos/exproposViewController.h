@@ -29,7 +29,9 @@
 @property (nonatomic,strong) NSArray *users;
 
 @property (strong, nonatomic) IBOutlet UILabel *phonelable;
-@property (strong, nonatomic) IBOutlet UIScrollView  *scrollview;
+
+@property (strong,nonatomic) IBOutlet UIView *usersView;
+@property (strong,nonatomic) NSArray *userArray;
 
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
@@ -69,5 +71,7 @@
 
 - (void)moveUp;
 - (void)moveDown;
+
+-(IBAction)touchout:(id)sender;
 
 @end
