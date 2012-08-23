@@ -19,11 +19,11 @@
 @property (nonatomic,strong) NSMutableArray *storeItems;
 @property (nonatomic,strong)  NSMutableArray *allStore;
 @property (strong, nonatomic) IBOutlet UILabel *storeNO;
-@property (strong, nonatomic) IBOutlet UILabel *storeAddress;
-@property (strong, nonatomic) IBOutlet UILabel *storeTrainInfo;
-@property (strong, nonatomic) IBOutlet UILabel *storeNotice;
+@property (strong, nonatomic) IBOutlet UITextView *storeAddress;
+@property (strong, nonatomic) IBOutlet UITextView *storeTrainInfo;
+@property (strong, nonatomic) IBOutlet UITextView *storeNotice;
 @property (strong, nonatomic) IBOutlet UILabel *storeState;
-@property (strong, nonatomic) IBOutlet UILabel *storeComment;
+@property (strong, nonatomic) IBOutlet UITextView *storeComment;
 
 
 @property (strong, nonatomic) UISplitViewController *myRootViewController;

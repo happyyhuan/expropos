@@ -78,10 +78,10 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     if(indexPath.section == 0){
-        cell.textLabel.text = @"权限开放";
-        if(self.viewController.privacyItem.count == 0){
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
+        cell.textLabel.text = @"请选择";
+//        if(self.viewController.privacyItem.count == 0){
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        }
         return cell;
     }
     
@@ -104,11 +104,11 @@
     UITableViewCell *cell0 = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if(indexPath.section == 0){
-        [self.viewController.privacyItem removeAllObjects];
-        cell0.accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.tableView reloadData];
-        [self.viewController.tableView reloadData];
-        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+//        [self.viewController.privacyItem removeAllObjects];
+//        cell0.accessoryType = UITableViewCellAccessoryCheckmark;
+//        [self.tableView reloadData];
+//        [self.viewController.tableView reloadData];
+//        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
         return;
     }
     [self.viewController.privacyItem removeAllObjects];
