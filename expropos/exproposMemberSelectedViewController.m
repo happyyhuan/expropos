@@ -246,7 +246,7 @@
     
     cell.textLabel.text = member.petName;
     cell.detailTextLabel.text = member.user.cellphone;
-    cell.imageView.image = [UIImage imageNamed:@"member.png"];
+    cell.imageView.image = [UIImage imageNamed:@"会员头像.png"];
     
     if([self.viewController isKindOfClass:[exproposDealSelectedViewController class]]){
         exproposDealSelectedViewController *deal = (exproposDealSelectedViewController *)self.viewController;

@@ -197,13 +197,13 @@
             ExproGoodsType *t = (ExproGoodsType*)obj;
             cell.textLabel.text = t.name;
             cell.indentationWidth = 20.0f;
-            cell.imageView.image = [UIImage imageNamed:@"TriangleSmall.png"];
+            cell.imageView.image = [UIImage imageNamed:@"3未展开.png"];
             cell.accessoryType = UITableViewCellAccessoryNone;
         }else if([obj isKindOfClass:[ExproGoods class]]){
             ExproGoods *g = (ExproGoods *)obj;
             cell.textLabel.text = g.name;
             cell.indentationWidth = 20.0f;
-            cell.imageView.image = [UIImage imageNamed:@"unselected.png"];
+            cell.imageView.image = [UIImage imageNamed:@"2商品.png"];
             if([_mySelectedGoods containsObject:g]){
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }else {
@@ -220,7 +220,7 @@
         ExproGoods *g = [self.searchData objectAtIndex:indexPath.row];
         cell.textLabel.text = g.code;
         cell.detailTextLabel.text = g.name;
-        cell.imageView.image = [UIImage imageNamed:@"unselected.png"];
+        cell.imageView.image = [UIImage imageNamed:@"2商品.png"];
         if([_mySelectedGoods containsObject:g]){
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }else {
@@ -304,15 +304,15 @@
         
         if(isInserted){
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-            cell.imageView.image = [UIImage imageNamed:@"TriangleSmall.png"];
+            cell.imageView.image = [UIImage imageNamed:@"3未展开.png"];
             
             [self removeGoodsTypes:set Goods:InGoods];
         }else {
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
             if(set.count == 0 && InGoods.count == 0){
-                cell.imageView.image = [UIImage imageNamed:@"TriangleSmall.png"];
+                cell.imageView.image = [UIImage imageNamed:@"3未展开.png"];
             }else {
-               cell.imageView.image = [UIImage imageNamed:@"descending.png"];
+               cell.imageView.image = [UIImage imageNamed:@"1展开.png"];
             }
             
             NSUInteger count = indexPath.row+1;

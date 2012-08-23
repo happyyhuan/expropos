@@ -106,10 +106,7 @@
     _topView.layer.borderColor = [[UIColor grayColor] CGColor];
     
     _toolbarView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1024, 60)];
-    _toolbarView.image = [UIImage imageNamed:@"3.jpg"];
-    UIImageView *logoImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150, 60)];
-    logoImage.image = [UIImage imageNamed:@"123.jpg"];
-     [_toolbarView addSubview:logoImage];
+    _toolbarView.image = [UIImage imageNamed:@"1.4背景.png"];
     [_topView addSubview:_toolbarView];
     
     //显示销售人员的基本信息
@@ -128,7 +125,7 @@
     //交易会员的基本信息扩展按钮
     UIButton *myButton = [[UIButton alloc] init];
     myButton.frame = CGRectMake(800, 10,  40, 40);
-    [myButton setBackgroundImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
+    [myButton setBackgroundImage:[UIImage imageNamed:@"1扩展.png"] forState:UIControlStateNormal];
     [myButton addTarget:self action:@selector(moreMeberInfo:) forControlEvents:UIControlEventTouchUpInside];
     myButton.hidden = YES;
     myButton.tag = 119;
@@ -137,7 +134,7 @@
     //退出按钮
     UIButton *goBack = [[UIButton alloc] init];
     goBack.frame = CGRectMake(980, 10,  40, 40);
-    [goBack setBackgroundImage:[UIImage imageNamed:@"close@2x.png"] forState:UIControlStateNormal];
+    [goBack setBackgroundImage:[UIImage imageNamed:@"2退出.png"] forState:UIControlStateNormal];
     [goBack addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
     [_topView addSubview:goBack];
      

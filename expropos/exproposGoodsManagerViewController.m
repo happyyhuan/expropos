@@ -77,15 +77,13 @@
     _topView.layer.borderColor = [[UIColor whiteColor] CGColor];
     
     _toolbarView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1024, 60)];
-    _toolbarView.image = [UIImage imageNamed:@"3.jpg"];
-    UIImageView *logoImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150, 60)];
-    logoImage.image = [UIImage imageNamed:@"123.jpg"];
-    [_toolbarView addSubview:logoImage];
+    _toolbarView.image = [UIImage imageNamed:@"1.4背景.png"];
+
     [_topView addSubview:_toolbarView];
     
     UIButton *goBack = [[UIButton alloc] init];
     goBack.frame = CGRectMake(980, 10,  40, 40);
-    [goBack setBackgroundImage:[UIImage imageNamed:@"close@2x.png"] forState:UIControlStateNormal];
+    [goBack setBackgroundImage:[UIImage imageNamed:@"2退出.png"] forState:UIControlStateNormal];
     [goBack addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
     [_topView addSubview:goBack];
     
@@ -271,9 +269,9 @@
     updateType.text = @"商品类型：";
     updateType.tag = 116;
     UIButton *updateTypeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    updateTypeButton.frame = CGRectMake(350,280, 200, 60);
+    updateTypeButton.frame = CGRectMake(350,280, 200, 40);
     updateTypeButton.titleLabel.text = @"请选择商品类型";
-    [updateTypeButton setBackgroundImage:[UIImage imageNamed:@"choose.png"] forState:UIControlStateNormal];
+    [updateTypeButton setBackgroundImage:[UIImage imageNamed:@"4商品类型选择.png"] forState:UIControlStateNormal];
     [updateTypeButton addTarget:self action:@selector(updateGoodsTypes:) forControlEvents:UIControlEventTouchUpInside];
     [_updateView addSubview:updateType];
     [_updateView  addSubview:updateTypeButton];
@@ -281,7 +279,7 @@
     
     UIButton *updateButton = [UIButton buttonWithType:UIButtonTypeCustom];
     updateButton.frame = CGRectMake(130,360, 260, 60);
-    [updateButton setBackgroundImage:[UIImage imageNamed:@"ok.png"] forState:UIControlStateNormal];
+    [updateButton setBackgroundImage:[UIImage imageNamed:@"5确定.png"] forState:UIControlStateNormal];
     [updateButton addTarget:self action:@selector(updateGoods:) forControlEvents:UIControlEventTouchUpInside];
     [_updateView addSubview:updateButton];
     
@@ -354,9 +352,9 @@
     newType.text = @"商品类型：";
     newType.tag = 116;
     _typeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _typeButton.frame = CGRectMake(350,280, 200, 60);
+    _typeButton.frame = CGRectMake(350,280, 200, 40);
     _typeButton.titleLabel.text = @"请选择商品类型";
-    [_typeButton setBackgroundImage:[UIImage imageNamed:@"choose.png"] forState:UIControlStateNormal];
+    [_typeButton setBackgroundImage:[UIImage imageNamed:@"4商品类型选择.png"] forState:UIControlStateNormal];
     [_typeButton addTarget:self action:@selector(selectedGoodsTypes:) forControlEvents:UIControlEventTouchUpInside];
     [_addView addSubview:newType];
     [_addView  addSubview:_typeButton];
@@ -364,7 +362,7 @@
     
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     addButton.frame = CGRectMake(130,360, 260, 60);
-    [addButton setBackgroundImage:[UIImage imageNamed:@"ok.png"] forState:UIControlStateNormal];
+    [addButton setBackgroundImage:[UIImage imageNamed:@"5确定.png"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(addGoods:) forControlEvents:UIControlEventTouchUpInside];
     [_addView addSubview:addButton];
     
@@ -645,7 +643,7 @@
 -(void)updateGoods:(id)sender
 {
     if (!self.selectedGoods) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请完善商品信息" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"未选中任何商品，请先选中商品，然后进行修改！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
         return;
     }
@@ -801,13 +799,13 @@
             ExproGoodsType *t = (ExproGoodsType*)obj;
             cell.textLabel.text = t.name;
             cell.indentationWidth = 20.0f;
-            cell.imageView.image = [UIImage imageNamed:@"TriangleSmall.png"];
+            cell.imageView.image = [UIImage imageNamed:@"3未展开.png"];
             cell.accessoryType = UITableViewCellAccessoryNone;
         }else if([obj isKindOfClass:[ExproGoods class]]){
             ExproGoods *g = (ExproGoods *)obj;
             cell.textLabel.text = g.name;
             cell.indentationWidth = 20.0f;
-            cell.imageView.image = [UIImage imageNamed:@"unselected.png"];
+            cell.imageView.image = [UIImage imageNamed:@"2商品.png"];
         }
     }else {
         CellIdentifier = @"searchCell";
@@ -819,7 +817,7 @@
         ExproGoods *g = [self.searchData objectAtIndex:indexPath.row];
         cell.textLabel.text = g.code;
         cell.detailTextLabel.text = g.name;
-        cell.imageView.image = [UIImage imageNamed:@"unselected.png"];
+        cell.imageView.image = [UIImage imageNamed:@"2商品.png"];
     }
     
     return cell;
@@ -887,15 +885,15 @@
         
         if(isInserted){
             UITableViewCell *cell = [self.leftView cellForRowAtIndexPath:indexPath];
-            cell.imageView.image = [UIImage imageNamed:@"TriangleSmall.png"];
+            cell.imageView.image = [UIImage imageNamed:@"3未展开.png"];
             
             [self removeGoodsTypes:set Goods:InGoods];
         }else {
             UITableViewCell *cell = [self.leftView cellForRowAtIndexPath:indexPath];
             if(set.count == 0 && InGoods.count == 0){
-                cell.imageView.image = [UIImage imageNamed:@"TriangleSmall.png"];
+                cell.imageView.image = [UIImage imageNamed:@"3未展开.png"];
             }else {
-                cell.imageView.image = [UIImage imageNamed:@"descending.png"];
+                cell.imageView.image = [UIImage imageNamed:@"1展开.png"];
             }
             
             NSUInteger count = indexPath.row+1;
@@ -1010,6 +1008,11 @@
 }
 
 - (IBAction)update:(UIButton *)sender {
+    if (!self.selectedGoods) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请先选择修改商品" delegate:nil cancelButtonTitle:@"确定 " otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
     _scrollView.contentOffset = CGPointMake(616*2, 0);
 }
 
