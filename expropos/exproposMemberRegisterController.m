@@ -10,7 +10,7 @@
 #import "exproposDateSelectedViewController.h"
 #import "exproposLeverSelectViewController.h"
 #import "exproposAppDelegate.h"
-
+#import "memberManagerViewController.h"
 #import "exproposRegistr.h"
 
 #import "exproposValidater.h"
@@ -83,6 +83,8 @@ BOOL isModify = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+      _privacyItem = [[NSMutableArray alloc] initWithCapacity:20];
+    
     if ([self exproMember])
     {
         isModify = YES;
@@ -93,7 +95,7 @@ BOOL isModify = NO;
         self.savings = self.exproMember.savings.stringValue;
         self.dueTime = self.exproMember.dueTime;
         self.memPetName = self.exproMember.petName;
-        
+        [self.privacyItem addObject: self.exproMember.privacy];
         [self.privacyItem removeAllObjects];  
 
     }
@@ -110,7 +112,7 @@ BOOL isModify = NO;
         _savings=@"";
         _createTime =[NSDate date];
         _dueTime = [NSDate date];
-        _privacyItem = [[NSMutableArray alloc] initWithCapacity:20];
+      
         _dateSel = @"";
         _sex =@"0";
         _memPetName=@"";
@@ -240,14 +242,15 @@ BOOL isModify = NO;
         
         NSLog(@"MEMBER ID ,%i",self.exproMember.gid.intValue);
         NSLog(@"MEMBER ID ,%@",self.exproMember.gid.stringValue);
+        
+        NSString *privacy = self.privacyItem.count>0? [[self.privacyItem objectAtIndex:0] stringValue]:@"8" ;
         [_registr modify:self.exproMember.gid.stringValue cellPhone:self.telphone name:self.name petName:self.petName email:self.email
-                   idCard:self.idCard comment:self.comment  sex:self.sex  
+                  idCard:self.idCard comment:self.comment privacy:privacy sex:self.sex  
                    saving:self.savings point:self.point dueTime:self.dueTime
                     birth:[self dateToString:self.birth]
                memPetName:self.memPetName];
         
-        
-        //[self.viewController dismissModalViewControllerAnimated:YES];
+    
     }
 }
 
@@ -515,6 +518,12 @@ BOOL isModify = NO;
         telField.delegate = self;
         telField.keyboardType = UIKeyboardTypeNumberPad;
         [telField addTarget:self action:@selector(saveFromTelField:) forControlEvents:UIControlEventEditingChanged];
+        
+        if(self.exproMember){
+            [telField endEditing:NO];
+        }else {
+            [telField endEditing:YES];
+        }
     }
     else if( indexPath.section == 1 )
     {
@@ -697,10 +706,10 @@ BOOL isModify = NO;
                     //NSArray *dealItemTitles = [NSArray arrayWithObjects:@"完全开放",@"基本信息开放",, nil];
                     //0：不开放，1：基本信息开放，8:完全开放。
                     
-                    if ([@"0"  isEqualToString:[self.privacyItem objectAtIndex:0]]){
+                    if (0==  [[self.privacyItem objectAtIndex:0]intValue]){
                         cell.detailTextLabel.text = @"不开放";
                     }
-                    else if([@"1"  isEqualToString:[self.privacyItem objectAtIndex:0]])
+                    else if(1==  [[self.privacyItem objectAtIndex:0]intValue])
                     {
                         cell.detailTextLabel.text = @"基本信息开放";
                     }
@@ -1176,6 +1185,9 @@ BOOL isModify = NO;
 
 
 - (void) modifySucceed:(id)object {
+    NSLog(@"%@",object);
+    NSDictionary *dic = (NSDictionary*)object;
+ //  NSString *gid = [[dic valueForKey:@"member"] valueForKey:@"gid"];
            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
                                                     message:@"用户信息修改成功" 
                                                    delegate:nil
@@ -1183,6 +1195,18 @@ BOOL isModify = NO;
                                           otherButtonTitles:nil];
     
     [alert show]; 
+    memberManagerViewController *memberManager = (memberManagerViewController*)self.viewController;
+//    self.exproMember.petName = self.petName;
+//    self.exproMember.point = [NSNumber numberWithInt: self.point.intValue];
+//    self.exproMember.savings = [NSNumber numberWithDouble:self.savings.doubleValue];
+//    self.exproMember.privacy = self.privacyItem.count >0?  [self.privacyItem objectAtIndex:0]:[NSNumber numberWithInt:8];
+//    self.exproMember.dueTime = self.dueTime;    
+//    self.exproMember.user.cellphone = self.idCard;
+//    [[RKObjectManager sharedManager].objectStore save:nil];
+     [memberManager.memberTabelView reloadData];
+    [memberManager reloadMemberInfo];
+   
+   
     //关闭对话框
     [self.viewController dismissModalViewControllerAnimated:YES];
 }
@@ -1223,6 +1247,13 @@ BOOL isModify = NO;
         self.privacyItem=nil;
         self.memPetName = nil;
         [self.tableView reloadData];
+        
+        
+        memberManagerViewController *memberManager = (memberManagerViewController*)_viewController;
+        [memberManager performSelector:@selector(getMembers)];
+        [memberManager performSelector:@selector(rest)];
+        [memberManager.memberTabelView reloadData];
+        
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)

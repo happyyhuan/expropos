@@ -107,7 +107,8 @@
     [self.viewController.privacyItem removeAllObjects];
     [self.viewController.privacyItem addObject:[NSNumber numberWithInt:indexPath.row]];
      cell0.accessoryType = UITableViewCellAccessoryNone;
-     cell.accessoryType = UITableViewCellAccessoryCheckmark;    [self.viewController.tableView reloadData];
+     cell.accessoryType = UITableViewCellAccessoryCheckmark;   
+    [self.viewController.tableView reloadData];
     [self viewDidLoad];
 }
 

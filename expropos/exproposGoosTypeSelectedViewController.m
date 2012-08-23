@@ -78,7 +78,7 @@
     
     NSFetchRequest *request2 = [ExproGoodsType fetchRequest];
     request2.predicate = [NSPredicate predicateWithFormat:@"parent = %@", nil];
-    self.allDatas = [[NSArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];
+    self.allDatas = [[NSMutableArray alloc]initWithArray:[ExproGoodsType objectsWithFetchRequest:request2]];
     
     
     self.datas = [_allDatas mutableCopy];

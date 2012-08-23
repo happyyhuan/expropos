@@ -20,9 +20,8 @@
           birth:(NSString *)birthDate  memPetName:(NSString *)memPetName;
 
 - (void)modify:(NSString *)memId cellPhone:(NSString *)cellphone name:(NSString *)name petName:(NSString *)petName 
-         email:(NSString *)email idCard:(NSString *)idCard comment:(NSString *)comment
+         email:(NSString *)email idCard:(NSString *)idCard comment:(NSString *)comment privacy:(NSString *)privacy
            sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(NSDate *)dueTime
-
          birth:(NSString *)birthDate  memPetName:(NSString *)memPetName;
 
 - (void)delete:(NSInteger)memId;

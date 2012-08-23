@@ -31,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView initWithFrame:[UIScreen mainScreen].applicationFrame style:UITableViewStyleGrouped];
+   self.tableView = [self.tableView initWithFrame:[UIScreen mainScreen].applicationFrame style:UITableViewStyleGrouped];
     
     self.tableView.layer.cornerRadius = 10.0;
     self.tableView.layer.masksToBounds = YES;

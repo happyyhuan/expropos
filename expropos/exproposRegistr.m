@@ -98,7 +98,7 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
 
 
 - (void)modify:(NSString *)memId cellPhone:(NSString *)cellphone name:(NSString *)name petName:(NSString *)petName 
-         email:(NSString *)email idCard:(NSString *)idCard comment:(NSString *)comment
+         email:(NSString *)email idCard:(NSString *)idCard comment:(NSString *)comment privacy:(NSString *)privacy
            sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(NSDate *)dueTime
          birth:(NSString *)birthDate  memPetName:(NSString *)memPetName
 {
@@ -127,6 +127,7 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
     member.point = [NSNumber numberWithDouble:[point doubleValue]];
     member.savings = [NSNumber numberWithDouble:[savings doubleValue]];
     member.comment = comment;
+    member.privacy = [NSNumber numberWithInt:privacy.intValue];
     [[RKObjectManager sharedManager].objectStore save:nil];
     
     NSDictionary *params;
@@ -144,13 +145,17 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
                   [self dateToString:member.user.birthday],@"birthday",
                   [self dateToString:dueTime],@"due_time",
                   member.user.gid.stringValue,@"user_id",
-                  @"0",@"privacy",
+                  privacy,@"privacy",
                   point,@"point",
                   savings,@"savings",
                   comment,@"comment",
                   nil];
     }
-    [self requestURL:@"/member" method:RKRequestMethodPUT params:params mapping:nil];    
+    RKObjectMapping *mapping = [RKObjectMapping mappingForClass: [NSMutableDictionary class]];
+    RKObjectMapping *memberMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [memberMapping mapKeyPathsToAttributes:@"_id", @"gid",nil];
+    [mapping mapKeyPath:@"member" toRelationship:@"member" withMapping:memberMapping];
+    [self requestURL:@"/member" method:RKRequestMethodPUT params:params mapping:mapping];    
 }
 
 - (void)delete:(NSInteger)memId

@@ -19,7 +19,7 @@
 @interface memberManagerViewController ()
 @property (nonatomic, strong) exproposRegistr * exproStoreDel;
 @property (nonatomic, strong) NSMutableArray *mySearchResetData;
-@property (nonatomic, strong) ExproMember *deleteMember;
+
 @end
 
 @implementation memberManagerViewController
@@ -117,8 +117,8 @@ int selected =0;
         ExproMember *member = [self.allMember objectAtIndex:0];
         _deleteMember = member;
         [self.telphone setText: member.user.cellphone];
-        //    [self.point setText:member.point];
-        //    [self.saving setText:member.savings];
+           [self.point setText:member.point.stringValue];
+           [self.saving setText:member.savings.stringValue];
         //    [self.dueTime setText:member.dueTime];
         
         //隐私权限：0：不开放，1：基本信息开放，8:完全开放。
@@ -153,6 +153,33 @@ int selected =0;
         _memberOpe = [[exproposRegistr alloc]init];
     }
 }
+-(void)reloadMemberInfo
+{
+    [self.telphone setText: _deleteMember.user.cellphone];
+    [self.point setText:_deleteMember.point.stringValue];
+    [self.saving setText:_deleteMember.savings.stringValue];
+    //    [self.dueTime setText:member.dueTime];
+    
+    //隐私权限：0：不开放，1：基本信息开放，8:完全开放。
+    if (_deleteMember.privacy.integerValue == 8)
+    {
+        [self.privacy setText:@"完全开放"];
+    }
+    else if(_deleteMember.privacy.integerValue == 0){
+        [self.privacy setText:@"不开放"];
+    }
+    else {
+        [self.privacy setText:@"基本信息开放"];
+    }
+    
+    [self.nameInfo setText: _deleteMember.petName];
+    
+    //----end
+    
+
+
+}
+
 
 - (void)viewDidUnload
 {
@@ -207,9 +234,27 @@ int selected =0;
 
 #pragma mark -
 
+-(void)getMembers
+{
+    NSArray *allMemebers = [NSMutableArray arrayWithArray:[ExproMember findAll]];
+    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    NSString *orgId = appDelegate.currentOrgid ;
+    [_mySearchResetData removeAllObjects];
+    
+    for (int i = 0 ; i < allMemebers.count;i++)
+    {
+        ExproMember *mem = [allMemebers objectAtIndex:i];
+        
+        if ([mem.orgID.stringValue isEqualToString:orgId])
+        {
+            [_mySearchResetData addObject:mem];
+        }
+    }
+}
 -(void)rest
 {
-    _allMember = [_mySearchResetData mutableCopy];
+    [self getMembers];
+    _allMember = _mySearchResetData;
 }
 
 -(void)searchWithNameOrId:(NSString *)nameOrId

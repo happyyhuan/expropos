@@ -1217,6 +1217,8 @@ BOOL isInfoModify = NO;
         self.storeSelItem=nil;
         self.memPetName = nil;
         [self.tableView reloadData];
+        
+        
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)

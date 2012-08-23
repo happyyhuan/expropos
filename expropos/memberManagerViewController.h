@@ -41,7 +41,7 @@
 
 @property (strong,nonatomic) exproposMainViewController *mainViewControll;
 @property (strong,nonatomic) exproposRegistr *memberOpe;
-
+@property (nonatomic, strong) ExproMember *deleteMember;
 
 - (IBAction)addMember:(id)sender;
 
@@ -50,5 +50,5 @@
 - (IBAction)backToMemu:(id)sender;
 
 - (IBAction)delMember:(id)sender;
-
+-(void)reloadMemberInfo;
 @end

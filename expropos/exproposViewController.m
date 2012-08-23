@@ -550,7 +550,7 @@
         ExproSignHistory *history = [deals objectAtIndex:i];
         ExproUser *user = history.user;
         
-        BOOL *isExis = NO;
+        BOOL isExis = NO;
         for (int j = 0 ; j < userDeals.count ; j++)
         {
             ExproUser *exisUser = [userDeals objectAtIndex:j];
