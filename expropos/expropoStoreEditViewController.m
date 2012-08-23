@@ -368,7 +368,8 @@
                  newStore.comment = self.storeComment;
                  newStore.transitInfo = self.storeTransit;
                  newStore.lastModified = [NSDate new];
-                 newStore.inventarNum = self.storeNo; 
+               
+         newStore.inventarNum = self.storeNo; 
          
          exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
          NSString *orgId = appDelegate.currentOrgid ;
