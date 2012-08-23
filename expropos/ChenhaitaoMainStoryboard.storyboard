@@ -626,7 +626,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bpi-0o-t5d">
-                                        <rect key="frame" x="197" y="9" width="267" height="44"/>
+                                        <rect key="frame" x="210" y="9" width="267" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                         <state key="normal" image="3删除.png">
@@ -1533,7 +1533,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1r6-jf-8Hg">
-                                                <rect key="frame" x="391" y="15" width="41" height="37"/>
+                                                <rect key="frame" x="465" y="11" width="41" height="37"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="修改" image="2修改.png">
@@ -1548,7 +1548,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wf1-hC-xsu">
-                                                <rect key="frame" x="330" y="19" width="29" height="29"/>
+                                                <rect key="frame" x="386" y="11" width="36" height="37"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" image="1添加.png">
@@ -1563,7 +1563,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sng-Ic-7HP">
-                                                <rect key="frame" x="456" y="14" width="39" height="37"/>
+                                                <rect key="frame" x="535" y="10" width="39" height="37"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" image="5.3删除.png">
@@ -1578,7 +1578,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.52838011679999997" blue="0.32458867330000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="GQb-o9-o0a" customClass="exproposMyScrollView">
                                         <rect key="frame" x="0.0" y="57" width="616" height="480"/>
@@ -3002,7 +3002,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="3.jpg" width="962" height="257"/>
         <image name="3删除.png" width="16" height="16"/>
         <image name="4.jpg" width="798" height="76"/>
-        <image name="5.3删除.png" width="16" height="16"/>
+        <image name="5.3删除.png" width="40" height="40"/>
         <image name="delete.png" width="40" height="40"/>
     </resources>
     <classes>

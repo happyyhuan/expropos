@@ -49,7 +49,7 @@
     [super viewDidLoad];
     _deals = [[NSMutableArray alloc] initWithCapacity:20];
     
-    UIImageView *backImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background-paper.png"]];
+    UIImageView *backImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"4背景.png"]];
    
     _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 710, 60)];
     [_topView addSubview:backImageView];
@@ -61,7 +61,7 @@
     [self.view addSubview:_topView];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setImage:[UIImage imageNamed:@"comeback.png"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"1返回.png"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(comeback:) forControlEvents:UIControlEventTouchUpInside];
     backButton.frame = CGRectMake(20,10, 40, 40);
     [_topView addSubview:backButton];
@@ -72,7 +72,8 @@
     if(!_beginTime){
         beginTimeLabel.text = @"开始时间：     今天";
     }
-    UIButton *beginTimeButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    UIButton *beginTimeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [beginTimeButton setImage:[UIImage imageNamed:@"2时间选择.png"] forState:UIControlStateNormal];
     beginTimeButton.frame = CGRectMake(270, 10, 40, 40);
     beginTimeButton.tag = 11;
     [beginTimeButton addTarget:self action:@selector(chooseTime:) forControlEvents:UIControlEventTouchUpInside];
@@ -90,7 +91,8 @@
     
     _endTime = [[NSDate alloc] initWithTimeInterval:secondsPerDay sinceDate:_beginTime];
     
-    UIButton *endTimeButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    UIButton *endTimeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [endTimeButton setImage:[UIImage imageNamed:@"2时间选择.png"] forState:UIControlStateNormal];
     endTimeButton.frame = CGRectMake(550, 10, 40, 40);
     endTimeButton.tag = 12;
     [endTimeButton addTarget:self action:@selector(chooseTime:) forControlEvents:UIControlEventTouchUpInside];
