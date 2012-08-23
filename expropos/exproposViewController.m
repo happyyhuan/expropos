@@ -250,9 +250,7 @@
     {
         ExproUser *user = [array objectAtIndex:i];
         if (user.signHistory)
-        {
-            
-            
+        {  
             CGRect frame = CGRectMake(50*i, 5, 50, 40);
             
             UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
@@ -322,6 +320,8 @@
     
     
     [self.view addSubview:scrollView];
+    
+    
     self.loginview.hidden=true;
     CGRect rect = [self.loginview frame]; 
     
