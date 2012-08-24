@@ -89,15 +89,10 @@
     self.allMembers = [NSDictionary dictionaryWithDictionary:dic];
 }
 
-- (void)viewDidLoad
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    self.searchBar.delegate = self;
-    self.searchBar.keyboardType = UIKeyboardTypePhonePad;
-    
+    [super viewWillAppear:animated];
     [self loadData];
-    
-    
     [self restSearch];
     [self.tableView setContentOffset:CGPointMake(0.0, 0.0) animated:NO];
     
@@ -112,6 +107,13 @@
     self.updateTime.title = currentDateStr;
     self.updateTime.width = 250;
     self.updateTime.Enabled = NO;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.searchBar.delegate = self;
+    self.searchBar.keyboardType = UIKeyboardTypePhonePad;
 }
 
 - (void)viewDidUnload

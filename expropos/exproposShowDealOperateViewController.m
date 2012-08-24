@@ -103,7 +103,7 @@
     _topView.layer.cornerRadius = 5.0;
     _topView.layer.masksToBounds = YES;
 	_topView.layer.borderWidth = 3;
-    _topView.layer.borderColor = [[UIColor grayColor] CGColor];
+    _topView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
     _toolbarView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1024, 60)];
     _toolbarView.image = [UIImage imageNamed:@"1.4背景.png"];
@@ -172,6 +172,11 @@
     _dealTableView.layer.masksToBounds = YES;
     _dealTableView.layer.borderWidth = 3;
     _dealTableView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    
+    _goodsCode.layer.cornerRadius = 5;
+    _goodsCode.layer.masksToBounds = YES;
+    _goodsCode.layer.borderWidth = 3;
+    _goodsCode.layer.borderColor = [[UIColor whiteColor] CGColor];
     
     
     _keyBoardView.layer.cornerRadius = 10;
@@ -676,6 +681,7 @@
     }else {
           self.repeal = nil;
         _statusLabel.text = @"   当前状态：商品销售";
+         _statusLabel.layer.borderColor = [[UIColor blueColor]CGColor];
         _statusLabel.layer.borderColor = [[UIColor whiteColor]CGColor];
         _statusLabel.textColor = [UIColor blackColor];
         _type =1;
@@ -933,6 +939,7 @@
     if(_type == 0){
         self.repeal = nil;
         _statusLabel.text = @"   当前状态：商品销售";
+         _statusLabel.layer.borderColor = [[UIColor blueColor]CGColor];
         _statusLabel.layer.borderColor = [[UIColor whiteColor]CGColor];
         _statusLabel.textColor = [UIColor blackColor];
         _type =1;

@@ -1266,14 +1266,14 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="商品编号。。。" minimumFontSize="17" background="2.jpg" id="VUV-zt-lvm">
-                                        <rect key="frame" x="12" y="110" width="339" height="53"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="商品编号。。。" minimumFontSize="17" background="4背景.png" id="VUV-zt-lvm">
+                                        <rect key="frame" x="12" y="110" width="339" height="52.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lDH-Il-tj0">
-                                        <rect key="frame" x="300" y="110" width="49" height="44"/>
+                                        <rect key="frame" x="302" y="115" width="49" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                         <state key="normal" title="7" image="delete.png">
@@ -2997,11 +2997,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="1添加.png" width="40" height="40"/>
-        <image name="2.jpg" width="965" height="253"/>
         <image name="2修改.png" width="40" height="40"/>
         <image name="3.jpg" width="962" height="257"/>
         <image name="3删除.png" width="16" height="16"/>
         <image name="4.jpg" width="798" height="76"/>
+        <image name="4背景.png" width="710" height="60"/>
         <image name="5.3删除.png" width="40" height="40"/>
         <image name="delete.png" width="40" height="40"/>
     </resources>
