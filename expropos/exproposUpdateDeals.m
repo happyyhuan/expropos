@@ -53,6 +53,8 @@
 
 -(void)queryDealAmountByCutomerID:(NSNumber  *)customer_id type:(NSNumber *)type beginTime:(NSDate*)bt endTime:(NSDate*)et
 {
+    NSTimeInterval timeInterval = 24*60*60;
+    et = [NSDate dateWithTimeInterval:timeInterval sinceDate:et];
     self.acceptParallelResults = NO;
     NSString  *url = [NSString stringWithFormat:@"/deal/count?bt=%@&et=%@&customer_id=%i&type=%i",[self dateToString:bt ],[self dateToString:et],customer_id.intValue,type.intValue];
     RKObjectMapping *callBackMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
@@ -62,6 +64,7 @@
 
 -(NSString *)dateToString:(NSDate*)date
 {
+    
     //实例化一个NSDateFormatter对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //设定时间格式,这里可以设置成自己需要的格式
@@ -75,6 +78,8 @@
 
 -(void)queryDealByCustomerID:(NSNumber *)customer_id start:(int)start limit:(int)limit type:(int)type bt:(NSDate*)bt et:(NSDate *)et
 {
+    NSTimeInterval timeInterval = 24*60*60;
+    et = [NSDate dateWithTimeInterval:timeInterval sinceDate:et];
     self.acceptParallelResults = YES;
     NSString  *url = [NSString stringWithFormat:@"/deals?bt=%@&et=%@&customer_id=%i&type=%i&start=%i&limit=%i&sidx=create_time&sord=desc",[self dateToString:bt ],[self dateToString:et],customer_id.intValue,type,start,limit];
       [self requestURL:url method:RKRequestMethodGET params:nil  mapping:nil];
