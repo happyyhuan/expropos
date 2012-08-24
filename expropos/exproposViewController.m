@@ -15,6 +15,7 @@
 #import "ExproSignHistory.h"
 #import "JFBCrypt.h"
 #import "ExproRole.h"
+#import "MyButton.h"
 
 
 #import "exproposAppDelegate.h"
@@ -32,13 +33,14 @@
 @synthesize exprodatabase=_exprodatabase;
 @synthesize loginview=_loginview;
 
-@synthesize scrollview=_scrollview;
+@synthesize usersView=_usersView;
 @synthesize managedObjectModel;
 @synthesize managedObjectContext;
 @synthesize persistentStoreCoordinator;
 @synthesize applicationDocumentsDirectory;
 @synthesize users=_users;
 @synthesize phonelable;
+@synthesize userArray=_userArray;
 
 
 @synthesize tapGesture;
@@ -50,9 +52,9 @@
 
 - (IBAction)showLoginView:(id)sender {
     
-    UIButton *bu = (UIButton *)sender;
+    MyButton *bu = (MyButton *)sender;
     
-    if (bu.tag == 0)
+    if (bu.tag == -1)
     {
         _userField.text = nil;
         self.userField.hidden= false;
@@ -61,14 +63,24 @@
         self.orgField.hidden=false;
         self.orgField.text=nil;
     }
-    else if(bu.tag == -1)
+    else if(bu.tag == -2)
     {
-        _userField.text = @"12345678901";
+        _userField.text = @"13770940001";
         self.orgField.text = @"1";
         self.userField.hidden= true;
         self.phonelable.hidden=true;
         self.orgField.hidden=true;
         self.orglabel.hidden=true;
+    }
+    else if (bu.tag = -3)
+    {
+        _userField.text = @"13770940002";
+        self.orgField.text = @"1";
+        self.userField.hidden= true;
+        self.phonelable.hidden=true;
+        self.orgField.hidden=true;
+        self.orglabel.hidden=true;
+
     }
     else {
         for (ExproUser *user in _users)
@@ -99,16 +111,27 @@
                 
             }
         }
-    }        
-    CGContextRef context = UIGraphicsGetCurrentContext(); 
-    [UIView beginAnimations:@"Curl" context:context]; 
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut]; 
-    [UIView setAnimationDuration:0.5]; 
+    }
+  
+    [self.passwordField resignFirstResponder];
+    NSLog(@"self.usersView.subviews.count == %i", self.usersView.subviews.count);
+    int count = self.usersView.subviews.count;
+    NSArray *buttonArray = self.usersView.subviews;
+    for (int i = 0 ; i < count ; i++)
+    {
+        MyButton *button = [buttonArray objectAtIndex:i];
+        
+        [button removeFromSuperview];
+
+    }
+    
+    [self loadMyButtonView:sender];
+    
+    //CGContextRef context = UIGraphicsGetCurrentContext(); 
     CGRect rect = [self.loginview frame]; 
     rect.origin.x = (self.view.frame.size.height-rect.size.width)/2 ;  
     [self.loginview setFrame:rect]; 
-    [UIView commitAnimations]; 
-    self.loginview.hidden=false;
+    self.loginview.hidden=NO;
 }
 @synthesize sign = _sign;
 - (IBAction)login:(id)sender {    
@@ -232,18 +255,10 @@
 
 }
 
-- (void)viewDidLoad
+
+-(void)loadMyView:(NSArray *)array
 {
-    
-    [super viewDidLoad];
-    
-    NSArray *array = [self loadSinginUser];
-    if (!array.count)
-    {
-        array = [self loadSinginUser];
-    }
-    
-    UIView *scrollView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-(array.count*50))/2, 300,700,70)];    
+    self.usersView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-(array.count*50))/2-50, 380,700,80)];    
     
     int count = array.count > 5 ? 5: array.count;
     for (int i = 0 ; i < count ; i++)
@@ -251,76 +266,65 @@
         ExproUser *user = [array objectAtIndex:i];
         if (user.signHistory)
         {  
-            CGRect frame = CGRectMake(50*i, 5, 50, 40);
+            CGRect frame = CGRectMake(88*i, 5, 49, 70);
             
-            UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
-            myButton.frame = frame;
-            [myButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
+            MyButton *myButton =[[MyButton alloc]initWithFrame:frame];
+            myButton.name = user.name;
             [myButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
             myButton.tag = user.gid.intValue;
             
-            CGRect labelframe = CGRectMake(10+50*i, 40, 50, 30);
-            UILabel *mylabel = [UILabel new];
-            mylabel.frame = labelframe;
-            [mylabel setText:user.name];
-            [mylabel setBackgroundColor:self.view.backgroundColor];
-            [mylabel setFont:[UIFont systemFontOfSize:12]];
-            [scrollView addSubview:myButton];
-            [scrollView addSubview:mylabel];
+            myButton.image = [UIImage imageNamed:@"dj_photo.png"];
+            myButton.bgImage = [UIImage imageNamed:@"photoBg.png"];
+            
+            [self.usersView addSubview:myButton];
         }        
     }  
     
-    CGRect frame = CGRectMake(50*array.count, 5, 50, 40);
-    UIButton *myButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    myButton.frame = frame;
-    [myButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
-    [myButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
-    myButton.tag = 0;
+    CGRect frame = CGRectMake(88*array.count, 5, 49, 70);
+    MyButton *newButton =[[MyButton alloc]initWithFrame:frame];
+    newButton.name = @"新用户";
+    [newButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
+    newButton.tag = -1;
+    newButton.image = [UIImage imageNamed:@"dj_photo.png"];
+    newButton.bgImage = [UIImage imageNamed:@"photoBg.png"];
+    [self.usersView addSubview:newButton];    
     
-    CGRect labelframe = CGRectMake(50*array.count+10, 40, 50, 30);
-    UILabel *mylabel = [UILabel new];
-    mylabel.frame = labelframe;
-    [mylabel setText:@"新用户"];
-    [mylabel setBackgroundColor:self.view.backgroundColor];
-    [mylabel setFont:[UIFont systemFontOfSize:12]];
-    [scrollView addSubview:myButton];
-    [scrollView addSubview:mylabel];
-    
-    
-    CGRect syyframe = CGRectMake(50*array.count+50, 5, 50, 40);
-    UIButton *syyButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    syyButton.frame = syyframe;
-    [syyButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
+    CGRect syyframe = CGRectMake(88*(array.count+1), 5, 49, 70);
+    MyButton *syyButton =[[MyButton alloc]initWithFrame:syyframe];
+    syyButton.name = @"测试店长";
     [syyButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
-    syyButton.tag = -1;
+    syyButton.tag = -2;
+    syyButton.image = [UIImage imageNamed:@"syy_photo.png.png"];
+    syyButton.bgImage = [UIImage imageNamed:@"photoBg.png"];
+    [self.usersView addSubview:syyButton];
     
-    CGRect syylabelframe = CGRectMake(50*array.count+10+50, 40, 50, 30);
-    UILabel *syylabel = [UILabel new];
-    syylabel.frame = syylabelframe;
-    [syylabel setText:@"收银员"];
-    [syylabel setBackgroundColor:self.view.backgroundColor];
-    [syylabel setFont:[UIFont systemFontOfSize:12]];
-    [scrollView addSubview:syyButton];
-    [scrollView addSubview:syylabel];
-    
-    CGRect xgframe = CGRectMake(50*array.count+100, 5, 50, 40);
-    UIButton *xgButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    xgButton.frame = xgframe;
-    [xgButton setBackgroundImage:[UIImage imageNamed:@"login_ico.png"] forState:UIControlStateNormal];
+    CGRect xgframe = CGRectMake(88*(array.count+2), 5,49, 70);
+    MyButton *xgButton =[[MyButton alloc]initWithFrame:xgframe];
+    xgButton.name = @"测试收银员";
     [xgButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
-    xgButton.tag = -2;    
-    CGRect xglabelframe = CGRectMake(50*array.count+10+100, 40, 50, 30);
-    UILabel *xglabel = [UILabel new];
-    xglabel.frame = xglabelframe;
-    [xglabel setText:@"管理员"];
-    [xglabel setBackgroundColor:self.view.backgroundColor];
-    [xglabel setFont:[UIFont systemFontOfSize:12]];
-    [scrollView addSubview:xgButton];
-    [scrollView addSubview:xglabel];
+    xgButton.tag = -3;
+    xgButton.image = [UIImage imageNamed:@"dz_photo.png"];
+    xgButton.bgImage = [UIImage imageNamed:@"photoBg.png"];
+
+    [self.usersView addSubview:xgButton];
+    [self.view addSubview:self.usersView];
+}
+
+-(void)loadMyButtonView:(id)sender
+{
+     CGRect frame = CGRectMake(230, 5, 49, 70);
+     MyButton *bu = (MyButton *)sender;
+     bu.frame = frame;
+    [self.usersView addSubview:bu];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     
+    self.userArray = [self loadSinginUser];
     
-    [self.view addSubview:scrollView];
-    
+    [self loadMyView:self.userArray];
     
     self.loginview.hidden=true;
     CGRect rect = [self.loginview frame]; 
@@ -337,6 +341,31 @@
 	isSwitchedTextField = NO;
 	canUserSeeKeyboard = NO;
 	[self registerKeyboardNotifications];
+   
+    
+}
+
+-(IBAction)touchout:(id)sender
+{   
+    [self.passwordField resignFirstResponder];
+    [self.orgField resignFirstResponder];
+    [self.userField resignFirstResponder];
+    [self.passwordField setText:@""];
+    [self.orgField setText:@""];
+    [self.userField setText:@""];
+    
+    int count = self.usersView.subviews.count;
+    NSArray *buttonArray = self.usersView.subviews;
+    for (int i = 0 ; i < count ; i++)
+    {
+        MyButton *button = [buttonArray objectAtIndex:i];
+        
+        [button removeFromSuperview];
+        
+    }
+    [self.loginview setHidden:YES];
+    [self loadMyView:self.userArray];
+    
 }
 
 - (void)viewDidUnload
@@ -405,28 +434,19 @@
 	 切换输入框或iOS 5的中英键盘时，先让整个视图回到原始位置，
 	 然后再考虑是否需要上移，如果需要上移，那么动画会出现闪烁效果，感觉不是太好。
 	 */
-    
-//    if (canUserSeeKeyboard)
-//    {
-//        return NO;
-//    }
-//	if (minMoveUpDeltaY > 0) {
-//		[self moveDown];
-//	}
+
 	minMoveUpDeltaY = 0;
 	
-	//exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-	//CGRect textFieldOriginFrameOnWindow = [self.view convertRect:self.loginview.frame toView:appDelegate.window];
-    //	(UITextField在最初位置时的y) + (UITextField的height) - (键盘出现后的y) > 0
+	
     if (keyboardFrame.size.width < keyboardFrame.size.height) 
     {
         if (keyboardFrame.origin.x == 0)
         {
-            minMoveUpDeltaY =  300 ;
+            minMoveUpDeltaY =  200 ;
 
         }
         else {
-            minMoveUpDeltaY = 300;       
+            minMoveUpDeltaY = 200;       
         }
         
         
@@ -437,8 +457,6 @@
     else {
         return NO;
     }
-    
-    
 	return NO;
 }
 
@@ -459,7 +477,7 @@
                 f.origin.x -= minMoveUpDeltaY;
             }
         }
-		self.scrollview.frame = f;
+		self.view.frame = f;
 		[UIView commitAnimations];
 	}
 }
@@ -500,12 +518,20 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-//    if (minMoveUpDeltaY != 0)
-//    {
-//        [self moveDown];
-//        minMoveUpDeltaY = 0;
-//        self.activeTextField = nil;
-//    }
+    if (textField.text.length == 0)
+    {
+        int count = self.usersView.subviews.count;
+        NSArray *buttonArray = self.usersView.subviews;
+        for (int i = 0 ; i < count ; i++)
+        {
+            MyButton *button = [buttonArray objectAtIndex:i];
+            
+            [button removeFromSuperview];
+            
+        }
+        [self.loginview setHidden:YES];
+        [self loadMyView:self.userArray];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -516,7 +542,6 @@
 
 -(void)didLoginSuccess:(NSString *)roleId
 {
-    
     exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     if ([roleId intValue] == 2)
     {
@@ -554,11 +579,14 @@
         for (int j = 0 ; j < userDeals.count ; j++)
         {
             ExproUser *exisUser = [userDeals objectAtIndex:j];
-            {
+            
                 if (exisUser.gid.intValue == user.gid.intValue)
                 {
                     isExis = YES;
                 }
+            if ([user.cellphone isEqualToString:@"13770940001"])
+            {
+                isExis = YES;
             }
         }
         if (!isExis)
