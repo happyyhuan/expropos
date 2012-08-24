@@ -56,7 +56,7 @@
     exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate  ];
     NSArray *members = [ExproMember findAll];
     for(ExproMember *member in members){
-        if(member.user.gid == appdelegate.currentUser.gid){
+        if(member.user.gid.intValue == appdelegate.currentUser.gid.intValue){
             merchant = member.org;
         }
     }
