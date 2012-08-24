@@ -65,6 +65,25 @@ int selected =0;
 {
     
     [super viewDidLoad];
+    
+    
+    self.bannerView.layer.cornerRadius = 5.0;
+    self.bannerView.layer.masksToBounds = YES;
+	self.bannerView.layer.borderWidth = 3;
+    self.bannerView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    
+    UIImageView *toolbarView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1024, 60)];
+    toolbarView.image = [UIImage imageNamed:@"1.4背景.png"];
+    
+    [self.bannerView addSubview:toolbarView];
+    
+    UIButton *goBack = [[UIButton alloc] init];
+    goBack.frame = CGRectMake(980, 10,  40, 40);
+    [goBack setBackgroundImage:[UIImage imageNamed:@"2退出.png"] forState:UIControlStateNormal];
+    [goBack addTarget:self action:@selector(backToMemu:) forControlEvents:UIControlEventTouchUpInside];
+    [self.bannerView addSubview:goBack];
+
+    
     _memberItems = [[NSMutableArray alloc]initWithCapacity:1];
     //查找所以属于该商户的会员
     exproposAppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
@@ -517,7 +536,7 @@ int selected =0;
     pay.modalPresentationStyle = UIModalPresentationFormSheet;
     pay.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
     [self presentModalViewController:pay animated:YES];
-    pay.view.superview.frame = CGRectMake(100,250, 800, 650);
+    pay.view.superview.frame = CGRectMake(100,200, 800, 550);
 }
 
 - (IBAction)modifyMember:(id)sender {
@@ -529,7 +548,7 @@ int selected =0;
     pay.modalPresentationStyle = UIModalPresentationFormSheet;
     pay.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
     [self presentModalViewController:pay animated:YES];
-    pay.view.superview.frame = CGRectMake(100,250, 800, 650);
+    pay.view.superview.frame = CGRectMake(100,200, 800, 550);
 }
 
 - (IBAction)backToMemu:(id)sender {

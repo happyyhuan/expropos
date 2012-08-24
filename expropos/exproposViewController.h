@@ -31,7 +31,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *phonelable;
 
 @property (strong,nonatomic) IBOutlet UIView *usersView;
-@property (strong,nonatomic) NSArray *userArray;
+@property (strong,nonatomic) NSMutableArray *userArray;
 
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;

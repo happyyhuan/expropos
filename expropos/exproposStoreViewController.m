@@ -60,6 +60,23 @@ int selectIndex =0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.bannerView.layer.cornerRadius = 5.0;
+    self.bannerView.layer.masksToBounds = YES;
+	self.bannerView.layer.borderWidth = 3;
+    self.bannerView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    
+    UIImageView *toolbarView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1024, 60)];
+    toolbarView.image = [UIImage imageNamed:@"1.4背景.png"];
+    
+    [self.bannerView addSubview:toolbarView];
+
+    UIButton *goBack = [[UIButton alloc] init];
+    goBack.frame = CGRectMake(980, 10,  40, 40);
+    [goBack setBackgroundImage:[UIImage imageNamed:@"2退出.png"] forState:UIControlStateNormal];
+    [goBack addTarget:self action:@selector(backToMemu:) forControlEvents:UIControlEventTouchUpInside];
+    [self.bannerView addSubview:goBack];
+    
        //查找该商户的所有门店
     exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
     NSString *orgId = appDelegate.currentOrgid ;
@@ -453,7 +470,7 @@ int selectIndex =0;
     pay.modalPresentationStyle = UIModalPresentationFormSheet;
     pay.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
     [self presentModalViewController:pay animated:YES];
-    pay.view.superview.frame = CGRectMake(100,250, 600, 450);
+    pay.view.superview.frame = CGRectMake(100,200, 800, 550);
 }
 
 - (IBAction)modifyStore:(id)sender {
@@ -468,7 +485,7 @@ int selectIndex =0;
     {
     
         [self presentModalViewController:pay animated:YES];
-        pay.view.superview.frame = CGRectMake(100,250, 600, 450);
+        pay.view.superview.frame = CGRectMake(100,200, 800, 550);
     }
     else {
         NSLog(@"pay==null");
