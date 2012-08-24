@@ -26,6 +26,7 @@
 @synthesize tableView;
 @synthesize editLabel;
 
+
 @synthesize storeNo =_storeNo;
 @synthesize storeNotice =_storeNotice;
 @synthesize storeName = _stroeName;
@@ -56,6 +57,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+   
+    
+    
     _privacyItem = [[NSMutableArray alloc] initWithCapacity:20];
 
     if (self.exproStore)
@@ -151,7 +156,7 @@
     
     if(indexPath.row == 0)
     {
-        UITextField *storeNameField = [[UITextField alloc]initWithFrame:CGRectMake(100, 10, 200, 25)];
+        UITextField *storeNameField = [[UITextField alloc]initWithFrame:CGRectMake(300, 10, 200, 25)];
         [cell addSubview:storeNameField];
         [storeNameField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"门店名称", nil);  
@@ -166,7 +171,7 @@
     }
     else if(indexPath.row == 1)
     {
-        UITextField *storeNoField = [[UITextField alloc]initWithFrame:CGRectMake(100, 10, 200, 25)];
+        UITextField *storeNoField = [[UITextField alloc]initWithFrame:CGRectMake(300, 10, 200, 25)];
         [cell addSubview:storeNoField];
         [storeNoField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"资产编号", nil);  
@@ -181,7 +186,7 @@
     }
     else if(indexPath.row == 2)
     {
-        UITextView *storeNoticeField = [[UITextView alloc]initWithFrame:CGRectMake(100, 10, 400, 50)];
+        UITextView *storeNoticeField = [[UITextView alloc]initWithFrame:CGRectMake(300, 10, 400, 50)];
         [cell addSubview:storeNoticeField];
         [storeNoticeField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"门店公告", nil);  
@@ -201,7 +206,7 @@
     }
     else if(indexPath.row == 3)
     {
-        UITextView *addressField = [[UITextView alloc]initWithFrame:CGRectMake(100, 10, 400, 50)];
+        UITextView *addressField = [[UITextView alloc]initWithFrame:CGRectMake(300, 10, 400, 50)];
         [cell addSubview:addressField];
         [addressField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"详细地址", nil);  
@@ -221,7 +226,7 @@
     }
     else if(indexPath.row == 4)
     {
-        UITextView *transitField = [[UITextView alloc]initWithFrame:CGRectMake(100, 10, 400, 50)];
+        UITextView *transitField = [[UITextView alloc]initWithFrame:CGRectMake(300, 10, 400, 50)];
         [cell addSubview:transitField];
         [transitField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"公交说明", nil);  
@@ -241,7 +246,7 @@
     }
     else if(indexPath.row == 5)
     {
-        UITextView *commentField = [[UITextView alloc]initWithFrame:CGRectMake(100, 10, 400, 50)];
+        UITextView *commentField = [[UITextView alloc]initWithFrame:CGRectMake(300, 10, 400, 50)];
         [cell addSubview:commentField];
         [commentField setBackgroundColor:[UIColor whiteColor]];
         cell.textLabel.text = NSLocalizedString(@"备注信息", nil);  

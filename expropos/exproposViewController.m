@@ -114,7 +114,7 @@
     }
   
     [self.passwordField resignFirstResponder];
-    NSLog(@"self.usersView.subviews.count == %i", self.usersView.subviews.count);
+
     int count = self.usersView.subviews.count;
     NSArray *buttonArray = self.usersView.subviews;
     for (int i = 0 ; i < count ; i++)
@@ -264,6 +264,7 @@
     for (int i = 0 ; i < count ; i++)
     {
         ExproUser *user = [array objectAtIndex:i];
+        
         if (user.signHistory)
         {  
             CGRect frame = CGRectMake(88*i, 5, 49, 70);
@@ -294,7 +295,7 @@
     syyButton.name = @"测试店长";
     [syyButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
     syyButton.tag = -2;
-    syyButton.image = [UIImage imageNamed:@"syy_photo.png.png"];
+    syyButton.image = [UIImage imageNamed:@"syy_photo.png"];
     syyButton.bgImage = [UIImage imageNamed:@"photoBg.png"];
     [self.usersView addSubview:syyButton];
     
@@ -312,7 +313,7 @@
 
 -(void)loadMyButtonView:(id)sender
 {
-     CGRect frame = CGRectMake(230, 5, 49, 70);
+     CGRect frame = CGRectMake(210, 5, 49, 70);
      MyButton *bu = (MyButton *)sender;
      bu.frame = frame;
     [self.usersView addSubview:bu];
@@ -323,6 +324,16 @@
     [super viewDidLoad];
     
     self.userArray = [self loadSinginUser];
+    NSMutableArray *delArray = [[NSMutableArray alloc] initWithCapacity:1];
+    for (int i =0; i < self.userArray.count ; i ++)
+    {
+        ExproUser *user = [self.userArray objectAtIndex:i];
+        if ([user.cellphone isEqualToString:@"13770940001"] ||[user.cellphone isEqualToString:@"13770940002"])
+        {
+            [delArray addObject:user];
+        }
+    }
+    [self.userArray removeObjectsInArray:delArray];
     
     [self loadMyView:self.userArray];
     
@@ -442,11 +453,11 @@
     {
         if (keyboardFrame.origin.x == 0)
         {
-            minMoveUpDeltaY =  200 ;
+            minMoveUpDeltaY =  220 ;
 
         }
         else {
-            minMoveUpDeltaY = 200;       
+            minMoveUpDeltaY = 220;       
         }
         
         
@@ -554,7 +565,7 @@
          appDelegate.window.rootViewController = splitView;
     }    
 }
--(NSArray *)loadSinginUser
+-(NSMutableArray *)loadSinginUser
 {    
     //RKObjectManager *manager = [RKObjectManager sharedManager];
     
