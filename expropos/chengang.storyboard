@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="fbC-P3-hBc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="fbC-P3-hBc">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -1489,120 +1489,6 @@
             </objects>
             <point key="canvasLocation" x="3021" y="-1181"/>
         </scene>
-        <!--Expropos Goods Manager View Controller-->
-        <scene sceneID="3WE-yF-lc4">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QQc-BS-zvC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="goodsManager" id="Nxt-8i-JYZ" customClass="exproposGoodsManagerViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1ty-bf-yMw">
-                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="TQ8-uH-GXh">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="60"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Wj6-lK-xN9">
-                                <rect key="frame" x="0.0" y="68" width="400" height="668"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.3085317548" green="1" blue="0.98821011849999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" text="" id="Amd-GK-yqW">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="viC-4A-gzm">
-                                        <rect key="frame" x="0.0" y="78" width="400" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="380" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <view contentMode="scaleToFill" id="iEG-fF-2fq">
-                                <rect key="frame" x="408" y="68" width="616" height="668"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" id="P1n-f4-T4X">
-                                        <rect key="frame" x="0.0" y="0.0" width="616" height="57"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a2v-bg-uV2">
-                                                <rect key="frame" x="391" y="15" width="41" height="37"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="修改" image="updates.png">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="update:" destination="Nxt-8i-JYZ" eventType="touchUpInside" id="rYR-ra-qtX"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="RJB-Uc-QzO">
-                                                <rect key="frame" x="330" y="19" width="29" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="add:" destination="Nxt-8i-JYZ" eventType="touchUpInside" id="U1m-Bs-kXb"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wEG-Yf-hok">
-                                                <rect key="frame" x="456" y="14" width="39" height="37"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" image="deleteGoods.png">
-                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="deleteGoods:" destination="Nxt-8i-JYZ" eventType="touchUpInside" id="rAg-BJ-ZSX"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="0.52838011679999997" blue="0.32458867330000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="eXb-vg-zTx" customClass="exproposMyScrollView">
-                                        <rect key="frame" x="0.0" y="57" width="616" height="480"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </scrollView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <outlet property="leftView" destination="Wj6-lK-xN9" id="Phw-hA-IGt"/>
-                        <outlet property="rightView" destination="iEG-fF-2fq" id="7p7-1u-Wzr"/>
-                        <outlet property="scrollView" destination="eXb-vg-zTx" id="oPT-NA-UqO"/>
-                        <outlet property="searchBar" destination="Amd-GK-yqW" id="f4C-NO-hdK"/>
-                        <outlet property="topView" destination="TQ8-uH-GXh" id="IUk-R5-KwL"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="3247" y="460"/>
-        </scene>
         <!--Expropos Date Selected View Controller-->
         <scene sceneID="eDr-LW-ra1">
             <objects>
@@ -2942,19 +2828,401 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1759" y="-3234"/>
         </scene>
+        <!--Expropos Goods Manager View Controller-->
+        <scene sceneID="62g-7K-gQN">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Unk-Jt-grP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="goodsManager" id="iz7-cd-zyw" customClass="exproposGoodsManagerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qtR-cN-Dcn">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="w7f-Sv-2Nu">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tWM-gW-30Q">
+                                <rect key="frame" x="0.0" y="68" width="400" height="668"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.3085317548" green="1" blue="0.98821011849999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" text="" id="j7b-N3-pFg">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JfS-58-JbR">
+                                        <rect key="frame" x="0.0" y="78" width="400" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="380" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="RBT-wT-49B">
+                                <rect key="frame" x="408" y="68" width="616" height="668"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="Xet-e3-I42">
+                                        <rect key="frame" x="0.0" y="0.0" width="616" height="57"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hfA-VM-86L">
+                                                <rect key="frame" x="465" y="11" width="41" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="修改" image="2修改.png">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="update:" destination="iz7-cd-zyw" eventType="touchUpInside" id="bSL-a2-o2D"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qd6-pO-gLx">
+                                                <rect key="frame" x="386" y="11" width="36" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" image="1添加.png">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="add:" destination="iz7-cd-zyw" eventType="touchUpInside" id="Aa0-Cj-VsW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QXX-p2-zY9">
+                                                <rect key="frame" x="535" y="10" width="39" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" image="5.3删除.png">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deleteGoods:" destination="iz7-cd-zyw" eventType="touchUpInside" id="Qqd-CR-y0r"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="IsN-6i-flC" customClass="exproposMyScrollView">
+                                        <rect key="frame" x="0.0" y="57" width="616" height="480"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="leftView" destination="tWM-gW-30Q" id="ywf-de-6jR"/>
+                        <outlet property="rightView" destination="RBT-wT-49B" id="t9s-hN-2qG"/>
+                        <outlet property="scrollView" destination="IsN-6i-flC" id="ZfL-tk-Adi"/>
+                        <outlet property="searchBar" destination="j7b-N3-pFg" id="V2M-WE-UXB"/>
+                        <outlet property="topView" destination="w7f-Sv-2Nu" id="sUf-x7-9bP"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3247" y="460"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="1添加.png" width="40" height="40"/>
         <image name="2.jpg" width="965" height="253"/>
+        <image name="2修改.png" width="40" height="40"/>
+        <image name="5.3删除.png" width="40" height="40"/>
         <image name="bodyBg.png" width="1024" height="748"/>
         <image name="delete.png" width="40" height="40"/>
-        <image name="deleteGoods.png" width="512" height="512"/>
         <image name="logo.png" width="388" height="282"/>
         <image name="submitBg.png" width="189" height="37"/>
-        <image name="updates.png" width="256" height="256"/>
         <image name="修改门店.png" width="60" height="60"/>
         <image name="删除门店.png" width="60" height="60"/>
         <image name="增加门店.png" width="60" height="60"/>
     </resources>
+    <classes>
+        <class className="ExproMultipleTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExproMultipleTableView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="multipleDataSource"/>
+                <relationship kind="outlet" name="multipleDelegate"/>
+            </relationships>
+        </class>
+        <class className="JPStupidButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JPStupidButton.h"/>
+        </class>
+        <class className="expropoStoreEditViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/expropoStoreEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="confirm:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="confirmButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="editLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toolView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="exproposAddMemberSavingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposAddMemberSavingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="deleteOneNum:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="memberSaving" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rightView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outletCollection" name="keys" candidateClass="JPStupidButton"/>
+            </relationships>
+        </class>
+        <class className="exproposDateSelectedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDateSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="exproposDealQueryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDealQueryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dealID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dealIDLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dealInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dealItemTable" candidateClass="ExproMultipleTableView"/>
+                <relationship kind="outlet" name="keys" candidateClass="UIView"/>
+                <relationship kind="outletCollection" name="buttons" candidateClass="JPStupidButton"/>
+            </relationships>
+        </class>
+        <class className="exproposDealSelectedViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposDealSelectedViewController.h"/>
+        </class>
+        <class className="exproposGoodSelectedViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposGoodSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="FlashButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="exproposGoodsComeBackViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposGoodsComeBackViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dealID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dealIDLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dealInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dealItemTable" candidateClass="ExproMultipleTableView"/>
+                <relationship kind="outlet" name="keys" candidateClass="UIView"/>
+                <relationship kind="outletCollection" name="buttons" candidateClass="JPStupidButton"/>
+            </relationships>
+        </class>
+        <class className="exproposGoodsManagerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposGoodsManagerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="add:" candidateClass="UIButton"/>
+                <relationship kind="action" name="deleteGoods:" candidateClass="UIButton"/>
+                <relationship kind="action" name="update:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="rightView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="exproposMyScrollView"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="exproposMainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="menu" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="menuTool" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="exproposMemberRegisterController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberRegisterController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelAction:"/>
+                <relationship kind="action" name="registerAction:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="registerButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="exproposMemberSelectedViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMemberSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="update:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="freshButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="updateTime" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="exproposMenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMenuViewController.h"/>
+        </class>
+        <class className="exproposMyScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposMyScrollView.h"/>
+        </class>
+        <class className="exproposNumKeyboard" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposNumKeyboard.h"/>
+            <relationships>
+                <relationship kind="action" name="deleteOneGoodsNum:"/>
+                <relationship kind="outlet" name="deleteOneNum" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="goodsNum" candidateClass="UITextField"/>
+                <relationship kind="outletCollection" name="keys" candidateClass="JPStupidButton"/>
+            </relationships>
+        </class>
+        <class className="exproposPayViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposPayViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="finish:"/>
+                <relationship kind="action" name="payTypeChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="getRealMoney" candidateClass="UIView"/>
+                <relationship kind="outlet" name="haveGetMoney" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="keyboards" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="shouldPopMoney" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="shouleGetMoney" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="mykeyboards" candidateClass="JPStupidButton"/>
+            </relationships>
+        </class>
+        <class className="exproposPloyeeManagerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposPloyeeManagerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="deletePloyee:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="modifyPloyee:"/>
+                <relationship kind="action" name="registPloyee:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="delButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="idCard" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="modifyButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ployTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="registButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="roleName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="storeName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="telphone" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="exproposShowDealOperateViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposShowDealOperateViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addMemberSaving:" candidateClass="UIButton"/>
+                <relationship kind="action" name="dealQueryByDealID:" candidateClass="UIButton"/>
+                <relationship kind="action" name="deleteOneGoodsCode:"/>
+                <relationship kind="action" name="goodsCommeBack:" candidateClass="UIButton"/>
+                <relationship kind="action" name="goodsSelected:"/>
+                <relationship kind="action" name="memberCreate:" candidateClass="UIButton"/>
+                <relationship kind="action" name="memberSelected:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="allGoodsAmounts" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="allGoodsPayments" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="amountView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dealTableView" candidateClass="ExproMultipleTableView"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="goodsCode" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="goodsComeBackButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="keyBoardView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="leftView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="shouldGetMoneyView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+                <relationship kind="outletCollection" name="buttons" candidateClass="JPStupidButton"/>
+            </relationships>
+        </class>
+        <class className="exproposShowDealsSelectedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposShowDealsSelectedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="ExproMultipleTableView"/>
+            </relationships>
+        </class>
+        <class className="exproposStoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposStoreViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addStore:"/>
+                <relationship kind="action" name="backToMemu:"/>
+                <relationship kind="action" name="delStore:"/>
+                <relationship kind="action" name="modifyStore:"/>
+                <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="bannerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="delButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="modifyButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nameInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="queryView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="storeAddress" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="storeComment" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="storeDetailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="storeNO" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="storeNotice" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="storeState" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="storeTrainInfo" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="storesTabelView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="exproposViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/exproposViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="touchout:"/>
+                <relationship kind="outlet" name="loginview" candidateClass="UIView"/>
+                <relationship kind="outlet" name="orgField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="orglabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phonelable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="usersView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="memberManagerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/memberManagerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addMember:"/>
+                <relationship kind="action" name="backToMemu:"/>
+                <relationship kind="action" name="delMember:"/>
+                <relationship kind="action" name="modifyMember:"/>
+                <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="bannerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="delButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dueTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="memberDetailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="memberTabelView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="modifyButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nameInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="point" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="privacy" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="queryView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="saving" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="telphone" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ployeeRegistrViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ployeeRegistrViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelAction:"/>
+                <relationship kind="action" name="registerAction:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="registerButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
