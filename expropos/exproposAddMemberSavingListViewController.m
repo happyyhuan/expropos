@@ -85,11 +85,18 @@
         endTimeLabel.text = @"结束时间：      今天";
     }
     
-     NSTimeInterval secondsPerDay = 24 * 60 * 60 - 60; 
-    _beginTime = [[NSDate date] beginningOfDay];
-    _beginTime = [[NSDate alloc]initWithTimeInterval:8*60*60 sinceDate:_beginTime];
+   
     
+    
+    NSTimeInterval secondsPerDay = 24 * 60 * 60 -1 ; 
+    
+    NSDate *date = [[NSDate date] beginningOfDay];
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate: date];
+   _beginTime = [date  dateByAddingTimeInterval: interval]; 
     _endTime = [[NSDate alloc] initWithTimeInterval:secondsPerDay sinceDate:_beginTime];
+    
+    NSLog(@"%@,%@",_beginTime,_endTime);
     
     UIButton *endTimeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [endTimeButton setImage:[UIImage imageNamed:@"2时间选择.png"] forState:UIControlStateNormal];
