@@ -268,7 +268,7 @@
 
 -(void)loadMyView:(NSArray *)array
 {
-    self.usersView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-((array.count-1)*88+60))/2, 420,700,80)];    
+    self.usersView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-((array.count+3-1)*88+60))/2, 420,700,80)];    
     NSLog(@"%f",self.view.frame.size.width);
     int count = array.count > 5 ? 5: array.count;
     for (int i = 0 ; i < count ; i++)
