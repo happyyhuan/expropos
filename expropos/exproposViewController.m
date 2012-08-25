@@ -326,12 +326,8 @@
 
 -(void)loadMyButtonView:(id)sender
 {
-    
-    
-
-    
    //  CGRect frame = CGRectMake(88*self.userArray.count/2+88, 5, 60, 80);
-    CGRect frame = CGRectMake(475, 420, 60, 80);
+    CGRect frame = CGRectMake(470, 425, 60, 80);
     _selUserButton = (MyButton *)sender;
      _selUserButton.frame = frame;
     //[self.usersView addSubview:bu];
