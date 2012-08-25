@@ -268,8 +268,8 @@
 
 -(void)loadMyView:(NSArray *)array
 {
-    self.usersView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-(array.count*88))/2, 420,700,80)];    
-    
+    self.usersView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-((array.count-1)*88+60))/2, 420,700,80)];    
+    NSLog(@"%f",self.view.frame.size.width);
     int count = array.count > 5 ? 5: array.count;
     for (int i = 0 ; i < count ; i++)
     {
@@ -326,8 +326,7 @@
 
 -(void)loadMyButtonView:(id)sender
 {
-   //  CGRect frame = CGRectMake(88*self.userArray.count/2+88, 5, 60, 80);
-    CGRect frame = CGRectMake(470, 425, 60, 80);
+    CGRect frame = CGRectMake((self.view.frame.size.height-72)/2, 425, 60, 80);
     _selUserButton = (MyButton *)sender;
      _selUserButton.frame = frame;
     //[self.usersView addSubview:bu];
