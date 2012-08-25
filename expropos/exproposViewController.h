@@ -19,7 +19,7 @@
     exproposMainViewController *mainViewController;
 }
 
-@property (strong, nonatomic) IBOutlet UITextField *orgField;
+
 @property (strong, nonatomic) IBOutlet UILabel *orglabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -29,6 +29,8 @@
 @property (nonatomic,strong) NSArray *users;
 
 @property (strong, nonatomic) IBOutlet UILabel *phonelable;
+@property (strong, nonatomic) IBOutlet UIButton *selUserButton;
+
 
 @property (strong,nonatomic) IBOutlet UIView *usersView;
 @property (strong,nonatomic) NSMutableArray *userArray;

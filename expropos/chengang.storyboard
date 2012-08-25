@@ -1851,15 +1851,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bodyBg.png" id="dEu-kR-OP8">
-                                <rect key="frame" x="-3" y="0.0" width="1031" height="748"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="748"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view opaque="NO" contentMode="scaleToFill" id="Bof-AH-xxd">
-                                <rect key="frame" x="322" y="472" width="231" height="152"/>
+                                <rect key="frame" x="412" y="514" width="186" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" id="O4W-Bv-X4Q">
-                                        <rect key="frame" x="0.0" y="72" width="223" height="31"/>
+                                        <rect key="frame" x="0.0" y="39" width="186" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
@@ -1867,17 +1867,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <outlet property="delegate" destination="fbC-P3-hBc" id="GpR-Je-s9z"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="商户编号" minimumFontSize="17" id="Jgg-Qx-sE9">
-                                        <rect key="frame" x="0.0" y="39" width="223" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="fbC-P3-hBc" id="SRH-QX-Xem"/>
-                                        </connections>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="vYX-L6-6uM">
-                                        <rect key="frame" x="-1" y="103" width="225" height="38"/>
+                                        <rect key="frame" x="0.0" y="76" width="186" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="submitBg.png">
@@ -1892,7 +1883,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="电话号码" minimumFontSize="17" id="yDV-p7-tlj">
-                                        <rect key="frame" x="0.0" y="7" width="223" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="186" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -1903,7 +1894,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </subviews>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="logo.png" id="X53-K7-cHD">
-                                <rect key="frame" x="311" y="67" width="388" height="282"/>
+                                <rect key="frame" x="313" y="82" width="388" height="282"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -1916,13 +1907,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="loginview" destination="Bof-AH-xxd" id="vzd-Hj-vMp"/>
-                        <outlet property="orgField" destination="Jgg-Qx-sE9" id="WxH-LR-UPy"/>
                         <outlet property="passwordField" destination="O4W-Bv-X4Q" id="sNN-hB-aML"/>
                         <outlet property="userField" destination="yDV-p7-tlj" id="DaT-JC-5xN"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2796" y="-2006"/>
+            <point key="canvasLocation" x="-3608" y="-2133"/>
         </scene>
         <!--Expropos Goods Come Back View Controller-->
         <scene sceneID="QI1-cD-2qM">

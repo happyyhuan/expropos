@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42384F5D15E76F480092806D /* inputBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 42384F5C15E76F480092806D /* inputBg.png */; };
 		4277CFCE15DB9BEE0029FEEF /* storeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4277CFCD15DB9BEE0029FEEF /* storeSelectViewController.m */; };
 		4277CFD115DC8B9E0029FEEF /* ExproSignHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4277CFD015DC8B9E0029FEEF /* ExproSignHistory.m */; };
 		4277CFD415DCE5420029FEEF /* ExproStaff.m in Sources */ = {isa = PBXBuildFile; fileRef = 4277CFD315DCE5420029FEEF /* ExproStaff.m */; };
@@ -203,6 +204,7 @@
 /* Begin PBXFileReference section */
 		42384F3F15E75BBA0092806D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/cc/dev/expropos/expropos/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		42384F4015E75BBA0092806D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "/Users/cc/dev/expropos/expropos/zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
+		42384F5C15E76F480092806D /* inputBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inputBg.png; sourceTree = "<group>"; };
 		4277CFCC15DB9BEE0029FEEF /* storeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = storeSelectViewController.h; sourceTree = "<group>"; };
 		4277CFCD15DB9BEE0029FEEF /* storeSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = storeSelectViewController.m; sourceTree = "<group>"; };
 		4277CFCF15DC8B9E0029FEEF /* ExproSignHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproSignHistory.h; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				42A08AC015E5D4A50030650C /* bodyBg.png */,
+				42384F5C15E76F480092806D /* inputBg.png */,
 				5F5D0AD715CA2C8F0074A06F /* checkout.png */,
 				5F5D0AD315CA2B470074A06F /* box.png */,
 				5FBB2C1115C13F5F00C9F470 /* close.png */,
@@ -1108,6 +1111,7 @@
 				5F96AB3615E608BA006F062B /* box.png in Resources */,
 				5F96AB3715E608BA006F062B /* checkout.png in Resources */,
 				5F96AB3915E6090D006F062B /* close.png in Resources */,
+				42384F5D15E76F480092806D /* inputBg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

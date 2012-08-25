@@ -26,8 +26,9 @@
 @end
 
 @implementation exproposViewController 
-@synthesize orgField;
+
 @synthesize orglabel;
+@synthesize selUserButton=_selUserButton;
 @synthesize passwordField = _passwordField;
 @synthesize userField = _userField;
 @synthesize exprodatabase=_exprodatabase;
@@ -60,25 +61,22 @@
         self.userField.hidden= false;
         self.phonelable.hidden=false;
         self.orglabel.hidden=false;
-        self.orgField.hidden=false;
-        self.orgField.text=nil;
+       
+     
     }
     else if(bu.tag == -2)
     {
         _userField.text = @"13770940001";
-        self.orgField.text = @"1";
+        
         self.userField.hidden= true;
         self.phonelable.hidden=true;
-        self.orgField.hidden=true;
         self.orglabel.hidden=true;
     }
     else if (bu.tag = -3)
     {
         _userField.text = @"13770940002";
-        self.orgField.text = @"1";
         self.userField.hidden= true;
         self.phonelable.hidden=true;
-        self.orgField.hidden=true;
         self.orglabel.hidden=true;
 
     }
@@ -103,10 +101,10 @@
                 
                 
                 _userField.text = user.cellphone;
-                self.orgField.text = history.orgId;
+               
                 self.userField.hidden= true;
                 self.phonelable.hidden=true;
-                self.orgField.hidden=true;
+               
                 self.orglabel.hidden=true;
                 
             }
@@ -137,7 +135,13 @@
 - (IBAction)login:(id)sender {    
     password = _passwordField.text;
     username= _userField.text;
-    orgId = self.orgField.text;
+   
+    
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    [userDefault setInteger:1 forKey:@"merchantID"];
+    NSInteger orgIdint = [userDefault integerForKey:@"merchantID"];
+    
         
     if (username && [username length] && password && [password length]) {
         self.sign = [[exproposSign alloc]init];
@@ -151,7 +155,7 @@
         request.predicate = predicate;
         NSArray *deals = [ExproUser objectsWithFetchRequest:request];
         NSLog(@"%i",deals.count);
-        [self.sign signin:username password:password stroeId:orgId]; 
+        [self.sign signin:username password:password stroeId:[NSString stringWithFormat:@"%i",orgIdint]]; 
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
@@ -176,7 +180,12 @@
      NSLog(@"signin roleid:%@", roleid);
         
     exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
-    appDelegate.currentOrgid = self.orgField.text;
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    //    [userDefault setInteger:1 forKey:@"merchantID"];
+    NSInteger orgIdint = [userDefault integerForKey:@"merchantID"];
+    
+    
+    appDelegate.currentOrgid = [NSString stringWithFormat:@"%i",orgIdint];
     
     //登录成功后保存登录用户历史信息
     RKObjectManager *manager = [RKObjectManager sharedManager];
@@ -213,10 +222,11 @@
     NSDate *now = [NSDate date];
     signHistory.signintime = now;
     signHistory.user = signUser;
-    signHistory.orgId = self.orgField.text;
+    signHistory.orgId = appDelegate.currentOrgid;
     [manager.objectStore save:nil];
     
     appDelegate.currentUser = signUser;
+   
     
     [appDelegate.sync syncStore:[NSNumber numberWithInt:15]];
     [self didLoginSuccess:roleid];
@@ -258,7 +268,7 @@
 
 -(void)loadMyView:(NSArray *)array
 {
-    self.usersView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-(array.count*50))/2-50, 380,700,80)];    
+    self.usersView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-(array.count*88))/2, 420,700,80)];    
     
     int count = array.count > 5 ? 5: array.count;
     for (int i = 0 ; i < count ; i++)
@@ -267,7 +277,7 @@
         
         if (user.signHistory)
         {  
-            CGRect frame = CGRectMake(88*i, 5, 49, 70);
+            CGRect frame = CGRectMake(88*i, 5, 60, 80);
             
             MyButton *myButton =[[MyButton alloc]initWithFrame:frame];
             myButton.name = user.name;
@@ -276,12 +286,14 @@
             
             myButton.image = [UIImage imageNamed:@"dj_photo.png"];
             myButton.bgImage = [UIImage imageNamed:@"photoBg.png"];
+                        
+            
             
             [self.usersView addSubview:myButton];
         }        
     }  
     
-    CGRect frame = CGRectMake(88*array.count, 5, 49, 70);
+    CGRect frame = CGRectMake(88*array.count, 5, 60, 80);
     MyButton *newButton =[[MyButton alloc]initWithFrame:frame];
     newButton.name = @"新用户";
     [newButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
@@ -290,7 +302,7 @@
     newButton.bgImage = [UIImage imageNamed:@"photoBg.png"];
     [self.usersView addSubview:newButton];    
     
-    CGRect syyframe = CGRectMake(88*(array.count+1), 5, 49, 70);
+    CGRect syyframe = CGRectMake(88*(array.count+1), 5, 60, 80);
     MyButton *syyButton =[[MyButton alloc]initWithFrame:syyframe];
     syyButton.name = @"测试店长";
     [syyButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
@@ -299,24 +311,32 @@
     syyButton.bgImage = [UIImage imageNamed:@"photoBg.png"];
     [self.usersView addSubview:syyButton];
     
-    CGRect xgframe = CGRectMake(88*(array.count+2), 5,49, 70);
+    CGRect xgframe = CGRectMake(88*(array.count+2), 5,60, 80);
     MyButton *xgButton =[[MyButton alloc]initWithFrame:xgframe];
-    xgButton.name = @"测试收银员";
+    xgButton.name = @"测试收银";
     [xgButton addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
     xgButton.tag = -3;
     xgButton.image = [UIImage imageNamed:@"dz_photo.png"];
     xgButton.bgImage = [UIImage imageNamed:@"photoBg.png"];
 
     [self.usersView addSubview:xgButton];
+    [_selUserButton removeFromSuperview ];
     [self.view addSubview:self.usersView];
 }
 
 -(void)loadMyButtonView:(id)sender
 {
-     CGRect frame = CGRectMake(210, 5, 49, 70);
-     MyButton *bu = (MyButton *)sender;
-     bu.frame = frame;
-    [self.usersView addSubview:bu];
+    
+    
+
+    
+   //  CGRect frame = CGRectMake(88*self.userArray.count/2+88, 5, 60, 80);
+    CGRect frame = CGRectMake(475, 420, 60, 80);
+    _selUserButton = (MyButton *)sender;
+     _selUserButton.frame = frame;
+    //[self.usersView addSubview:bu];
+    [self.usersView removeFromSuperview];
+    [self.view addSubview:_selUserButton];
 }
 
 - (void)viewDidLoad
@@ -338,14 +358,16 @@
     [self loadMyView:self.userArray];
     
     self.loginview.hidden=true;
-    CGRect rect = [self.loginview frame]; 
+    //CGRect rect = [self.loginview frame]; 
     
-    rect.origin.x = 0.0f-rect.size.width;     
-    [self.loginview setFrame:rect];
+    //rect.origin.x = 0.0f-rect.size.width;     
+    //[self.loginview setFrame:rect];
     
     self.userField.delegate = self;
+    
+    self.userField.background = [UIImage imageNamed:@"inputBg.png"];
     self.passwordField.delegate = self;
-    self.orgField.delegate=self;
+    self.passwordField.background = [UIImage imageNamed:@"inputBg.png"];
     
     minMoveUpDeltaY = 0;
 	keyboardFrame = CGRectZero;
@@ -359,10 +381,10 @@
 -(IBAction)touchout:(id)sender
 {   
     [self.passwordField resignFirstResponder];
-    [self.orgField resignFirstResponder];
+   
     [self.userField resignFirstResponder];
     [self.passwordField setText:@""];
-    [self.orgField setText:@""];
+   
     [self.userField setText:@""];
     
     int count = self.usersView.subviews.count;
@@ -384,7 +406,7 @@
     [self setPasswordField:nil];
     [self setUserField:nil];
     [self setPhonelable:nil];
-    [self setOrgField:nil];
+   
     [self setOrglabel:nil];
     [super viewDidUnload];
     

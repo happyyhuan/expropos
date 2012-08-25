@@ -34,18 +34,20 @@
 
 -(void)drawRect:(CGRect)rect
 {
-    [_image drawInRect:CGRectMake(0.0f,
-                                  0.0f,
-                                  self.frame.size.width,
-                                   self.frame.size.height*0.7)];
+    [_image drawInRect:CGRectMake(5.0f,
+                                  5.0f,
+                                  self.frame.size.width-11,
+                                   self.frame.size.height-30)];
     
     [_bgImage drawInRect:CGRectMake(0.0f,
                                   0.0f,
                                   self.frame.size.width,
-                                  self.frame.size.height*0.7)];
+                                  self.frame.size.height-20)];
 
     
-    UIFont *helveticaBold = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0f]; 
+    UIFont *helveticaBold = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0f];
+    UIColor *magentaColor =[UIColor whiteColor];
+    [magentaColor set];
     if (self.name.length == 1)
     {
         [_name drawAtPoint:CGPointMake(self.frame.size.width*0.3, self.frame.size.height*0.8) withFont:helveticaBold];
@@ -63,6 +65,7 @@
     {
         [_name drawAtPoint:CGPointMake(self.frame.size.width*0.01, self.frame.size.height*0.8) withFont:helveticaBold];
     }
+    
 }
 
 @end
