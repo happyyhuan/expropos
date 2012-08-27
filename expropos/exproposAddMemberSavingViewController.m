@@ -125,7 +125,7 @@
         
         NSArray *members = [ExproMember findAll];
         for(ExproMember *member in members){
-            if(member.user.gid == appDelegate.currentUser.gid){
+            if(member.user.gid.intValue == appDelegate.currentUser.gid.intValue){
                 _deal.dealer = member;
                 _deal.store =  member.store;
             }
@@ -150,6 +150,12 @@
         
         if(!_deal.customer.savingDueTime){
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示 " message:@"请选择储值有效期" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alertView show];
+            return;
+        }
+        
+        if(!(_deal.payment.doubleValue>0&&_deal.cash.doubleValue>0)){
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示 " message:@"请勿提交空金额" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alertView show];
             return;
         }
