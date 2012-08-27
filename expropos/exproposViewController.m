@@ -39,6 +39,7 @@
 @synthesize managedObjectContext;
 @synthesize persistentStoreCoordinator;
 @synthesize applicationDocumentsDirectory;
+@synthesize waitting;
 @synthesize users=_users;
 @synthesize phonelable;
 @synthesize userArray=_userArray;
@@ -156,6 +157,7 @@
         NSArray *deals = [ExproUser objectsWithFetchRequest:request];
         NSLog(@"%i",deals.count);
         [self.sign signin:username password:password stroeId:[NSString stringWithFormat:@"%i",orgIdint]]; 
+        [self.waitting startAnimating];
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
@@ -403,6 +405,7 @@
     [self setPhonelable:nil];
    
     [self setOrglabel:nil];
+    [self setWaitting:nil];
     [super viewDidUnload];
     
     activeTextField = nil;
@@ -570,6 +573,7 @@
 
 -(void)didLoginSuccess:(NSString *)roleId
 {
+    [self.waitting stopAnimating];
     exproposAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     if ([roleId intValue] == 2)
     {

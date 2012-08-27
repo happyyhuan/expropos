@@ -624,6 +624,7 @@
     if(!_memberRegister){
         _memberRegister = [self.storyboard instantiateViewControllerWithIdentifier:@"memberRegister"];
     }
+    _memberRegister.viewController = self;
     _memberRegister.modalPresentationStyle = UIModalPresentationFormSheet;
     _memberRegister.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
     [self presentModalViewController:_memberRegister animated:YES];

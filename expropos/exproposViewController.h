@@ -39,6 +39,7 @@
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, readonly) NSString *applicationDocumentsDirectory;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *waitting;
 
 
 @property (nonatomic, retain) UITapGestureRecognizer *tapGesture;

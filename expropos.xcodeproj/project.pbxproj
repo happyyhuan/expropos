@@ -140,7 +140,6 @@
 		917EFBA21574B251006D9B03 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA11574B251006D9B03 /* MobileCoreServices.framework */; };
 		917EFBA41574B25E006D9B03 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA31574B25E006D9B03 /* Security.framework */; };
 		917EFBA61574B269006D9B03 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA51574B269006D9B03 /* SystemConfiguration.framework */; };
-		917EFBA81574B285006D9B03 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA71574B285006D9B03 /* QuartzCore.framework */; };
 		917EFBAA1574B295006D9B03 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 917EFBA91574B295006D9B03 /* libxml2.dylib */; };
 		9187C5121589E1AF00AF5776 /* ExproRestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */; };
 		918848601588448C0028B1AE /* exproposRestkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188485F1588448C0028B1AE /* exproposRestkit.m */; };
@@ -415,7 +414,6 @@
 		917EFBA11574B251006D9B03 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		917EFBA31574B25E006D9B03 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		917EFBA51574B269006D9B03 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		917EFBA71574B285006D9B03 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		917EFBA91574B295006D9B03 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		9187C5101589E1AF00AF5776 /* ExproRestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproRestDelegate.h; sourceTree = "<group>"; };
 		9187C5111589E1AF00AF5776 /* ExproRestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproRestDelegate.m; sourceTree = "<group>"; };
@@ -454,7 +452,6 @@
 				5F96FE4A15B82F5800A8731B /* AVFoundation.framework in Frameworks */,
 				5F95C8E815A82C1F006AB1F6 /* Foundation.framework in Frameworks */,
 				917EFBAA1574B295006D9B03 /* libxml2.dylib in Frameworks */,
-				917EFBA81574B285006D9B03 /* QuartzCore.framework in Frameworks */,
 				917EFBA61574B269006D9B03 /* SystemConfiguration.framework in Frameworks */,
 				917EFBA41574B25E006D9B03 /* Security.framework in Frameworks */,
 				917EFBA21574B251006D9B03 /* MobileCoreServices.framework in Frameworks */,
@@ -856,7 +853,6 @@
 				5F96FE4915B82F5800A8731B /* AVFoundation.framework */,
 				917EFB841574B0B1006D9B03 /* RestKit.xcodeproj */,
 				917EFBA91574B295006D9B03 /* libxml2.dylib */,
-				917EFBA71574B285006D9B03 /* QuartzCore.framework */,
 				917EFBA51574B269006D9B03 /* SystemConfiguration.framework */,
 				917EFBA31574B25E006D9B03 /* Security.framework */,
 				917EFBA11574B251006D9B03 /* MobileCoreServices.framework */,
@@ -1291,7 +1287,7 @@
 				GCC_PREFIX_HEADER = "expropos/expropos-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "expropos/expropos-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/expropos/ZBarSDK\"",
@@ -1313,7 +1309,7 @@
 				GCC_PREFIX_HEADER = "expropos/expropos-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "expropos/expropos-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/expropos/ZBarSDK\"",
