@@ -1038,6 +1038,7 @@
         _statusLabel.textColor = [UIColor blackColor];
         _type =1;
         [_goodsComeBackButton setTitle:@"商品退货" forState:UIControlStateNormal];
+        [self setDisableForButtons:YES];
     }
     
     [self cancels];
