@@ -156,8 +156,9 @@
         request.predicate = predicate;
         NSArray *deals = [ExproUser objectsWithFetchRequest:request];
         NSLog(@"%i",deals.count);
+         [self.waitting startAnimating];
         [self.sign signin:username password:password stroeId:[NSString stringWithFormat:@"%i",orgIdint]]; 
-        [self.waitting startAnimating];
+       
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
@@ -568,7 +569,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return ((interfaceOrientation ==UIDeviceOrientationLandscapeLeft)||(interfaceOrientation ==UIDeviceOrientationLandscapeRight));
+    return  UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 -(void)didLoginSuccess:(NSString *)roleId

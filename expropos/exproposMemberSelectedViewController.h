@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "exproposSysLoad.h"
+#import "exproposSyncModel.h"
 
 @interface exproposMemberSelectedViewController : UITableViewController <UISearchBarDelegate>
 @property (nonatomic,strong) UIViewController *viewController;
@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *freshButton;
 
-@property (nonatomic,strong)exproposSysLoad *sysLoad;
+@property (strong) exproposSyncModel * sync;
 @property (nonatomic,strong) UIPopoverController *popover;
 
 @end

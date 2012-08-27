@@ -74,6 +74,10 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    if(!self.deal){
+        [self.showDealOperate goodsCommeBack:self.showDealOperate.goodsComeBackButton];
+    }
+    
     self.showDealOperate.repeal = self.deal;
     [self reset];
 }
@@ -97,6 +101,10 @@
         button.buttonClickDelegate = self;
     }
     [self addObserver:self forKeyPath:@"deal" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+    
+   
+    _array = [[NSMutableArray alloc]initWithCapacity:20];
+   
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -116,11 +124,38 @@
             
             [str appendFormat:@"时间：%@",[self dateToStr:[_deal createTime]]];
         }
-        _dealInfo.text = str;
+        if(str.length>0){
+            _dealInfo.text = str;
+        }else {
+            _dealInfo.text = @"交易基本信息！";
+        }
+        
+        NSSet *dealItems = _deal.items;
+        if(!_array){
+             _array = [[NSMutableArray alloc]initWithCapacity:20];
+        }
+        [_array removeAllObjects];
+        for(ExproDealItem *item in dealItems){
+            [_array addObject:item];
+        }
+        
         [_dealItemTable reloadData];
     }
     
 }
+
+-(void)disEnableKeys:(BOOL)flag;
+{
+    CGFloat theValue = 1.0;
+    if(!flag){
+        theValue = 0.6;
+    }
+    for (JPStupidButton *button  in self.buttons) {
+        button.enabled=flag;
+        button.alpha=theValue;
+    }
+}
+
 -(NSString *)dateToStr:(NSDate *)date
 {
     //实例化一个NSDateFormatter对象
@@ -138,12 +173,6 @@
     NSLog(@"success");
     self.deal = (ExproDeal*)object;
    
-    NSSet *dealItems = _deal.items;
-    _array = [[NSMutableArray alloc]initWithCapacity:20];
-    for(ExproDealItem *item in dealItems){
-        [_array addObject:item];
-    }
-    [self.dealItemTable reloadData];
 }
 
 -(void)dealQueryFail
@@ -160,7 +189,7 @@
     self.deal = nil;
     _dealInfo.text = @"交易基本信息！";
     _deal = nil;
-    _array = nil;
+    [_array  removeAllObjects];
 }
 
 - (void)viewDidUnload
@@ -334,11 +363,13 @@
 {
     ExproGoods *good = [[_array objectAtIndex:indexPath.row] goods];
     NSMutableArray *data = [NSMutableArray arrayWithArray:_showDealOperate.mySelectedGoods];
-    [data addObject:good];
-    [_showDealOperate.goodsAndAmount setObject:[NSNumber numberWithInt:1] forKey:[good gid]];
-    _showDealOperate.mySelectedGoods = data;
     
-      [_array removeObject:[_array objectAtIndex:indexPath.row]];
+    if(![data containsObject:good]){
+        [data addObject:good];
+        [_showDealOperate.goodsAndAmount setObject:[NSNumber numberWithInt:1] forKey:[good gid]];
+         _showDealOperate.mySelectedGoods = data;
+    }
+    [_array removeObject:[_array objectAtIndex:indexPath.row]];
     [self.dealItemTable reloadData];
 }
 

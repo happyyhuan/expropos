@@ -79,7 +79,7 @@
 	_dealQuery = [[exproposUpdateDeals alloc] init];
     _dealQuery.reserver = self;
     _dealQuery.succeedCallBack = @selector(dealQuerySuccess:);
-    _dealQuery.failedCallBack = @selector(dealQueryFail);
+    _dealQuery.failedCallBack = @selector(dealQueryFail:);
     _dealID.enabled = NO;
     
     _dealItemTable.multipleDelegate = self;
@@ -108,7 +108,7 @@
         }
         if([_deal createTime] ){
             
-            [str appendFormat:@"时间：%@",[self dateToStr:[_deal createTime]]];
+            [str appendFormat:@"交易时间：%@",[self dateToStr:[_deal createTime]]];
         }
         _dealInfo.text = str;
         [_dealItemTable reloadData];
@@ -132,9 +132,9 @@
     self.deal = (ExproDeal*)object;
 }
 
--(void)dealQueryFail
+-(void)dealQueryFail:(NSError*)error
 {
-    NSLog(@"fail");
+    NSLog(@"fail:%@",[error localizedDescription]);
      UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"友情提醒" message:@"本店未能查询到相关交易信息！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alertView show];
     [self reset];
@@ -194,7 +194,9 @@
 - (CGFloat)multipleTableView:(ExproMultipleTableView *)tableView proportionForSegment:(NSInteger)segment
 {
     if(segment == 0){
-        return 0.4;
+        return 0.6;
+    }else if(segment == 1) {
+        return 0.1;
     }else {
         return 0.3;
     }

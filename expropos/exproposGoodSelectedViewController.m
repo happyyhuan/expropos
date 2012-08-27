@@ -27,7 +27,7 @@
 @synthesize searchBar = _searchBar;
 @synthesize merchant = _merchant;
 @synthesize viewController = _viewController;
-@synthesize sysLoad = _sysLoad;
+@synthesize sync = _sync;
 @synthesize mySelectedGoods = _mySelectedGoods;
 @synthesize FlashButton = _FlashButton;
 
@@ -154,10 +154,11 @@
     if(section == 0){
         return 1;
     }
+    
     if(self.searchData == nil){
-        return self.datas.count;
+        return self.datas.count==0 ? 1:self.datas.count;
     }else {
-        return self.searchData.count;
+        return self.searchData.count==0 ? 1:self.searchData.count;
     }
 }
 
@@ -170,7 +171,7 @@
         
       
         if([_viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
-            cell.textLabel.text  =  @"请选择商品";
+            cell.textLabel.text  =  @"请选择商品 重复选择即视为取消！ ";
             return cell;
         }
         
@@ -190,6 +191,11 @@
         if(cell == nil){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier:CellIdentifier];
+        }
+        if(self.datas.count == 0){
+            cell.textLabel.text = @"sorry！查无数据！";
+             cell.detailTextLabel.text = @"";
+            return cell;
         }
         
         id obj = [self.datas objectAtIndex:indexPath.row];
@@ -217,6 +223,12 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier:CellIdentifier];
         }
+        if(self.searchData.count == 0){
+            cell.textLabel.text = @"sorry！查无数据！";
+            cell.detailTextLabel.text = @"";
+            return cell;
+        }
+        
         ExproGoods *g = [self.searchData objectAtIndex:indexPath.row];
         cell.textLabel.text = g.code;
         cell.detailTextLabel.text = g.name;
@@ -243,6 +255,10 @@
         }
         [_mySelectedGoods removeAllObjects];
         [self.tableView reloadData];
+        return;
+    }
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if([cell.textLabel.text isEqualToString:@"sorry！查无数据！"]){
         return;
     }
     if(self.searchData!=nil){
@@ -437,12 +453,13 @@
     
     dispatch_queue_t downloadQueue = dispatch_queue_create("information downloader", NULL);
     dispatch_async(downloadQueue, ^{
-        _sysLoad = [[exproposSysLoad alloc]init];
-        _sysLoad.reserver = self;
-        _sysLoad.succeedCallBack = @selector(updateSuccess);
-        exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
-        NSString *gidstr = [NSString stringWithFormat:@"%i",appdelegate.currentUser.gid.intValue];
-        [_sysLoad loadSysData:gidstr completion:nil];
+        _sync = [[exproposSyncModel alloc] init];
+        _sync.reserver = self;
+        _sync.succeedCallBack = @selector(updateSuccess);
+//        exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+//        NSString *gidstr = [NSString stringWithFormat:@"%i",appdelegate.currentUser.gid.intValue];
+        //[_sysLoad loadSysData:gidstr completion:nil];
+        [_sync syncMerchant];
     });
     dispatch_release(downloadQueue);    
 }

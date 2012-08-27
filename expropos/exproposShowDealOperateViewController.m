@@ -49,6 +49,11 @@
 @end
 
 @implementation exproposShowDealOperateViewController
+@synthesize memberSelectedButton = _memberSelectedButton;
+@synthesize createMemberButton = _createMemberButton;
+@synthesize dealSelectedButton = _dealSelectedButton;
+@synthesize goodsSelectedButton = _goodsSelectedButton;
+@synthesize memberSavingButton = _memberSavingButton;
 @synthesize scan = _scan;
 @synthesize leftView = _leftView;
 @synthesize rightView = _rightView;
@@ -83,6 +88,9 @@
 @synthesize goodsComeBack = _goodsComeBack;
 @synthesize repeal = _repeal;
 @synthesize signout =_signout;
+@synthesize goodsComebackSelectedButton = _goodsComebackSelectedButton;
+
+
 
 //这个方法是在controller的类在IB中创建,但是通过Xcode实例化controller的时候用的
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -212,7 +220,7 @@
     
     _type = 1;
     
-    
+    [self.goodsComebackSelectedButton addTarget:self action:@selector(showGoodsComebackList:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 //弹出选中会员的基本详细信息
@@ -329,12 +337,17 @@
                 [_goodsSelected.mySelectedGoods removeObject:good];
             }
             [_popover dismissPopoverAnimated:YES];
+        }else {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请确定输入正确的商品编号" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alertView show];
         }
         
         return;
     }
     if([@"结算" isEqualToString:title]){
         if(_mySelectedGoods.count == 0){
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择商品！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alertView show];
             return;
         }
         exproposPayViewController *pay = [self.storyboard instantiateViewControllerWithIdentifier:@"payView"];
@@ -343,6 +356,19 @@
         pay.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
         [self presentModalViewController:pay animated:YES];
         pay.view.superview.frame = CGRectMake(100,250, 850, 430);
+        
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+        CGRect frame = CGRectMake(0, 0, 44, 44);
+        frame.origin.x = pay.view.frame.origin.x - 16;
+        frame.origin.y = pay.view.frame.origin.y -16;
+        button.frame = frame;
+        button.layer.shadowColor = [[UIColor blackColor] CGColor];
+        button.layer.shadowOffset = CGSizeMake(0,4);
+        button.layer.shadowOpacity = 0.3;
+        [button addTarget:self action:@selector(closeModalWindow:) forControlEvents:UIControlEventTouchDown];
+        [pay.view.superview addSubview:button];
         return;
     }
     if(!_isPopover){
@@ -392,6 +418,11 @@
     [self setTopView:nil];
     [self setStatusLabel:nil];
     [self setGoodsComeBackButton:nil];
+    [self setMemberSelectedButton:nil];
+    [self setCreateMemberButton:nil];
+    [self setDealSelectedButton:nil];
+    [self setGoodsSelectedButton:nil];
+    [self setMemberSavingButton:nil];
     [super viewDidUnload];
     _leftView = nil;
     _rightView = nil;
@@ -476,7 +507,8 @@
             break;
         case 1:
         {
-            UITextField *amount = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, _width, _height)];
+            UITextField *amount = [[UITextField alloc] initWithFrame:CGRectMake(0, 15, _width, _height-15)];
+            
             amount.tag = goods.gid.intValue;
             [amount addTarget:self action:@selector(amoutBegin:) forControlEvents:UIControlEventEditingDidBegin];
              amount.tag = indexPath.row;
@@ -656,12 +688,15 @@
         _statusLabel.layer.borderColor = [[UIColor redColor]CGColor];
         _statusLabel.textColor = [UIColor redColor];
         _type =0;
+        [self setDisableForButtons:NO];
         [_goodsComeBackButton setTitle:@"商品销售" forState:UIControlStateNormal];
         
         if(!_goodsComeBack){
             _goodsComeBack = [self.storyboard instantiateViewControllerWithIdentifier:@"goodsComeBack"];
         }
         _goodsComeBack.showDealOperate = self;
+        _goodsComeBack.deal = nil;
+        [_goodsComeBack disEnableKeys:YES];
         _goodsComeBack.modalPresentationStyle = UIModalPresentationFormSheet;
         _goodsComeBack.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
         [self presentModalViewController:_goodsComeBack animated:YES];
@@ -687,7 +722,65 @@
         _statusLabel.textColor = [UIColor blackColor];
         _type =1;
        [_goodsComeBackButton setTitle:@"商品退货" forState:UIControlStateNormal];
+        [self setDisableForButtons:YES];
     }
+}
+
+-(void)setDisableForButtons:(BOOL)flag
+{
+    CGFloat theValue = 1.0;
+    if(!flag){
+        theValue = 0.6;
+    }
+     
+    self.memberSelectedButton.enabled = flag;
+    self.memberSelectedButton.alpha = theValue;
+    self.createMemberButton.enabled = flag;
+    self.createMemberButton.alpha = theValue;
+    self.dealSelectedButton.enabled = flag;
+    self.dealSelectedButton.alpha = theValue;
+    self.memberSavingButton.enabled = flag;
+    self.memberSavingButton.alpha = theValue;
+    
+    for (JPStupidButton *button  in self.buttons) {
+        if([button.titleLabel.text isEqualToString:@"结算"]){
+            continue;
+        }
+        button.enabled=flag;
+        button.alpha=theValue;
+    }
+    
+    self.goodsComebackSelectedButton.hidden = flag;
+    self.goodsSelectedButton.hidden = !flag;
+}
+
+//退货查询响应方法
+-(void)showGoodsComebackList:(id)sender
+{
+    if(!_goodsComeBack){
+        _goodsComeBack = [self.storyboard instantiateViewControllerWithIdentifier:@"goodsComeBack"];
+    }
+    _goodsComeBack.showDealOperate = self;
+    _goodsComeBack.deal = self.repeal;
+    _goodsComeBack.dealID.text =self.repeal? [NSString stringWithFormat:@"%i", self.repeal.gid.intValue]:@"";
+    [_goodsComeBack disEnableKeys:NO];
+    _goodsComeBack.modalPresentationStyle = UIModalPresentationFormSheet;
+    _goodsComeBack.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; 
+    [self presentModalViewController:_goodsComeBack animated:YES];
+    _goodsComeBack.view.superview.frame = CGRectMake(60,100, 880, 450);
+    
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+    CGRect frame = CGRectMake(0, 0, 60, 60);
+    frame.origin.x = _goodsComeBack.view.frame.origin.x - 22;
+    frame.origin.y = _goodsComeBack.view.frame.origin.y -22;
+    button.frame = frame;
+    button.layer.shadowColor = [[UIColor blackColor] CGColor];
+    button.layer.shadowOffset = CGSizeMake(0,4);
+    button.layer.shadowOpacity = 0.3;
+    [button addTarget:self action:@selector(closeModalWindow:) forControlEvents:UIControlEventTouchDown];
+    [_goodsComeBack.view.superview addSubview:button];
 }
 
 - (IBAction)dealQueryByDealID:(UIButton *)sender {
@@ -901,7 +994,7 @@
     
     NSArray *members = [ExproMember findAll];
     for(ExproMember *member in members){
-        if(member.user.gid == appDelegate.currentUser.gid){
+        if(member.user.gid.intValue == appDelegate.currentUser.gid.intValue){
             _deal.dealer = member;
             _deal.store =  member.store;
         }

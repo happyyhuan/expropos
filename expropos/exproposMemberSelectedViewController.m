@@ -31,7 +31,7 @@
 @synthesize updateTime = _updateTime;
 @synthesize viewController = _viewController;
 @synthesize freshButton = _freshButton;
-@synthesize sysLoad = _sysLoad;
+@synthesize sync = _sync;
 @synthesize  popover = _popover;
 
 -(void)awakeFromNib
@@ -70,7 +70,7 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:100];
     for(ExproRole *role in roles){
-        if([role.name isEqualToString:@"商户业主"]||[role.name isEqualToString:@"收银员"]||[role.name isEqualToString:@"店长"]){
+        if([role.name isEqualToString:@"商户业主"]||[role.name isEqualToString:@"收银员"]||[role.name isEqualToString:@"店长"]||[role.name isEqualToString:@"平台管理员"]){
             continue;
         }
         
@@ -375,12 +375,13 @@
     
     dispatch_queue_t downloadQueue = dispatch_queue_create("informations downloader", NULL);
     dispatch_async(downloadQueue, ^{
-        _sysLoad = [[exproposSysLoad alloc]init];
-        _sysLoad.reserver = self;
-        _sysLoad.succeedCallBack = @selector(updateSuccess);
-        exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
-        NSString *gidstr = [NSString stringWithFormat:@"%qu",appdelegate.currentUser.gid.unsignedLongLongValue];
-        [_sysLoad loadSysData:gidstr  completion:nil];
+        _sync = [[exproposSyncModel alloc]init];
+        _sync.reserver = self;
+        _sync.succeedCallBack = @selector(updateSuccess);
+//        exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+//        NSString *gidstr = [NSString stringWithFormat:@"%qu",appdelegate.currentUser.gid.unsignedLongLongValue];
+//        [_sysLoad loadSysData:gidstr  completion:nil];
+        [_sync syncMerchant];
     });
     dispatch_release(downloadQueue);    
 }

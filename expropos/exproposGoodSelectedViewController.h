@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "exproposSysLoad.h"
+#import "exproposSyncModel.h"
 
 @interface exproposGoodSelectedViewController : UITableViewController<UISearchBarDelegate>
 @property (nonatomic,strong)UIViewController *viewController;
@@ -16,7 +16,7 @@
 
 @property (nonatomic,strong)NSMutableArray *searchData;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (nonatomic,strong) exproposSysLoad *sysLoad;
+@property (strong) exproposSyncModel * sync;
 @property (nonatomic,strong)NSMutableArray *mySelectedGoods;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *FlashButton;
 

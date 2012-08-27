@@ -115,6 +115,7 @@
 		5FA0BC3D15D34EB4008ED7AB /* ExproDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0BC3C15D34EB4008ED7AB /* ExproDeal.m */; };
 		5FA0BC4715D39C84008ED7AB /* ExproMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0BC4615D39C84008ED7AB /* ExproMember.m */; };
 		5FA51746159DB58300F9DE5B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FA51744159DB58300F9DE5B /* MainStoryboard.storyboard */; };
+		5FAA6C9815EB1B5C00EE0DC7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FAA6C9715EB1B5C00EE0DC7 /* QuartzCore.framework */; };
 		5FADDD4115A1AC640049FDA2 /* exproposDateSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FADDD4015A1AC640049FDA2 /* exproposDateSelectedViewController.m */; };
 		5FBB2C0C15C1342000C9F470 /* exproposMemberShowInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBB2C0B15C1342000C9F470 /* exproposMemberShowInfoViewController.m */; };
 		5FBB2C1215C13F5F00C9F470 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FBB2C1115C13F5F00C9F470 /* close.png */; };
@@ -373,6 +374,7 @@
 		5FA0BC4515D39C84008ED7AB /* ExproMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExproMember.h; sourceTree = "<group>"; };
 		5FA0BC4615D39C84008ED7AB /* ExproMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExproMember.m; sourceTree = "<group>"; };
 		5FA51745159DB58300F9DE5B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		5FAA6C9715EB1B5C00EE0DC7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5FADDD3F15A1AC640049FDA2 /* exproposDateSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposDateSelectedViewController.h; sourceTree = "<group>"; };
 		5FADDD4015A1AC640049FDA2 /* exproposDateSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exproposDateSelectedViewController.m; sourceTree = "<group>"; };
 		5FBB2C0A15C1342000C9F470 /* exproposMemberShowInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exproposMemberShowInfoViewController.h; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FAA6C9815EB1B5C00EE0DC7 /* QuartzCore.framework in Frameworks */,
 				5F96FE5015B82FC500A8731B /* libiconv.dylib in Frameworks */,
 				5F96FE4E15B82FAA00A8731B /* CoreVideo.framework in Frameworks */,
 				5F96FE4C15B82FA000A8731B /* CoreMedia.framework in Frameworks */,
@@ -847,6 +850,7 @@
 		914BB29215746A6B009FFBAE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FAA6C9715EB1B5C00EE0DC7 /* QuartzCore.framework */,
 				5F96FE4F15B82FC500A8731B /* libiconv.dylib */,
 				5F96FE4D15B82FAA00A8731B /* CoreVideo.framework */,
 				5F96FE4B15B82FA000A8731B /* CoreMedia.framework */,
@@ -1287,7 +1291,7 @@
 				GCC_PREFIX_HEADER = "expropos/expropos-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "expropos/expropos-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/expropos/ZBarSDK\"",
@@ -1309,7 +1313,7 @@
 				GCC_PREFIX_HEADER = "expropos/expropos-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "expropos/expropos-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/expropos/ZBarSDK\"",

@@ -53,8 +53,8 @@
 	_keyboards.layer.borderWidth = 3;
     _keyboards.layer.borderColor = [[UIColor grayColor] CGColor];
 
-    self.view.layer.borderWidth = 10;
-    self.view.layer.borderColor = [[UIColor blackColor] CGColor];
+    self.view.layer.borderWidth = 3;
+    self.view.layer.borderColor = [[UIColor grayColor] CGColor];
     
     _shouleGetMoney.text = [NSString stringWithFormat:@"应收：¥%@",_showOperate.allGoodsPayments.text];
     _shouldPopMoney.text = @"¥0";
@@ -114,6 +114,7 @@
   
     _shouldPopMoney.text = [NSString stringWithFormat:@"¥%g",(_haveGetMoney.text.doubleValue - _showOperate.allGoodsPayments.text.doubleValue)];
 }
+
 - (IBAction)finish:(id)sender {
     if(_haveGetMoney.text.doubleValue < _showOperate.allGoodsPayments.text.doubleValue){
         return;

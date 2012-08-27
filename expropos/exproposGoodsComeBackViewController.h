@@ -28,4 +28,6 @@
 
 @property (strong, nonatomic) IBOutletCollection(JPStupidButton) NSArray *buttons;
 
+-(void)disEnableKeys:(BOOL)flag;
+
 @end

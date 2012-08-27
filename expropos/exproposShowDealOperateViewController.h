@@ -40,8 +40,19 @@
 @property (strong, nonatomic) IBOutlet UIView *topView;//顶部视图
 
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;//用于显示是交易状态还是商品退货状态
-@property (strong, nonatomic) IBOutlet UIButton *goodsComeBackButton;//商品退货按钮
 @property (strong, nonatomic) exproposSignout *signout;//退出restkit对象，用于远程服务器通信
+@property (strong, nonatomic) IBOutlet UIButton *goodsComebackSelectedButton;//退货查询按钮
+
+
+@property (strong, nonatomic) IBOutlet UIButton *memberSelectedButton;//会员选择按钮
+@property (strong, nonatomic) IBOutlet UIButton *createMemberButton;//会员创建按钮
+@property (strong, nonatomic) IBOutlet UIButton *dealSelectedButton;//交易查询按钮
+@property (strong, nonatomic) IBOutlet UIButton *goodsSelectedButton;//商品选择按钮
+@property (strong, nonatomic) IBOutlet UIButton *memberSavingButton;//会员充值按钮
+@property (strong, nonatomic) IBOutlet UIButton *goodsComeBackButton;//商品退货按钮
+
+
+
 
 //会员充值按钮响应方法
 - (IBAction)addMemberSaving:(UIButton *)sender;
@@ -88,6 +99,7 @@
 @property (strong, nonatomic)  UINavigationController *nav;
 //用于表示交易的类型
 @property (nonatomic) NSInteger type;
+
 //退货时与退货商品相关联的交易
 @property (nonatomic,strong) ExproDeal *repeal;
 
