@@ -16,6 +16,7 @@
 #import "JFBCrypt.h"
 #import "ExproRole.h"
 #import "MyButton.h"
+#import "ExproStore.h"
 
 
 #import "exproposAppDelegate.h"
@@ -180,7 +181,7 @@
     NSLog(@"signin roleid:%@", [role objectForKey:@"gid"]);   
 
     NSString *roleid = [role objectForKey:@"gid"]; 
-     NSLog(@"signin roleid:%@", roleid);
+    
         
     exproposAppDelegate *appDelegate = (exproposAppDelegate *)[[UIApplication sharedApplication]delegate];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -192,25 +193,20 @@
     
     //登录成功后保存登录用户历史信息
     RKObjectManager *manager = [RKObjectManager sharedManager];
-    
-    //查找是否存在user用户
-    NSFetchRequest *request = [ExproUser fetchRequest];
-    NSPredicate *predicate = nil;
-    NSMutableString *str = [[NSMutableString alloc]initWithString:@"(cellphone=%@)" ];
-    NSMutableArray *params = [[NSMutableArray alloc]initWithObjects:username, nil];
-    
-    predicate = [NSPredicate predicateWithFormat:str argumentArray:params];
-    
-    NSLog(@"%@",predicate);
-    request.sortDescriptors = [[NSArray alloc]initWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO], nil];
-    request.predicate = predicate;
-    NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+ 
+//    //查找是否存在user用户
+    NSArray *allMemebers = [NSMutableArray arrayWithArray:[ExproMember findAll]];
     ExproUser *signUser = nil;
-    if (deals.count)
+
+    for (ExproMember *mem in allMemebers )
     {
-        signUser = (ExproUser *)[deals objectAtIndex:0];
-    }
-    else 
+        if ([mem.user.cellphone isEqualToString:_userField.text])
+        {
+            signUser = mem.user;
+            roleid = mem.roleID.stringValue;
+        }
+    }    
+    if (!signUser)
     {
         signUser = [ExproUser object];
         signUser.cellphone = username;
@@ -219,6 +215,7 @@
         signUser.name = [user objectForKey:@"name"];
         signUser.gid = [user objectForKey:@"gid"];
     }
+        
     
     ExproSignHistory * signHistory = [ExproSignHistory object];
     signHistory.gid = [user objectForKey:@"gid"];
@@ -262,7 +259,7 @@
             _userField.text = nil;
             _passwordField.text=nil;  
         }
-        [self signinSucceed:object];
+        //[self signinSucceed:object];
     }
     
 
