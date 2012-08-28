@@ -15,12 +15,12 @@
 - (id)init {
     self = [super init];
     if (self) {
-        [self addCode:200 info:NSLocalizedString(@"删除成功", nil) alert:NO succeed:YES];
+        [self addCode:202 info:NSLocalizedString(@"门店信息删除成功", nil) alert:YES succeed:YES];
         [self addCode:201 info:NSLocalizedString(@"createSucceed", nil) alert:NO succeed:YES];
         [self addCode:403 info:NSLocalizedString(@"ForbidUser", nil) alert:YES succeed:NO];
         
-        self.succeedTitle = NSLocalizedString(@"LoginSucceed", nil);
-        self.errorTitle = NSLocalizedString(@"LoginFailed", nil);
+        self.succeedTitle = NSLocalizedString(@"warning", nil);
+        self.errorTitle = NSLocalizedString(@"warning", nil);
         self.reserver = self;
     }
     return self;
@@ -33,21 +33,6 @@
                                                otherButtonTitles:nil];
     [_alertView show];
 }
-
-//- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
-//    
-//    if (response.statusCode == 201)
-//    {
-//        self.statusCode = response.statusCode;
-//        self.errorTitle = NSLocalizedString(@"Warning", nil);        UIAlertView *_alertView = [[UIAlertView alloc] initWithTitle:@"OK"
-//                                                             message:@"OK"
-//                                                            delegate:nil
-//                                                   cancelButtonTitle:@"OK"
-//                                                   otherButtonTitles:nil];
-//        [_alertView show];
-//    }
-//}
-
 -(void)storeAdd:(NSString *)storeName merchant:(NSString *)merchant_id  state:(NSString *)state inventar:(NSString *)inventar_num district:(NSString *) district_code address:(NSString *)address transit:(NSString *)transit_info  map:(NSString *)map_info
     notice:(NSString *)notice  comment:(NSString *)comment 
 {
