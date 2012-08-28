@@ -17,6 +17,8 @@
         [self addCode:204 info:NSLocalizedString(@"Not Content", nil) alert:YES succeed:NO];
         [self addCode:401 info:NSLocalizedString(@"Unauthorized", nil) alert:YES succeed:NO];
          [self addCode:400 info:NSLocalizedString(@"not found", nil) alert:NO succeed:NO];
+         [self addCode:502 info:NSLocalizedString(@"server error", nil) alert:NO succeed:NO];
+        
         self.succeedTitle = NSLocalizedString(@"UpDateSucceed", nil);
         self.errorTitle = NSLocalizedString(@"UpdateFailed", nil);
        

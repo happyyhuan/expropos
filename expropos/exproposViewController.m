@@ -471,11 +471,11 @@
     {
         if (keyboardFrame.origin.x == 0)
         {
-            minMoveUpDeltaY =  220 ;
+            minMoveUpDeltaY =  240 ;
 
         }
         else {
-            minMoveUpDeltaY = 220;       
+            minMoveUpDeltaY = 240;       
         }
         
         
@@ -521,8 +521,7 @@
         {
             if (keyboardFrame.origin.x == 0)
             {
-                f.
-                origin.x -= minMoveUpDeltaY;
+                f.origin.x -= minMoveUpDeltaY;
             }
             else
             {

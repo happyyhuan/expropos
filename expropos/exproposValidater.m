@@ -24,7 +24,8 @@
         [self addCode:202 info:NSLocalizedString(@"canCreate", nil) alert:NO succeed:YES];
 
         [self addCode:406 info:NSLocalizedString(@"canCreate", nil) alert:NO succeed:NO];
-
+        [self addCode:502 info:NSLocalizedString(@"server error", nil) alert:NO succeed:NO];
+        
         self.succeedTitle = NSLocalizedString(@"sigoutSucceed", nil);
     }
     return self;

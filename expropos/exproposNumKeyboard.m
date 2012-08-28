@@ -75,7 +75,7 @@
             }
             
             if(_goodsNum.text.intValue<=0){
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message: @"退货数量不能小于0 " delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message: @"商品数量不能小于0 " delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [alertView show];
                 return;
             }

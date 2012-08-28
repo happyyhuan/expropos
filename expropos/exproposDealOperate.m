@@ -15,7 +15,9 @@
         [self addCode:201 info:NSLocalizedString(@"CreateSucceed", nil) alert:NO succeed:YES];
         [self addCode:401 info:NSLocalizedString(@"UnAuthoried", nil) alert:YES succeed:NO];
         [self addCode:400 info:NSLocalizedString(@"bad request", nil) alert:YES succeed:NO];
-      
+        [self addCode:403 info:NSLocalizedString(@"无权限进入", nil) alert:NO succeed:NO];
+        [self addCode:502 info:NSLocalizedString(@"server error", nil) alert:NO succeed:NO];
+        
         self.succeedTitle = NSLocalizedString(@"CreateSucceed", nil);
         self.errorTitle = NSLocalizedString(@"CreateFailed", nil);
     }

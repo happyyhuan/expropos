@@ -19,6 +19,7 @@
         [self addCode:202 info:NSLocalizedString(@"deleteOK", nil) alert:NO succeed:YES];
         [self addCode:400 info:NSLocalizedString(@"badRequset", nil) alert:YES succeed:NO];
         [self addCode:404 info:NSLocalizedString(@"notAcceptable", nil) alert:YES succeed:NO];
+        
         self.succeedTitle = NSLocalizedString(@"LoginSucceed", nil);
         self.errorTitle = NSLocalizedString(@"LoginFailed", nil);
         self.reserver = self;

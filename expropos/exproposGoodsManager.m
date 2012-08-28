@@ -17,6 +17,8 @@
         [self addCode:201 info:NSLocalizedString(@"createSucceed", nil) alert:NO succeed:YES];
         [self addCode:200 info:NSLocalizedString(@"UpdateSucceed", nil) alert:NO succeed:YES];
          [self addCode:202 info:NSLocalizedString(@"deleteSucceed", nil) alert:NO succeed:YES];
+        [self addCode:502 info:NSLocalizedString(@"server error", nil) alert:NO succeed:NO];
+        
         self.succeedTitle = NSLocalizedString(@"GoodsSucceed", nil);
         self.errorTitle = NSLocalizedString(@"GoodsFailed", nil);
         

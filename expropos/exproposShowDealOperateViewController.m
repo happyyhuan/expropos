@@ -622,7 +622,7 @@
 
 - (IBAction)addMemberSaving:(UIButton *)sender {
     if(!_member){
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示 " message:@"请先选择会员，谢谢！" delegate:self cancelButtonTitle:@"确定 " otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示 " message:@"请先选择会员，谢谢！" delegate:nil cancelButtonTitle:@"确定 " otherButtonTitles:nil, nil];
         [alertView show];
         return;
     }
@@ -1062,13 +1062,16 @@
         [_goodsComeBackButton setTitle:@"商品退货" forState:UIControlStateNormal];
         [self setDisableForButtons:YES];
     }
-    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"交易成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alertView show];
     [self cancels];
 }
 
 -(void)createDealfail
 {
     NSLog(@"fail");
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"交易失败，请稍后再试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alertView show];
 }
 
 
