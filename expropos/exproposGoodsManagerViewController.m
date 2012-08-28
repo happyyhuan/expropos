@@ -749,6 +749,10 @@
 -(NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(self.searchData == nil){
+        if(indexPath.section == 0){
+            return 0;
+        }
+        
         int level;
         id obj = [self.datas objectAtIndex:indexPath.row];
         if([obj isKindOfClass:[ExproGoodsType class]]){
@@ -821,8 +825,6 @@
     }
     
     return cell;
-    
-    
 }
 
 //选择商品时进行的处理
