@@ -60,9 +60,9 @@ int selectedPloyee =0;
     
     //获取该商户下所有会员
    NSArray *allMemebers = [NSMutableArray arrayWithArray:[ExproMember findAll]];
-     NSMutableArray *members = [NSMutableArray arrayWithArray:[ExproMember findAll]];
-    exproposAppDelegate *appDelegate =[[UIApplication sharedApplication]delegate];
-    NSString *orgId = appDelegate.currentOrgid ;
+//     NSMutableArray *members = [NSMutableArray arrayWithArray:[ExproMember findAll]];
+//    exproposAppDelegate *appDelegate =[[UIApplication sharedApplication]delegate];
+//    NSString *orgId = appDelegate.currentOrgid ;
      NSArray *allStore = [ExproStore findAll];
     
 //    for (int i = 0 ; i < allMemebers.count;i++)

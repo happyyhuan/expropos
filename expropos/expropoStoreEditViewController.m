@@ -143,9 +143,7 @@
     else if(textView.tag == 5)
         {
             self.storeComment = textView.text;
-        }
-    
-    
+        }    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

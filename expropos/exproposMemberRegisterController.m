@@ -1186,7 +1186,7 @@ BOOL isModify = NO;
 
 - (void) modifySucceed:(id)object {
     NSLog(@"%@",object);
-    NSDictionary *dic = (NSDictionary*)object;
+//    NSDictionary *dic = (NSDictionary*)object;
  //  NSString *gid = [[dic valueForKey:@"member"] valueForKey:@"gid"];
            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
                                                     message:@"用户信息修改成功" 

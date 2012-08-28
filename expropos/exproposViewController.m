@@ -97,8 +97,8 @@
                 NSLog(@"%@",predicate);
                 
                 request.predicate = predicate;
-                NSArray *deals = [ExproUser objectsWithFetchRequest:request];
-                ExproSignHistory *history = [deals objectAtIndex:0];
+                //NSArray *deals = [ExproUser objectsWithFetchRequest:request];
+                //ExproSignHistory *history = [deals objectAtIndex:0];
                 
                 
                 _userField.text = user.cellphone;

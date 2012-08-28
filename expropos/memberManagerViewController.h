@@ -12,7 +12,7 @@
 #import "exproposMemberRegisterController.h"
 #import "exproposRegistr.h"
 
-@interface memberManagerViewController : UIViewController 
+@interface memberManagerViewController : UIViewController <UISearchBarDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *memberTabelView;
 @property (strong, nonatomic) IBOutlet UIView *memberDetailView;
 @property (strong, nonatomic) IBOutlet UIView *bannerView;
