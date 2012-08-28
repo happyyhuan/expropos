@@ -398,7 +398,7 @@
     _goodsCode.text = newStr;
     
     [_goodsSelected searchWithNameOrId:newStr];
-   
+    _goodsSelected.searchBar.text = @"";
     
     
 }
@@ -848,12 +848,16 @@
 
 
 - (void)goBack:(id)sender {
-    _signout = [[exproposSignout alloc]init];
-
-    _signout.reserver = self;
-    _signout.succeedCallBack = @selector(didSignout);
-    _signout.contrller = self;
-    [_signout signout];
+//    if (self.mySelectedGoods.count > 0) {
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message: @"交易还未完成，确认退出？" delegate: self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+//        [alertView show];
+//    }else {
+        _signout = [[exproposSignout alloc]init];
+        _signout.reserver = self;
+        _signout.succeedCallBack = @selector(didSignout);
+        _signout.contrller = self;
+        [_signout signout];
+//    }
 }
 
 -(void)didSignout
@@ -863,6 +867,14 @@
     
 }
 
+
+#pragma mark UIAlertView delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"%i",buttonIndex);
+}
+
+#pragma mark -
 
 -(void)finishGoodsSelected
 {

@@ -26,7 +26,7 @@
 @class exproposScanViewController;
 
 //交易主界面
-@interface exproposShowDealOperateViewController : UIViewController <ExproMutableTableViewDataSource,ExproMutableTableViewDelegate,ButtonClick>
+@interface exproposShowDealOperateViewController : UIViewController <ExproMutableTableViewDataSource,ExproMutableTableViewDelegate,ButtonClick,UIAlertViewDelegate>
 @property (strong, nonatomic) exproposScanViewController *scan;//扫描控制器
 @property (strong,nonatomic) IBOutlet UIView *leftView;//左视图
 @property (strong,nonatomic) IBOutlet UIView *rightView;//右视图

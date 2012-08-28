@@ -117,6 +117,8 @@
 
 - (IBAction)finish:(id)sender {
     if(_haveGetMoney.text.doubleValue < _showOperate.allGoodsPayments.text.doubleValue){
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示 " message:@"请继续付款" delegate:nil cancelButtonTitle:@"确定 " otherButtonTitles:nil, nil];
+        [alertView show];
         return;
     }
     [_showOperate finish];

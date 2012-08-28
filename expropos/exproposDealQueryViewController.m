@@ -79,7 +79,7 @@
 	_dealQuery = [[exproposUpdateDeals alloc] init];
     _dealQuery.reserver = self;
     _dealQuery.succeedCallBack = @selector(dealQuerySuccess:);
-    _dealQuery.failedCallBack = @selector(dealQueryFail:);
+    _dealQuery.failedCallBack = @selector(dealQueryFail);
     _dealID.enabled = NO;
     
     _dealItemTable.multipleDelegate = self;
@@ -132,9 +132,8 @@
     self.deal = (ExproDeal*)object;
 }
 
--(void)dealQueryFail:(NSError*)error
+-(void)dealQueryFail
 {
-    NSLog(@"fail:%@",[error localizedDescription]);
      UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"友情提醒" message:@"本店未能查询到相关交易信息！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alertView show];
     [self reset];
