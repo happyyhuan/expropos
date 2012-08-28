@@ -70,4 +70,8 @@
     [self requestURL:@"/signin" method:RKRequestMethodPOST params:params mapping:signinMapping];
 
 }
+
+- (void)failed:(NSError *)error {
+    NSLog(@"login failed");
+}
 @end
