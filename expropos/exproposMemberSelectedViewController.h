@@ -25,4 +25,5 @@
 @property (strong) exproposSyncModel * sync;
 @property (nonatomic,strong) UIPopoverController *popover;
 
+-(void)loadData;
 @end

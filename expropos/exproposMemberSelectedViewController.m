@@ -52,27 +52,31 @@
 
 -(void)loadData
 {
-    ExproMerchant *merchant = nil;
-    exproposAppDelegate *appdelegate = [[UIApplication sharedApplication] delegate  ];
-    NSArray *members = [ExproMember findAll];
-    for(ExproMember *member in members){
-        if(member.user.gid.intValue == appdelegate.currentUser.gid.intValue){
-            merchant = member.org;
+    NSArray *allMemebers = [NSMutableArray arrayWithArray:[ExproMember findAll]];
+    exproposAppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    NSString *orgId = appDelegate.currentOrgid ;
+   
+    NSMutableArray *alls = [[NSMutableArray alloc] initWithCapacity:20];
+    for (int i = 0 ; i < allMemebers.count;i++)
+    {
+        ExproMember *mem = [allMemebers objectAtIndex:i];
+        
+        if ([mem.orgID.stringValue isEqualToString:orgId])
+        {
+            [alls addObject:mem];
         }
     }
      //初始化会员选择数据
      
-     NSSet *alls =  merchant.members;
+    
     NSArray *roles = [ExproRole findAll];
     
-    
-    
-    
+
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:100];
     for(ExproRole *role in roles){
-        if([role.name isEqualToString:@"商户业主"]||[role.name isEqualToString:@"收银员"]||[role.name isEqualToString:@"店长"]||[role.name isEqualToString:@"平台管理员"]){
-            continue;
-        }
+//        if([role.name isEqualToString:@"商户业主"]||[role.name isEqualToString:@"收银员"]||[role.name isEqualToString:@"店长"]||[role.name isEqualToString:@"平台管理员"]){
+//            continue;
+//        }
         
         NSMutableArray *tmpMembers = [[NSMutableArray alloc]initWithCapacity:20];
         for(ExproMember *m in alls){

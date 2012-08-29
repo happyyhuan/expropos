@@ -238,7 +238,7 @@
     }
     int row = indexPath.row;
     if(row == 0){
-        cell.imageView.image = [UIImage imageNamed:@"member.png"];
+        cell.imageView.image = [UIImage imageNamed:@"会员头像.png"];
         cell.detailTextLabel.text = _member.petName;
     }
 

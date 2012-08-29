@@ -64,7 +64,7 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
        params = [NSDictionary dictionaryWithObjectsAndKeys:
                             memPetName,@"pet_name",       
                             user.cellphone,@"cellphone",
-                            @"1",@"role_id",
+                            @"51",@"role_id",
                              @"1",@"state",
                             user.sex.stringValue,@"sex",
                             [self dateToString:user.birthday],@"birthday",
@@ -80,7 +80,7 @@ sex:(NSString *)sex saving:(NSString *)savings point:(NSString *)point dueTime:(
         params = [NSDictionary dictionaryWithObjectsAndKeys:
                   memPetName,@"pet_name",
                   cellphone,@"cellphone",
-                  @"1",@"role_id",
+                  @"51",@"role_id",
                   @"1",@"state",
                   sex,@"sex",
                   birthDate,@"birthday",

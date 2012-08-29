@@ -22,4 +22,6 @@
 //bt=时间起点&et=截至时间&customer_id=23&type=2
 -(void)queryDealAmountByCutomerID:(NSNumber  *)customer_id type:(NSNumber *)type beginTime:(NSDate*)bt endTime:(NSDate*)et;
 -(void)queryDealByCustomerID:(NSNumber *)customer_id start:(int)start limit:(int)limit type:(int)type bt:(NSDate*)bt et:(NSDate *)et;
+-(void)queryDealsStart:(int)start limit:(int)limit bt:(NSDate*)bt et:(NSDate*)et memberIds:(NSArray *)ids types:(NSArray*)types payTypes:(NSArray*)payTyes storeIds:(NSArray *)storeIds minAmount:(double)min maxAmount:(double)max;
+-(void)queyDealCountsStart:(int)start limit:(int)limit bt:(NSDate*)bt et:(NSDate*)et memberIds:(NSArray *)ids types:(NSArray*)types payTypes:(NSArray*)payTyes storeIds:(NSArray *)storeIds minAmount:(double)min maxAmount:(double)max;
 @end

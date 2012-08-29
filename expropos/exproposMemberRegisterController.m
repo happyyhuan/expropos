@@ -17,6 +17,8 @@
 #import "ExproMember.h"
 #import "exproposPrivacyController.h"
 #import "ExproUser.h"
+#import "exproposShowDealOperateViewController.h"
+#import "exproposMemberSelectedViewController.h"
 
 
 @interface exproposMemberRegisterController ()
@@ -1248,12 +1250,18 @@ BOOL isModify = NO;
         self.memPetName = nil;
         [self.tableView reloadData];
         
+        if([_viewController isKindOfClass:[memberManagerViewController class]]){
+            memberManagerViewController *memberManager = (memberManagerViewController*)_viewController;
+            [memberManager performSelector:@selector(getMembers)];
+            [memberManager performSelector:@selector(rest)];
+            [memberManager.memberTabelView reloadData];
+        }
         
-        memberManagerViewController *memberManager = (memberManagerViewController*)_viewController;
-        [memberManager performSelector:@selector(getMembers)];
-        [memberManager performSelector:@selector(rest)];
-        [memberManager.memberTabelView reloadData];
-        
+//        if([_viewController isKindOfClass:[exproposShowDealOperateViewController class]]){
+//            exproposShowDealOperateViewController *showVc = (exproposShowDealOperateViewController*)_viewController;
+//            [showVc.memberSelected loadData];
+//            [showVc.memberSelected.tableView reloadData];
+//        }
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)

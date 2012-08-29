@@ -83,43 +83,40 @@
 //交易查询，先查询本地，然后查询远端服务器
 -(void)dealSelect
 {
-    self.showDeals.dealNum = 0;
-    self.showDeals.pageNum = 0;
+   
     self.showDeals.scrollUpdateFlag = YES;
-    //本地查询
-    [self searchInLoacl];
-    
-    //本地查询未果，远端查询
-    if([_deals count]==0){
         _update = [[exproposUpdateDeals alloc]init];
         _update.reserver = self;
-        _update.succeedCallBack = @selector(didUpDataSuccess);
-        _update.failedCallBack = @selector(didUpDataSuccess);
+    _update.succeedCallBack = @selector(getDealCountSuccess:);
+        _update.failedCallBack = @selector(getDealCountFail);
         self.showDeals.pageNum = 1;
-        [_update upDateDealStart:0 end:100 bt:self.beginDate et:self.endDate];
-        
-    }else {//本地查询有结果
-        _showDeals.data = _deals;
-        [UIView beginAnimations:@"View Flip" context:nil];
-        [UIView setAnimationDuration:2];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        
-        UIView *superView  = _showDeals.tableView.superview;
-        
-        
-        
-        
-        [UIView setAnimationTransition:
-         UIViewAnimationTransitionFlipFromRight forView:_showDeals.tableView cache:YES];
-        [_showDeals.tableView removeFromSuperview];
-        [superView insertSubview:_showDeals.tableView atIndex:0];
-        
-        [UIView commitAnimations];
-        [_showDeals.tableView reloadData];
-        [self.myPopover dismissPopoverAnimated:YES];
+    NSMutableArray *memberIds = [[NSMutableArray alloc] initWithCapacity:20];
+    if(self.members.count>0){
+    for(ExproMember *m in self.members){
+        [memberIds addObject:[NSNumber numberWithInt:m.gid.intValue]];
     }
+    }
+    NSMutableArray *stores = [[NSMutableArray alloc] initWithCapacity:20];
+    if(self.stores.count>0){
+        for(ExproStore *store in self.stores){
+            [stores addObject:[NSNumber numberWithInt:store.gid.intValue]];
+        }
+    }
+        
+    [_update queyDealCountsStart:0 limit:100 bt:self.beginDate et:self.endDate memberIds:memberIds types:self.dealItems payTypes:self.payTypes storeIds:stores minAmount:self.fromAmoutOfMoney.doubleValue maxAmount:self.endAmoutOfMoney.doubleValue];
+        
+        
 }
-
+-(void)getDealCountSuccess:(id)obj
+{
+    NSMutableDictionary *dic = (NSMutableDictionary *)obj;
+    NSLog(@"%@",dic);
+}
+-(void)getDealCountFail
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"查询失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alertView show];
+}
 
 //安照查询条件进行本地查询
 -(void) searchInLoacl

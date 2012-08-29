@@ -97,6 +97,10 @@
 {
     if([keyPath isEqualToString:@"deal"]){
         NSMutableString *str = [[NSMutableString alloc]initWithCapacity:20];
+        if([_deal type]){
+          NSArray *types = [NSArray arrayWithObjects:@"消费撤",@"消费",@"充值",@"充值撤销",@"积分增加",@"积分消费",@"积分撤销",@"退货退款",@"抽奖",@"手工调整", nil];
+            [str appendFormat:@"交易类型:%@ ",[types objectAtIndex:_deal.type.intValue]];
+        }
         if([[_deal store] name]){
             [str appendFormat:@"店铺：%@ ",[[_deal store] name]];
         }
@@ -110,6 +114,7 @@
             
             [str appendFormat:@"交易时间：%@",[self dateToStr:[_deal createTime]]];
         }
+        
         _dealInfo.text = str;
         [_dealItemTable reloadData];
     }

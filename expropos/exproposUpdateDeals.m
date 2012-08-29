@@ -38,6 +38,106 @@
     
 }
 
+-(void)upDateDealStart:(int)start limit:(int)limit bt:(NSDate*)bt et:(NSDate*)et memberIds:(NSArray *)memberIds types:(NSArray*)types payTypes:(NSArray*)payTyes storeIds:(NSArray *)storeIds minAmount:(double)min maxAmount:(double)max
+{
+    /*
+     /deals?qy_customer_ids=159,23,155,24,25&qy_store_ids=111,112,13&qy_type=1&qy_pay_type=3&qy_payment_min=10&qy_payment_max=500
+     */
+     NSMutableString *url = [NSMutableString stringWithFormat:@"/deals?start=%i&limit=%i",start,limit];
+    if(bt){
+        [url appendFormat:@"&bt=%@",[self dateToString:bt]];
+    }
+    if(et){
+        [url appendFormat:@"&et=%@",[self dateToString:et]];
+    }
+    if(memberIds.count>0){
+        [url appendFormat:@"&qy_customer_ids="];
+        for(NSNumber *idx in memberIds){
+            [url appendFormat:@"%i,",idx.intValue];
+        }
+    }
+    if(types.count>0){
+        [url appendFormat:@"&qy_type="];
+        for(NSNumber *idx in types){
+            [url appendFormat:@"%i,",idx.intValue];
+        }
+    }
+    if(payTyes.count>0){
+        [url appendFormat:@"&qy_pay_type="];
+        for(NSNumber *idx in payTyes){
+            [url appendFormat:@"%i,",idx.intValue];
+        }
+    }
+    if(storeIds.count>0){
+        [url appendFormat:@"&qy_store_ids="];
+        for(NSNumber *idx in storeIds){
+            [url appendFormat:@"%i,",idx.intValue];
+        }
+    }
+    if(min>0){
+        [url appendFormat:@"&qy_payment_min=%g",min];
+    }
+    if(max>0){
+        [url appendFormat:@"&qy_payment_max=%g",max];
+    }
+    
+    [self requestURL:url method:RKRequestMethodGET params:nil mapping:nil];
+    
+}
+
+-(void)queyDealCountsStart:(int)start limit:(int)limit bt:(NSDate*)bt et:(NSDate*)et memberIds:(NSArray *)memberIds types:(NSArray*)types payTypes:(NSArray*)payTyes storeIds:(NSArray *)storeIds minAmount:(double)min maxAmount:(double)max
+{
+    NSMutableString *url = [NSMutableString stringWithFormat:@"/deal/count?start=%i&limit=%i",start,limit];
+    if(bt){
+        [url appendFormat:@"&bt=%@",[self dateToString:bt]];
+    }
+    if(et){
+        [url appendFormat:@"&et=%@",[self dateToString:et]];
+    }
+    if(memberIds.count>0){
+        [url appendFormat:@"&qy_customer_ids="];
+        for(NSNumber *idx in memberIds){
+            [url appendFormat:@"%i,",idx.intValue];
+        }
+        NSRange range = NSMakeRange (url.length-1, 1);
+        [url deleteCharactersInRange:range];
+    
+    }
+    if(types.count>0){
+        [url appendFormat:@"&qy_type="];
+        for(NSNumber *idx in types){
+            [url appendFormat:@"%i,",idx.intValue];
+        }
+        NSRange range = NSMakeRange (url.length-1, 1);
+        [url deleteCharactersInRange:range];
+    }
+    if(payTyes.count>0){
+        [url appendFormat:@"&qy_pay_type="];
+        for(NSNumber *idx in payTyes){
+            [url appendFormat:@"%i,",idx.intValue];
+        }
+        NSRange range = NSMakeRange (url.length-1, 1);
+        [url deleteCharactersInRange:range];
+    }
+    if(storeIds.count>0){
+        [url appendFormat:@"&qy_store_ids="];
+        for(NSNumber *idx in storeIds){
+            [url appendFormat:@"%i,",idx.intValue];
+        }
+        NSRange range = NSMakeRange (url.length-1, 1);
+        [url deleteCharactersInRange:range];
+    }
+    if(min>0){
+        [url appendFormat:@"&qy_payment_min=%g",min];
+    }
+    if(max>0){
+        [url appendFormat:@"&qy_payment_max=%g",max];
+    }
+    RKObjectMapping *callbackMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [callbackMapping mapKeyPath:@"count" toAttribute:@"count"];
+    [self requestURL:url method:RKRequestMethodGET params:nil mapping:callbackMapping];
+}
+
 -(void)updateDeal
 {
     for(ExproDeal *deal in [ExproDeal findAll]){

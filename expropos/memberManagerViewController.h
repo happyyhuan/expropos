@@ -51,4 +51,6 @@
 
 - (IBAction)delMember:(id)sender;
 -(void)reloadMemberInfo;
+
+-(void)getMembers;
 @end
