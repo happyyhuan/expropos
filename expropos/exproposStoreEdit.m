@@ -16,7 +16,8 @@
     self = [super init];
     if (self) {
         [self addCode:202 info:NSLocalizedString(@"门店信息删除成功", nil) alert:YES succeed:YES];
-        [self addCode:201 info:NSLocalizedString(@"createSucceed", nil) alert:NO succeed:YES];
+        [self addCode:201 info:NSLocalizedString(@"门店信息创建成功", nil) alert:YES succeed:YES];
+        [self addCode:200 info:NSLocalizedString(@"门店信息修改成功", nil) alert:YES succeed:YES];
         [self addCode:403 info:NSLocalizedString(@"ForbidUser", nil) alert:YES succeed:NO];
         [self addCode:502 info:NSLocalizedString(@"服务器端错误", nil) alert:YES succeed:NO];
         

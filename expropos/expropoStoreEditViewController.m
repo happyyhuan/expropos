@@ -337,16 +337,7 @@
     
     
     if (self.exproStore)      //更新本地门店信息
-     {
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
-                                                         message:@"门店信息修改成功" 
-                                                        delegate:nil
-                                               cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                               otherButtonTitles:nil];
-         
-         [alert show]; 
-
-         
+     {         
          self.exproStore.name = self.storeName;
          self.exproStore.notice = self.storeNotice;
          self.exproStore.address = self.storeAddress;
@@ -358,19 +349,12 @@
      }
      else {                    //新增门店信息
         
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
-                                                         message:@"门店信息添加成功" 
-                                                        delegate:nil
-                                               cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                               otherButtonTitles:nil];
-         
-         [alert show]; 
-                 newStore.name = self.storeName;
-                 newStore.notice = self.storeNotice;
-                 newStore.address = self.storeAddress;
-                 newStore.comment = self.storeComment;
-                 newStore.transitInfo = self.storeTransit;
-                 newStore.lastModified = [NSDate new];
+        newStore.name = self.storeName;
+        newStore.notice = self.storeNotice;
+        newStore.address = self.storeAddress;
+        newStore.comment = self.storeComment;
+        newStore.transitInfo = self.storeTransit;
+        newStore.lastModified = [NSDate new];
                
          newStore.inventarNum = self.storeNo; 
          
