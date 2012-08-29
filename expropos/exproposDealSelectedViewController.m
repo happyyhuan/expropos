@@ -53,10 +53,10 @@
     return self;
 }
 //交易更新成功后执行该方法
--(void)didUpDataSuccess
+-(void)didUpDataSuccess:(id)obj
 {
-    [self searchInLoacl];
-    _showDeals.data = _deals;
+   // [self searchInLoacl];
+    _showDeals.data = (NSMutableArray*)obj;
     // 设置动画翻页效果
     [UIView beginAnimations:@"View Flip" context:nil];
     [UIView setAnimationDuration:2];
@@ -80,7 +80,7 @@
 {
     NSLog(@"didUpDataFail");
 }
-//交易查询，先查询本地，然后查询远端服务器
+
 -(void)dealSelect
 {
    
@@ -111,6 +111,29 @@
 {
     NSMutableDictionary *dic = (NSMutableDictionary *)obj;
     NSLog(@"%@",dic);
+    int sum = [[dic objectForKey:@"count"] intValue];
+    if(self.showDeals.data.count<sum){
+        if(!_update){
+            _update = [[exproposUpdateDeals alloc]init];
+        }
+        _update.reserver = self;
+        _update.succeedCallBack = @selector(didUpDataSuccess:);
+        _update.failedCallBack = @selector(didUpDataFail);
+        self.showDeals.pageNum = 1;
+        NSMutableArray *memberIds = [[NSMutableArray alloc] initWithCapacity:20];
+        if(self.members.count>0){
+            for(ExproMember *m in self.members){
+                [memberIds addObject:[NSNumber numberWithInt:m.gid.intValue]];
+            }
+        }
+        NSMutableArray *stores = [[NSMutableArray alloc] initWithCapacity:20];
+        if(self.stores.count>0){
+            for(ExproStore *store in self.stores){
+                [stores addObject:[NSNumber numberWithInt:store.gid.intValue]];
+            }
+        }
+        [_update queryDealsStart:0 limit:100 bt:self.beginDate et:self.endDate memberIds:memberIds types:self.dealItems payTypes:self.payTypes storeIds:stores minAmount:self.fromAmoutOfMoney.doubleValue maxAmount:self.endAmoutOfMoney.doubleValue];
+    }
 }
 -(void)getDealCountFail
 {
@@ -119,7 +142,7 @@
 }
 
 //安照查询条件进行本地查询
--(void) searchInLoacl
+/*-(void) searchInLoacl
 {
     NSFetchRequest *request = [ExproDeal fetchRequest];
     
@@ -184,7 +207,7 @@
     [_deals addObjectsFromArray:[ExproDeal objectsWithFetchRequest:request]];
     
 }
-
+*/
 
 - (void)viewDidLoad
 {

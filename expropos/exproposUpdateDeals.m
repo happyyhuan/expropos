@@ -38,7 +38,7 @@
     
 }
 
--(void)upDateDealStart:(int)start limit:(int)limit bt:(NSDate*)bt et:(NSDate*)et memberIds:(NSArray *)memberIds types:(NSArray*)types payTypes:(NSArray*)payTyes storeIds:(NSArray *)storeIds minAmount:(double)min maxAmount:(double)max
+-(void)queryDealsStart:(int)start limit:(int)limit bt:(NSDate*)bt et:(NSDate*)et memberIds:(NSArray *)memberIds types:(NSArray*)types payTypes:(NSArray*)payTyes storeIds:(NSArray *)storeIds minAmount:(double)min maxAmount:(double)max
 {
     /*
      /deals?qy_customer_ids=159,23,155,24,25&qy_store_ids=111,112,13&qy_type=1&qy_pay_type=3&qy_payment_min=10&qy_payment_max=500
@@ -80,7 +80,7 @@
     if(max>0){
         [url appendFormat:@"&qy_payment_max=%g",max];
     }
-    
+    self.acceptParallelResults = YES;
     [self requestURL:url method:RKRequestMethodGET params:nil mapping:nil];
     
 }
